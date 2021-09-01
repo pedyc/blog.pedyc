@@ -20,28 +20,32 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="JS执行流程前言&amp;emsp;&amp;emsp;本文主要解释JS引擎在遇见script代码块时，从编译到执行具体经历了什么？为什么会产生变量提升？闭包的产生原理是什么?多个script代码块间是以什么顺序来执行的？为什么定义在不同代码块间的方法可以共通？通过本文都可以得到解答。 基础概念 JavaScript 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。  解释型：JS引擎在运行JS代码时，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS执行流程">
+<meta property="og:url" content="http://example.com/2021/09/01/JS%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JS执行流程前言&amp;emsp;&amp;emsp;本文主要解释JS引擎在遇见script代码块时，从编译到执行具体经历了什么？为什么会产生变量提升？闭包的产生原理是什么?多个script代码块间是以什么顺序来执行的？为什么定义在不同代码块间的方法可以共通？通过本文都可以得到解答。 基础概念 JavaScript 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。  解释型：JS引擎在运行JS代码时，">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-09-01T14:31:11.000Z">
+<meta property="article:modified_time" content="2021-09-01T14:36:28.849Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2021/09/01/JS%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Hexo</title>
+  <title>JS执行流程 | Hexo</title>
   
 
 
@@ -139,152 +143,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/01/%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">测试</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-09-01 22:31:11" itemprop="dateCreated datePublished" datetime="2021-09-01T22:31:11+08:00">2021-09-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/01/%E9%87%8D%E6%9E%84%E6%96%B9%E6%B3%95%E8%AE%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/%E9%87%8D%E6%9E%84%E6%96%B9%E6%B3%95%E8%AE%BA/" class="post-title-link" itemprop="url">测试</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-09-01 22:31:11 / Modified: 22:35:15" itemprop="dateCreated datePublished" datetime="2021-09-01T22:31:11+08:00">2021-09-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="重构（Refactoring）"><a href="#重构（Refactoring）" class="headerlink" title="重构（Refactoring）"></a>重构（Refactoring）</h1><p>一、什么是重构？</p>
-<p>在<code>不改变代码外在行为</code>的前提下，对代码进行修改，以<code>改进程序的内部结构</code></p>
-<p>二、为什么要重构？</p>
-<p>在软件工程中，开发迭代的过程实际上是一个熵增的过程，软件系统会随着生命周期的进行变得越来越臃肿、混乱、冗余，从而增加维护与进一步迭代的成本。而重构可以<code>偿还技术债务、改进软件结构、减小维护和迭代的成本、增加产品可信</code>。</p>
-<p>三、重构有哪些分类？</p>
-<ul>
-<li>小粒度重构（函数级、小模块）</li>
-<li>大粒度重构（架构级、大模块）</li>
-</ul>
-<p>四、什么时候重构？</p>
-<ul>
-<li>新增需求时（小粒度）</li>
-<li>修改BUG时（小粒度）</li>
-<li>复审代码时（大粒度）</li>
-<li>代码逻辑混乱、依赖混杂（大粒度）</li>
-</ul>
-<p>五、重构有哪些原则？</p>
-<ul>
-<li>先评审，再重构，不要反复推翻重来</li>
-<li>新增需求时，不要改动既有代码</li>
-<li>重构既有代码时，不要新增功能</li>
-</ul>
-<p>六、重构工作流程</p>
-<ol>
-<li>识别代码坏味道，定位需要重构的模块</li>
-<li>小步前进，小粒度重构代码</li>
-<li>测试保护，随时回退</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -300,10 +162,9 @@
       <meta itemprop="name" content="Hexo">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/JS%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">JS执行流程</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          JS执行流程
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -327,7 +188,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="JS执行流程"><a href="#JS执行流程" class="headerlink" title="JS执行流程"></a><strong>JS执行流程</strong></h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><code>前言</code></h2><p>&emsp;&emsp;<br>本文主要解释JS引擎在遇见script代码块时，从编译到执行具体经历了什么？为什么会产生变量提升？闭包的产生原理是什么?多个script代码块间是以什么顺序来执行的？为什么定义在不同代码块间的方法可以共通？通过本文都可以得到解答。</p>
+        <h1 id="JS执行流程"><a href="#JS执行流程" class="headerlink" title="JS执行流程"></a><strong>JS执行流程</strong></h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><code>前言</code></h2><p>&emsp;&emsp;<br>本文主要解释JS引擎在遇见script代码块时，从编译到执行具体经历了什么？为什么会产生变量提升？闭包的产生原理是什么?多个script代码块间是以什么顺序来执行的？为什么定义在不同代码块间的方法可以共通？通过本文都可以得到解答。</p>
 <h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a><code>基础概念</code></h2><ul>
 <li><p>JavaScript 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。</p>
 <blockquote>
@@ -416,91 +277,33 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/MrErHu/blog/issues/16">我所认识的作用域链与原型链</a></li>
 </ul>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/01/hello-world/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-09-01 21:45:48" itemprop="dateCreated datePublished" datetime="2021-09-01T21:45:48+08:00">2021-09-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/01/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/01/%E9%87%8D%E6%9E%84%E6%96%B9%E6%B3%95%E8%AE%BA/" rel="next" title="测试">
+      测试 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -553,6 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">JS执行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">1.2.</span> <span class="nav-text">基础概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">JS代码执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-number">1.4.</span> <span class="nav-text">代码分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">1.6.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
