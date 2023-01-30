@@ -5,8 +5,8 @@
 # Site
 title: Hexo
 subtitle: ''
-description: 'YC'S HOME'
-keywords: BLOG
+description: ''
+keywords:
 author: John Doe
 language: en
 timezone: ''
@@ -103,5 +103,5 @@ theme: landscape
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repository: git@github.com:ped-Yc/pn.git
+  repository: git@github.com:ped-Yc/ped-Yc.github.io.git
   branch: main
