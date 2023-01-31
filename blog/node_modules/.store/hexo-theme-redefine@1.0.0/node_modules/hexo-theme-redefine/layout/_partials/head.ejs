@@ -1,0 +1,58 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="<%= page.keywords || config.keywords || 'Hexo Theme Redefine' %>">
+    <meta name="description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
+    <meta name="author" content="<%= theme.base_info.author || config.author || 'Redefine Team' %>">
+    <link rel="canonical" href="<%= full_url_for(page.path).replace("/index.html", "") %>" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="<%= theme.style.favicon %>" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= theme.style.favicon %>">
+    <%- favicon_tag(theme.style.favicon) %>
+    <%
+    let title = page.title;
+    if (is_archive()) {
+        title = __('archive');
+        if (is_month()) {
+            title += ': ' + page.year + '/' + page.month;
+        } else if (is_year()) {
+            title += ': ' + page.year;
+        }
+    } else if (is_category()) {
+        title = __('category') + ': ' + page.category;
+    } else if (is_tag()) {
+        title = __('tag') + ': ' + page.tag;
+    } else {
+        title = __(page.title);
+    }
+    %>
+    <title>
+        <% if (title) { %>
+            <%= title %> |
+        <% } %>
+        <%= theme.base_info.title || config.title || 'Redefine Theme' %>
+    </title>
+    <%- css('css/style') %>
+    <%- __css('css/fonts.css') %>
+    <% if (theme.inject.enable == true) { %>
+        <% for (let i in theme.inject.head) { %>
+            <%- theme.inject.head[i] %>
+    <% } }%>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <%- export_config() %>
+    
+    <%- __css('css/fontawesome.min.css') %>
+    <%- __css('css/brands.min.css') %>
+    <%- __css('css/solid.min.css') %>
+    <%- __css('css/regular.min.css') %>
+    <% if (theme.fontawesome.thin == true) { %>
+        <%- __css('css/thin.min.css') %>
+    <% } %>
+    <% if (theme.fontawesome.light == true) { %>
+        <%- __css('css/light.min.css') %>
+    <% } %>
+    <% if (theme.fontawesome.duotone == true) { %>
+        <%- __css('css/duotone.min.css') %>
+    <% } %>
+</head>
+
