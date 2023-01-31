@@ -104,3 +104,4 @@ theme: redefine
 deploy:
   type: 'git'
   repo: https://github.com/ped-Yc/ped-Yc.github.io.git
+  branch: main
