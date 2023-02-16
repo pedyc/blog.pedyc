@@ -1,263 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>代码重构的一点心得</title>
-    <url>/2023/02/01/%E3%80%90%E6%96%B9%E6%B3%95%E8%AE%BA%E3%80%91%E4%BB%A3%E7%A0%81%E9%87%8D%E6%9E%84%E7%9A%84%E4%B8%80%E7%82%B9%E5%BF%83%E5%BE%97/</url>
-    <content><![CDATA[<h1 id="重构（Refactoring）"><a href="#重构（Refactoring）" class="headerlink" title="重构（Refactoring）"></a>重构（Refactoring）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一直在做前端重构的工作，多少有些感想，特此记录。</p>
-<p>首先，项目的历史太悠久了，AngularJS的项目，</p>
-<h2 id="一、什么是重构？为什么要重构？重构要达成什么目标？"><a href="#一、什么是重构？为什么要重构？重构要达成什么目标？" class="headerlink" title="一、什么是重构？为什么要重构？重构要达成什么目标？"></a>一、什么是重构？为什么要重构？重构要达成什么目标？</h2><p><strong>什么是重构</strong></p>
-<p>在<code>不改变代码外在行为</code>的前提下，对代码进行修改，以<code>改进程序的内部结构</code>。</p>
-<p><strong>为什么要重构</strong></p>
-<p>在软件工程中，开发迭代的过程实际上是一个熵增的过程，软件系统会随着生命周期的进行变得越来越臃肿、混乱、冗余，从而增加维护与进一步迭代的成本。而重构可以<code>偿还技术债务、改进软件结构、减小维护和迭代的成本、增加产品可信</code>。</p>
-<p><strong>重构要达成什么目标？</strong></p>
-<ol>
-<li>系统结构重新梳理：旧系统在设计上可能有许多疏漏，由于经验的欠缺或者考虑不周到，这是难以避免的。新系统应该见贤思齐、查漏补缺，例如重新设计基类、文件结构和继承关系，争取让系统更加完善。</li>
-<li>公共资源重新梳理：</li>
-<li>业务需求重新梳理：</li>
-</ol>
-<h2 id="二、重构有哪些分类？什么时候重构？重构有哪些原则？"><a href="#二、重构有哪些分类？什么时候重构？重构有哪些原则？" class="headerlink" title="二、重构有哪些分类？什么时候重构？重构有哪些原则？"></a>二、重构有哪些分类？什么时候重构？重构有哪些原则？</h2><p><strong>重构有哪些分类？</strong></p>
-<ul>
-<li>小粒度重构（函数级、小模块）</li>
-<li>大粒度重构（架构级、大模块）</li>
-</ul>
-<p><strong>什么时候重构？</strong></p>
-<ul>
-<li>新增需求时（小粒度）</li>
-<li>修改BUG时（小粒度）</li>
-<li>复审代码时（大粒度）</li>
-<li>代码逻辑混乱、依赖混杂（大粒度）</li>
-</ul>
-<p><strong>重构有哪些原则？</strong></p>
-<ul>
-<li>先评审，再重构，不要反复推翻重来</li>
-<li>确保模块的功能完整，否则不重构该模块</li>
-<li>新增需求时，不要改动既有代码（小粒度）</li>
-<li>重构既有代码时，不要新增功能（小粒度）</li>
-</ul>
-<h2 id="三、重构工作流程"><a href="#三、重构工作流程" class="headerlink" title="三、重构工作流程"></a>三、重构工作流程</h2><ol>
-<li>前期准备，搭架子<ul>
-<li>构建对应技术栈的文件结构、代码关系</li>
-<li>整理公共资源、公共能力</li>
-<li>整理业务需求，确保没有遗漏的需求</li>
-</ul>
-</li>
-<li>前期准备，分需求、培训（主要涉及文件结构和公共资源）</li>
-<li>开始重构 </li>
-</ol>
-]]></content>
-      <categories>
-        <category>方法论</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【JS运行机制】JS执行流程</title>
-    <url>/2023/02/01/%E3%80%90JS%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%E3%80%91JS%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><code>前言</code></h2><p>&amp;emsp;&amp;emsp;<br>本文主要解释JS引擎在遇见script代码块时，从编译到执行具体经历了什么？为什么会产生变量提升？闭包的产生原理是什么?多个script代码块间是以什么顺序来执行的？为什么定义在不同代码块间的方法可以共通？通过本文都可以得到解答。</p>
-<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a><code>基础概念</code></h2><ul>
-<li><p>JavaScript 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。<br><code>解释型</code>：JS引擎在运行JS代码时，是利用解释器一边编译一边执行的。</p>
-<p>如此便避免不了一种情况：某些代码多次重复的运行，例如 for循环，在编译型语言中，for循环块中的代码将以机器码执行多次；而在解释型语言中，for循环块中的代码将被解释多次并执行，如此便有了很大的耗损。</p>
-<p><code>即时编译型</code>：于是JS引擎就加入了<code>JIT</code>（Just-in-time）进行编译优化，例如对重复语句和类型判断进行优化。</p>
-</li>
-<li><p>引擎、编译器与作用域<br>  引擎：从头到尾负责整个javascript程序的编译及执行过程。浏览器不同，其引擎也不同，比如Chrome采用的是v8，Safari采用的是SquirrelFish Extreme。</p>
-<p>  编译器：编译过程主要分为”词法分析”、“语法分析”及“代码生成“。</p>
-<blockquote>
-</blockquote>
-<p>  作用域（Scope）：根据名称查找变量的一套规则，用于管理引擎如何在当前作用域以及嵌套的子作用域中根据标识符名称进行变量查找。</p>
-</li>
-<li><p>执行上下文（Excution Context EC）&amp;&amp; 执行上下文栈（Excution Context Stack ECS）<br>  存在三种 EC：全局执行上下文  GlobalEC ，函数执行上下文  Function EC，Eval。</p>
-<p>  ECS：引擎记录EC的容器，栈底是 GlobalEC ，只有在关闭页面时出栈；栈顶是当前正在执行的 EC ，函数执行完毕后出栈，并将执行权交给下一个 EC 。</p>
-</li>
-<li><p>变量对象（Variable Object）&amp;&amp; 活动对象（Activation Object）<br>  VO：EC中用来存储变量声明（必须是 var 关键字声明而不是 let 与 const）与函数声明（必须是显式声明而不是表达式）的容器。由引擎实现，不能访问到。</p>
-<p>  AO：可以理解为VO的实例化，函数调用时在EC中被激活，成员属性能被访问。</p>
-</li>
-<li><p>LHS（Left Hand Side） &amp;&amp; RHS（Right Hand Side）<br>  LHS：赋值操作的目标。例如：a&#x3D;2; 是对 a 进行 LHS查询。</p>
-<p>  RHS：赋值操作的源头。例如：console.log(a); 是对 a 进行 RHS查询。</p>
-<blockquote>
-</blockquote>
-<p>  非严格模式下，LHS查询不到变量会在顶层作用域创建具有该名称的变量，RHS查询不到变量会报ReferenceError的异常；严格模式下禁止自动创建全局变量，两种查询方式失败均报ReferenceError的异常。</p>
-</li>
-</ul>
-<h2 id="JS代码执行流程"><a href="#JS代码执行流程" class="headerlink" title="JS代码执行流程"></a><code>JS代码执行流程</code></h2><p>&amp;emsp;&amp;emsp;</p>
-<ol>
-<li>–&gt;进入script标签，【预编译】JS引擎创建全局EC，全局EC入栈</li>
-<li>–&gt;【编译】JS解释器开始对代码逐行进行分词、语法分析、代码生成</li>
-<li>–&gt;有错则抛出，终止执行；无错继续向下逐行执行</li>
-<li>–&gt;【预编译】调用函数前，创建函数EC，EC入栈</li>
-<li>–&gt;【编译】</li>
-<li>–&gt;有错则抛出，终止执行；无错继续向下执行</li>
-<li>–&gt;函数执行完毕，EC出栈</li>
-<li>–&gt;继续以上步骤</li>
-<li>–&gt;页面销毁，全局EC出栈，结束</li>
-</ol>
-<p><code>创建当前环境EC流程如下：</code></p>
-<p>1、初始化作用域[[Scope]]，（拷贝传入的父执行上下文的Scope），数据结构应该是数组或者链表。</p>
-<p>例如：[[Scope]] : AO1（当前）–&gt;VO（全局）</p>
-<p>2、创建活动对象，创建完成之后，将活动对象推入作用域链的最前端：</p>
-<p>例如：[[Scope]] : AO2（当前）–&gt;AO1（父级）–&gt;VO（全局）</p>
-<p>2.1、创建arguments对象，检查上下文，初始化参数名称和值并创建引用的复制。（函数中存在）</p>
-<p>2.2、创建形参，通过实参赋值。（函数中存在）</p>
-<p>2.3、扫描上下文的函数声明（而非函数表达式）：</p>
-<p>为发现的每一个函数，在变量对象上创建一个属性——确切的说是函数的名字——其有一个指向函数在内存中的引用。如果函数的名字已经存在，引用指针将被重写。函数声明比变量优先级要高，并且定义过程不会被变量覆盖，除非是赋值</p>
-<p>2.4、扫描上下文的变量声明：</p>
-<p>为发现的每个变量声明，在变量对象上创建一个属性——就是变量的名字，并且将变量的值初始化为undefined，如果变量的名字已经在变量对象里存在，将不会进行任何操作并继续扫描。</p>
-<p>3、求出上下文内部this的值。</p>
-<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a><code>代码分析</code></h2><p>1、EC创建流程与变量提升</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;outer&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">i</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>) &#123;&#125;;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`------------`</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">foo</span>(<span class="number">22</span>);<span class="comment">// 对形参i的LHS查询</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//结果：</span></span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">ƒ <span class="title function_">c</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">------------</span><br><span class="line">hello</span><br><span class="line">ƒ() &#123;&#125;</span><br><span class="line">ƒ <span class="title function_">c</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 分析</span></span><br><span class="line"><span class="comment">// 代码载入前，创建全局EC的伪代码</span></span><br><span class="line"><span class="title class_">GlobalEC</span> : &#123;</span><br><span class="line">    [[<span class="title class_">Scope</span>]] : [&#123;<span class="variable constant_">VO</span>&#125;],</span><br><span class="line">    <span class="variable constant_">VO</span> : &#123;</span><br><span class="line">        foo : fnFoo,<span class="comment">// 函数声明优先，指向函数Foo的引用</span></span><br><span class="line">        a :  <span class="literal">undefined</span><span class="comment">// 变量声明</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="variable language_">this</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用函数foo(22)时，创建当前EC的伪代码</span></span><br><span class="line"><span class="title class_">CurrentEC</span> : &#123;</span><br><span class="line">    [[<span class="title class_">Scope</span>]] : [&#123;<span class="variable constant_">AO</span>&#125;, &#123;<span class="variable constant_">VO</span>&#125;],</span><br><span class="line">    <span class="variable constant_">AO</span> : &#123;</span><br><span class="line">        <span class="comment">// 顺序：arguments对象 形参 函数声明 变量声明</span></span><br><span class="line">        <span class="variable language_">arguments</span> : &#123;</span><br><span class="line">            <span class="number">0</span> : <span class="number">22</span>,</span><br><span class="line">            length : <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        i : <span class="number">22</span>,<span class="comment">// 形参，接受实参赋值</span></span><br><span class="line">        c : fnC,<span class="comment">//指向函数c的引用</span></span><br><span class="line">        a : <span class="literal">undefined</span>,</span><br><span class="line">        b : <span class="literal">undefined</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="variable language_">this</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>2、多个script块间的执行过程</p>
-<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;script1 start&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a&#x27;</span>,a);</span></span><br><span class="line"><span class="language-javascript">     <span class="keyword">var</span> b=<span class="number">2</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;script1 end&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript"> </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;script2 start&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="keyword">var</span> a=<span class="number">1</span>;</span></span><br><span class="line"><span class="language-javascript">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;b&#x27;</span>,b);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;script2 end&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript"> </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">     script1 start</span></span><br><span class="line"><span class="comment">     Uncaught ReferenceError: a is not defined</span></span><br><span class="line"><span class="comment">     script2 start</span></span><br><span class="line"><span class="comment">     b undefined</span></span><br><span class="line"><span class="comment">     script2 end</span></span><br><span class="line"><span class="comment">  --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment"> 1、从代码运行结果可以看出，JS执行流在进入第一个 script 块时，首先会创建全局 EC ，将 b 的声明加入 AO 并推入作用域中（所以第二个 script 块中的代码才能访问到 b），全局EC压入 ECS。</span></span><br><span class="line"><span class="comment"> 2、逐行的进行分词、语法检查、代码生成，然后执行。</span></span><br><span class="line"><span class="comment">     2.1、在 console.log(&#x27;script1 start&#x27;); 这行代码中，不存在语法错误，执行，输出 start。</span></span><br><span class="line"><span class="comment">     2.2、在 console.log(&#x27;a&#x27;,a); 这行代码中，对变量 a 进行 RHS 查询，在作用域链中找不到 a ，报 ReferenceError，script 块中断执行。</span></span><br><span class="line"><span class="comment"> 3、JS执行流进入第二个 script 块，仍然在全局 EC（JS引擎只会存在一个全局EC），将 a 的声明加入 AO（与第一个代码块相同，每个EC绑定唯一的 VO|AO） 并推入作用域。</span></span><br><span class="line"><span class="comment"> 4、逐行的进行分词、语法检查、代码生成，然后执行。</span></span><br><span class="line"><span class="comment">     4.1、在 console.log(&#x27;b&#x27;,b); 这行代码中，对变量 b 进行 RHS 查询，在作用域的 AO 中找到对应的值 undefined，输出 b undefined。</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> 结束</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>3、闭包的产生</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 首先明确什么是闭包？可以使用如下定义：</span></span><br><span class="line"><span class="comment">// 函数在定义的词法作用域以外的地方被调用，闭包使得函数可以继续访问定义时的词法作用域。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 例子</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="string">&#x27;JavaScript&#x27;</span>;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">func</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> func;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> func = <span class="title function_">fn</span>();</span><br><span class="line"><span class="title function_">func</span>(); <span class="comment">// JavaScript</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// func函数执行的位置和定义的位置是不相同的，func是在函数fn中定义的，但执行却是在全局环境中，虽然是在全局函数中执行的，但函数仍然可以访问当定义时的词法作用域。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当函数执行结束后其活动变量就会被销毁，但是在上面的例子中却不是这个样子。但函数fn执行结束之后，fn对象的活动变量并没有被销毁，这是因为fn返回的函数func的作用域链还保持着fn的活动变量，因此JavaScript的垃圾回收机制不会回收fn活动变量。虽然返回的函数func是在全局环境下执行的，但是其作用域链的存储的活动(变量)对象的顺序分别是:func的活动对象、fn的活动对象、全局变量对象。因此在func函数执行时，会顺着作用域链查找标识符，也就能访问到fn所定义的词法作用域(即fn函数的活动变量)也就不足为奇了。</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><code>总结</code></h2><p>多个script块间的执行顺序</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">多个script代码块从上到下按序载入，语法分析阶段报错的话，结束本代码块的执行，执行流进入下一个代码块。多个代码块共享全局执行上下文，可以访问到其他代码块定义的变量和方法。</span><br></pre></td></tr></table></figure></div>
-
-<p>为什么会产生变量提升与函数提升？<br> <div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">答：在代码执行之前的预编译阶段，创建当前<span class="variable constant_">EC</span>时，会在活动对象上创建一个与函数声明与变量声明对应的属性，然后将活动对象推入作用域链。在查询变量时，是通过作用域链进行<span class="variable constant_">RHS</span>查询。所以会查询到作用域链上已经定义的函数与变量。</span><br></pre></td></tr></table></figure></div></p>
-<p>闭包的产生</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">简单来说，闭包中的函数所对应的作用域链上仍然保留了父级活动对象，所以可以对父级活动对象的属性进行查询。</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><code>参考资料</code></h2><ul>
-<li>《你不知道的Javascript》（上卷），第一部分，作用域和闭包</li>
-<li><a class="link"   href="https://heyingye.github.io/2018/03/19/js%E5%BC%95%E6%93%8E%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/" >JS引擎的执行过程 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://segmentfault.com/a/1190000013915935" >彻底明白作用域、执行上下文 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://blog.csdn.net/yangxinxiang84/article/details/113051811?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&dist_request_id=1328641.10297.16155372256670345&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control" >深入理解JavaScript的执行流程，执行上下文EC、变量对象VO、活动对象AO、作用域Scope <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://blog.csdn.net/Ancecis/article/details/104382441" >浅谈JS的 VO|AO <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://blog.csdn.net/chen_zw/article/details/18502937?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.control&dist_request_id=&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.control" >JS运行机制之执行顺序 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://github.com/MrErHu/blog/issues/16" >我所认识的作用域链与原型链 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JS运行机制</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>前端发展历程梳理</title>
-    <url>/2022/03/09/%E3%80%90%E6%96%B9%E6%B3%95%E8%AE%BA%E3%80%91%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B%E6%A2%B3%E7%90%86%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>了解前端的发展历史有助于从一个全局的视角来重新认知前端技术，脱离单独某一种视角的窠臼。</p>
-<ul>
-<li><code>Node.js</code>的出现意味着什么？</li>
-<li>为什么要从<code>jquery</code>转入三大框架？</li>
-<li>既然已经有了<code>javascript</code>为什么还要使用<code>babel</code>来转化？</li>
-<li><code>CommonJS</code>、<code>AMD</code>、<code>CMD</code>、<code>ESModule</code>又是什么？</li>
-</ul>
-<p>类似的问题不胜枚举，而这篇文章有助于解决此类问题。</p>
-<h2 id="1-需求驱动和问题驱动"><a href="#1-需求驱动和问题驱动" class="headerlink" title="1.需求驱动和问题驱动"></a>1.需求驱动和问题驱动</h2><p>一种技术能够出现并且不断的发展，一定具有某种内在的驱动力，我认为这种驱动力存在两种：</p>
-<ol>
-<li>需求驱动</li>
-<li>问题驱动</li>
-</ol>
-<p>需求驱动顾名思义就是当前的技术工具支持不了新的需求，所以推动了新技术的产生。而问题驱动则是实现某种需求的过程中产生了困难，老旧的技术工具解决不了或者解决起来很麻烦困难，所以推动了新技术的产生。</p>
-<h2 id="2-前端大事件的时间节点"><a href="#2-前端大事件的时间节点" class="headerlink" title="2.前端大事件的时间节点"></a>2.前端大事件的时间节点</h2><table>
-<thead>
-<tr>
-<th align="left">时间</th>
-<th align="left">事件</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>web1.0 1991~2004</code></td>
-<td align="left">只读网络，网站提供内容，用户阅读内容</td>
-</tr>
-<tr>
-<td align="left">1989年</td>
-<td align="left"><code>HTML</code>由Web的发明者Tim Berners-Lee创立，这也是前端的起始</td>
-</tr>
-<tr>
-<td align="left">1994年</td>
-<td align="left">世界上的第一款浏览器<code>NCSAMosaic</code>由Netscape（网景）公司开发,同年<code>W3C</code>（世界万维网联盟）成立</td>
-</tr>
-<tr>
-<td align="left">1995年</td>
-<td align="left"><code>JavaScript</code>由网景公司的Brendan Eich设计</td>
-</tr>
-<tr>
-<td align="left">1996年</td>
-<td align="left">W3C发布了<code>CSS1</code>标准，从此前端有了样式规范</td>
-</tr>
-<tr>
-<td align="left">1997年</td>
-<td align="left"><code>ECMAScript1</code>由ECMA国际正式发布，从此Javascript有了自己的标准，同年W3C发布了<code>HTML4.0</code>标准，这是使用时间最长的一个版本</td>
-</tr>
-<tr>
-<td align="left">1998年</td>
-<td align="left">W3C发布了<code>XML(可扩展标记语言)</code>标准，同年<code>Ajax</code>（异步Javascript和XML）技术开始得到应用</td>
-</tr>
-<tr>
-<td align="left">2001年</td>
-<td align="left">Douglas Crockford开始推广使用<code>JSON</code>数据格式，它比XML更加简洁清晰</td>
-</tr>
-<tr>
-<td align="left"><code>web2.0 2004~至今</code></td>
-<td align="left">交互网络，用户产生内容，通过网站与他人交互</td>
-</tr>
-<tr>
-<td align="left">2006年</td>
-<td align="left">John Resig发布了<code>JQuery</code>的第一个版本，这是迄今为止最成功的JS库，同年W3C正式发布<code>XMLHttpRequest</code>标准，为以后的Ajax爆发提供技术基础。</td>
-</tr>
-<tr>
-<td align="left">2008年</td>
-<td align="left">Google开源了高性能的Javascript引擎<code>V8</code></td>
-</tr>
-<tr>
-<td align="left">2009年</td>
-<td align="left">Ryan Dahl开发了基于V8引擎的<code>NodeJS</code>运行时环境，从此javascript可以运行在服务端；同年<code>ECMAScript5</code>发布，这是使用时间最长，各个浏览器兼容性最好，如今大部分程序也依然在使用的一代标准；同年Miško Hevery创造了<code>AngularJS</code>框架，基于MVC模式，并且实现了SPA（单页面应用）</td>
-</tr>
-<tr>
-<td align="left">2010年</td>
-<td align="left"><code>NPM</code>（NodeJS包管理工具）发布了第一个版本，从此前端有了自己的包管理器</td>
-</tr>
-<tr>
-<td align="left">2011年</td>
-<td align="left">Twitter开源了其前端框架<code>Bootstrap</code></td>
-</tr>
-<tr>
-<td align="left">2012年</td>
-<td align="left">微软发布了<code>Typescript</code>的第一个版本，让Javascript拥有了自己的类型</td>
-</tr>
-<tr>
-<td align="left">2013年</td>
-<td align="left">Facebook开源了其前端框架<code>React</code>，同年尤雨溪受到Angular启发开发了轻量级前端框架<code>Seed</code>，后更名为<code>Vue</code></td>
-</tr>
-<tr>
-<td align="left">2014年</td>
-<td align="left">W3C发布了<code>HTML5</code>标准</td>
-</tr>
-<tr>
-<td align="left">2015年</td>
-<td align="left"><code>ECMAScript6</code>正式发布，后更名为<code>ECMAScript2015</code>，之截至目前2022年，每年都发布了对应的新版本</td>
-</tr>
-<tr>
-<td align="left">2016年</td>
-<td align="left"><code>ECMAScript2016</code>正式发布</td>
-</tr>
-<tr>
-<td align="left">2017年</td>
-<td align="left"><code>ECMAScript2017</code>正式发布</td>
-</tr>
-</tbody></table>
-<h2 id="一些技术发展过程的梳理"><a href="#一些技术发展过程的梳理" class="headerlink" title="一些技术发展过程的梳理"></a>一些技术发展过程的梳理</h2><p>可以把前端发展的历程分为</p>
-<h2 id="展望未来"><a href="#展望未来" class="headerlink" title="展望未来"></a>展望未来</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li>百度百科</li>
-<li><a class="link"   href="http://www.javashuo.com/article/p-hvrlfhxo-gc.html" >前端的历史发展节点 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://zhuanlan.zhihu.com/p/196637639" >Web开发的历史发展技术演变 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://blog.csdn.net/qq_44273429/article/details/127462439" >Web 1.0、Web 2.0 和 Web 3.0 之间的比较 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>方法论</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【Vue3 源码学习】01，从 createApp() 方法开始</title>
     <url>/2022/06/03/vueSourceCodeStudy01/</url>
     <content><![CDATA[<img  
@@ -563,6 +306,637 @@
 ]]></content>
       <categories>
         <category>源码</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【方法论】前端工程化的一些理解</title>
+    <url>/2022/05/13/Methodology%20Front-end%20Engineering/</url>
+    <content><![CDATA[<!-- YCTODO -->
+<h1 id="前端工程化的一些理解"><a href="#前端工程化的一些理解" class="headerlink" title="前端工程化的一些理解"></a>前端工程化的一些理解</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="一、什么是前端工程化？"><a href="#一、什么是前端工程化？" class="headerlink" title="一、什么是前端工程化？"></a>一、什么是前端工程化？</h2><h2 id="二、前端工程化要达成些什么目标？"><a href="#二、前端工程化要达成些什么目标？" class="headerlink" title="二、前端工程化要达成些什么目标？"></a>二、前端工程化要达成些什么目标？</h2><h2 id="三、前端工程化要怎样实践？"><a href="#三、前端工程化要怎样实践？" class="headerlink" title="三、前端工程化要怎样实践？"></a>三、前端工程化要怎样实践？</h2><ul>
+<li>状态管理</li>
+<li>规范<ul>
+<li>代码格式化规范</li>
+<li>git提交规范</li>
+</ul>
+</li>
+<li></li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2>]]></content>
+      <categories>
+        <category>方法论</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【方法论】前端发展历程梳理</title>
+    <url>/2022/03/09/Methodology%20Front-end%20History/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>了解前端的发展历史有助于从一个全局的视角来重新认知前端技术，脱离单独某一种视角的窠臼。</p>
+<ul>
+<li><code>Node.js</code>的出现意味着什么？</li>
+<li>为什么要从<code>jquery</code>转入三大框架？</li>
+<li>既然已经有了<code>javascript</code>为什么还要使用<code>babel</code>来转化？</li>
+<li><code>CommonJS</code>、<code>AMD</code>、<code>CMD</code>、<code>ESModule</code>又是什么？</li>
+</ul>
+<p>类似的问题不胜枚举，而这篇文章有助于解决此类问题。</p>
+<h2 id="1-需求驱动和问题驱动"><a href="#1-需求驱动和问题驱动" class="headerlink" title="1.需求驱动和问题驱动"></a>1.需求驱动和问题驱动</h2><p>一种技术能够出现并且不断的发展，一定具有某种内在的驱动力，我认为这种驱动力存在两种：</p>
+<ol>
+<li>需求驱动</li>
+<li>问题驱动</li>
+</ol>
+<p>需求驱动顾名思义就是当前的技术工具支持不了新的需求，所以推动了新技术的产生。而问题驱动则是实现某种需求的过程中产生了困难，老旧的技术工具解决不了或者解决起来很麻烦困难，所以推动了新技术的产生。</p>
+<h2 id="2-前端大事件的时间节点"><a href="#2-前端大事件的时间节点" class="headerlink" title="2.前端大事件的时间节点"></a>2.前端大事件的时间节点</h2><table>
+<thead>
+<tr>
+<th align="left">时间</th>
+<th align="left">事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>web1.0 1991~2004</code></td>
+<td align="left">只读网络，网站提供内容，用户阅读内容</td>
+</tr>
+<tr>
+<td align="left">1989年</td>
+<td align="left"><code>HTML</code>由Web的发明者Tim Berners-Lee创立，这也是前端的起始</td>
+</tr>
+<tr>
+<td align="left">1994年</td>
+<td align="left">世界上的第一款浏览器<code>NCSAMosaic</code>由Netscape（网景）公司开发,同年<code>W3C</code>（世界万维网联盟）成立</td>
+</tr>
+<tr>
+<td align="left">1995年</td>
+<td align="left"><code>JavaScript</code>由网景公司的Brendan Eich设计</td>
+</tr>
+<tr>
+<td align="left">1996年</td>
+<td align="left">W3C发布了<code>CSS1</code>标准，从此前端有了样式规范</td>
+</tr>
+<tr>
+<td align="left">1997年</td>
+<td align="left"><code>ECMAScript1</code>由ECMA国际正式发布，从此Javascript有了自己的标准，同年W3C发布了<code>HTML4.0</code>标准，这是使用时间最长的一个版本</td>
+</tr>
+<tr>
+<td align="left">1998年</td>
+<td align="left">W3C发布了<code>XML(可扩展标记语言)</code>标准，同年<code>Ajax</code>（异步Javascript和XML）技术开始得到应用</td>
+</tr>
+<tr>
+<td align="left">2001年</td>
+<td align="left">Douglas Crockford开始推广使用<code>JSON</code>数据格式，它比XML更加简洁清晰</td>
+</tr>
+<tr>
+<td align="left"><code>web2.0 2004~至今</code></td>
+<td align="left">交互网络，用户产生内容，通过网站与他人交互</td>
+</tr>
+<tr>
+<td align="left">2006年</td>
+<td align="left">John Resig发布了<code>JQuery</code>的第一个版本，这是迄今为止最成功的JS库，同年W3C正式发布<code>XMLHttpRequest</code>标准，为以后的Ajax爆发提供技术基础。</td>
+</tr>
+<tr>
+<td align="left">2008年</td>
+<td align="left">Google开源了高性能的Javascript引擎<code>V8</code></td>
+</tr>
+<tr>
+<td align="left">2009年</td>
+<td align="left">Ryan Dahl开发了基于V8引擎的<code>NodeJS</code>运行时环境，从此javascript可以运行在服务端；同年<code>ECMAScript5</code>发布，这是使用时间最长，各个浏览器兼容性最好，如今大部分程序也依然在使用的一代标准；同年Miško Hevery创造了<code>AngularJS</code>框架，基于MVC模式，并且实现了SPA（单页面应用）</td>
+</tr>
+<tr>
+<td align="left">2010年</td>
+<td align="left"><code>NPM</code>（NodeJS包管理工具）发布了第一个版本，从此前端有了自己的包管理器</td>
+</tr>
+<tr>
+<td align="left">2011年</td>
+<td align="left">Twitter开源了其前端框架<code>Bootstrap</code></td>
+</tr>
+<tr>
+<td align="left">2012年</td>
+<td align="left">微软发布了<code>Typescript</code>的第一个版本，让Javascript拥有了自己的类型</td>
+</tr>
+<tr>
+<td align="left">2013年</td>
+<td align="left">Facebook开源了其前端框架<code>React</code>，同年尤雨溪受到Angular启发开发了轻量级前端框架<code>Seed</code>，后更名为<code>Vue</code></td>
+</tr>
+<tr>
+<td align="left">2014年</td>
+<td align="left">W3C发布了<code>HTML5</code>标准</td>
+</tr>
+<tr>
+<td align="left">2015年</td>
+<td align="left"><code>ECMAScript6</code>正式发布，后更名为<code>ECMAScript2015</code>，之截至目前2022年，每年都发布了对应的新版本</td>
+</tr>
+<tr>
+<td align="left">2016年</td>
+<td align="left"><code>ECMAScript2016</code>正式发布</td>
+</tr>
+<tr>
+<td align="left">2017年</td>
+<td align="left"><code>ECMAScript2017</code>正式发布</td>
+</tr>
+</tbody></table>
+<!-- YCTODO -->
+<h2 id="一些技术发展过程的梳理"><a href="#一些技术发展过程的梳理" class="headerlink" title="一些技术发展过程的梳理"></a>一些技术发展过程的梳理</h2><p>可以把前端发展的历程分为</p>
+<h2 id="展望未来"><a href="#展望未来" class="headerlink" title="展望未来"></a>展望未来</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>百度百科</li>
+<li><a class="link"   href="http://www.javashuo.com/article/p-hvrlfhxo-gc.html" >前端的历史发展节点 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://zhuanlan.zhihu.com/p/196637639" >Web开发的历史发展技术演变 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://blog.csdn.net/qq_44273429/article/details/127462439" >Web 1.0、Web 2.0 和 Web 3.0 之间的比较 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>方法论</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【方法论】JS执行流程</title>
+    <url>/2023/02/01/Methodology%20JS%20Excution%20Process/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><code>前言</code></h2><p>&amp;emsp;&amp;emsp;<br>本文主要解释JS引擎在遇见script代码块时，从编译到执行具体经历了什么？为什么会产生变量提升？闭包的产生原理是什么?多个script代码块间是以什么顺序来执行的？为什么定义在不同代码块间的方法可以共通？通过本文都可以得到解答。</p>
+<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a><code>基础概念</code></h2><ul>
+<li><p>JavaScript 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。<br><code>解释型</code>：JS引擎在运行JS代码时，是利用解释器一边编译一边执行的。</p>
+<p>如此便避免不了一种情况：某些代码多次重复的运行，例如 for循环，在编译型语言中，for循环块中的代码将以机器码执行多次；而在解释型语言中，for循环块中的代码将被解释多次并执行，如此便有了很大的耗损。</p>
+<p><code>即时编译型</code>：于是JS引擎就加入了<code>JIT</code>（Just-in-time）进行编译优化，例如对重复语句和类型判断进行优化。</p>
+</li>
+<li><p>引擎、编译器与作用域<br>  引擎：从头到尾负责整个javascript程序的编译及执行过程。浏览器不同，其引擎也不同，比如Chrome采用的是v8，Safari采用的是SquirrelFish Extreme。</p>
+<p>  编译器：编译过程主要分为”词法分析”、“语法分析”及“代码生成“。</p>
+<blockquote>
+</blockquote>
+<p>  作用域（Scope）：根据名称查找变量的一套规则，用于管理引擎如何在当前作用域以及嵌套的子作用域中根据标识符名称进行变量查找。</p>
+</li>
+<li><p>执行上下文（Excution Context EC）&amp;&amp; 执行上下文栈（Excution Context Stack ECS）<br>  存在三种 EC：全局执行上下文  GlobalEC ，函数执行上下文  Function EC，Eval。</p>
+<p>  ECS：引擎记录EC的容器，栈底是 GlobalEC ，只有在关闭页面时出栈；栈顶是当前正在执行的 EC ，函数执行完毕后出栈，并将执行权交给下一个 EC 。</p>
+</li>
+<li><p>变量对象（Variable Object）&amp;&amp; 活动对象（Activation Object）<br>  VO：EC中用来存储变量声明（必须是 var 关键字声明而不是 let 与 const）与函数声明（必须是显式声明而不是表达式）的容器。由引擎实现，不能访问到。</p>
+<p>  AO：可以理解为VO的实例化，函数调用时在EC中被激活，成员属性能被访问。</p>
+</li>
+<li><p>LHS（Left Hand Side） &amp;&amp; RHS（Right Hand Side）<br>  LHS：赋值操作的目标。例如：a&#x3D;2; 是对 a 进行 LHS查询。</p>
+<p>  RHS：赋值操作的源头。例如：console.log(a); 是对 a 进行 RHS查询。</p>
+<blockquote>
+</blockquote>
+<p>  非严格模式下，LHS查询不到变量会在顶层作用域创建具有该名称的变量，RHS查询不到变量会报ReferenceError的异常；严格模式下禁止自动创建全局变量，两种查询方式失败均报ReferenceError的异常。</p>
+</li>
+</ul>
+<h2 id="JS代码执行流程"><a href="#JS代码执行流程" class="headerlink" title="JS代码执行流程"></a><code>JS代码执行流程</code></h2><p>&amp;emsp;&amp;emsp;</p>
+<ol>
+<li>–&gt;进入script标签，【预编译】JS引擎创建全局EC，全局EC入栈</li>
+<li>–&gt;【编译】JS解释器开始对代码逐行进行分词、语法分析、代码生成</li>
+<li>–&gt;有错则抛出，终止执行；无错继续向下逐行执行</li>
+<li>–&gt;【预编译】调用函数前，创建函数EC，EC入栈</li>
+<li>–&gt;【编译】</li>
+<li>–&gt;有错则抛出，终止执行；无错继续向下执行</li>
+<li>–&gt;函数执行完毕，EC出栈</li>
+<li>–&gt;继续以上步骤</li>
+<li>–&gt;页面销毁，全局EC出栈，结束</li>
+</ol>
+<p><code>创建当前环境EC流程如下：</code></p>
+<p>1、初始化作用域[[Scope]]，（拷贝传入的父执行上下文的Scope），数据结构应该是数组或者链表。</p>
+<p>例如：[[Scope]] : AO1（当前）–&gt;VO（全局）</p>
+<p>2、创建活动对象，创建完成之后，将活动对象推入作用域链的最前端：</p>
+<p>例如：[[Scope]] : AO2（当前）–&gt;AO1（父级）–&gt;VO（全局）</p>
+<p>2.1、创建arguments对象，检查上下文，初始化参数名称和值并创建引用的复制。（函数中存在）</p>
+<p>2.2、创建形参，通过实参赋值。（函数中存在）</p>
+<p>2.3、扫描上下文的函数声明（而非函数表达式）：</p>
+<p>为发现的每一个函数，在变量对象上创建一个属性——确切的说是函数的名字——其有一个指向函数在内存中的引用。如果函数的名字已经存在，引用指针将被重写。函数声明比变量优先级要高，并且定义过程不会被变量覆盖，除非是赋值</p>
+<p>2.4、扫描上下文的变量声明：</p>
+<p>为发现的每个变量声明，在变量对象上创建一个属性——就是变量的名字，并且将变量的值初始化为undefined，如果变量的名字已经在变量对象里存在，将不会进行任何操作并继续扫描。</p>
+<p>3、求出上下文内部this的值。</p>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a><code>代码分析</code></h2><p>1、EC创建流程与变量提升</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;outer&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">i</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>) &#123;&#125;;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`------------`</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">foo</span>(<span class="number">22</span>);<span class="comment">// 对形参i的LHS查询</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//结果：</span></span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">ƒ <span class="title function_">c</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">------------</span><br><span class="line">hello</span><br><span class="line">ƒ() &#123;&#125;</span><br><span class="line">ƒ <span class="title function_">c</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 分析</span></span><br><span class="line"><span class="comment">// 代码载入前，创建全局EC的伪代码</span></span><br><span class="line"><span class="title class_">GlobalEC</span> : &#123;</span><br><span class="line">    [[<span class="title class_">Scope</span>]] : [&#123;<span class="variable constant_">VO</span>&#125;],</span><br><span class="line">    <span class="variable constant_">VO</span> : &#123;</span><br><span class="line">        foo : fnFoo,<span class="comment">// 函数声明优先，指向函数Foo的引用</span></span><br><span class="line">        a :  <span class="literal">undefined</span><span class="comment">// 变量声明</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="variable language_">this</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用函数foo(22)时，创建当前EC的伪代码</span></span><br><span class="line"><span class="title class_">CurrentEC</span> : &#123;</span><br><span class="line">    [[<span class="title class_">Scope</span>]] : [&#123;<span class="variable constant_">AO</span>&#125;, &#123;<span class="variable constant_">VO</span>&#125;],</span><br><span class="line">    <span class="variable constant_">AO</span> : &#123;</span><br><span class="line">        <span class="comment">// 顺序：arguments对象 形参 函数声明 变量声明</span></span><br><span class="line">        <span class="variable language_">arguments</span> : &#123;</span><br><span class="line">            <span class="number">0</span> : <span class="number">22</span>,</span><br><span class="line">            length : <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        i : <span class="number">22</span>,<span class="comment">// 形参，接受实参赋值</span></span><br><span class="line">        c : fnC,<span class="comment">//指向函数c的引用</span></span><br><span class="line">        a : <span class="literal">undefined</span>,</span><br><span class="line">        b : <span class="literal">undefined</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="variable language_">this</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>2、多个script块间的执行过程</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;script1 start&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a&#x27;</span>,a);</span></span><br><span class="line"><span class="language-javascript">     <span class="keyword">var</span> b=<span class="number">2</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;script1 end&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript"> </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;script2 start&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="keyword">var</span> a=<span class="number">1</span>;</span></span><br><span class="line"><span class="language-javascript">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;b&#x27;</span>,b);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;script2 end&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript"> </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">     script1 start</span></span><br><span class="line"><span class="comment">     Uncaught ReferenceError: a is not defined</span></span><br><span class="line"><span class="comment">     script2 start</span></span><br><span class="line"><span class="comment">     b undefined</span></span><br><span class="line"><span class="comment">     script2 end</span></span><br><span class="line"><span class="comment">  --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment"> 1、从代码运行结果可以看出，JS执行流在进入第一个 script 块时，首先会创建全局 EC ，将 b 的声明加入 AO 并推入作用域中（所以第二个 script 块中的代码才能访问到 b），全局EC压入 ECS。</span></span><br><span class="line"><span class="comment"> 2、逐行的进行分词、语法检查、代码生成，然后执行。</span></span><br><span class="line"><span class="comment">     2.1、在 console.log(&#x27;script1 start&#x27;); 这行代码中，不存在语法错误，执行，输出 start。</span></span><br><span class="line"><span class="comment">     2.2、在 console.log(&#x27;a&#x27;,a); 这行代码中，对变量 a 进行 RHS 查询，在作用域链中找不到 a ，报 ReferenceError，script 块中断执行。</span></span><br><span class="line"><span class="comment"> 3、JS执行流进入第二个 script 块，仍然在全局 EC（JS引擎只会存在一个全局EC），将 a 的声明加入 AO（与第一个代码块相同，每个EC绑定唯一的 VO|AO） 并推入作用域。</span></span><br><span class="line"><span class="comment"> 4、逐行的进行分词、语法检查、代码生成，然后执行。</span></span><br><span class="line"><span class="comment">     4.1、在 console.log(&#x27;b&#x27;,b); 这行代码中，对变量 b 进行 RHS 查询，在作用域的 AO 中找到对应的值 undefined，输出 b undefined。</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> 结束</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>3、闭包的产生</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 首先明确什么是闭包？可以使用如下定义：</span></span><br><span class="line"><span class="comment">// 函数在定义的词法作用域以外的地方被调用，闭包使得函数可以继续访问定义时的词法作用域。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 例子</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="string">&#x27;JavaScript&#x27;</span>;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">func</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> func;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> func = <span class="title function_">fn</span>();</span><br><span class="line"><span class="title function_">func</span>(); <span class="comment">// JavaScript</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// func函数执行的位置和定义的位置是不相同的，func是在函数fn中定义的，但执行却是在全局环境中，虽然是在全局函数中执行的，但函数仍然可以访问当定义时的词法作用域。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当函数执行结束后其活动变量就会被销毁，但是在上面的例子中却不是这个样子。但函数fn执行结束之后，fn对象的活动变量并没有被销毁，这是因为fn返回的函数func的作用域链还保持着fn的活动变量，因此JavaScript的垃圾回收机制不会回收fn活动变量。虽然返回的函数func是在全局环境下执行的，但是其作用域链的存储的活动(变量)对象的顺序分别是:func的活动对象、fn的活动对象、全局变量对象。因此在func函数执行时，会顺着作用域链查找标识符，也就能访问到fn所定义的词法作用域(即fn函数的活动变量)也就不足为奇了。</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><code>总结</code></h2><p>多个script块间的执行顺序</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">多个script代码块从上到下按序载入，语法分析阶段报错的话，结束本代码块的执行，执行流进入下一个代码块。多个代码块共享全局执行上下文，可以访问到其他代码块定义的变量和方法。</span><br></pre></td></tr></table></figure></div>
+
+<p>为什么会产生变量提升与函数提升？<br> <div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">答：在代码执行之前的预编译阶段，创建当前<span class="variable constant_">EC</span>时，会在活动对象上创建一个与函数声明与变量声明对应的属性，然后将活动对象推入作用域链。在查询变量时，是通过作用域链进行<span class="variable constant_">RHS</span>查询。所以会查询到作用域链上已经定义的函数与变量。</span><br></pre></td></tr></table></figure></div></p>
+<p>闭包的产生</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">简单来说，闭包中的函数所对应的作用域链上仍然保留了父级活动对象，所以可以对父级活动对象的属性进行查询。</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><code>参考资料</code></h2><ul>
+<li>《你不知道的Javascript》（上卷），第一部分，作用域和闭包</li>
+<li><a class="link"   href="https://heyingye.github.io/2018/03/19/js%E5%BC%95%E6%93%8E%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/" >JS引擎的执行过程 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://segmentfault.com/a/1190000013915935" >彻底明白作用域、执行上下文 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://blog.csdn.net/yangxinxiang84/article/details/113051811?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&dist_request_id=1328641.10297.16155372256670345&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control" >深入理解JavaScript的执行流程，执行上下文EC、变量对象VO、活动对象AO、作用域Scope <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://blog.csdn.net/Ancecis/article/details/104382441" >浅谈JS的 VO|AO <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://blog.csdn.net/chen_zw/article/details/18502937?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.control&dist_request_id=&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.control" >JS运行机制之执行顺序 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://github.com/MrErHu/blog/issues/16" >我所认识的作用域链与原型链 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>方法论</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>前端工程化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【方法论】代码重构的一点心得</title>
+    <url>/2023/02/01/Methodology%20Refactoring/</url>
+    <content><![CDATA[<h1 id="重构（Refactoring）"><a href="#重构（Refactoring）" class="headerlink" title="重构（Refactoring）"></a>重构（Refactoring）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一直在做前端重构的工作，多少有些感想，特此记录。</p>
+<p>首先，项目的历史太悠久了，AngularJS的项目，</p>
+<h2 id="一、什么是重构？为什么要重构？重构要达成什么目标？"><a href="#一、什么是重构？为什么要重构？重构要达成什么目标？" class="headerlink" title="一、什么是重构？为什么要重构？重构要达成什么目标？"></a>一、什么是重构？为什么要重构？重构要达成什么目标？</h2><p><strong>什么是重构</strong></p>
+<p>在<code>不改变代码外在行为</code>的前提下，对代码进行修改，以<code>改进程序的内部结构</code>。</p>
+<p><strong>为什么要重构</strong></p>
+<p>在软件工程中，开发迭代的过程实际上是一个熵增的过程，软件系统会随着生命周期的进行变得越来越臃肿、混乱、冗余，从而增加维护与进一步迭代的成本。而重构可以<code>偿还技术债务、改进软件结构、减小维护和迭代的成本、增加产品可信</code>。</p>
+<p><strong>重构要达成什么目标？</strong></p>
+<ol>
+<li>系统结构重新梳理：旧系统在设计上可能有许多疏漏，由于经验的欠缺或者考虑不周到，这是难以避免的。新系统应该见贤思齐、查漏补缺，例如重新设计基类、文件结构和继承关系，争取让系统更加完善。</li>
+<li>公共资源重新梳理：</li>
+<li>业务需求重新梳理：</li>
+</ol>
+<h2 id="二、重构有哪些分类？什么时候重构？重构有哪些原则？"><a href="#二、重构有哪些分类？什么时候重构？重构有哪些原则？" class="headerlink" title="二、重构有哪些分类？什么时候重构？重构有哪些原则？"></a>二、重构有哪些分类？什么时候重构？重构有哪些原则？</h2><p><strong>重构有哪些分类？</strong></p>
+<ul>
+<li>小粒度重构（函数级、小模块）</li>
+<li>大粒度重构（架构级、大模块）</li>
+</ul>
+<p><strong>什么时候重构？</strong></p>
+<ul>
+<li>新增需求时（小粒度）</li>
+<li>修改BUG时（小粒度）</li>
+<li>复审代码时（大粒度）</li>
+<li>代码逻辑混乱、依赖混杂（大粒度）</li>
+</ul>
+<p><strong>重构有哪些原则？</strong></p>
+<ul>
+<li>先评审，再重构，不要反复推翻重来</li>
+<li>确保模块的功能完整，否则不重构该模块</li>
+<li>新增需求时，不要改动既有代码（小粒度）</li>
+<li>重构既有代码时，不要新增功能（小粒度）</li>
+</ul>
+<h2 id="三、重构工作流程"><a href="#三、重构工作流程" class="headerlink" title="三、重构工作流程"></a>三、重构工作流程</h2><ol>
+<li>前期准备，搭架子<ul>
+<li>构建对应技术栈的文件结构、代码关系</li>
+<li>整理公共资源、公共能力</li>
+<li>整理业务需求，确保没有遗漏的需求</li>
+</ul>
+</li>
+<li>前期准备，分需求、培训（主要涉及文件结构和公共资源）</li>
+<li>开始重构</li>
+</ol>
+]]></content>
+      <categories>
+        <category>方法论</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【方法论】前端状态管理的一些理解</title>
+    <url>/2022/06/15/Methodology%20State%20Management/</url>
+    <content><![CDATA[<h1 id="前端状态管理的一些理解"><a href="#前端状态管理的一些理解" class="headerlink" title="前端状态管理的一些理解"></a>前端状态管理的一些理解</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在工作中，我们常常会使用状态管理工具，例如：vue2的vuex，vue3的pinia，angular的NgRx，react的redux。有时难免会有一些疑问，为什么要使用状态管理工具，</p>
+<p>一个有趣的比方：假设有一个图书馆，当这个图书馆很小时，读者要找到一本书是非常简单的，就像一个小的前端项目，直接使用组件对数据进行存储更改是更加快捷方便的方式。但如果这个图书馆很大，人流量也很多，读者找一本书或者归还一本书就会很吃力。而状态管理器就像这个图书馆的电脑，当你要找一本书时，如果这是一本教科书，就会去教科书的栏目内检索，就像写的<code>action = &#39;schoolbook&#39;;</code></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2>]]></content>
+      <categories>
+        <category>方法论</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【转载】Vue Composition API</title>
+    <url>/2022/06/22/Reprint%20Vue%20Composition%20API/</url>
+    <content><![CDATA[
+## 转载：Composition API - 前端知识库的文章 - 知乎 https://zhuanlan.zhihu.com/p/408272742
+
+<div class="RichText ztext Post-RichText css-1g0fqss" options="[object Object]">
+  <h2 data-first-child="">前言 </h2>
+  <p data-pid="d-p163wy">关注 React 的同学应该知道，React 在 19 年推出了 Hooks API，从而可以抛弃难以理解的 class
+    完全转向函数式组件。当然，它对开发者的意义不止于此，更为重要的是它提供了从组件中<b>提取状态逻辑</b>的能力，让我们能以业务逻辑为细粒度拆分组件，并在组件之间复用业务逻辑。 </p>
+  <p data-pid="lloIgxso">后续尤大马上发布了 Vue Function-based API RFC（在之后重写成了 Composition API），并作为 Vue3 的核心特性，可想而知它的重要性。 </p>
+  <p data-pid="vYRnkATX">接下来让我们抛开 React，来看看 Composition API 都有哪些内容。 </p>
+  <h2>一、介绍 </h2>
+  <p data-pid="B39fLDrP"><b>1.1 什么是 Composition API ？ </b></p>
+  <p data-pid="Rm3abSlN">Vue 3 中引入的一种新的编写 Vue 组件的方式，可以将 2.x 中与组件逻辑相关的选项以 API 函数的形式重新设计。 </p>
+  <p data-pid="x_L4YJEQ"><b>1.2 基本例子 </b></p>
+  <figure data-size="normal"><img src="https://pic2.zhimg.com/v2-3215832798dad4d85252c140e509f445_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="1884" data-rawheight="1240" class="origin_image zh-lightbox-thumb" width="1884"
+      data-original="https://pic2.zhimg.com/v2-3215832798dad4d85252c140e509f445_r.jpg" style=""></figure>
+  <p data-pid="80OXzjAb">我们使用 Composition API 对左侧进行重构，其实就是将组件选项抽离到了 <code>setup</code>
+    函数当中进行编排，并在最后把模板用到的变量返回，最后的结果和将变量定义在 <code>data</code> 或者 <code>methods</code> 中没有什么区别。 </p>
+  <p data-pid="zUbcTqvG">当然，setup 和 2.x 的选项一起混用也是没有问题的，并且依旧可以通过 <code>this.xx</code> 访问到 <code>setup</code> 返回的变量。</p>
+  <blockquote data-pid="yCWHp3ur">❓ 如果只是把代码迁移到 <code>setup</code> 函数中，变成一长条的面条式代码，有什么意义呢 </blockquote>
+  <p data-pid="__ovLorF"><b>1.3 更进一步的例子 </b></p>
+  <figure data-size="normal"><img src="https://pic3.zhimg.com/v2-7889c66d30a72bf92842103cf92ed84e_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="936" data-rawheight="1204" class="origin_image zh-lightbox-thumb" width="936"
+      data-original="https://pic3.zhimg.com/v2-7889c66d30a72bf92842103cf92ed84e_r.jpg"></figure>
+  <p data-pid="3Plt6P_5">这一次我们将 <code>setup</code> 中的代码进一步抽离，拆出了 <code>useMouse</code>
+    组合函数，里面封装了对鼠标位置的监听逻辑。<code>useMouse</code>
+    只需要将要暴露给组件的状态（<code>x</code>、<code>y</code>）以响应式的数据源的方式返回出来，就可以在我们的组件代码中使用。 </p>
+  <p data-pid="SLR82yO4">对于 Component 来说，里面没有任何监听鼠标位置的逻辑代码，只需要调用 <code>useMouse</code> 拿到 <code>x</code>、<code>y</code>
+    即可。</p>
+  <blockquote data-pid="jfosxkhU">❓ 这些我用 Mixins 也能实现呀 </blockquote>
+  <p data-pid="ba4NQEDI"><b>1.4 更更进一步的例子 </b></p>
+  <figure data-size="normal"><img src="https://pic4.zhimg.com/v2-7e01ef06f0e5e71970a6f98dcc5a610f_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="1532" data-rawheight="1384" class="origin_image zh-lightbox-thumb" width="1532"
+      data-original="https://pic4.zhimg.com/v2-7e01ef06f0e5e71970a6f98dcc5a610f_r.jpg" style=""></figure>
+  <p data-pid="xHhwJpIi">首先我们通过模板来理解 <code>useDark</code> 的工作内容，就是返回了一个表示是否是黑夜模式的布尔值，并且可以通过 <code>useToggle</code>
+    来快速得到一个 toggle 函数。 </p>
+  <p data-pid="nmV5YoSR">然后观察 <code>useDark</code>，我们可以看到它身为一个组合函数的同时，又调用了其他的组合函数 <code>usePreferredDark</code> 和
+    <code>useLocalStorage</code> 来获取系统主题色和本地配置色。当然，我们不需要太关心它们的具体实现，只需要专注于处理结果，并返回以本地配置色为优先的结果即可。 </p>
+  <p data-pid="C6hZ8F1F">其中的组合函数调用关系如下图所示： </p>
+  <figure data-size="normal"><img src="https://pic3.zhimg.com/v2-1f58c63c4fccaffaa58660947892808a_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="1678" data-rawheight="730" class="origin_image zh-lightbox-thumb" width="1678"
+      data-original="https://pic3.zhimg.com/v2-1f58c63c4fccaffaa58660947892808a_r.jpg" style=""></figure>
+  <p data-pid="J4AYoGK8">组合函数的底层又依赖了其他组合函数，比如 <code>useLocalStorage</code> 依赖统一封装了 SessionStorage 和 LocalStorage 逻辑的
+    <code>useStorage</code>，<code>usePreferredDark</code> 依赖封装了 <code>window.matchMedia</code> 逻辑的
+    <code>useMediaQuery</code>。它们最后又都通过 <code>useEventListener</code> 来做状态改变的响应，并且能自动卸载。 </p>
+  <p data-pid="jqJ6ebx1">涉及的每一个函数都能独立使用，并且有自己的职责，最后进行组合。 </p>
+  <blockquote data-pid="08iizr0U">这个例子来源于 <a class="link"   href="https://link.zhihu.com/?target=https%3A//github.com/vueuse/vueuse" 
+      class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">VueUse <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.
+  </blockquote>
+  <p data-pid="WuMdyX-p">当然，我们不可能总是写到这么通用的代码，但是在业务中也可以使用 Composition API 来对业务逻辑进行拆分，让每一个组合函数负责独立的业务，比如埋点上报、RichTextPanel
+    组件参数与回调、页面控件逻辑等。这些组件内的状态、方法现在我们可以将它提取到组合函数中，可以是为了复用，也可以仅仅是为了让 .vue 文件看起来更干净。</p>
+  <h2>二、API </h2>
+  <p data-pid="0PsR029O"><b>2.1 setup </b></p>
+  <p data-pid="FdBMQSTF"><code>setup</code> 是组合式 API 的入口点，它的执行时机在 <code>beforeCreate</code> 和
+    <code>created</code>，并且只会执行一次。 </p>
+  <p data-pid="8emt6Qmd">所以我们不需要 <code>onBeforeCreate</code> 和 <code>onCreated</code>，这些钩子对应的代码应该直接在 <code>setup</code>
+    函数中编写。 </p>
+  <p data-pid="-PkOkw14">它接收两个参数： </p>
+  <ol>
+    <li data-pid="PzoT1YH8">响应式的 <code>props</code> </li>
+    <li data-pid="En2tDX8_">非响应式的 <code>context</code>，包含：attrs、slots、emit </li>
+  </ol>
+  <p data-pid="IeEBiCS8">它执行的时候组件实例尚未被创建，所以我们无法访问 data、computed、methods 这些组件选项。 </p>
+  <p data-pid="JlJyHhSo">如果它返回一个对象，那么对象的 property 就可以在选项或者模板中访问到。 </p>
+  <p data-pid="pCqoAluV"><b>2.1.1 返回渲染函数 </b></p>
+  <figure data-size="normal"><img src="https://pic1.zhimg.com/v2-ed3d1aa04bf9bf33e9878a0d935fb074_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="1088" data-rawheight="484" class="origin_image zh-lightbox-thumb" width="1088"
+      data-original="https://pic1.zhimg.com/v2-ed3d1aa04bf9bf33e9878a0d935fb074_r.jpg"></figure>
+  <p data-pid="yc8vp9x5">在 Babel Plugin 支持下可以返回 JSX：<a class="link" 
+       href="https://link.zhihu.com/?target=https%3A//github.com/vuejs/jsx/pull/142"  class=" wrap external"
+      target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">feat: add @vue/composition-api support
+      #142 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> </p>
+  <p data-pid="4iqS02eC"><b>2.1.2 getCurrentInstance </b></p>
+  <p data-pid="jphaZDki">如果确实需要访问组件实例，可以使用 <code>getCurrentInstance()</code>。 </p>
+  <p data-pid="X2DJAAWy">只能在 <code>setup</code>、生命周期钩子和组合函数中使用。 </p>
+  <figure data-size="normal"><img src="https://pic4.zhimg.com/v2-2219ce295be181f25efcf766f103d15b_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="970" data-rawheight="304" class="origin_image zh-lightbox-thumb" width="970"
+      data-original="https://pic4.zhimg.com/v2-2219ce295be181f25efcf766f103d15b_r.jpg"></figure>
+  <p data-pid="tKx1A6sw"><b>2.2 reactive </b></p>
+  <p data-pid="EXN2rHlJ">返回对象的响应式副本，相当于 <code>Vue.observable(obj)</code> 。 </p>
+  <p data-pid="XRwILD4j">该响应式转换是“深度转换”——它会影响嵌套对象传递的所有 property。 </p>
+  <p data-pid="YTfRw30Y">怎么理解这里的响应式呢？就是我们在渲染期间使用响应式对象，当值改变的时候视图会自动更新，就和修改挂在 data 对象里的值一样。 </p>
+  <p data-pid="Chdt9Vul"><b>2.2.1 无法代理原始值类型 </b></p>
+  <p data-pid="6Qo8VckW">reactive() 函数可以代理一个对象，但不能代理基本类型值，这是因为原始值类型只有值而没有引用，无法追踪变量的后续变化。 </p>
+  <p data-pid="i_6Q-8R3"><b>2.2.2 响应丢失 </b></p>
+  <figure data-size="normal"><img src="https://pic2.zhimg.com/v2-bde37e9bd232fafb93168b55251367b9_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="1008" data-rawheight="484" class="origin_image zh-lightbox-thumb" width="1008"
+      data-original="https://pic2.zhimg.com/v2-bde37e9bd232fafb93168b55251367b9_r.jpg"></figure>
+  <p data-pid="pAx7_aPR"><b>2.3 ref </b></p>
+  <p data-pid="E96TTVJ_">接收一个值，返回的响应式且可变的包装对象。 </p>
+  <p data-pid="xmCIrvO9">它只有一个属性：<code>.value</code> ，该属性指向内部被包装的值。这个值可以直接修改。 </p>
+  <blockquote data-pid="OgJesy_I">我们没法用 reactive 处理原始值类型，但是我们可以创建一个对象将原始值挂在它的同名 property 下，再传递给 reactive。Vue 提供了 ref
+    来替我们做这件事。 </blockquote>
+  <figure data-size="normal"><img src="https://pic1.zhimg.com/v2-19e7df03e22381ebc37428bf17a8e594_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="800" data-rawheight="484" class="origin_image zh-lightbox-thumb" width="800"
+      data-original="https://pic1.zhimg.com/v2-19e7df03e22381ebc37428bf17a8e594_r.jpg"></figure>
+  <p data-pid="Q7Uideqn"><b>2.3.1 自动解包（不需要加 .value 的情况） </b></p>
+  <ol>
+    <li data-pid="g2srjh5V">ref 在模板中会自动解包 </li>
+  </ol>
+  <p data-pid="nHaF68Z1">2.<code>watch</code> 可以直接接受 ref 作为监听对象，在回调函数中会直接返回解包后的值。 </p>
+  <figure data-size="normal"><img src="https://pic2.zhimg.com/v2-61b795e0a933eaba882ebe38e65d3acd_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="868" data-rawheight="268" class="origin_image zh-lightbox-thumb" width="868"
+      data-original="https://pic2.zhimg.com/v2-61b795e0a933eaba882ebe38e65d3acd_r.jpg"></figure>
+  <p data-pid="BWQdWKOb">3. 使用 reactive() / readonly() 解包对象嵌套的 ref </p>
+  <figure data-size="normal"><img src="https://pic3.zhimg.com/v2-6b5120ec665ba0e9330220c967ac023a_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="716" data-rawheight="268" class="origin_image zh-lightbox-thumb" width="716"
+      data-original="https://pic3.zhimg.com/v2-6b5120ec665ba0e9330220c967ac023a_r.jpg"></figure>
+  <blockquote data-pid="zaIwbIj-">但是从 <code>Array</code> 或原生集合类型如 <code>Map</code>访问 ref 时，不会进行解包。</blockquote>
+  <p data-pid="e4NmHN9d"><b>2.3.2 unref（ref 的反向操作） </b></p>
+  <p data-pid="snoUo1ZM">传入一个 ref，返回 <code>ref.value</code>，否则原样返回。 </p>
+  <blockquote data-pid="o7iXv9Gs">纠结是否需要加 <code>.value</code>（比如某个函数参数的类型是
+    <code>Ref&lt;number&gt; | number</code>）来取值，可以使用 unref 来解包。 </blockquote>
+  <figure data-size="normal"><img src="https://pic1.zhimg.com/v2-be644447a3adfae139ccb07863b4fe30_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="700" data-rawheight="196" class="origin_image zh-lightbox-thumb" width="700"
+      data-original="https://pic1.zhimg.com/v2-be644447a3adfae139ccb07863b4fe30_r.jpg"></figure>
+  <p data-pid="vHg0rpqg"><b>2.3.3 重复使用已有 ref </b></p>
+  <p data-pid="liLqb6ff">将一个 ref 传递给 <code>ref()</code> 构造函数，它会原样返回。 </p>
+  <blockquote data-pid="h1FrzDho">如果你的函数需要返回一个 ref，但是不确定参数的类型，可以直接 <code>return ref(param)</code>，如果是 ref 则会复用，不是则返回一个新的
+    ref。 </blockquote>
+  <p data-pid="ueXBRAta"><b>2.3.4 可以使用 ES6 解构语法 </b></p>
+  <p data-pid="7Qg9q4Wo">解构一个值是 ref 的对象不会丢失响应式。 </p>
+  <figure data-size="normal"><img src="https://pic3.zhimg.com/v2-fb83022e342cde7e017a54e710b8d6b6_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="744" data-rawheight="124" class="origin_image zh-lightbox-thumb" width="744"
+      data-original="https://pic3.zhimg.com/v2-fb83022e342cde7e017a54e710b8d6b6_r.jpg"></figure>
+  <p data-pid="bVu2MvPp"><b>2.3.5 this.$refs 的解决方案 </b></p>
+  <p data-pid="sYcku75L">在虚拟 DOM 补丁算法中，如果 VNode 的 <code>ref</code> 键对应于渲染上下文中的 ref，则 VNode 的相应元素或组件实例将被分配给该 ref 的值。 </p>
+  <blockquote data-pid="jYqAgu0k">由于是在虚拟 DOM 挂载/打补丁过程中执行的，因此 ref 只会在初始渲染之后才获得赋值。 </blockquote>
+  <figure data-size="normal"><img src="https://pic4.zhimg.com/v2-c08e93238d9074b4e78284dcca4b94cb_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="902" data-rawheight="1348" class="origin_image zh-lightbox-thumb" width="902"
+      data-original="https://pic4.zhimg.com/v2-c08e93238d9074b4e78284dcca4b94cb_r.jpg"></figure>
+  <p data-pid="oCTH_fU2"><b>2.4 toRefs </b></p>
+  <p data-pid="TZTJ9i_T">将响应式对象转换为普通对象，并对每个 property 对应的 value 转换成 ref。 </p>
+  <p data-pid="2oWgFXua">可以用来解决 <code>reactive</code> 或者 <code>props</code> 在解构的时候丢失响应式的问题。 </p>
+  <figure data-size="normal"><img src="https://pic1.zhimg.com/v2-e1550002c1ead321c4dde992c78f944c_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="1008" data-rawheight="340" class="origin_image zh-lightbox-thumb" width="1008"
+      data-original="https://pic1.zhimg.com/v2-e1550002c1ead321c4dde992c78f944c_r.jpg"></figure>
+  <p data-pid="YcVVmyxD"><b>2.5 computed </b></p>
+  <p data-pid="STH_UE0l">接收 getter 函数，返回一个<b>只读</b>的响应式 ref 对象。 </p>
+  <figure data-size="normal"><img src="https://pic1.zhimg.com/v2-b2e6f76a4f4265e182212f3dff7b8ab4_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="868" data-rawheight="304" class="origin_image zh-lightbox-thumb" width="868"
+      data-original="https://pic1.zhimg.com/v2-b2e6f76a4f4265e182212f3dff7b8ab4_r.jpg"></figure>
+  <p data-pid="8GHIhOTL">如果参数是具有 get 和 set 函数的对象，返回的结果会是一个<b>可写</b>的响应式 ref 对象。 </p>
+  <figure data-size="normal"><img src="https://pic4.zhimg.com/v2-c7dadc1902029f1fa98537e6c13744d3_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="564" data-rawheight="448" class="origin_image zh-lightbox-thumb" width="564"
+      data-original="https://pic4.zhimg.com/v2-c7dadc1902029f1fa98537e6c13744d3_r.jpg"></figure>
+  <p data-pid="VVFGe_SE"><b>2.6 watch </b></p>
+  <p data-pid="d64D5vN9">第一个参数接收数据源，可以是： </p>
+  <ul>
+    <li data-pid="Tk3QbSoW">getter 函数、ref </li>
+    <li data-pid="67gvpbE8">包含上述两种类型的数组（也就是可以 watch 多个源，其中任一个变化都会触发回调） </li>
+  </ul>
+  <p data-pid="lIMaq9k1">第二个参数是回调函数，在数据源变动的时候触发。 </p>
+  <figure data-size="normal"><img src="https://pic3.zhimg.com/v2-b0556885105bd72c7b0b6ea131af826a_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="752" data-rawheight="520" class="origin_image zh-lightbox-thumb" width="752"
+      data-original="https://pic3.zhimg.com/v2-b0556885105bd72c7b0b6ea131af826a_r.jpg"></figure>
+  <p data-pid="6F0hGO5P"><b>2.6.1 停止观察 </b></p>
+  <p data-pid="3v1JUsDo"><code>watch()</code> 返回一个停止观察的函数： </p>
+  <figure data-size="normal"><img src="https://pic1.zhimg.com/v2-75541dc512f2994a4ac1719df0e23a64_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="464" data-rawheight="196" class="origin_image zh-lightbox-thumb" width="464"
+      data-original="https://pic1.zhimg.com/v2-75541dc512f2994a4ac1719df0e23a64_r.jpg"></figure>
+  <p data-pid="JiYo5C3c">如果 <code>watch()</code> 是在一个组件的 <code>setup()</code> 或是生命周期函数中被调用的，那么该 watcher
+    会在当前组件被销毁时也一同被自动停</p>
+  <p data-pid="IddzStMs"><b>2.6.2 清理 effect </b></p>
+  <p data-pid="ZlB7P72W">watcher 的回调会接收到的第三个参数是一个用来注册清理操作的函数。 </p>
+  <blockquote data-pid="GLeHCtBz">有时候当观察的数据源变化后，我们可能需要对之前所执行的副作用进行清理。举例来说，一个异步操作在完成之前数据就产生了变化，我们可能要撤销还在等待的前一个操作。
+  </blockquote>
+  <p data-pid="yWDqqwZf">调用这个函数可以注册一个清理函数，执行时机在： </p>
+  <ul>
+    <li data-pid="IqIvIe6s">回调被下一次调用前 </li>
+    <li data-pid="lJAeV6sq">watcher 被停止前 </li>
+  </ul>
+  <figure data-size="normal"><img src="https://pic4.zhimg.com/v2-f81961ecde2ab5d1edecc76cb51940b3_b.jpg" data-caption=""
+      data-size="normal" data-rawwidth="784" data-rawheight="376" class="origin_image zh-lightbox-thumb" width="784"
+      data-original="https://pic4.zhimg.com/v2-f81961ecde2ab5d1edecc76cb51940b3_r.jpg"></figure>
+  <h2>三、设计动机 </h2>
+  <p data-pid="4kuIX-HO"><b>3.1 从 Class API 到 Function API 再到 Composition API </b></p>
+  <p data-pid="MxQjNLEk">我们可以在 Vue RFC 中看到最初的 <a class="link" 
+       href="https://link.zhihu.com/?target=https%3A//github.com/vuejs/rfcs/pull/17"  class=" wrap external"
+      target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">Class API <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 到 <a class="link" 
+       href="https://link.zhihu.com/?target=https%3A//github.com/vuejs/rfcs/pull/42"  class=" wrap external"
+      target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">Function-based Component API <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 取其 FP
+    的精华，再到被修订为 <a class="link"   href="https://link.zhihu.com/?target=https%3A//github.com/vuejs/rfcs/pull/78"  class=" wrap external"
+      target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">Composition API <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 采用 Reactivity 的过程。
+  </p>
+  <p data-pid="Nxz49j3D"><b>3.2 解决了什么问题 </b></p>
+  <p data-pid="4qCnoHpH">对比 2.x 对象式 API： </p>
+  <ul>
+    <li data-pid="tsAJKZRh">极易复用。 </li>
+    <ul>
+      <li data-pid="J6TxQJgP">状态可以从组件中拆出来放到组合函数中。 </li>
+    </ul>
+    <li data-pid="XNnV1qH2">更清楚的逻辑。 </li>
+    <ul>
+      <li data-pid="3a9fzd7b">代码可以按功能/逻辑组织，而不是分散在各个选项中。 </li>
+    </ul>
+    <li data-pid="6Yavg6-T">更好的 TypeScript 类型支持。 </li>
+    <ul>
+      <li data-pid="0zXyXXu0">基于 Class 的 API 存在 TS 类型问题，而基于函数的 API 天然对类型推导很友好，因为 TS 对函数的参数、返回值和泛型的支持已经非常完备。 </li>
+    </ul>
+    <li data-pid="t_7FHIx3">更小的打包体积。 </li>
+    <ul>
+      <li data-pid="53fBlnTF">基于函数的 API 每一个函数都可以作为 named ES export 被单独引入，这使得它们对 tree-shaking 非常友好。没有被使用的 API
+        的相关代码可以在最终打包时被移除。 </li>
+      <li data-pid="qTwuzRZq">同时，基于函数 API 所写的代码也有更好的压缩效率，因为所有的函数名和 setup 函数体内部的变量名都可以被压缩，但对象和 class 的属性/方法名却不可以。</li>
+    </ul>
+  </ul>
+  <p data-pid="4OG0-W96"><b>3.3 对比 2.x 的复用模式 </b></p>
+  <p data-pid="54CLk7Ni">Vue 2.x 目前的 API 我们有一些常见的逻辑复用模式，包括： </p>
+  <ul>
+    <li data-pid="5CdKCo9R">Mixins </li>
+    <li data-pid="uKjdCge1">高阶组件 (Higher-order Components, aka HOCs) </li>
+    <li data-pid="JpSzfvFy">Renderless Components （基于 scoped slots / 作用域插槽封装逻辑的组件） </li>
+  </ul>
+  <p data-pid="THz_2hk1">总体来说，以上这些模式存在以下问题： </p>
+  <ul>
+    <li data-pid="u5nWdNNy">模版中的数据来源不清晰。 </li>
+    <ul>
+      <li data-pid="JofMkOuo">举例来说，当一个组件中使用了多个 mixin 的时候，光看模版会很难分清一个属性到底是来自哪一个 mixin。HOC 也有类似的问题。 </li>
+    </ul>
+    <li data-pid="Uu6popTc">使用 Composition API 只需要观察 setup 函数就可以知道数据的来源。 </li>
+    <li data-pid="vJXVZcq_">命名空间冲突。 </li>
+    <ul>
+      <li data-pid="srpLZS_S">由不同开发者开发的 mixin 无法保证不会正好用到一样的属性或是方法名。HOC 在注入的 props 中也存在类似问题。 </li>
+    </ul>
+    <li data-pid="MnHS9JyT">组合函数在使用和返回给渲染层的两个阶段都可以做重命名的操作。 </li>
+    <li data-pid="HvY9AAXD">性能。 </li>
+    <ul>
+      <li data-pid="RsS4JaW_">HOC 和 Renderless Components 都需要额外的组件实例嵌套来封装逻辑，导致无谓的性能开销。 </li>
+    </ul>
+    <li data-pid="Rx5iZc1D">组合函数没有创建额外的组件实例所带来的性能损耗。</li>
+  </ul>
+  <p data-pid="XE-GZHF7"><b>3.4 对比 React Hooks </b></p>
+  <p data-pid="Kqxc4Ygq">Composition API 虽然借鉴了 React Hooks，两者具有同等的基于函数抽取和复用逻辑的能力，但是出于框架的性质两者在实现上是天差地别的。 </p>
+  <p data-pid="bmfO65Zo">React Hooks 在每次组件渲染时都会调用，通过隐式地将状态挂载在当前的内部组件节点上，在下一次渲染时根据调用顺序取出。而 Vue 的 <code>setup()</code>
+    每个组件实例只会在初始化时调用一次 ，状态通过引用储存在 <code>setup()</code> 的闭包内。 </p>
+  <p data-pid="eIwmCeKN"> 也就是说，Composition API 相比 React Hooks： </p>
+  <ul>
+    <li data-pid="xvul6_a6">整体上更符合 JavaScript 的直觉； </li>
+    <ul>
+      <li data-pid="I-_5HxJR">Mutable 写法。 </li>
+    </ul>
+    <li data-pid="Dbe9xIks">不受调用顺序的限制，可以有条件地被调用； </li>
+    <ul>
+      <li data-pid="14d6KrXq">Hooks 需要使用下标来获取对应的 state。 </li>
+    </ul>
+    <li data-pid="ITuR--Mc">不会在后续更新时不断产生大量的内联函数而影响引擎优化或是导致 GC 压力； </li>
+    <ul>
+      <li data-pid="OCdzF7ke">Hooks 的每次渲染都是单独的闭包。 </li>
+    </ul>
+    <li data-pid="sJud2Tht">不需要总是使用 <code>useCallback</code> 来缓存传给子组件的回调以防止过度更新； </li>
+    <ul>
+      <li data-pid="MJOZSOIQ">如果给子组件传了函数，每次渲染都会被当作新 props。 </li>
+    </ul>
+    <li data-pid="LaKlKgt_">不需要担心传了错误的依赖数组给 <code>useEffect/useMemo/useCallback</code> 从而导致回调中使用了过期的值。 </li>
+    <ul>
+      <li data-pid="71dmEK53">Vue 的依赖收集是全自动的，可以做到最小粒度的更新。 </li>
+    </ul>
+  </ul>
+  <p data-pid="xxxm1Mna">这都是基于 Vue 的响应式更新能力。 </p>
+  <p class="ztext-empty-paragraph"><br></p>
+  <p data-pid="6wCLdS0z">有兴趣的同学可以通过下面的链接了解 React Hooks 的心智模型有多么沉重： </p>
+  <p data-pid="dXcX4NpU"><a class="link" 
+       href="https://link.zhihu.com/?target=https%3A//zh-hans.reactjs.org/docs/hooks-faq.html%23from-classes-to-hooks" 
+      class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">Hooks FAQ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> </p>
+  <p data-pid="1O7wFzO1"><a class="link" 
+       href="https://link.zhihu.com/?target=https%3A//overreacted.io/zh-hans/making-setinterval-declarative-with-react-hooks/" 
+      class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">使用 React Hooks 声明
+      setInterval <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> </p>
+  <p data-pid="tOfqa6Ta"><a class="link" 
+       href="https://link.zhihu.com/?target=https%3A//overreacted.io/zh-hans/a-complete-guide-to-useeffect/" 
+      class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">useEffect 完整指南 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>
+  </p>
+  <p class="ztext-empty-paragraph"><br></p>
+  <p data-pid="jW2h8EBi"><b>3.5 那么它有缺点吗？ </b></p>
+  <p data-pid="ZAvsH4cw"><b>3.5.1 ref 和 reactive 的区别 </b></p>
+  <table data-draft-node="block" data-draft-type="table" data-size="normal" data-row-style="normal">
+    <tbody>
+      <tr>
+        <th>ref</th>
+        <th>reactive</th>
+      </tr>
+      <tr>
+        <td>可以处理原始值，也可以处理对象</td>
+        <td>只能处理对象</td>
+      </tr>
+      <tr>
+        <td>需要加 .value，需要考虑自动解包</td>
+        <td>不需要加 .value</td>
+      </tr>
+      <tr>
+        <td>有单独的类型</td>
+        <td>和普通的对象没有什么区别，无法直接通过类型判断是否是响应式</td>
+      </tr>
+      <tr>
+        <td>可以使用解构赋值</td>
+        <td>不可以使用解构赋值，会丢失响应式</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>需要使用箭头函数包装才能使用 watch</td>
+      </tr>
+    </tbody>
+  </table>
+  <p data-pid="aVtdgg6d"><b>3.5.2 考虑响应式和 .value </b></p>
+  <p data-pid="mIuWJkq7">虽然写 Composition API 不会有 <code>useEffect</code> 的困扰，还能使用完全一致的生命周期钩子函数，但是此次 Vue 把响应式 API
+    暴露给我们，实际上在编写代码的时候，需要考虑是否是响应式、是否是 ref 和响应式丢失的问题，也会带来一定的心智负担。 </p>
+  <h2>总结</h2>
+  <blockquote data-pid="dwydTu3z"><b>面向生命周期编程 vs 面向业务逻辑编程</b> <br>Composition API
+    带来了组件逻辑抽取和复用的优化，抽取逻辑会变得非常简单，所以我们不必只在需要复用逻辑的时候才抽取函数，也可以单纯为了更好地组织代码去抽取函数，以此避免每个逻辑任务的代码都被选项切成了多个碎片分散在各处。
+    <br>当然如果组件足够简单，我们还是可以只使用 Options API，以原来的习惯写代码。</blockquote>
+  <p class="ztext-empty-paragraph"><br></p>
+  <blockquote data-pid="nZaUCgyk"><b>我可以在 Vue 2 中使用吗？</b> <br>可以的，官方团队提供了可供 Vue 2 使用的插件： <a class="link" 
+       href="https://link.zhihu.com/?target=https%3A//github.com/vuejs/composition-api"  class=" wrap external"
+      target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">@vue/composition-api <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。 <br>另外他们也计划让
+    Composition API 在 Vue 2.7 原生支持。</blockquote>
+  <h2>参考 </h2>
+  <p data-pid="0nG5Lg4p"><a class="link" 
+       href="https://link.zhihu.com/?target=https%3A//v3.cn.vuejs.org/guide/composition-api-introduction.html%23%25E4%25BB%2580%25E4%25B9%2588%25E6%2598%25AF%25E7%25BB%2584%25E5%2590%2588%25E5%25BC%258F-api" 
+      class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">官方文档 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> </p>
+  <p data-pid="CEjDQuk6"><a class="link"   href="https://zhuanlan.zhihu.com/p/68477600"  class="internal"
+      data-za-detail-view-id="1043">Vue Function-based API RFC <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> </p>
+  <p data-pid="PF0H7EFU"><a class="link"   href="https://link.zhihu.com/?target=https%3A//www.bilibili.com/video/BV1x54y1V7H6/" 
+      class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">VueUse 作者 Anthony
+      Fu 分享可组合的 Vue <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> </p>
+  <p data-pid="cxCCci-C"><a class="link"   href="https://zhuanlan.zhihu.com/p/146097763"  class="internal"
+      data-za-detail-view-id="1043">深入理解 Vue3 Reactivity API <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> </p>
+</div>]]></content>
+      <categories>
+        <category>转载</category>
       </categories>
       <tags>
         <tag>vue</tag>
