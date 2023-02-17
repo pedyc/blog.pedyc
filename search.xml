@@ -314,15 +314,10 @@
   <entry>
     <title>【转载】JS：详解Event Loop运行机制</title>
     <url>/2022/06/28/ReprintJSEventLoop/</url>
-    <content><![CDATA[
-## 转载：Composition API - 前端知识库的文章 - 知乎 https://zhuanlan.zhihu.com/p/408272742
+    <content><![CDATA[<a class="link"   href="https://limeii.github.io/2019/05/js-eventloop" >转载：JS：详解Event Loop运行机制 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>
 
 <article class="post-container post-container--single" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <div class="post-meta">
-      <time datetime="2019-05-01 00:00:00 +0000" itemprop="datePublished" class="post-meta__date date">2019-05-01</time>
-      • <span class="post-meta__tags tags">JS</span>
-    </div>
     <h1 class="post-title">JS：详解Event Loop运行机制</h1>
   </header>
 
@@ -347,7 +342,7 @@
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop01.png"
+                     data-src="./js-eventloop01.png"
                       alt="js-eventloop" height="80%" width="80%"
                 ></p>
 
@@ -365,7 +360,7 @@
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop02.png"
+                     data-src="./js-eventloop02.png"
                       alt="js-eventloop" height="80%" width="80%"
                 ></p>
 
@@ -411,7 +406,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop03.png"
+                     data-src="./js-eventloop03.png"
                       alt="js-eventloop" height="60%" width="60%"
                 ></p>
 
@@ -420,7 +415,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop04.png"
+                     data-src="./js-eventloop04.png"
                       alt="js-eventloop" height="60%" width="60%"
                 ></p>
 
@@ -430,7 +425,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop05.png"
+                     data-src="./js-eventloop05.png"
                       alt="js-eventloop" height="60%" width="60%"
                 ></p>
 
@@ -439,7 +434,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop06.png"
+                     data-src="./js-eventloop06.png"
                       alt="js-eventloop" height="60%" width="60%"
                 ></p>
 
@@ -448,7 +443,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop07.png"
+                     data-src="./js-eventloop07.png"
                       alt="js-eventloop" height="60%" width="60%"
                 ></p>
 
@@ -457,7 +452,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop08.png"
+                     data-src="./js-eventloop08.png"
                       alt="js-eventloop" height="60%" width="60%"
                 ></p>
 
@@ -467,7 +462,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop09.png"
+                     data-src="./js-eventloop09.png"
                       alt="js-eventloop" height="60%" width="60%"
                 ></p>
 
@@ -476,7 +471,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop10.png"
+                     data-src="./js-eventloop10.png"
                       alt="js-eventloop" height="60%" width="60%"
                 ></p>
 
@@ -485,7 +480,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop11.png"
+                     data-src="./js-eventloop11.png"
                       alt="js-eventloop" height="60%" width="60%"
                 ></p>
 
@@ -494,7 +489,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop12.png"
+                     data-src="./js-eventloop12.png"
                       alt="js-eventloop" height="60%" width="60%"
                 ></p>
 
@@ -504,7 +499,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop13.png"
+                     data-src="./js-eventloop13.png"
                       alt="js-eventloop" height="60%" width="60%"
                 ></p>
 
@@ -515,7 +510,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop14.png"
+                     data-src="./js-eventloop14.png"
                       alt="js-eventloop" height="60%" width="60%"
                 ></p>
 
@@ -524,7 +519,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop15.png"
+                     data-src="./js-eventloop15.png"
                       alt="js-eventloop" height="60%" width="60%"
                 ></p>
 
@@ -590,7 +585,7 @@ setTimeout
     <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop16.png"
+                     data-src="./js-eventloop16.png"
                       alt="js-eventloop"
                 ></p>
 
@@ -628,7 +623,7 @@ setTimeout
       <img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="./ReprintJSEventLoop/js-eventloop17.jpg"
+                     data-src="./js-eventloop17.jpg"
                       alt="js-eventloop" height="40%" width="40%"
                 >
     </p>
