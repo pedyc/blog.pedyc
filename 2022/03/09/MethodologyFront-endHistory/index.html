@@ -9,18 +9,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2023/02/01/methodology refactoring/"/>
+    <link rel="canonical" href="http://example.com/2022/03/09/methodologyfront-endhistory/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="【方法论】代码重构的一点心得">
+    <meta property="og:title" content="【方法论】前端发展历程梳理">
     <meta property="og:description" content="Hexo Theme Redefine">
-    <meta property="og:url" content="http://example.com2023/02/01/Methodology Refactoring/">
+    <meta property="og:url" content="http://example.com2022/03/09/MethodologyFront-endHistory/">
     <meta property="og:image" content="/images/avatar.jpeg">
     <meta property="og:site_name" content="ped-Yc&#39;s Home">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="【方法论】代码重构的一点心得">
+    <meta name="twitter:title" content="【方法论】前端发展历程梳理">
     <meta name="twitter:description" content="Hexo Theme Redefine">
     <meta name="twitter:image" content="/images/avatar.jpeg">
     <!--- Icon Part-->
@@ -31,7 +31,7 @@
     
     <title>
         
-            【方法论】代码重构的一点心得 -
+            【方法论】前端发展历程梳理 -
         
         ped-Yc&#39;s Home
     </title>
@@ -333,7 +333,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">【方法论】代码重构的一点心得</h1>
+                    <h1 class="article-title-regular">【方法论】前端发展历程梳理</h1>
                 </div>
             
                 
@@ -355,8 +355,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2023-02-01 02:30:57</span>
-        <span class="mobile">2023-02-01 02:30</span>
+        <span class="pc">2022-03-09 11:39:39</span>
+        <span class="mobile">2022-03-09 11:39</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -399,47 +399,116 @@
             
 
             <div class="article-content markdown-body">
-                <h1 id="重构（Refactoring）"><a href="#重构（Refactoring）" class="headerlink" title="重构（Refactoring）"></a>重构（Refactoring）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一直在做前端重构的工作，多少有些感想，特此记录。</p>
-<p>首先，项目的历史太悠久了，AngularJS的项目，</p>
-<h2 id="一、什么是重构？为什么要重构？重构要达成什么目标？"><a href="#一、什么是重构？为什么要重构？重构要达成什么目标？" class="headerlink" title="一、什么是重构？为什么要重构？重构要达成什么目标？"></a>一、什么是重构？为什么要重构？重构要达成什么目标？</h2><p><strong>什么是重构</strong></p>
-<p>在<code>不改变代码外在行为</code>的前提下，对代码进行修改，以<code>改进程序的内部结构</code>。</p>
-<p><strong>为什么要重构</strong></p>
-<p>在软件工程中，开发迭代的过程实际上是一个熵增的过程，软件系统会随着生命周期的进行变得越来越臃肿、混乱、冗余，从而增加维护与进一步迭代的成本。而重构可以<code>偿还技术债务、改进软件结构、减小维护和迭代的成本、增加产品可信</code>。</p>
-<p><strong>重构要达成什么目标？</strong></p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>了解前端的发展历史有助于从一个全局的视角来重新认知前端技术，脱离单独某一种视角的窠臼。</p>
+<ul>
+<li><code>Node.js</code>的出现意味着什么？</li>
+<li>为什么要从<code>jquery</code>转入三大框架？</li>
+<li>既然已经有了<code>javascript</code>为什么还要使用<code>babel</code>来转化？</li>
+<li><code>CommonJS</code>、<code>AMD</code>、<code>CMD</code>、<code>ESModule</code>又是什么？</li>
+</ul>
+<p>类似的问题不胜枚举，而这篇文章有助于解决此类问题。</p>
+<h2 id="1-需求驱动和问题驱动"><a href="#1-需求驱动和问题驱动" class="headerlink" title="1.需求驱动和问题驱动"></a>1.需求驱动和问题驱动</h2><p>一种技术能够出现并且不断的发展，一定具有某种内在的驱动力，我认为这种驱动力存在两种：</p>
 <ol>
-<li>系统结构重新梳理：旧系统在设计上可能有许多疏漏，由于经验的欠缺或者考虑不周到，这是难以避免的。新系统应该见贤思齐、查漏补缺，例如重新设计基类、文件结构和继承关系，争取让系统更加完善。</li>
-<li>公共资源重新梳理：</li>
-<li>业务需求重新梳理：</li>
+<li>需求驱动</li>
+<li>问题驱动</li>
 </ol>
-<h2 id="二、重构有哪些分类？什么时候重构？重构有哪些原则？"><a href="#二、重构有哪些分类？什么时候重构？重构有哪些原则？" class="headerlink" title="二、重构有哪些分类？什么时候重构？重构有哪些原则？"></a>二、重构有哪些分类？什么时候重构？重构有哪些原则？</h2><p><strong>重构有哪些分类？</strong></p>
-<ul>
-<li>小粒度重构（函数级、小模块）</li>
-<li>大粒度重构（架构级、大模块）</li>
+<p>需求驱动顾名思义就是当前的技术工具支持不了新的需求，所以推动了新技术的产生。而问题驱动则是实现某种需求的过程中产生了困难，老旧的技术工具解决不了或者解决起来很麻烦困难，所以推动了新技术的产生。</p>
+<h2 id="2-前端大事件的时间节点"><a href="#2-前端大事件的时间节点" class="headerlink" title="2.前端大事件的时间节点"></a>2.前端大事件的时间节点</h2><table>
+<thead>
+<tr>
+<th align="left">时间</th>
+<th align="left">事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>web1.0 1991~2004</code></td>
+<td align="left">只读网络，网站提供内容，用户阅读内容</td>
+</tr>
+<tr>
+<td align="left">1989年</td>
+<td align="left"><code>HTML</code>由Web的发明者Tim Berners-Lee创立，这也是前端的起始</td>
+</tr>
+<tr>
+<td align="left">1994年</td>
+<td align="left">世界上的第一款浏览器<code>NCSAMosaic</code>由Netscape（网景）公司开发,同年<code>W3C</code>（世界万维网联盟）成立</td>
+</tr>
+<tr>
+<td align="left">1995年</td>
+<td align="left"><code>JavaScript</code>由网景公司的Brendan Eich设计</td>
+</tr>
+<tr>
+<td align="left">1996年</td>
+<td align="left">W3C发布了<code>CSS1</code>标准，从此前端有了样式规范</td>
+</tr>
+<tr>
+<td align="left">1997年</td>
+<td align="left"><code>ECMAScript1</code>由ECMA国际正式发布，从此Javascript有了自己的标准，同年W3C发布了<code>HTML4.0</code>标准，这是使用时间最长的一个版本</td>
+</tr>
+<tr>
+<td align="left">1998年</td>
+<td align="left">W3C发布了<code>XML(可扩展标记语言)</code>标准，同年<code>Ajax</code>（异步Javascript和XML）技术开始得到应用</td>
+</tr>
+<tr>
+<td align="left">2001年</td>
+<td align="left">Douglas Crockford开始推广使用<code>JSON</code>数据格式，它比XML更加简洁清晰</td>
+</tr>
+<tr>
+<td align="left"><code>web2.0 2004~至今</code></td>
+<td align="left">交互网络，用户产生内容，通过网站与他人交互</td>
+</tr>
+<tr>
+<td align="left">2006年</td>
+<td align="left">John Resig发布了<code>JQuery</code>的第一个版本，这是迄今为止最成功的JS库，同年W3C正式发布<code>XMLHttpRequest</code>标准，为以后的Ajax爆发提供技术基础。</td>
+</tr>
+<tr>
+<td align="left">2008年</td>
+<td align="left">Google开源了高性能的Javascript引擎<code>V8</code></td>
+</tr>
+<tr>
+<td align="left">2009年</td>
+<td align="left">Ryan Dahl开发了基于V8引擎的<code>NodeJS</code>运行时环境，从此javascript可以运行在服务端；同年<code>ECMAScript5</code>发布，这是使用时间最长，各个浏览器兼容性最好，如今大部分程序也依然在使用的一代标准；同年Miško Hevery创造了<code>AngularJS</code>框架，基于MVC模式，并且实现了SPA（单页面应用）</td>
+</tr>
+<tr>
+<td align="left">2010年</td>
+<td align="left"><code>NPM</code>（NodeJS包管理工具）发布了第一个版本，从此前端有了自己的包管理器</td>
+</tr>
+<tr>
+<td align="left">2011年</td>
+<td align="left">Twitter开源了其前端框架<code>Bootstrap</code></td>
+</tr>
+<tr>
+<td align="left">2012年</td>
+<td align="left">微软发布了<code>Typescript</code>的第一个版本，让Javascript拥有了自己的类型</td>
+</tr>
+<tr>
+<td align="left">2013年</td>
+<td align="left">Facebook开源了其前端框架<code>React</code>，同年尤雨溪受到Angular启发开发了轻量级前端框架<code>Seed</code>，后更名为<code>Vue</code></td>
+</tr>
+<tr>
+<td align="left">2014年</td>
+<td align="left">W3C发布了<code>HTML5</code>标准</td>
+</tr>
+<tr>
+<td align="left">2015年</td>
+<td align="left"><code>ECMAScript6</code>正式发布，后更名为<code>ECMAScript2015</code>，之截至目前2022年，每年都发布了对应的新版本</td>
+</tr>
+<tr>
+<td align="left">2016年</td>
+<td align="left"><code>ECMAScript2016</code>正式发布</td>
+</tr>
+<tr>
+<td align="left">2017年</td>
+<td align="left"><code>ECMAScript2017</code>正式发布</td>
+</tr>
+</tbody></table>
+<!-- YCTODO -->
+<h2 id="一些技术发展过程的梳理"><a href="#一些技术发展过程的梳理" class="headerlink" title="一些技术发展过程的梳理"></a>一些技术发展过程的梳理</h2><p>可以把前端发展的历程分为</p>
+<h2 id="展望未来"><a href="#展望未来" class="headerlink" title="展望未来"></a>展望未来</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>百度百科</li>
+<li><a class="link"   target="_blank" rel="noopener" href="http://www.javashuo.com/article/p-hvrlfhxo-gc.html" >前端的历史发展节点 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/196637639" >Web开发的历史发展技术演变 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44273429/article/details/127462439" >Web 1.0、Web 2.0 和 Web 3.0 之间的比较 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
-<p><strong>什么时候重构？</strong></p>
-<ul>
-<li>新增需求时（小粒度）</li>
-<li>修改BUG时（小粒度）</li>
-<li>复审代码时（大粒度）</li>
-<li>代码逻辑混乱、依赖混杂（大粒度）</li>
-</ul>
-<p><strong>重构有哪些原则？</strong></p>
-<ul>
-<li>先评审，再重构，不要反复推翻重来</li>
-<li>确保模块的功能完整，否则不重构该模块</li>
-<li>新增需求时，不要改动既有代码（小粒度）</li>
-<li>重构既有代码时，不要新增功能（小粒度）</li>
-</ul>
-<h2 id="三、重构工作流程"><a href="#三、重构工作流程" class="headerlink" title="三、重构工作流程"></a>三、重构工作流程</h2><ol>
-<li>前期准备，搭架子<ul>
-<li>构建对应技术栈的文件结构、代码关系</li>
-<li>整理公共资源、公共能力</li>
-<li>整理业务需求，确保没有遗漏的需求</li>
-</ul>
-</li>
-<li>前期准备，分需求、培训（主要涉及文件结构和公共资源）</li>
-<li>开始重构</li>
-</ol>
 
             </div>
 
@@ -447,11 +516,11 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：【方法论】代码重构的一点心得</li>
+        <li>本文标题：【方法论】前端发展历程梳理</li>
         <li>本文作者：ped-Yc</li>
-        <li>创建时间：2023-02-01 02:30:57</li>
+        <li>创建时间：2022-03-09 11:39:39</li>
         <li>
-            本文链接：https://ped-yc.github.io/2023/02/01/Methodology Refactoring/
+            本文链接：https://ped-yc.github.io/2022/03/09/MethodologyFront-endHistory/
         </li>
         <li>
             版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -477,14 +546,29 @@
             
                 <div class="article-nav">
                     
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2022/05/13/MethodologyFront-endEngineering/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">【方法论】前端工程化的一些理解</span>
+                                    <span class="post-nav-item">上一篇</span>
+                                </span>
+                            </a>
+                        </div>
+                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2023/02/01/Methodology%20JS%20Excution%20Process/"
+                            href="/2021/02/25/someInterestingQuestions01/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">【方法论】JS执行流程</span>
+                                    <span class="post-nav-title-item">【一些有趣的问题】02，作用域与闭包</span>
                                     <span class="post-nav-item">下一篇</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -522,8 +606,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">【方法论】代码重构的一点心得</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E6%9E%84%EF%BC%88Refactoring%EF%BC%89"><span class="nav-text">重构（Refactoring）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E9%87%8D%E6%9E%84%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%87%8D%E6%9E%84%EF%BC%9F%E9%87%8D%E6%9E%84%E8%A6%81%E8%BE%BE%E6%88%90%E4%BB%80%E4%B9%88%E7%9B%AE%E6%A0%87%EF%BC%9F"><span class="nav-text">一、什么是重构？为什么要重构？重构要达成什么目标？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%87%8D%E6%9E%84%E6%9C%89%E5%93%AA%E4%BA%9B%E5%88%86%E7%B1%BB%EF%BC%9F%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%87%8D%E6%9E%84%EF%BC%9F%E9%87%8D%E6%9E%84%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%88%99%EF%BC%9F"><span class="nav-text">二、重构有哪些分类？什么时候重构？重构有哪些原则？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E6%9E%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-text">三、重构工作流程</span></a></li></ol></li></ol>
+        <div class="page-title">【方法论】前端发展历程梳理</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%9C%80%E6%B1%82%E9%A9%B1%E5%8A%A8%E5%92%8C%E9%97%AE%E9%A2%98%E9%A9%B1%E5%8A%A8"><span class="nav-text">1.需求驱动和问题驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%89%8D%E7%AB%AF%E5%A4%A7%E4%BA%8B%E4%BB%B6%E7%9A%84%E6%97%B6%E9%97%B4%E8%8A%82%E7%82%B9"><span class="nav-text">2.前端大事件的时间节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95%E8%BF%87%E7%A8%8B%E7%9A%84%E6%A2%B3%E7%90%86"><span class="nav-text">一些技术发展过程的梳理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%95%E6%9C%9B%E6%9C%AA%E6%9D%A5"><span class="nav-text">展望未来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">参考资料</span></a></li></ol>
 
     </div>
 </div>
