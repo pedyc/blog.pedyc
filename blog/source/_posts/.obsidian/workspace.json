@@ -1,0 +1,171 @@
+{
+  "main": {
+    "id": "c8cc7f423f1d1f04",
+    "type": "split",
+    "children": [
+      {
+        "id": "8728c6d535893b2a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bbd35c070e09ddd0",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "791a89dd83a1dbc3",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "60b6457fb9cdd80a",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "878758a6d8046af3",
+    "type": "split",
+    "children": [
+      {
+        "id": "b56ab969ca2e04e0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6033114220750ef6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "08eab59628871df8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#vue",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "976ed7b28ba4a078",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "28ce0f9a2aa5ebad",
+    "type": "split",
+    "children": [
+      {
+        "id": "fe1aa0689a2768a3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b5562370be240ac7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9bcabcd15d8c77d8",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ae010c56d398982b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "c4cc3f818cc030be",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "6033114220750ef6",
+  "lastOpenFiles": [
+    "Methodology Front-end History.md",
+    "Methodology Front-end Engineering.md",
+    "Methodology JS Excution Process.md",
+    "Methodology Refactoring.md",
+    "Methodology State Management.md",
+    "Reprint Vue Composition APIReprint.md",
+    "someInterestingQuestions01.md",
+    "someInterestingQuestions02.md",
+    "vueSourceCodeStudy01.md",
+    "vueSourceCodeStudy02.md"
+  ]
+}
