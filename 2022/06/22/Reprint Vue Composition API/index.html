@@ -436,14 +436,16 @@
   <p data-pid="xHhwJpIi">首先我们通过模板来理解 <code>useDark</code> 的工作内容，就是返回了一个表示是否是黑夜模式的布尔值，并且可以通过 <code>useToggle</code>
     来快速得到一个 toggle 函数。 </p>
   <p data-pid="nmV5YoSR">然后观察 <code>useDark</code>，我们可以看到它身为一个组合函数的同时，又调用了其他的组合函数 <code>usePreferredDark</code> 和
-    <code>useLocalStorage</code> 来获取系统主题色和本地配置色。当然，我们不需要太关心它们的具体实现，只需要专注于处理结果，并返回以本地配置色为优先的结果即可。 </p>
+    <code>useLocalStorage</code> 来获取系统主题色和本地配置色。当然，我们不需要太关心它们的具体实现，只需要专注于处理结果，并返回以本地配置色为优先的结果即可。
+  </p>
   <p data-pid="C6hZ8F1F">其中的组合函数调用关系如下图所示： </p>
   <figure data-size="normal"><img src="https://pic3.zhimg.com/v2-1f58c63c4fccaffaa58660947892808a_b.jpg" data-caption=""
       data-size="normal" data-rawwidth="1678" data-rawheight="730" class="origin_image zh-lightbox-thumb" width="1678"
       data-original="https://pic3.zhimg.com/v2-1f58c63c4fccaffaa58660947892808a_r.jpg" style=""></figure>
   <p data-pid="J4AYoGK8">组合函数的底层又依赖了其他组合函数，比如 <code>useLocalStorage</code> 依赖统一封装了 SessionStorage 和 LocalStorage 逻辑的
     <code>useStorage</code>，<code>usePreferredDark</code> 依赖封装了 <code>window.matchMedia</code> 逻辑的
-    <code>useMediaQuery</code>。它们最后又都通过 <code>useEventListener</code> 来做状态改变的响应，并且能自动卸载。 </p>
+    <code>useMediaQuery</code>。它们最后又都通过 <code>useEventListener</code> 来做状态改变的响应，并且能自动卸载。
+  </p>
   <p data-pid="jqJ6ebx1">涉及的每一个函数都能独立使用，并且有自己的职责，最后进行组合。 </p>
   <blockquote data-pid="08iizr0U">这个例子来源于 <a class="link"   href="https://link.zhihu.com/?target=https%3A//github.com/vueuse/vueuse" 
       class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">VueUse <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.
@@ -453,7 +455,8 @@
   <h2>二、API </h2>
   <p data-pid="0PsR029O"><b>2.1 setup </b></p>
   <p data-pid="FdBMQSTF"><code>setup</code> 是组合式 API 的入口点，它的执行时机在 <code>beforeCreate</code> 和
-    <code>created</code>，并且只会执行一次。 </p>
+    <code>created</code>，并且只会执行一次。
+  </p>
   <p data-pid="8emt6Qmd">所以我们不需要 <code>onBeforeCreate</code> 和 <code>onCreated</code>，这些钩子对应的代码应该直接在 <code>setup</code>
     函数中编写。 </p>
   <p data-pid="-PkOkw14">它接收两个参数： </p>
@@ -511,7 +514,8 @@
   <p data-pid="e4NmHN9d"><b>2.3.2 unref（ref 的反向操作） </b></p>
   <p data-pid="snoUo1ZM">传入一个 ref，返回 <code>ref.value</code>，否则原样返回。 </p>
   <blockquote data-pid="o7iXv9Gs">纠结是否需要加 <code>.value</code>（比如某个函数参数的类型是
-    <code>Ref&lt;number&gt; | number</code>）来取值，可以使用 unref 来解包。 </blockquote>
+    <code>Ref&lt;number&gt; | number</code>）来取值，可以使用 unref 来解包。
+  </blockquote>
   <figure data-size="normal"><img src="https://pic1.zhimg.com/v2-be644447a3adfae139ccb07863b4fe30_b.jpg" data-caption=""
       data-size="normal" data-rawwidth="700" data-rawheight="196" class="origin_image zh-lightbox-thumb" width="700"
       data-original="https://pic1.zhimg.com/v2-be644447a3adfae139ccb07863b4fe30_r.jpg"></figure>
@@ -676,11 +680,11 @@
   <p data-pid="jW2h8EBi"><b>3.5 那么它有缺点吗？ </b></p>
   <p data-pid="ZAvsH4cw"><b>3.5.1 ref 和 reactive 的区别 </b></p>
   <table data-draft-node="block" data-draft-type="table" data-size="normal" data-row-style="normal">
+    <thead style="background-color: gray;">
+      <th>ref</th>
+      <th>reactive</th>
+    </thead>
     <tbody>
-      <tr>
-        <th>ref</th>
-        <th>reactive</th>
-      </tr>
       <tr>
         <td>可以处理原始值，也可以处理对象</td>
         <td>只能处理对象</td>
@@ -709,7 +713,8 @@
   <h2>总结</h2>
   <blockquote data-pid="dwydTu3z"><b>面向生命周期编程 vs 面向业务逻辑编程</b> <br>Composition API
     带来了组件逻辑抽取和复用的优化，抽取逻辑会变得非常简单，所以我们不必只在需要复用逻辑的时候才抽取函数，也可以单纯为了更好地组织代码去抽取函数，以此避免每个逻辑任务的代码都被选项切成了多个碎片分散在各处。
-    <br>当然如果组件足够简单，我们还是可以只使用 Options API，以原来的习惯写代码。</blockquote>
+    <br>当然如果组件足够简单，我们还是可以只使用 Options API，以原来的习惯写代码。
+  </blockquote>
   <p class="ztext-empty-paragraph"><br></p>
   <blockquote data-pid="nZaUCgyk"><b>我可以在 Vue 2 中使用吗？</b> <br>可以的，官方团队提供了可供 Vue 2 使用的插件： <a class="link" 
        href="https://link.zhihu.com/?target=https%3A//github.com/vuejs/composition-api"  class=" wrap external"
