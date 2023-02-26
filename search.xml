@@ -8,7 +8,7 @@
 <li>状态管理</li>
 <li>规范<ul>
 <li>代码格式化规范</li>
-<li>git提交规范</li>
+<li>git 提交规范</li>
 </ul>
 </li>
 <li></li>
@@ -23,7 +23,7 @@
   </entry>
   <entry>
     <title>【方法论】前端发展历程梳理</title>
-    <url>/2022/03/09/MethodologyFront-endHistory/</url>
+    <url>/2022/03/20/MethodologyFront-endHistory/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>了解前端的发展历史有助于从一个全局的视角来重新认知前端技术，脱离单独某一种视角的窠臼。</p>
 <ul>
 <li><code>Node.js</code>的出现意味着什么？</li>
@@ -32,13 +32,13 @@
 <li><code>CommonJS</code>、<code>AMD</code>、<code>CMD</code>、<code>ESModule</code>又是什么？</li>
 </ul>
 <p>类似的问题不胜枚举，而这篇文章有助于解决此类问题。</p>
-<h2 id="1-需求驱动和问题驱动"><a href="#1-需求驱动和问题驱动" class="headerlink" title="1.需求驱动和问题驱动"></a>1.需求驱动和问题驱动</h2><p>一种技术能够出现并且不断的发展，一定具有某种内在的驱动力，我认为这种驱动力存在两种：</p>
+<h2 id="1-需求驱动和问题驱动"><a href="#1-需求驱动和问题驱动" class="headerlink" title="1. 需求驱动和问题驱动"></a>1. 需求驱动和问题驱动</h2><p>一种技术能够出现并且不断的发展，一定具有某种内在的驱动力，我认为这种驱动力存在两种：</p>
 <ol>
 <li>需求驱动</li>
 <li>问题驱动</li>
 </ol>
 <p>需求驱动顾名思义就是当前的技术工具支持不了新的需求，所以推动了新技术的产生。而问题驱动则是实现某种需求的过程中产生了困难，老旧的技术工具解决不了或者解决起来很麻烦困难，所以推动了新技术的产生。</p>
-<h2 id="2-前端大事件的时间节点"><a href="#2-前端大事件的时间节点" class="headerlink" title="2.前端大事件的时间节点"></a>2.前端大事件的时间节点</h2><table>
+<h2 id="2-前端大事件的时间节点"><a href="#2-前端大事件的时间节点" class="headerlink" title="2. 前端大事件的时间节点"></a>2. 前端大事件的时间节点</h2><table>
 <thead>
 <tr>
 <th align="left">时间</th>
@@ -50,79 +50,79 @@
 <td align="left">只读网络，网站提供内容，用户阅读内容</td>
 </tr>
 <tr>
-<td align="left">1989年</td>
-<td align="left"><code>HTML</code>由Web的发明者Tim Berners-Lee创立，这也是前端的起始</td>
+<td align="left">1989 年</td>
+<td align="left"><code>HTML</code>由 Web 的发明者 Tim Berners-Lee 创立，这也是前端的起始</td>
 </tr>
 <tr>
-<td align="left">1994年</td>
-<td align="left">世界上的第一款浏览器<code>NCSAMosaic</code>由Netscape（网景）公司开发,同年<code>W3C</code>（世界万维网联盟）成立</td>
+<td align="left">1994 年</td>
+<td align="left">世界上的第一款浏览器<code>NCSAMosaic</code>由 Netscape（网景）公司开发，同年<code>W3C</code>（世界万维网联盟）成立</td>
 </tr>
 <tr>
-<td align="left">1995年</td>
-<td align="left"><code>JavaScript</code>由网景公司的Brendan Eich设计</td>
+<td align="left">1995 年</td>
+<td align="left"><code>JavaScript</code>由网景公司的 Brendan Eich 设计</td>
 </tr>
 <tr>
-<td align="left">1996年</td>
-<td align="left">W3C发布了<code>CSS1</code>标准，从此前端有了样式规范</td>
+<td align="left">1996 年</td>
+<td align="left">W3C 发布了<code>CSS1</code>标准，从此前端有了样式规范</td>
 </tr>
 <tr>
-<td align="left">1997年</td>
-<td align="left"><code>ECMAScript1</code>由ECMA国际正式发布，从此Javascript有了自己的标准，同年W3C发布了<code>HTML4.0</code>标准，这是使用时间最长的一个版本</td>
+<td align="left">1997 年</td>
+<td align="left"><code>ECMAScript1</code>由 ECMA 国际正式发布，从此 Javascript 有了自己的标准，同年 W3C 发布了<code>HTML4.0</code>标准，这是使用时间最长的一个版本</td>
 </tr>
 <tr>
-<td align="left">1998年</td>
-<td align="left">W3C发布了<code>XML(可扩展标记语言)</code>标准，同年<code>Ajax</code>（异步Javascript和XML）技术开始得到应用</td>
+<td align="left">1998 年</td>
+<td align="left">W3C 发布了<code>XML（可扩展标记语言）</code>标准，同年<code>Ajax</code>（异步 Javascript 和 XML）技术开始得到应用</td>
 </tr>
 <tr>
-<td align="left">2001年</td>
-<td align="left">Douglas Crockford开始推广使用<code>JSON</code>数据格式，它比XML更加简洁清晰</td>
+<td align="left">2001 年</td>
+<td align="left">Douglas Crockford 开始推广使用<code>JSON</code>数据格式，它比 XML 更加简洁清晰</td>
 </tr>
 <tr>
 <td align="left"><code>web2.0 2004~至今</code></td>
 <td align="left">交互网络，用户产生内容，通过网站与他人交互</td>
 </tr>
 <tr>
-<td align="left">2006年</td>
-<td align="left">John Resig发布了<code>JQuery</code>的第一个版本，这是迄今为止最成功的JS库，同年W3C正式发布<code>XMLHttpRequest</code>标准，为以后的Ajax爆发提供技术基础。</td>
+<td align="left">2006 年</td>
+<td align="left">John Resig 发布了<code>JQuery</code>的第一个版本，这是迄今为止最成功的 JS 库，同年 W3C 正式发布<code>XMLHttpRequest</code>标准，为以后的 Ajax 爆发提供技术基础。</td>
 </tr>
 <tr>
-<td align="left">2008年</td>
-<td align="left">Google开源了高性能的Javascript引擎<code>V8</code></td>
+<td align="left">2008 年</td>
+<td align="left">Google 开源了高性能的 Javascript 引擎<code>V8</code></td>
 </tr>
 <tr>
-<td align="left">2009年</td>
-<td align="left">Ryan Dahl开发了基于V8引擎的<code>NodeJS</code>运行时环境，从此javascript可以运行在服务端；同年<code>ECMAScript5</code>发布，这是使用时间最长，各个浏览器兼容性最好，如今大部分程序也依然在使用的一代标准；同年Miško Hevery创造了<code>AngularJS</code>框架，基于MVC模式，并且实现了SPA（单页面应用）</td>
+<td align="left">2009 年</td>
+<td align="left">Ryan Dahl 开发了基于 V8 引擎的<code>NodeJS</code>运行时环境，从此 javascript 可以运行在服务端；同年<code>ECMAScript5</code>发布，这是使用时间最长，各个浏览器兼容性最好，如今大部分程序也依然在使用的一代标准；同年 Miško Hevery 创造了<code>AngularJS</code>框架，基于 MVC 模式，并且实现了 SPA（单页面应用）</td>
 </tr>
 <tr>
-<td align="left">2010年</td>
-<td align="left"><code>NPM</code>（NodeJS包管理工具）发布了第一个版本，从此前端有了自己的包管理器</td>
+<td align="left">2010 年</td>
+<td align="left"><code>NPM</code>（NodeJS 包管理工具）发布了第一个版本，从此前端有了自己的包管理器</td>
 </tr>
 <tr>
-<td align="left">2011年</td>
-<td align="left">Twitter开源了其前端框架<code>Bootstrap</code></td>
+<td align="left">2011 年</td>
+<td align="left">Twitter 开源了其前端框架<code>Bootstrap</code></td>
 </tr>
 <tr>
-<td align="left">2012年</td>
-<td align="left">微软发布了<code>Typescript</code>的第一个版本，让Javascript拥有了自己的类型</td>
+<td align="left">2012 年</td>
+<td align="left">微软发布了<code>Typescript</code>的第一个版本，让 Javascript 拥有了自己的类型</td>
 </tr>
 <tr>
-<td align="left">2013年</td>
-<td align="left">Facebook开源了其前端框架<code>React</code>，同年尤雨溪受到Angular启发开发了轻量级前端框架<code>Seed</code>，后更名为<code>Vue</code></td>
+<td align="left">2013 年</td>
+<td align="left">Facebook 开源了其前端框架<code>React</code>，同年尤雨溪受到 Angular 启发开发了轻量级前端框架<code>Seed</code>，后更名为<code>Vue</code></td>
 </tr>
 <tr>
-<td align="left">2014年</td>
-<td align="left">W3C发布了<code>HTML5</code>标准</td>
+<td align="left">2014 年</td>
+<td align="left">W3C 发布了<code>HTML5</code>标准</td>
 </tr>
 <tr>
-<td align="left">2015年</td>
-<td align="left"><code>ECMAScript6</code>正式发布，后更名为<code>ECMAScript2015</code>，之截至目前2022年，每年都发布了对应的新版本</td>
+<td align="left">2015 年</td>
+<td align="left"><code>ECMAScript6</code>正式发布，后更名为<code>ECMAScript2015</code>，之截至目前 2022 年，每年都发布了对应的新版本</td>
 </tr>
 <tr>
-<td align="left">2016年</td>
+<td align="left">2016 年</td>
 <td align="left"><code>ECMAScript2016</code>正式发布</td>
 </tr>
 <tr>
-<td align="left">2017年</td>
+<td align="left">2017 年</td>
 <td align="left"><code>ECMAScript2017</code>正式发布</td>
 </tr>
 </tbody></table>
@@ -131,7 +131,7 @@
 <h2 id="展望未来"><a href="#展望未来" class="headerlink" title="展望未来"></a>展望未来</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li>百度百科</li>
 <li><a class="link"   href="http://www.javashuo.com/article/p-hvrlfhxo-gc.html" >前端的历史发展节点 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://zhuanlan.zhihu.com/p/196637639" >Web开发的历史发展技术演变 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://zhuanlan.zhihu.com/p/196637639" >Web 开发的历史发展技术演变 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 <li><a class="link"   href="https://blog.csdn.net/qq_44273429/article/details/127462439" >Web 1.0、Web 2.0 和 Web 3.0 之间的比较 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
@@ -144,9 +144,9 @@
   </entry>
   <entry>
     <title>【方法论】代码重构的一点心得</title>
-    <url>/2023/02/01/MethodologyRefactoring/</url>
+    <url>/2023/02/11/MethodologyRefactoring/</url>
     <content><![CDATA[<h1 id="重构（Refactoring）"><a href="#重构（Refactoring）" class="headerlink" title="重构（Refactoring）"></a>重构（Refactoring）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一直在做前端重构的工作，多少有些感想，特此记录。</p>
-<p>首先，项目的历史太悠久了，AngularJS的项目，</p>
+<p>首先，项目的历史太悠久了，AngularJS 的项目，</p>
 <h2 id="一、什么是重构？为什么要重构？重构要达成什么目标？"><a href="#一、什么是重构？为什么要重构？重构要达成什么目标？" class="headerlink" title="一、什么是重构？为什么要重构？重构要达成什么目标？"></a>一、什么是重构？为什么要重构？重构要达成什么目标？</h2><p><strong>什么是重构</strong></p>
 <p>在<code>不改变代码外在行为</code>的前提下，对代码进行修改，以<code>改进程序的内部结构</code>。</p>
 <p><strong>为什么要重构</strong></p>
@@ -165,7 +165,7 @@
 <p><strong>什么时候重构？</strong></p>
 <ul>
 <li>新增需求时（小粒度）</li>
-<li>修改BUG时（小粒度）</li>
+<li>修改 BUG 时（小粒度）</li>
 <li>复审代码时（大粒度）</li>
 <li>代码逻辑混乱、依赖混杂（大粒度）</li>
 </ul>
@@ -197,7 +197,7 @@
   <entry>
     <title>【方法论】前端状态管理的一些理解</title>
     <url>/2022/06/15/MethodologyStateManagement/</url>
-    <content><![CDATA[<h1 id="前端状态管理的一些理解"><a href="#前端状态管理的一些理解" class="headerlink" title="前端状态管理的一些理解"></a>前端状态管理的一些理解</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在工作中，我们常常会使用状态管理工具，例如：vue2的vuex，vue3的pinia，angular的NgRx，react的redux。有时难免会有一些疑问，为什么要使用状态管理工具，</p>
+    <content><![CDATA[<h1 id="前端状态管理的一些理解"><a href="#前端状态管理的一些理解" class="headerlink" title="前端状态管理的一些理解"></a>前端状态管理的一些理解</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在工作中，我们常常会使用状态管理工具，例如：vue2 的 vuex，vue3 的 pinia，angular 的 NgRx，react 的 redux。有时难免会有一些疑问，为什么要使用状态管理工具，</p>
 <p>一个有趣的比方：假设有一个图书馆，当这个图书馆很小时，读者要找到一本书是非常简单的，就像一个小的前端项目，直接使用组件对数据进行存储更改是更加快捷方便的方式。但如果这个图书馆很大，人流量也很多，读者找一本书或者归还一本书就会很吃力。而状态管理器就像这个图书馆的电脑，当你要找一本书时，如果这是一本教科书，就会去教科书的栏目内检索，就像写的<code>action = &#39;schoolbook&#39;;</code></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2>]]></content>
       <categories>
@@ -209,7 +209,7 @@
   </entry>
   <entry>
     <title>【方法论】JS 执行流程</title>
-    <url>/2023/02/01/MethodologyJSExcutionProcess/</url>
+    <url>/2023/02/21/MethodologyJSExcutionProcess/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><code>前言</code></h2><p>本文主要解释 JS 引擎在遇见 script 代码块时，从编译到执行具体经历了些什么？</p>
 <p>一些关于作用域与闭包还有<code>this</code>关键字的问题可能被解答：</p>
 <ul>
@@ -898,38 +898,38 @@ setTimeout
   </section>
 </article>]]></content>
       <categories>
-        <category>转载 JS</category>
+        <category>转载</category>
       </categories>
       <tags>
         <tag>JS</tag>
       </tags>
   </entry>
   <entry>
-    <title>【一些有趣的问题】01，事件循环</title>
-    <url>/2021/02/23/someInterestingQuestions02/</url>
+    <title>【一些有趣的问题】02，事件循环</title>
+    <url>/2021/02/25/someInterestingQuestions02/</url>
     <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
 <div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;start&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;setTimeout&#x27;</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise&#x27;</span>)</span><br><span class="line">  <span class="title function_">resolve</span>()</span><br><span class="line">&#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;then1&#x27;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;then2&#x27;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;end&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
 
 <p>结果：打印 start promise end then1 then2 setTimeout</p>
-<p>原因：简单来说，JS代码的执行顺序为：同步代码–&gt;异步代码（微任务–&gt;宏任务）</p>
+<p>原因：简单来说，JS 代码的执行顺序为：同步代码–&gt;异步代码（微任务–&gt;宏任务）</p>
 <p>分析：</p>
 <ol>
-<li><p>打印start</p>
+<li><p>打印 start</p>
 </li>
 <li><p>setTimeout 加入消息队列</p>
 </li>
-<li><p>new Promise 的同步部分执行，打印promise，then 部分加入消息队列</p>
+<li><p>new Promise 的同步部分执行，打印 promise，then 部分加入消息队列</p>
 </li>
-<li><p>打印end</p>
+<li><p>打印 end</p>
 </li>
-<li><p>消息队列中先处理微任务 then 的部分，打印then1，then2</p>
+<li><p>消息队列中先处理微任务 then 的部分，打印 then1，then2</p>
 </li>
-<li><p>消息队列处理宏任务 setTimeout，打印setTimeout</p>
+<li><p>消息队列处理宏任务 setTimeout，打印 setTimeout</p>
 </li>
 </ol>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><code>参考资料</code></h2><blockquote>
 <p><a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop" >并发模型与事件循环 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><a class="link"   href="http://lynnelv.github.io/js-event-loop-browser" >深入理解js事件循环机制（浏览器篇） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link"   href="http://lynnelv.github.io/js-event-loop-browser" >深入理解 js 事件循环机制（浏览器篇） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 </blockquote>
 ]]></content>
       <categories>
@@ -1283,50 +1283,50 @@ setTimeout
       </tags>
   </entry>
   <entry>
-    <title>【一些有趣的问题】02，作用域与闭包</title>
-    <url>/2021/02/25/someInterestingQuestions01/</url>
-    <content><![CDATA[<h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h2><p><code>以下语句会如何输出？</code></p>
+    <title>【一些有趣的问题】01，作用域与闭包</title>
+    <url>/2021/02/23/someInterestingQuestions01/</url>
+    <content><![CDATA[<h2 id="问题-1"><a href="#问题-1" class="headerlink" title="问题 1"></a>问题 1</h2><p><code>以下语句会如何输出？</code></p>
 <div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;i&#x27;</span>,i)</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">    &#125;,<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p><code>结果</code>：<img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/2021/02/25/someInterestingQuestions01/q1.png"
+                     data-src="/2021/02/23/someInterestingQuestions01/q1.png"
                       class="" title="结果"
                 ></p>
 <p><code>原因</code>：异步代码会在同步代码执行完毕后执行</p>
-<p><code>分析</code>：在执行 setTimeout 中的 console.log 打印变量 i 时，对标识符 i 进行 RHS 查询，因为在当前作用域找不到对应标识符，所以向上前往父级作用域寻找。所以打印的其实是 for 循环中声明的变量 i，而此时已经经过循环赋值变成了5</p>
+<p><code>分析</code>：在执行 setTimeout 中的 console.log 打印变量 i 时，对标识符 i 进行 RHS 查询，因为在当前作用域找不到对应标识符，所以向上前往父级作用域寻找。所以打印的其实是 for 循环中声明的变量 i，而此时已经经过循环赋值变成了 5</p>
 <p><strong>解决方案一：</strong></p>
 <div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">    (<span class="keyword">function</span>(<span class="params">i</span>)&#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">        &#125;,<span class="number">1000</span>)</span><br><span class="line">    &#125;)(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p><code> 结果</code>：1秒后连续打印 0 1 2 3 4 </p>
-<p><code>原因</code>：IIFE 使得对打印的标识符 i 的查询终止于当前作用域，不用向上继续查询 分析：console.log 打印变量 i 时，发现该标识符对应当前作用域中的形参，其值为传入的实参。所以每次执行 console.log 语句，变量 i 的值都会被覆盖，第一次为 0，第二次为 1，依次类推打印 0 1 2 3 4，而 for 循环中声明的变量 i，其值为5</p>
+<p><code> 结果</code>：1 秒后连续打印 0 1 2 3 4 </p>
+<p><code>原因</code>：IIFE 使得对打印的标识符 i 的查询终止于当前作用域，不用向上继续查询 分析：console.log 打印变量 i 时，发现该标识符对应当前作用域中的形参，其值为传入的实参。所以每次执行 console.log 语句，变量 i 的值都会被覆盖，第一次为 0，第二次为 1，依次类推打印 0 1 2 3 4，而 for 循环中声明的变量 i，其值为 5</p>
 <p><strong>解决方案二：</strong></p>
 <div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">  <span class="title function_">setTimeourt</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">  &#125;,<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p><code>结果</code>：1秒后连续打印 0 1 2 3 4</p>
+<p><code>结果</code>：1 秒后连续打印 0 1 2 3 4</p>
 <p><code>原因</code>：let 声明不会产生变量提升，并且会绑定当前作用域。for 循环头部的 let 声明会有一个特殊的行为，这个行为指出变量在循环过程中不止被声明一次，每次迭代都会声明。随后的每个迭代都会使用上一个迭代结束时的值来初始化这个变量。</p>
 <hr>
-<h2 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h2><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(i++);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f1 = <span class="title class_">Foo</span>(),</span><br><span class="line">    f2 = <span class="title class_">Foo</span>();</span><br><span class="line"><span class="title function_">f1</span>();</span><br><span class="line"><span class="title function_">f1</span>();</span><br><span class="line"><span class="title function_">f2</span>();</span><br></pre></td></tr></table></figure></div>
+<h2 id="问题-2"><a href="#问题-2" class="headerlink" title="问题 2"></a>问题 2</h2><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(i++);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f1 = <span class="title class_">Foo</span>(),</span><br><span class="line">    f2 = <span class="title class_">Foo</span>();</span><br><span class="line"><span class="title function_">f1</span>();</span><br><span class="line"><span class="title function_">f2</span>();</span><br></pre></td></tr></table></figure></div>
 <p><code>结果</code>：<img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/2021/02/25/someInterestingQuestions01/q2.png"
+                     data-src="/2021/02/23/someInterestingQuestions01/q2.png"
                       class="" title="结果"
                 ></p>
 <p><code>原因</code>：</p>
-<p>第一次调用函数f1()：打印 0，创建闭包，此时局部变量i&#x3D;1；</p>
-<p>第二次调用函数f1()：打印 1，创建闭包，此时局部变量i&#x3D;2；</p>
-<p>第一次调用函数f2()：打印 0，因为函数f1、f2指向不同对象。</p>
+<p>第一次调用函数 f1()：打印 0，创建闭包，此时局部变量 i&#x3D;1；</p>
+<p>第二次调用函数 f1()：打印 1，创建闭包，此时局部变量 i&#x3D;2；</p>
+<p>第一次调用函数 f2()：打印 0，因为函数 f1、f2 指向不同对象。</p>
 <hr>
-<h2 id="问题3"><a href="#问题3" class="headerlink" title="问题3"></a>问题3</h2><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 类变量a</span></span><br><span class="line">  <span class="title class_">Foo</span>.<span class="property">a</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 实例变量a，每个实例都有一个</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">a</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 实例变量a，所有实例共享一个</span></span><br><span class="line"><span class="title class_">Foo</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">a</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 类变量a</span></span><br><span class="line"><span class="title class_">Foo</span>.<span class="property">a</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">4</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Foo</span>.<span class="title function_">a</span>();</span><br><span class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="title class_">Foo</span>();</span><br><span class="line">obj.<span class="title function_">a</span>();</span><br><span class="line"><span class="title class_">Foo</span>.<span class="title function_">a</span>();</span><br></pre></td></tr></table></figure></div>
+<h2 id="问题-3"><a href="#问题-3" class="headerlink" title="问题 3"></a>问题 3</h2><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 类变量 a</span></span><br><span class="line">  <span class="title class_">Foo</span>.<span class="property">a</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 实例变量 a，每个实例都有一个</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">a</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 实例变量 a，所有实例共享一个</span></span><br><span class="line"><span class="title class_">Foo</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">a</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 类变量 a</span></span><br><span class="line"><span class="title class_">Foo</span>.<span class="property">a</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">4</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Foo</span>.<span class="title function_">a</span>();</span><br><span class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="title class_">Foo</span>();</span><br><span class="line">obj.<span class="title function_">a</span>();</span><br><span class="line"><span class="title class_">Foo</span>.<span class="title function_">a</span>();</span><br></pre></td></tr></table></figure></div>
 <p><code>结果</code>：<img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/2021/02/25/someInterestingQuestions01/q3.png"
+                     data-src="/2021/02/23/someInterestingQuestions01/q3.png"
                       class="" title="结果"
                 ></p>
 <p><code>原因</code>：</p>
-<p>打印4：一开始Foo方法并未调用，输出的是函数体外的变量a，此时可以把Foo当作对象，Foo.a为其对象属性。</p>
-<p>打印2：使用new操作符实例化Foo后，obj.a首先查找obj上的标识符a，如果找不到的话沿着原型链向上查找，也找不到的话返回undefined。</p>
-<p>打印1：此时Foo方法已经调用，方法体内的类变量a覆盖原来已经赋值的类变量a。</p>
+<p>打印 4：一开始 Foo 方法并未调用，输出的是函数体外的变量 a，此时可以把 Foo 当作对象，Foo.a 为其对象属性。</p>
+<p>打印 2：使用 new 操作符实例化 Foo 后，obj.a 首先查找 obj 上的标识符 a，如果找不到的话沿着原型链向上查找，也找不到的话返回 undefined。</p>
+<p>打印 1：此时 Foo 方法已经调用，方法体内的类变量 a 覆盖原来已经赋值的类变量 a。</p>
 ]]></content>
       <categories>
         <category>一些有趣的问题</category>
@@ -1548,7 +1548,275 @@ setTimeout
                       class="" title="s2-15"
                 >
 
-<p>本篇文章就到此为止，因为是初识，所以比较简单，基本上就是跟着调用栈走，之后会更具体的分析render() 和 patch() 函数。</p>
+<p>本篇文章就到此为止，因为是初识，所以比较简单，基本上就是跟着调用栈走，之后会更具体的分析 render() 和 patch() 函数。</p>
+<p>若有错误请大佬指出，感激不尽。</p>
+]]></content>
+      <categories>
+        <category>源码</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【方法论】JS 模块化梳理</title>
+    <url>/2022/03/09/MethodologyFront-endJSModularity%20/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>模块化是编程中绕不过去的一环，可以说在我们的开发流程中，每时每刻都在使用着模块化，这无疑是一个非常重要的知识点。本文只讨论 JS 模块化，旨在加强对 JS 模块化的认识。主要涉及以下几点：</p>
+<ul>
+<li>JS 模块化的前世今生（为什么要模块化）</li>
+<li>JS 模块化的本质（如何实现模块化）</li>
+</ul>
+<h2 id="一、JS-模块化的前世今生"><a href="#一、JS-模块化的前世今生" class="headerlink" title="一、JS 模块化的前世今生"></a>一、JS 模块化的前世今生</h2><h3 id="无模块化"><a href="#无模块化" class="headerlink" title="无模块化"></a>无模块化</h3><p>大家都知道模块化是复杂项目中必不可少的一环，良好的模块化能让项目结构更加清晰，提高代码复用性，逻辑与功能分离，加强可维护性。但在一开始，Javascript 中是不存在模块化的，它只是一门玩具语言，为网页添加一点特效而已。功能简单，用法单一。</p>
+<p>此时的 js 代码的书写方式是，从上到下，简单明了，直到<code>ajax</code>出现。</p>
+<h3 id="模块化萌芽"><a href="#模块化萌芽" class="headerlink" title="模块化萌芽"></a>模块化萌芽</h3><p>Google 将 ajax 概念发扬光大，在 Gmail 和 Google 地球等网页应用中大量使用了 ajax 技术，此时人们才惊觉利用 javascript 能够在网页中做到什么。于是越来越多的大型 web 项目开始出现，随之而来的是越来越复杂的业务逻辑与项目结构。问题不可避免的出现了。</p>
+<ol>
+<li><code>全局变量污染</code><br>因为大家写的代码都在同一个全局作用域中，一不小心就可能声明一个已经存在的全局变量，往往就会发生难以预测的错误，这里举一个例子：<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这是我写的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;a.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;b.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 这是同事写的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;c.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div></li>
+</ol>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// a.js</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;这里请不要改&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// c.js</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">name</span>(<span class="params"></span>)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>上面有 3 个脚本，a.js、b.js 是我写的，c.js 是同事写的，我定义了一个全局变量 name，同事不知道，他定义了一个全局方法 name()，于是我俩都得懵逼。</p>
+<p><em>解决方案</em></p>
+<p>解决方法之一是使用自执行函数包裹：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">myModule = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> id = <span class="string">&#x27;user_id&#x27;</span></span><br><span class="line">	...</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></div>
+<p>这种方式解决了全局变量污染的问题，但仍暴露了一个全局函数在全局，仍可能存在命名冲突，并且有时需定义许多个这种类型的函数，不够优雅。</p>
+<ol start="2">
+<li><code>函数命名冲突</code><br>我们经常将一些功能性的函数抽离出来，放在同一个功能文件中，例如 utils.js 文件下放了一个 format 方法，这时同事需要一个不同的 format 方法，他就只能新建一个 format2 或者其他名字的方法，类似的事情很多。</li>
+</ol>
+<p><em>解决方案</em></p>
+<p>解决方法之一是使用命名空间，构造类似 java 的方式，于是代码变成了这样：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">obj.<span class="property">MyNameSpace</span>.<span class="property">Utils</span>.<span class="title function_">format</span>()</span><br></pre></td></tr></table></figure></div>
+<p>这种类型的代码确实有用，但大大增加了书写的负担，你只想调用一个方法，却不得不写一长串的前缀。</p>
+<ol start="3">
+<li><code>文件依赖混乱</code><br>文件的依赖往往是无法避免的，例如实现一个 dialog 组件，它调用了一些 utils.js 文件里的方法，那么在引入<code>&lt;script src=&quot;dialog&quot;&gt;</code>之前，需要先引入<code>&lt;script src=&quot;utils&quot;&gt;</code>，当类似的情况越来越多时，依赖就难免混杂，从而增加维护难度。</li>
+</ol>
+<p><em>解决方案</em></p>
+<p>这是 Yahoo! 的 YUI3 框架解决方案，通过 requires 一个依赖数组来指定依赖：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable constant_">YUI</span>.<span class="title function_">add</span>(<span class="string">&#x27;my-module&#x27;</span>, <span class="keyword">function</span> (<span class="params">Y</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;, <span class="string">&#x27;0.0.1&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">requires</span>: [<span class="string">&#x27;node&#x27;</span>, <span class="string">&#x27;event&#x27;</span>]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>这种类型的代码确实解决了依赖混乱的问题，但当一个文件依赖增多时，这种配置型的代码就会变得复杂而且难看。</p>
+<p>在这个时期，不同的 web 团队为了解决项目中遇到的这类难题提出了自己的解决方案，但没有哪种解决方案可以解决所有的问题。</p>
+<h3 id="几种模块化规范"><a href="#几种模块化规范" class="headerlink" title="几种模块化规范"></a>几种模块化规范</h3><p>从以上的例子中可以观察到一些模块化所面临的难题：</p>
+<ol>
+<li>如何安全的包装一个模块（不污染模块外的代码）</li>
+<li>如何定义模块的唯一标识（解决命名冲突）</li>
+<li>如何优雅的暴露模块（不增加复杂依赖）</li>
+<li>模块间互相引用的循环依赖问题</li>
+</ol>
+<p>在 nodeJS 出现后，Javascript 可以用来编写服务端程序，这时 Javascript 没有模块化的缺点变得更加令人难以忍受，nodeJS 社区开始制定 JS 模块化规范。[Modules&#x2F;1.0 规范](<a class="link"   href="https://wiki.commonjs.org/wiki/Modules/1.0" >Modules&#x2F;1.0 - CommonJS Spec Wiki <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>)，首次定义了一个模块应该如何编写：</p>
+<blockquote>
+<ol>
+<li>模块的标识应遵循的规则（书写规范）</li>
+<li>定义全局函数 require，通过传入模块标识来引入其他模块，执行的结果即为别的模块暴漏出来的 API</li>
+<li>如果被 require 函数引入的模块中也包含依赖，那么依次加载这些依赖</li>
+<li>如果引入模块失败，那么 require 函数应该报一个异常</li>
+<li>模块通过变量 exports 来向往暴漏 API，exports 只能是一个对象，暴漏的 API 须作为此对象的属性。</li>
+</ol>
+</blockquote>
+<p>一开始实现 Modules&#x2F;1.0 规范的是 ServerJS（CommonJS 改名之前的叫法），它的写法如下：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">add</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> sum = <span class="number">0</span>,i = <span class="number">0</span>, args = <span class="variable language_">arguments</span>;</span><br><span class="line">	<span class="keyword">while</span>(i &lt; <span class="number">1</span>)&#123;</span><br><span class="line">		sum += args[i++];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// increment.js</span></span><br><span class="line"><span class="keyword">var</span> add = <span class="built_in">require</span>(<span class="string">&#x27;math&#x27;</span>).<span class="property">add</span>;</span><br><span class="line"><span class="built_in">exports</span>.<span class="property">increment</span> = <span class="keyword">function</span>(<span class="params">val</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="title function_">add</span>(val,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// program.js</span></span><br><span class="line"><span class="keyword">var</span> inc = <span class="built_in">require</span>(<span class="string">&#x27;increment&#x27;</span>).<span class="property">increment</span>;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="title function_">inc</span>(a); <span class="comment">//2</span></span><br></pre></td></tr></table></figure></div>
+<p>相比于之前的阶段，此时的代码更加简洁明了，但它只能在服务端运行而难以向浏览器端推广，原因如下：</p>
+<ol>
+<li>外层没有 function 包裹，变量直接暴露在全局（如上 increment.js 中的 add 方法）</li>
+<li>资源加载方式不同，在服务端，require 一个模块可以直接从内存中读取，消耗时间很小，但在浏览器端，require 一个模块需要向服务器发起一个 http 请求，下载完成后才能运行模块中的代码，也就是说 require 之后的代码必须等到 require 完成后才能执行。<br>因为这些问题，社区中的主张分裂为 3 种，分别是</li>
+</ol>
+<ul>
+<li>Modules&#x2F;1.x 派</li>
+<li>Modules&#x2F;Async 派</li>
+<li>Modules&#x2F;2.0 派</li>
+</ul>
+<p><code>Modules/1.x,CommonJS,browserify</code><br>这一派人认为既然 ServerJS 能够在服务端运行良好，只需要在现有基础上进行改进就能适应浏览器端的需求，浏览器端需要 function 包裹（为了保护变量）、需要异步加载，那么就使用一种工具将现有模块转化为适合浏览器端的代码，基于这种想法有基于这个主张，制定了 <a class="link"   href="https://wiki.commonjs.org/wiki/Modules/Transport" >Modules&#x2F;Transport 规范 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，<code>browserify</code>是这种规范的一种实现，它是一种浏览器端的打包工具，能够将 nodeJS 模块转化为浏览器端可用的模块。</p>
+<p><code>Modules/Async,AMD,RequireJS</code><br>这一派人认为浏览器端与服务端差别巨大，不能沿用原有模块标准。既然浏览器端需要异步加载代码，就通过回调的形式设计规范。其原理是：在模块定义时就指明并加载依赖，当依赖加载完毕后再执行回调中的本模块。因为这种异步的特性设计的规范名为 <a class="link"   href="https://github.com/amdjs/amdjs-api/wiki/AMD-%EF%BC%88%E4%B8%AD%E6%96%87%E7%89%88%EF%BC%89" >AMD（Asynchronous Module Definition） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，根据 AMD 规范出现了<code>RequireJS</code>的实现，它的写法如下：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">define</span>(id?, dependencies?, factory);</span><br><span class="line"></span><br><span class="line"><span class="title function_">define</span>(<span class="string">&#x27;increment&#x27;</span>,[<span class="string">&#x27;math&#x27;</span>,<span class="string">&#x27;other&#x27;</span>],<span class="keyword">function</span>(<span class="params">math</span>)&#123;</span><br><span class="line">	<span class="comment">// 此时 math 和 other 模块内的代码已经执行完毕</span></span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">increment</span>(<span class="params">val</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> math.<span class="title function_">add</span>(val,<span class="number">1</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 即使 other 没有被使用到，other 还是被提前执行了</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="literal">false</span>)&#123;</span><br><span class="line">		other.<span class="title function_">doSomething</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+<p><code>Modules/2.0 CMD Sea.js</code><br>这一派人有点类似中间派，既不想丢弃旧的规范，也不像 AMD 那样推倒重来，最终他们制定了 <a href="%5Bhttp://wiki.commonjs.org/wiki/Modules/Wrappings%5D(http://wiki.commonjs.org/wiki/Modules/Wrappings)">Modules&#x2F;Wrappings 规范</a>,<code>SeaJS</code>是它的一个实现。写法如下：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">define</span>(factory);</span><br><span class="line"></span><br><span class="line"><span class="title function_">define</span>(<span class="keyword">function</span>(<span class="params"><span class="built_in">require</span>,<span class="built_in">exports</span>,<span class="variable language_">module</span></span>)&#123;</span><br><span class="line">	<span class="comment">// 就近原则，哪里使用哪里声明</span></span><br><span class="line">	<span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">&#x27;math&#x27;</span>);</span><br><span class="line">	<span class="keyword">return</span>&#123;</span><br><span class="line">		<span class="attr">increment</span>:<span class="keyword">function</span>(<span class="params">val</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> math.<span class="title function_">add</span>(val,<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>可以看到，它的写法和 RequireJS 很像，那么不同之处在哪里呢？RequireJS 会在依赖加载的第一时间加载并执行依赖内的代码，然后再执行回调内的模块代码；而 SeaJS 会在声明依赖之后才会执行依赖内的代码。总的来说就是：<code>AMD 推崇依赖前置、提前执行，CMD 推崇依赖就近、延迟执行。</code></p>
+<p><code>ES6 Module</code><br>从 ES6 开始，Javascript 开始有了标准层面的模块化，旨在成为浏览器端和服务器端的通用模块化方案。它的写法很简单，具体如下：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params"></span>)&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123;add&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//increment.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;add&#125; <span class="keyword">from</span> <span class="string">&#x27;./math&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">increment</span>(<span class="params">val</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="title function_">add</span>(val,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>那么它和上面提到的几种模块化方案有哪些不同呢？</p>
+<ol>
+<li>动态只读引用<blockquote>
+<p>ES6 模块的运行机制与 CommonJS 不一样。JS 引擎对脚本静态分析的时候，遇到模块加载命令<code>import</code>，就会生成一个只读引用。等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。换句话说，ES6 的<code>import</code>有点像 Unix 系统的“符号连接”，原始值变了，<code>import</code>加载的值也会跟着变。因此</p>
+</blockquote>
+</li>
+<li>编译时输出<blockquote>
+<p>ES6 模块不是对象，而是通过 <code>export</code> 命令显式指定输出的代码，<code>import</code>时采用静态命令的形式。即在<code>import</code>时可以指定加载某个输出值，而不是加载整个模块，这种加载称为“编译时加载”。模块内部引用的变化，会反应在外部。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>AMD&#x2F;CMD&#x2F;CommonJs 是 js 模块化开发的规范，对应的实现是 require.js&#x2F;sea.js&#x2F;Node.js，ES Module 是 ES6 在语言规范上的模块化实现。</li>
+<li>CommonJS 主要针对服务端，AMD&#x2F;CMD&#x2F;ES Module 主要针对浏览器端，容易混淆的是 AMD&#x2F;CMD。针对服务器端和针对浏览器端有什么本质的区别呢？服务器端一般采用同步加载文件，也就是说需要某个模块，服务器端便停下来，等待它加载再执行，因为这部分很快。而浏览器端采用异步加载，因为需要发送 http 请求，这就需要一个预处理，提前将所需要的模块文件并行加载好。</li>
+<li>AMD&#x2F;CMD 的区别：虽然都是并行加载 js 文件，但还是有所区别，AMD 是预加载，在并行加载 js 文件同时，还会解析执行该模块（因为还需要执行，所以在加载某个模块前，这个模块的依赖模块需要先加载完成）；而 CMD 是懒加载，虽然会一开始就并行加载 js 文件，但是不会执行，而是在需要的时候才执行。</li>
+<li>AMD&#x2F;CMD 的优缺点：JS 引擎是单线程的，单位时间内只能执行单个任务，所以在加载多个大文件时，会阻塞脚本执行。AMD 会在文件全部加载完毕后才执行代码，CMD 则会遇见依赖再加载代码，在此种情况 CMD 会更快，其他情形则相差不多。</li>
+<li></li>
+</ol>
+<h2 id="二、模块化的本质"><a href="#二、模块化的本质" class="headerlink" title="二、模块化的本质"></a>二、模块化的本质</h2><blockquote>
+<p>模块化的本质在于外部只能访问模块暴露出来的属性和方法，可以通过闭包的特性实现。</p>
+</blockquote>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 原生模块模式</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">moduleA</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> something = <span class="string">&quot;something&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> another = <span class="string">&quot;another&quot;</span>;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">doSomething</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(something);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">doAnother</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(another);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">doSomething</span>: doSomething,</span><br><span class="line">        <span class="attr">doAnother</span>: doAnother</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用模块内方法</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="title function_">moduleA</span>();</span><br><span class="line">foo.<span class="title function_">doSomething</span>(); <span class="comment">// something</span></span><br><span class="line">foo.<span class="property">another</span>; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// jQuery 类型的模块</span></span><br><span class="line"><span class="comment">// var $ = window.jQuery()</span></span><br></pre></td></tr></table></figure></div>
+<p>在这里通过调用 moduleA() 这个函数来创建模块实例 foo，通过这个模块实例可以调用模块内暴露的变量和方法，但仍存在问题，在于 moduleA 是一个全局函数，可能会造成函数名污染。也可以使用 IIFE 的方式创建：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// IIFE</span></span><br><span class="line"><span class="keyword">var</span> foo = (<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> something = <span class="string">&quot;something&quot;</span>;</span><br><span class="line">	<span class="keyword">var</span> another = <span class="string">&quot;another&quot;</span>;</span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">doSomething</span>(<span class="params"></span>)&#123;...&#125;</span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">doAnother</span>(<span class="params"></span>)&#123;...&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		<span class="attr">doSomething</span>: doSomething,</span><br><span class="line">		<span class="attr">doAnother</span>: doAnother</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></div>
+<p>这种形式避免了函数名冲突，并且实现了单例模式。</p>
+<p>大多数模块加载器本质上就是将这种模块定义封装进一个 API，下面给出进一步实现：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> moduleCreater = (<span class="keyword">function</span> <span class="title function_">Manager</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> modules = &#123;&#125;;</span><br><span class="line">	<span class="comment">// 通过 define 方法定义模块</span></span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">define</span>(<span class="params">id,deps,impl</span>)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; deps.<span class="property">length</span>;i++)&#123;</span><br><span class="line">			<span class="comment">// 在这里解包依赖数组</span></span><br><span class="line">			deps[i] = modules[deps[i]];</span><br><span class="line">		&#125;</span><br><span class="line">		modules[id] = impl.<span class="title function_">apply</span>(imply,deps);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">get</span>(<span class="params">id</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> modules[id];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		<span class="attr">define</span>: define,</span><br><span class="line">		<span class="attr">get</span>: get</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></div>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>《你不知道的 Javascript》（上卷）</li>
+<li><a class="link"   href="https://www.cnblogs.com/lvdabao/p/js-modules-develop.html" >js 模块化历程 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://www.cnblogs.com/moxiaowohuwei/p/8692359.html" >js 模块化编程之彻底弄懂 CommonJS 和 AMD&#x2F;CMD！ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://github.com/seajs/seajs/issues/588" >前端模块化开发那点历史 · Issue #588 · seajs&#x2F;seajs (github.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://github.com/seajs/seajs/issues/269" >从 CommonJS 到 Sea.js · Issue #269 · seajs&#x2F;seajs (github.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>方法论</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【一些有趣的问题】04，逗号运算符</title>
+    <url>/2021/03/14/someInterestingQuestions04/</url>
+    <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;<span class="number">6</span>,j&lt;<span class="number">5</span>,i++,j++)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i,j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><code>参考资料</code></h2>]]></content>
+      <categories>
+        <category>一些有趣的问题</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【一些有趣的问题】03，浮点数</title>
+    <url>/2021/03/06/someInterestingQuestions03/</url>
+    <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">0.1</span> + <span class="number">0.2</span> == <span class="number">0.3</span>；</span><br><span class="line"><span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> - <span class="number">0.9</span> == <span class="number">0.1</span>;</span><br><span class="line"><span class="comment">// false</span></span><br></pre></td></tr></table></figure></div>
+<p>在 JS 中只有一种数值类型，以 64 位表示的双精度浮点类型</p>
+<p><code>解决方法</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="number">0.1</span> + <span class="number">0.2</span>).<span class="title function_">toFixed</span>(<span class="number">10</span>) == <span class="number">0.3</span>;</span><br><span class="line"><span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">(<span class="number">1</span> - <span class="number">0.9</span>).<span class="title function_">toFixed</span>(<span class="number">10</span>) == <span class="number">0.1</span>;</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
+
+<p><code>可以把运算封装成方法</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//加法函数，用来得到精确的加法结果</span></span><br><span class="line"><span class="comment">//说明：javascript 的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的加法结果。</span></span><br><span class="line"><span class="comment">//调用：accAdd(arg1,arg2)</span></span><br><span class="line"><span class="comment">//返回值：arg1 加上 arg2 的精确结果</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">accAdd</span>(<span class="params">arg1,arg2</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> r1,r2,m;</span><br><span class="line">  <span class="keyword">try</span>&#123;r1=arg1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;r1=<span class="number">0</span>&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;r2=arg2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;r2=<span class="number">0</span>&#125;</span><br><span class="line">  m=<span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>,<span class="title class_">Math</span>.<span class="title function_">max</span>(r1,r2))</span><br><span class="line">  <span class="keyword">return</span> (arg1*m+arg2*m)/m</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//给 Number 类型增加一个 add 方法，调用起来更加方便。</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">add</span> = <span class="keyword">function</span> (<span class="params">arg</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">accAdd</span>(arg,<span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//减法函数，用来得到精确的减法结果</span></span><br><span class="line"><span class="comment">//说明：javascript 的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的减法结果。</span></span><br><span class="line"><span class="comment">//调用：accSub(arg1,arg2)</span></span><br><span class="line"><span class="comment">//返回值：arg1 减去 arg2 的精确结果</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">accSub</span>(<span class="params">arg1,arg2</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> r1,r2,m,n;</span><br><span class="line">  <span class="keyword">try</span>&#123;r1=arg1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;r1=<span class="number">0</span>&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;r2=arg2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;r2=<span class="number">0</span>&#125;</span><br><span class="line">  m=<span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>,<span class="title class_">Math</span>.<span class="title function_">max</span>(r1,r2));</span><br><span class="line">  <span class="comment">//last modify by deeka</span></span><br><span class="line">  <span class="comment">//动态控制精度长度</span></span><br><span class="line">  n=(r1&gt;=r2)?<span class="attr">r1</span>:r2;</span><br><span class="line">  <span class="keyword">return</span> ((arg1*m-arg2*m)/m).<span class="title function_">toFixed</span>(n);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//除法函数，用来得到精确的除法结果</span></span><br><span class="line"><span class="comment">//说明：javascript 的除法结果会有误差，在两个浮点数相除的时候会比较明显。这个函数返回较为精确的除法结果。</span></span><br><span class="line"><span class="comment">//调用：accDiv(arg1,arg2)</span></span><br><span class="line"><span class="comment">//返回值：arg1 除以 arg2 的精确结果</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">accDiv</span>(<span class="params">arg1,arg2</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> t1=<span class="number">0</span>,t2=<span class="number">0</span>,r1,r2;</span><br><span class="line">  <span class="keyword">try</span>&#123;t1=arg1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;t2=arg2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="title function_">with</span>(<span class="params"><span class="built_in">Math</span></span>)&#123;</span><br><span class="line">    r1=<span class="title class_">Number</span>(arg1.<span class="title function_">toString</span>().<span class="title function_">replace</span>(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;&quot;</span>))</span><br><span class="line">    r2=<span class="title class_">Number</span>(arg2.<span class="title function_">toString</span>().<span class="title function_">replace</span>(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;&quot;</span>))</span><br><span class="line">    <span class="keyword">return</span> (r1/r2)*<span class="title function_">pow</span>(<span class="number">10</span>,t2-t1);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//给 Number 类型增加一个 div 方法，调用起来更加方便。</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">div</span> = <span class="keyword">function</span> (<span class="params">arg</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">accDiv</span>(<span class="variable language_">this</span>, arg);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//乘法函数，用来得到精确的乘法结果</span></span><br><span class="line"><span class="comment">//说明：javascript 的乘法结果会有误差，在两个浮点数相乘的时候会比较明显。这个函数返回较为精确的乘法结果。</span></span><br><span class="line"><span class="comment">//调用：accMul(arg1,arg2)</span></span><br><span class="line"><span class="comment">//返回值：arg1 乘以 arg2 的精确结果</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">accMul</span>(<span class="params">arg1,arg2</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> m=<span class="number">0</span>,s1=arg1.<span class="title function_">toString</span>(),s2=arg2.<span class="title function_">toString</span>();</span><br><span class="line">  <span class="keyword">try</span>&#123;m+=s1.<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;m+=s2.<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="keyword">return</span>  <span class="title class_">Number</span>(s1.<span class="title function_">replace</span>(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;&quot;</span>))*<span class="title class_">Number</span>(s2.<span class="title function_">replace</span>(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;&quot;</span>))/<span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>,m)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//给 Number 类型增加一个 mul 方法，调用起来更加方便。</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">mul</span> = <span class="keyword">function</span> (<span class="params">arg</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">accMul</span>(arg, <span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;br&gt;<span class="comment">//验证一下：</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">accAdd</span>(<span class="number">1.79</span>, <span class="number">0.12</span>));  <span class="comment">//1.91</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">accSub</span>(<span class="number">2.01</span>, <span class="number">0.12</span>));  <span class="comment">//1.89</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">accDiv</span>(<span class="number">0.69</span>, <span class="number">10</span>));    <span class="comment">//0.069&lt;br&gt;console.log(accMul(1.01, 1.3));   //1.313　　</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><code>参考资料</code></h2><ul>
+<li><a class="link"   href="https://www.cnblogs.com/ppforever/p/5011660.html" >浅谈 JavaScript 浮点数及其运算 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://www.w3school.com.cn/js/js_numbers.asp" >JavaScript 数字
+ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>一些有趣的问题</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【一些有趣的问题】05，for..in 与 for..of</title>
+    <url>/2021/03/20/someInterestingQuestions05/</url>
+    <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>];</span><br><span class="line">arr.<span class="property">foo</span> = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="comment">// 此时 arr 对象的结构：[3,5,7,foo: &#x27;hello&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// 输出 &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;foo&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> arr) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// 输出 &quot;3&quot;, &quot;5&quot;, &quot;7&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意 for...of 的输出没有出现 &quot;hello&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p><code>for...in </code></p>
+<ul>
+<li>循环一个指定的变量来循环一个对象所有可枚举的属性。JavaScript 会为每一个不同的属性执行指定的语句。</li>
+<li>深入一点</li>
+</ul>
+<p><code>for...of </code></p>
+<ul>
+<li>在可迭代对象（包括 Array、Map、Set、arguments 等等）上创建了一个循环，对值的每一个独特属性调用一次迭代。</li>
+<li>首先会在向访问对象请求一个迭代器对象，然后通过调用迭代器对象的 next() 方法来遍历所有返回值。</li>
+</ul>
+<p><code>Symbol.iterator</code></p>
+<ul>
+<li>为每一个对象定义了默认的迭代器。该迭代器可以被 for…of 循环使用。</li>
+<li>可以通过 Symbol.iterator 来访问可迭代对象的@@iterator 属性<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> it = myArray[<span class="title class_">Symbol</span>.<span class="property">iterator</span>]();</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+]]></content>
+      <categories>
+        <category>一些有趣的问题</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【一些有趣的问题】06，进制转换</title>
+    <url>/2021/03/27/someInterestingQuestions06/</url>
+    <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">022</span> - <span class="number">017</span></span><br><span class="line"><span class="comment">// 3，18 - 15 = 3</span></span><br><span class="line"></span><br><span class="line"><span class="number">018</span> - <span class="number">045</span></span><br><span class="line"><span class="comment">// -19，18 - 37 = -19</span></span><br></pre></td></tr></table></figure></div>
+<p>在 JS 中，在 Number 类型前加 0 会转换为 8 进制，如果原来的值位上有大于 8 的数，则不会进行转换。</p>
+<p>在 JS 中，有几种方法来进行进制转换，但只能通过 10 进制中转，即 10 进制转其他进制或者其他进制转 10 进制。</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 0x 表示十六进制，但是 js 会强制转换为十进制来运算，0xa == 10</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">0xa</span>;</span><br><span class="line"><span class="comment">// 0 开头表示八进制，同样强制转换为十进制来运算 010 = 8</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">010</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Number.parseInt 方法把字符串（只能由字母和数字组成）由低进制转高进制，如二进制转八进制，但是八进制不能转二进制，radix 表示进制，取值 2~36，返回一个字符串。</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">parseInt</span>(string,radix)</span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">parseInt</span>(<span class="string">&#x27;0101&#x27;</span>,<span class="number">2</span>) <span class="comment">// 5</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">parseInt</span>(<span class="string">&#x27;0101&#x27;</span>,<span class="number">8</span>) <span class="comment">// 65</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Number.toString 方法将十进制数字转换为任意进制的字符串形式，同样，radix 表示进制，取值 2~36</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="title function_">toString</span>(radix)</span><br><span class="line">(<span class="number">10</span>).<span class="title function_">toString</span>(<span class="number">2</span>) <span class="comment">//&quot;1010&quot; 转 2 进制</span></span><br><span class="line">(<span class="number">10</span>).<span class="title function_">toString</span>(<span class="number">8</span>) <span class="comment">//&quot;12&quot; 转 8 进制</span></span><br><span class="line">(<span class="number">10</span>).<span class="title function_">toString</span>(<span class="number">16</span>) <span class="comment">//&quot;a&quot; 转 16 进制</span></span><br><span class="line">(<span class="number">1000</span>).<span class="title function_">toString</span>(<span class="number">36</span>) <span class="comment">//&quot;rs&quot; 转 36 进制</span></span><br></pre></td></tr></table></figure></div>]]></content>
+      <categories>
+        <category>一些有趣的问题</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Vue3 源码学习】02，初始 mount() 方法</title>
+    <url>/2022/06/03/vueSourceCodeStudy03/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>书接上回，在 runtime-core 包下的文件<code>/runtime-core/src/apiCreateApp.ts</code>中我们找到了 createAppAPI() 方法，此方法调用时创建一个 app 实例，在这个实例中挂载了一些我们熟悉的实例方法，<code>mount()</code>就在其中。</p>
+<h2 id="首先提几个问题"><a href="#首先提几个问题" class="headerlink" title="首先提几个问题"></a>首先提几个问题</h2><ol>
+<li>初次挂载时 mount() 方法做了些什么？ </li>
+<li>回忆一下 vue 的生命周期，mount() 方法在哪一部分执行了？</li>
+</ol>
+<h2 id="初次挂载时-mount-方法干了些什么？"><a href="#初次挂载时-mount-方法干了些什么？" class="headerlink" title="初次挂载时 mount() 方法干了些什么？"></a>初次挂载时 mount() 方法干了些什么？</h2>
+
+<p>首先进入 mount() 方法，它接收 3 个参数：<code>rootContainer</code>，isHydrate，isSVG，我们这里只关注 rootContainer，因为初次挂载时的一般写法是：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 可以看到我们只传了一个字符串，是一个 CSS 选择器。</span></span><br><span class="line"><span class="title function_">createApp</span>(&#123;&#125;).<span class="title function_">mount</span>(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>再看方法体：</p>
+
+
+<p>可以看到首先创建了一个 vnode，这个 vnode 由 createApp 方法传入的根组件确定；然后执行红框中的 render() 方法，我们传入的 rootContainer 作为第二个参数传入。</p>
+<p>让我们看看这个 render 方法，它是 createAppAPI() 方法的第一个参数，上一章介绍过这是 baseCreateRenderer() 这个工厂函数的返回，它在<code>/runtime-core/src/renderer.ts</code>目录下可以找到。</p>
+
+
+
+
+<p>接下来找到 render() 方法的方法体：</p>
+
+
+<p>可以看到 render() 方法接收三个参数，初次挂载时 vnode 有值，container 是我们 mount() 方法传入的挂载节点。因为 vnode 存在，所以执行 else 部分，可以看到，这里使用了一个<code>patch()</code>方法</p>
+<p>我们来看一下这个 patch() 方法中传了些什么：</p>
+
+
+<p>可以看出传入的 container 参数是一个 DOM 对象，在第一次挂载时指向<code>div#app</code>，我们的宿主对象，此时 container._vnode 值为 undefined（在 render 方法的最后才会给_vnode 属性赋值），所以第一个参数值为 null，第二个参数是之前传入的 vnode 对象，长这样：</p>
+
+
+<p>之后会用到，此时先不做关注。我们再来看看 patch() 方法内部：</p>
+
+
+<!-- 
+  YCNOTE：为什么 switch 语句要传入一个对象
+ -->
+<p>沿着逻辑往下走到红框部分，此时从我们传入的 vnode（第一次挂载时 mount 方法中新建的 vnode) 中取出 3 个值，根据<code>type</code>和<code>shapeFlag</code>的值进行不同的操作：</p>
+
+
+<p>此时 shapeFlag 的值为 4，进行位与运算值为 true。以下<code>位移枚举</code>可以学一下，它的好处是清晰、好计算并且可以进行多值判断。</p>
+
+
+<p>初次挂载时执行<code>processComponent()</code>方法，进入方法体 processComponent()：</p>
+
+
+<p>可以看到走进 else 代码块，触发方法<code>mountComponent()</code>，见名知意，组件由这个方法挂载。进入该方法，该方法首先会执行一个<code>setupRenderEffect()</code>方法，</p>
+
+
+<p>这个方法创建了一个执行器 <code>effect</code>，然后调用了 effect.run() 方法，当 effect.run() 执行完毕时，整个挂载流程结束。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结一下，初次挂载时 mount() 方法执行流程大概这样：</p>
+<p>mount()–&gt;createVNode()–&gt;render()–&gt;patch()–&gt;processComponent()–&gt;mountComponent()–&gt;createComponentInstance–&gt;setupRenderEffect()–&gt;ReactiveEffect()–&gt;update()–&gt;effect.run()</p>
+<p>简洁一点就是：</p>
+<p>mount()–&gt;render()–&gt;patch()</p>
+<p>可以通过调用堆栈查看：</p>
+
+
+<p>回到最初提的两个问题，第一个问题已经基本解答完毕，第二个问题，mount() 函数在 vue 的生命周期的哪一部分执行也已经可以推想出来：</p>
+
+
+<p>本篇文章就到此为止，因为是初识，所以比较简单，基本上就是跟着调用栈走，之后会更具体的分析 render() 和 patch() 函数。</p>
 <p>若有错误请大佬指出，感激不尽。</p>
 ]]></content>
       <categories>

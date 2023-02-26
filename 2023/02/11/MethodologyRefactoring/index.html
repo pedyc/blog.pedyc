@@ -9,18 +9,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2021/02/25/someinterestingquestions01/"/>
+    <link rel="canonical" href="http://example.com/2023/02/11/methodologyrefactoring/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="【一些有趣的问题】02，作用域与闭包">
+    <meta property="og:title" content="【方法论】代码重构的一点心得">
     <meta property="og:description" content="Hexo Theme Redefine">
-    <meta property="og:url" content="http://example.com2021/02/25/someInterestingQuestions01/">
+    <meta property="og:url" content="http://example.com2023/02/11/MethodologyRefactoring/">
     <meta property="og:image" content="/images/avatar.jpeg">
     <meta property="og:site_name" content="ped-Yc&#39;s Home">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="【一些有趣的问题】02，作用域与闭包">
+    <meta name="twitter:title" content="【方法论】代码重构的一点心得">
     <meta name="twitter:description" content="Hexo Theme Redefine">
     <meta name="twitter:image" content="/images/avatar.jpeg">
     <!--- Icon Part-->
@@ -31,7 +31,7 @@
     
     <title>
         
-            【一些有趣的问题】02，作用域与闭包 -
+            【方法论】代码重构的一点心得 -
         
         ped-Yc&#39;s Home
     </title>
@@ -333,7 +333,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">【一些有趣的问题】02，作用域与闭包</h1>
+                    <h1 class="article-title-regular">【方法论】代码重构的一点心得</h1>
                 </div>
             
                 
@@ -355,8 +355,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2021-02-25 09:30:54</span>
-        <span class="mobile">2021-02-25 09:30</span>
+        <span class="pc">2023-02-11 02:30:57</span>
+        <span class="mobile">2023-02-11 02:30</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -364,7 +364,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E4%B8%80%E4%BA%9B%E6%9C%89%E8%B6%A3%E7%9A%84%E9%97%AE%E9%A2%98/">一些有趣的问题</a>&nbsp;
+                        <a href="/categories/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</a>&nbsp;
                     </li>
                 
             </ul>
@@ -399,48 +399,47 @@
             
 
             <div class="article-content markdown-body">
-                <h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h2><p><code>以下语句会如何输出？</code></p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;i&#x27;</span>,i)</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">    &#125;,<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p><code>结果</code>：<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/2021/02/25/someInterestingQuestions01/q1.png"
-                      class="" title="结果"
-                ></p>
-<p><code>原因</code>：异步代码会在同步代码执行完毕后执行</p>
-<p><code>分析</code>：在执行 setTimeout 中的 console.log 打印变量 i 时，对标识符 i 进行 RHS 查询，因为在当前作用域找不到对应标识符，所以向上前往父级作用域寻找。所以打印的其实是 for 循环中声明的变量 i，而此时已经经过循环赋值变成了5</p>
-<p><strong>解决方案一：</strong></p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">    (<span class="keyword">function</span>(<span class="params">i</span>)&#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">        &#125;,<span class="number">1000</span>)</span><br><span class="line">    &#125;)(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p><code> 结果</code>：1秒后连续打印 0 1 2 3 4 </p>
-<p><code>原因</code>：IIFE 使得对打印的标识符 i 的查询终止于当前作用域，不用向上继续查询 分析：console.log 打印变量 i 时，发现该标识符对应当前作用域中的形参，其值为传入的实参。所以每次执行 console.log 语句，变量 i 的值都会被覆盖，第一次为 0，第二次为 1，依次类推打印 0 1 2 3 4，而 for 循环中声明的变量 i，其值为5</p>
-<p><strong>解决方案二：</strong></p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">  <span class="title function_">setTimeourt</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">  &#125;,<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p><code>结果</code>：1秒后连续打印 0 1 2 3 4</p>
-<p><code>原因</code>：let 声明不会产生变量提升，并且会绑定当前作用域。for 循环头部的 let 声明会有一个特殊的行为，这个行为指出变量在循环过程中不止被声明一次，每次迭代都会声明。随后的每个迭代都会使用上一个迭代结束时的值来初始化这个变量。</p>
-<hr>
-<h2 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h2><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(i++);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f1 = <span class="title class_">Foo</span>(),</span><br><span class="line">    f2 = <span class="title class_">Foo</span>();</span><br><span class="line"><span class="title function_">f1</span>();</span><br><span class="line"><span class="title function_">f1</span>();</span><br><span class="line"><span class="title function_">f2</span>();</span><br></pre></td></tr></table></figure></div>
-<p><code>结果</code>：<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/2021/02/25/someInterestingQuestions01/q2.png"
-                      class="" title="结果"
-                ></p>
-<p><code>原因</code>：</p>
-<p>第一次调用函数f1()：打印 0，创建闭包，此时局部变量i&#x3D;1；</p>
-<p>第二次调用函数f1()：打印 1，创建闭包，此时局部变量i&#x3D;2；</p>
-<p>第一次调用函数f2()：打印 0，因为函数f1、f2指向不同对象。</p>
-<hr>
-<h2 id="问题3"><a href="#问题3" class="headerlink" title="问题3"></a>问题3</h2><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 类变量a</span></span><br><span class="line">  <span class="title class_">Foo</span>.<span class="property">a</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 实例变量a，每个实例都有一个</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">a</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 实例变量a，所有实例共享一个</span></span><br><span class="line"><span class="title class_">Foo</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">a</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 类变量a</span></span><br><span class="line"><span class="title class_">Foo</span>.<span class="property">a</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">4</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Foo</span>.<span class="title function_">a</span>();</span><br><span class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="title class_">Foo</span>();</span><br><span class="line">obj.<span class="title function_">a</span>();</span><br><span class="line"><span class="title class_">Foo</span>.<span class="title function_">a</span>();</span><br></pre></td></tr></table></figure></div>
-<p><code>结果</code>：<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/2021/02/25/someInterestingQuestions01/q3.png"
-                      class="" title="结果"
-                ></p>
-<p><code>原因</code>：</p>
-<p>打印4：一开始Foo方法并未调用，输出的是函数体外的变量a，此时可以把Foo当作对象，Foo.a为其对象属性。</p>
-<p>打印2：使用new操作符实例化Foo后，obj.a首先查找obj上的标识符a，如果找不到的话沿着原型链向上查找，也找不到的话返回undefined。</p>
-<p>打印1：此时Foo方法已经调用，方法体内的类变量a覆盖原来已经赋值的类变量a。</p>
+                <h1 id="重构（Refactoring）"><a href="#重构（Refactoring）" class="headerlink" title="重构（Refactoring）"></a>重构（Refactoring）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一直在做前端重构的工作，多少有些感想，特此记录。</p>
+<p>首先，项目的历史太悠久了，AngularJS 的项目，</p>
+<h2 id="一、什么是重构？为什么要重构？重构要达成什么目标？"><a href="#一、什么是重构？为什么要重构？重构要达成什么目标？" class="headerlink" title="一、什么是重构？为什么要重构？重构要达成什么目标？"></a>一、什么是重构？为什么要重构？重构要达成什么目标？</h2><p><strong>什么是重构</strong></p>
+<p>在<code>不改变代码外在行为</code>的前提下，对代码进行修改，以<code>改进程序的内部结构</code>。</p>
+<p><strong>为什么要重构</strong></p>
+<p>在软件工程中，开发迭代的过程实际上是一个熵增的过程，软件系统会随着生命周期的进行变得越来越臃肿、混乱、冗余，从而增加维护与进一步迭代的成本。而重构可以<code>偿还技术债务、改进软件结构、减小维护和迭代的成本、增加产品可信</code>。</p>
+<p><strong>重构要达成什么目标？</strong></p>
+<ol>
+<li>系统结构重新梳理：旧系统在设计上可能有许多疏漏，由于经验的欠缺或者考虑不周到，这是难以避免的。新系统应该见贤思齐、查漏补缺，例如重新设计基类、文件结构和继承关系，争取让系统更加完善。</li>
+<li>公共资源重新梳理：</li>
+<li>业务需求重新梳理：</li>
+</ol>
+<h2 id="二、重构有哪些分类？什么时候重构？重构有哪些原则？"><a href="#二、重构有哪些分类？什么时候重构？重构有哪些原则？" class="headerlink" title="二、重构有哪些分类？什么时候重构？重构有哪些原则？"></a>二、重构有哪些分类？什么时候重构？重构有哪些原则？</h2><p><strong>重构有哪些分类？</strong></p>
+<ul>
+<li>小粒度重构（函数级、小模块）</li>
+<li>大粒度重构（架构级、大模块）</li>
+</ul>
+<p><strong>什么时候重构？</strong></p>
+<ul>
+<li>新增需求时（小粒度）</li>
+<li>修改 BUG 时（小粒度）</li>
+<li>复审代码时（大粒度）</li>
+<li>代码逻辑混乱、依赖混杂（大粒度）</li>
+</ul>
+<p><strong>重构有哪些原则？</strong></p>
+<ul>
+<li>先评审，再重构，不要反复推翻重来</li>
+<li>确保模块的功能完整，否则不重构该模块</li>
+<li>新增需求时，不要改动既有代码（小粒度）</li>
+<li>重构既有代码时，不要新增功能（小粒度）</li>
+</ul>
+<h2 id="三、重构工作流程"><a href="#三、重构工作流程" class="headerlink" title="三、重构工作流程"></a>三、重构工作流程</h2><ol>
+<li>前期准备，搭架子<ul>
+<li>构建对应技术栈的文件结构、代码关系</li>
+<li>整理公共资源、公共能力</li>
+<li>整理业务需求，确保没有遗漏的需求</li>
+</ul>
+</li>
+<li>前期准备，分需求、培训（主要涉及文件结构和公共资源）</li>
+<li>开始重构</li>
+</ol>
 
             </div>
 
@@ -448,11 +447,11 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：【一些有趣的问题】02，作用域与闭包</li>
+        <li>本文标题：【方法论】代码重构的一点心得</li>
         <li>本文作者：ped-Yc</li>
-        <li>创建时间：2021-02-25 09:30:54</li>
+        <li>创建时间：2023-02-11 02:30:57</li>
         <li>
-            本文链接：https://ped-yc.github.io/2021/02/25/someInterestingQuestions01/
+            本文链接：https://ped-yc.github.io/2023/02/11/MethodologyRefactoring/
         </li>
         <li>
             版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -481,13 +480,13 @@
                         <div class="article-prev">
                             <a class="prev"
                             rel="prev"
-                            href="/2022/03/09/MethodologyFront-endHistory/"
+                            href="/2023/02/21/MethodologyJSExcutionProcess/"
                             >
                                 <span class="left arrow-icon flex-center">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </span>
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">【方法论】前端发展历程梳理</span>
+                                    <span class="post-nav-title-item">【方法论】JS 执行流程</span>
                                     <span class="post-nav-item">上一篇</span>
                                 </span>
                             </a>
@@ -497,10 +496,10 @@
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2021/02/23/someInterestingQuestions02/"
+                            href="/2022/06/28/ReprintJSEventLoop/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">【一些有趣的问题】01，事件循环</span>
+                                    <span class="post-nav-title-item">【转载】JS：详解Event Loop运行机制</span>
                                     <span class="post-nav-item">下一篇</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -538,8 +537,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">【一些有趣的问题】02，作用域与闭包</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%981"><span class="nav-text">问题1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%982"><span class="nav-text">问题2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%983"><span class="nav-text">问题3</span></a></li></ol>
+        <div class="page-title">【方法论】代码重构的一点心得</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E6%9E%84%EF%BC%88Refactoring%EF%BC%89"><span class="nav-text">重构（Refactoring）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E9%87%8D%E6%9E%84%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%87%8D%E6%9E%84%EF%BC%9F%E9%87%8D%E6%9E%84%E8%A6%81%E8%BE%BE%E6%88%90%E4%BB%80%E4%B9%88%E7%9B%AE%E6%A0%87%EF%BC%9F"><span class="nav-text">一、什么是重构？为什么要重构？重构要达成什么目标？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%87%8D%E6%9E%84%E6%9C%89%E5%93%AA%E4%BA%9B%E5%88%86%E7%B1%BB%EF%BC%9F%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%87%8D%E6%9E%84%EF%BC%9F%E9%87%8D%E6%9E%84%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8E%9F%E5%88%99%EF%BC%9F"><span class="nav-text">二、重构有哪些分类？什么时候重构？重构有哪些原则？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E6%9E%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-text">三、重构工作流程</span></a></li></ol></li></ol>
 
     </div>
 </div>
