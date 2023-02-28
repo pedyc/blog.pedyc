@@ -1499,7 +1499,7 @@ setTimeout
       </tags>
   </entry>
   <entry>
-    <title>【Vue3 源码学习】02，初始 mount() 方法</title>
+    <title>【Vue3 源码学习】03，初始 mount() 方法</title>
     <url>/2022/06/03/vueSourceCodeStudy03/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>书接上回，在 runtime-core 包下的文件<code>/runtime-core/src/apiCreateApp.ts</code>中我们找到了 createAppAPI() 方法，此方法调用时创建一个 app 实例，在这个实例中挂载了一些我们熟悉的实例方法，<code>mount()</code>就在其中。</p>
 <h2 id="首先提几个问题"><a href="#首先提几个问题" class="headerlink" title="首先提几个问题"></a>首先提几个问题</h2><ol>
@@ -1938,6 +1938,52 @@ setTimeout
 ]]></content>
       <categories>
         <category>方法论</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/02/28/Algorithm/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>【API】MutationObserver</title>
+    <url>/2023/01/11/APIMutationObserver/</url>
+    <content><![CDATA[<h2 id="MutationObserver"><a href="#MutationObserver" class="headerlink" title="MutationObserver"></a><a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver" >MutationObserver <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h2><blockquote>
+<p><code>MutationObserver</code> 接口提供了监视对 DOM 树所做更改的能力。它被设计为旧的 Mutation Events 功能的替代品，该功能是 DOM3 Events 规范的一部分。</p>
+</blockquote>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>MutationObserver()</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建并返回一个新的 MutationObserver 它会在指定的 DOM 发生变化时被调用。</span></span><br><span class="line"><span class="keyword">var</span> observer = <span class="keyword">new</span> <span class="title class_">MutationObserver</span>(callback);</span><br></pre></td></tr></table></figure></div>
+<p>this<br>new绑定 用于类的构造函数<br>显式绑定 call apply bind<br>隐式绑定 绑定到调用函数的对象<br>默认绑定</p>
+<p>其他：<br>箭头函数 继承外层this</p>
+]]></content>
+      <categories>
+        <category>API</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【实践】手写 call、apply、bind</title>
+    <url>/2022/08/15/PracticeCallApply/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>实践</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【实践】手写 Promise</title>
+    <url>/2022/09/08/PracticePromise/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>实践</category>
       </categories>
       <tags>
         <tag>JS</tag>
