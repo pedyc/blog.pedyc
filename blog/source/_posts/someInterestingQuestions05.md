@@ -1,5 +1,5 @@
 ---
-title: 【一些有趣的问题】05，for..in与for..of
+title: 【一些有趣的问题】05，for..in 与 for..of
 date: 2021-03-20 11:15:54
 tags: [JS]
 categories: [一些有趣的问题]
@@ -9,7 +9,7 @@ categories: [一些有趣的问题]
 ```javascript
 let arr = [3, 5, 7];
 arr.foo = "hello";
-// 此时arr对象的结构：[3,5,7,foo: 'hello']
+// 此时 arr 对象的结构：[3,5,7,foo: 'hello']
 
 for (let i in arr) {
   console.log(i); // 输出 "0", "1", "2", "foo"
@@ -27,16 +27,13 @@ for (let i of arr) {
 - 深入一点
 
 `for...of `
-- 在可迭代对象（包括Array、Map、Set、arguments 等等）上创建了一个循环，对值的每一个独特属性调用一次迭代。
-- 首先会在向访问对象请求一个迭代器对象，然后通过调用迭代器对象的next()方法来遍历所有返回值。
+- 在可迭代对象（包括 Array、Map、Set、arguments 等等）上创建了一个循环，对值的每一个独特属性调用一次迭代。
+- 首先会在向访问对象请求一个迭代器对象，然后通过调用迭代器对象的 next() 方法来遍历所有返回值。
 
 `Symbol.iterator`
 -  为每一个对象定义了默认的迭代器。该迭代器可以被 for...of 循环使用。
-- 可以通过Symbol.iterator来访问可迭代对象的@@iterator属性
+- 可以通过 Symbol.iterator 来访问可迭代对象的@@iterator 属性
 ```javascript
 var myArray = [1,2,3];
 var it = myArray[Symbol.iterator]();
 ```
-
-
-

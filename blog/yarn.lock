@@ -1255,6 +1255,11 @@
   dependencies:
     "picomatch" "^2.2.1"
 
+"redefine@^0.2.1":
+  "integrity" "sha512-F5dHsehFWLqzMN/f1YiquC2WBLTqdBF3IgnWT9hlNOdu0u+of716H8GArop2i+yBBk0tdd9f61ay48QJxuZkcg=="
+  "resolved" "https://registry.npmjs.org/redefine/-/redefine-0.2.1.tgz"
+  "version" "0.2.1"
+
 "requires-port@^1.0.0":
   "integrity" "sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ=="
   "resolved" "https://registry.npmjs.org/requires-port/-/requires-port-1.0.0.tgz"
