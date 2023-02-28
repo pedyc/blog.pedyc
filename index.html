@@ -17,17 +17,17 @@
     <meta property="og:title" content="ped-Yc&#39;s Home">
     <meta property="og:description" content="Hexo Theme Redefine">
     <meta property="og:url" content="http://example.comindex.html">
-    <meta property="og:image" content="./images/avatar.jpeg">
+    <meta property="og:image" content="/images/avatar.jpeg">
     <meta property="og:site_name" content="ped-Yc&#39;s Home">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ped-Yc&#39;s Home">
     <meta name="twitter:description" content="Hexo Theme Redefine">
-    <meta name="twitter:image" content="./images/avatar.jpeg">
+    <meta name="twitter:image" content="/images/avatar.jpeg">
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="./images/avatar.jpeg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="./images/avatar.jpeg">
+    <link rel="icon" type="image/png" href="/images/avatar.jpeg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.jpeg">
     <meta name="theme-color" content="#005080">
-    <link rel="shortcut icon" href="/./images/avatar.jpeg">
+    <link rel="shortcut icon" href="/images/avatar.jpeg">
     
     <title>
         
@@ -45,7 +45,7 @@
     <script id="hexo-configurations">
     let REDEFINE = window.REDEFINE || {};
     REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.xml"};
-    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"./images/avatar.jpeg","favicon":"./images/avatar.jpeg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"我见青山多妩媚，料青山见我应如是。","custom_font":{"enable":false,"font_family":null,"font_url":null}},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"1.0.0","friend_links":{"columns":2}};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avatar.jpeg","favicon":"/images/avatar.jpeg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"我见青山多妩媚，料青山见我应如是。","custom_font":{"enable":false,"font_family":null,"font_url":null}},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"1.0.0","friend_links":{"columns":2}};
     REDEFINE.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
   </script>
     
@@ -344,26 +344,96 @@
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2023/02/01/%E3%80%90%E6%96%B9%E6%B3%95%E8%AE%BA%E3%80%91%E4%BB%A3%E7%A0%81%E9%87%8D%E6%9E%84%E7%9A%84%E4%B8%80%E7%82%B9%E5%BF%83%E5%BE%97/">
-                        代码重构的一点心得
+                    <a href="/2023/02/21/MethodologyJSExcutionProcess/">
+                        【方法论】JS 执行流程
                     </a>
                 </h3>
 
                 <div class="home-article-content markdown-body">
                     
-                        重构（Refactoring）前言最近一直在做前端重构的工作，多少有些感想，特此记录。
-首先，项目的历史太悠久了，AngularJS的项目，
-一、什么是重构？为什么要重构？重构要达成什么目标？什么是重构
-在不改变代码外在行为的前提下，对代码进行修改，...
+                        前言本文主要解释 JS 引擎在遇见 script 代码块时，从编译到执行具体经历了些什么？
+一些关于作用域与闭包还有this关键字的问题可能被解答：
+
+为什么会产生变量提升？
+闭包的产生原理是什么？
+多个 script 代码块间是以什么顺序来执行的？...
                     
                 </div>
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Feb 01 2023 02:30:57 GMT+0800">
+            <span class="home-article-date" data-date="Tue Feb 21 2023 00:56:48 GMT+0800">
                 
-                    2023/02/01
+                    2023/02/21
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/JS/">JS</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2023/02/21/MethodologyJSExcutionProcess/">阅读全文<span class="seo-reader-text">【方法论】JS 执行流程</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/02/11/MethodologyRefactoring/">
+                        【方法论】代码重构的一点心得
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        重构（Refactoring）前言最近一直在做前端重构的工作，多少有些感想，特此记录。
+首先，项目的历史太悠久了，AngularJS 的项目，
+一、什么是重构？为什么要重构？重构要达成什么目标？什么是重构
+在不改变代码外在行为的前提下，对代码进行修改...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Feb 11 2023 02:30:57 GMT+0800">
+                
+                    2023/02/11
                 
             </span>
         </span>
@@ -395,7 +465,7 @@
         
     </div>
 
-    <a href="/2023/02/01/%E3%80%90%E6%96%B9%E6%B3%95%E8%AE%BA%E3%80%91%E4%BB%A3%E7%A0%81%E9%87%8D%E6%9E%84%E7%9A%84%E4%B8%80%E7%82%B9%E5%BF%83%E5%BE%97/">阅读全文<span class="seo-reader-text">代码重构的一点心得</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2023/02/11/MethodologyRefactoring/">阅读全文<span class="seo-reader-text">【方法论】代码重构的一点心得</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -407,23 +477,34 @@
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2023/02/01/%E3%80%90JS%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%E3%80%91JS%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B/">
-                        【JS运行机制】JS执行流程
+                    <a href="/2022/06/28/ReprintJSEventLoop/">
+                        【转载】JS：详解Event Loop运行机制
                     </a>
                 </h3>
 
                 <div class="home-article-content markdown-body">
                     
-                        前言&amp;emsp;&amp;emsp;本文主要解释JS引擎在遇见script代码块时，从编译到执行具体经历了什么？为什么会产生变量提升？闭包的产生原理是什么?多个script代码块间是以什么顺序来执行的？为什么定义在不同代码块间的方法可以共通？...
+                        转载：JS：详解Event Loop运行机制 
+
+
+  
+    JS：详解Event Loop运行机制
+  
+
+  
+    在这篇文章中会介绍以下内容：
+    
+      
+        engine runtime 和 call stac...
                     
                 </div>
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Feb 01 2023 00:56:48 GMT+0800">
+            <span class="home-article-date" data-date="Tue Jun 28 2022 17:30:57 GMT+0800">
                 
-                    2023/02/01
+                    2022/06/28
                 
             </span>
         </span>
@@ -433,7 +514,7 @@
                     
                         <li>
                             
-                            <a href="/categories/JS%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">JS运行机制</a>&nbsp;
+                            <a href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a>&nbsp;
                         </li>
                     
                     
@@ -455,7 +536,133 @@
         
     </div>
 
-    <a href="/2023/02/01/%E3%80%90JS%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%E3%80%91JS%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B/">阅读全文<span class="seo-reader-text">【JS运行机制】JS执行流程</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/06/28/ReprintJSEventLoop/">阅读全文<span class="seo-reader-text">【转载】JS：详解Event Loop运行机制</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/06/22/ReprintVueCompositionAPI/">
+                        【转载】Vue Composition API
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        
+## 转载：Composition API - 前端知识库的文章 - 知乎 https://zhuanlan.zhihu.com/p/408272742
+
+
+  前言 
+  关注 React 的同学应该知道，React 在 19 年推出了 Hook...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Wed Jun 22 2022 15:30:57 GMT+0800">
+                
+                    2022/06/22
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/vue/">vue</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/06/22/ReprintVueCompositionAPI/">阅读全文<span class="seo-reader-text">【转载】Vue Composition API</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/06/15/MethodologyStateManagement/">
+                        【方法论】前端状态管理的一些理解
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        前端状态管理的一些理解前言在工作中，我们常常会使用状态管理工具，例如：vue2 的 vuex，vue3 的 pinia，angular 的 NgRx，react 的 redux。有时难免会有一些疑问，为什么要使用状态管理工具，
+一个有趣的比方：假设有...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Wed Jun 15 2022 15:30:57 GMT+0800">
+                
+                    2022/06/15
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/JS/">JS</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/06/15/MethodologyStateManagement/">阅读全文<span class="seo-reader-text">【方法论】前端状态管理的一些理解</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -598,28 +805,93 @@ PS: 这是一张很有用的图
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2022/03/09/%E3%80%90%E6%96%B9%E6%B3%95%E8%AE%BA%E3%80%91%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B%E6%A2%B3%E7%90%86%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89/">
-                        前端发展历程梳理
+                    <a href="/2022/06/03/vueSourceCodeStudy03/">
+                        【Vue3 源码学习】02，初始 mount() 方法
                     </a>
                 </h3>
 
                 <div class="home-article-content markdown-body">
                     
-                        前言了解前端的发展历史有助于从一个全局的视角来重新认知前端技术，脱离单独某一种视角的窠臼。
-
-Node.js的出现意味着什么？
-为什么要从jquery转入三大框架？
-既然已经有了javascript为什么还要使用babel来转化？
-CommonJS、...
+                        前言书接上回，在 runtime-core 包下的文件/runtime-core/src/apiCreateApp.ts中我们找到了 createAppAPI() 方法，此方法调用时创建一个 app 实例，在这个实例中挂载了一些我们熟悉的实例方法，m...
                     
                 </div>
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Mar 09 2022 11:39:39 GMT+0800">
+            <span class="home-article-date" data-date="Fri Jun 03 2022 10:56:48 GMT+0800">
                 
-                    2022/03/09
+                    2022/06/03
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E6%BA%90%E7%A0%81/">源码</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/vue/">vue</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/06/03/vueSourceCodeStudy03/">阅读全文<span class="seo-reader-text">【Vue3 源码学习】02，初始 mount() 方法</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/05/13/MethodologyFront-endEngineering/">
+                        【方法论】前端工程化的一些理解
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        
+前端工程化的一些理解前言一、什么是前端工程化？二、前端工程化要达成些什么目标？三、前端工程化要怎样实践？
+状态管理
+规范
+代码格式化规范
+git 提交规范
+
+
+
+
+总结参考资料
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Fri May 13 2022 02:30:57 GMT+0800">
+                
+                    2022/05/13
                 
             </span>
         </span>
@@ -651,7 +923,7 @@ CommonJS、...
         
     </div>
 
-    <a href="/2022/03/09/%E3%80%90%E6%96%B9%E6%B3%95%E8%AE%BA%E3%80%91%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B%E6%A2%B3%E7%90%86%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89/">阅读全文<span class="seo-reader-text">前端发展历程梳理</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/05/13/MethodologyFront-endEngineering/">阅读全文<span class="seo-reader-text">【方法论】前端工程化的一些理解</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -663,24 +935,28 @@ CommonJS、...
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2021/02/25/someInterestingQuestions01/">
-                        【一些有趣的问题】02，作用域与闭包
+                    <a href="/2022/03/20/MethodologyFront-endHistory/">
+                        【方法论】前端发展历程梳理
                     </a>
                 </h3>
 
                 <div class="home-article-content markdown-body">
                     
-                        问题1以下语句会如何输出？
-123456for(var i=0;i&lt;5;i++)&#123;    console.log(&#x27;i&#x27;,i)    setTimeout(function()&#123;        conso...
+                        前言了解前端的发展历史有助于从一个全局的视角来重新认知前端技术，脱离单独某一种视角的窠臼。
+
+Node.js的出现意味着什么？
+为什么要从jquery转入三大框架？
+既然已经有了javascript为什么还要使用babel来转化？
+CommonJS、...
                     
                 </div>
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Thu Feb 25 2021 09:30:54 GMT+0800">
+            <span class="home-article-date" data-date="Sun Mar 20 2022 15:49:39 GMT+0800">
                 
-                    2021/02/25
+                    2022/03/20
                 
             </span>
         </span>
@@ -690,7 +966,7 @@ CommonJS、...
                     
                         <li>
                             
-                            <a href="/categories/%E4%B8%80%E4%BA%9B%E6%9C%89%E8%B6%A3%E7%9A%84%E9%97%AE%E9%A2%98/">一些有趣的问题</a>&nbsp;
+                            <a href="/categories/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</a>&nbsp;
                         </li>
                     
                     
@@ -712,68 +988,7 @@ CommonJS、...
         
     </div>
 
-    <a href="/2021/02/25/someInterestingQuestions01/">阅读全文<span class="seo-reader-text">【一些有趣的问题】02，作用域与闭包</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2021/02/23/someInterestingQuestions02/">
-                        【一些有趣的问题】01，事件循环
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        以下语句会如何输出？
-123456789101112131415161718console.log(&#x27;start&#x27;)setTimeout(() =&gt; &#123;  console.log(&#x27;setTimeout&...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Feb 23 2021 10:15:54 GMT+0800">
-                
-                    2021/02/23
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E4%B8%80%E4%BA%9B%E6%9C%89%E8%B6%A3%E7%9A%84%E9%97%AE%E9%A2%98/">一些有趣的问题</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/JS/">JS</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2021/02/23/someInterestingQuestions02/">阅读全文<span class="seo-reader-text">【一些有趣的问题】01，事件循环</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2022/03/20/MethodologyFront-endHistory/">阅读全文<span class="seo-reader-text">【方法论】前端发展历程梳理</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -784,6 +999,10 @@ CommonJS、...
         <div class="paginator">
     
 
+    
+        <a class="next btn"
+           href="/page/2/"
+        >下一页</a>
     
 </div>
 
