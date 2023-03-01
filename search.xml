@@ -1,148 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>【方法论】前端工程化的一些理解</title>
-    <url>/2022/05/13/MethodologyFront-endEngineering/</url>
-    <content><![CDATA[<!-- YCTODO -->
-<h1 id="前端工程化的一些理解"><a href="#前端工程化的一些理解" class="headerlink" title="前端工程化的一些理解"></a>前端工程化的一些理解</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="一、什么是前端工程化？"><a href="#一、什么是前端工程化？" class="headerlink" title="一、什么是前端工程化？"></a>一、什么是前端工程化？</h2><h2 id="二、前端工程化要达成些什么目标？"><a href="#二、前端工程化要达成些什么目标？" class="headerlink" title="二、前端工程化要达成些什么目标？"></a>二、前端工程化要达成些什么目标？</h2><h2 id="三、前端工程化要怎样实践？"><a href="#三、前端工程化要怎样实践？" class="headerlink" title="三、前端工程化要怎样实践？"></a>三、前端工程化要怎样实践？</h2><ul>
-<li>状态管理</li>
-<li>规范<ul>
-<li>代码格式化规范</li>
-<li>git 提交规范</li>
-</ul>
-</li>
-<li></li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2>]]></content>
-      <categories>
-        <category>方法论</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【方法论】前端发展历程梳理</title>
-    <url>/2022/03/20/MethodologyFront-endHistory/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>了解前端的发展历史有助于从一个全局的视角来重新认知前端技术，脱离单独某一种视角的窠臼。</p>
-<ul>
-<li><code>Node.js</code>的出现意味着什么？</li>
-<li>为什么要从<code>jquery</code>转入三大框架？</li>
-<li>既然已经有了<code>javascript</code>为什么还要使用<code>babel</code>来转化？</li>
-<li><code>CommonJS</code>、<code>AMD</code>、<code>CMD</code>、<code>ESModule</code>又是什么？</li>
-</ul>
-<p>类似的问题不胜枚举，而这篇文章有助于解决此类问题。</p>
-<h2 id="1-需求驱动和问题驱动"><a href="#1-需求驱动和问题驱动" class="headerlink" title="1. 需求驱动和问题驱动"></a>1. 需求驱动和问题驱动</h2><p>一种技术能够出现并且不断的发展，一定具有某种内在的驱动力，我认为这种驱动力存在两种：</p>
-<ol>
-<li>需求驱动</li>
-<li>问题驱动</li>
-</ol>
-<p>需求驱动顾名思义就是当前的技术工具支持不了新的需求，所以推动了新技术的产生。而问题驱动则是实现某种需求的过程中产生了困难，老旧的技术工具解决不了或者解决起来很麻烦困难，所以推动了新技术的产生。</p>
-<h2 id="2-前端大事件的时间节点"><a href="#2-前端大事件的时间节点" class="headerlink" title="2. 前端大事件的时间节点"></a>2. 前端大事件的时间节点</h2><table>
-<thead>
-<tr>
-<th align="left">时间</th>
-<th align="left">事件</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>web1.0 1991~2004</code></td>
-<td align="left">只读网络，网站提供内容，用户阅读内容</td>
-</tr>
-<tr>
-<td align="left">1989 年</td>
-<td align="left"><code>HTML</code>由 Web 的发明者 Tim Berners-Lee 创立，这也是前端的起始</td>
-</tr>
-<tr>
-<td align="left">1994 年</td>
-<td align="left">世界上的第一款浏览器<code>NCSAMosaic</code>由 Netscape（网景）公司开发，同年<code>W3C</code>（世界万维网联盟）成立</td>
-</tr>
-<tr>
-<td align="left">1995 年</td>
-<td align="left"><code>JavaScript</code>由网景公司的 Brendan Eich 设计</td>
-</tr>
-<tr>
-<td align="left">1996 年</td>
-<td align="left">W3C 发布了<code>CSS1</code>标准，从此前端有了样式规范</td>
-</tr>
-<tr>
-<td align="left">1997 年</td>
-<td align="left"><code>ECMAScript1</code>由 ECMA 国际正式发布，从此 Javascript 有了自己的标准，同年 W3C 发布了<code>HTML4.0</code>标准，这是使用时间最长的一个版本</td>
-</tr>
-<tr>
-<td align="left">1998 年</td>
-<td align="left">W3C 发布了<code>XML（可扩展标记语言）</code>标准，同年<code>Ajax</code>（异步 Javascript 和 XML）技术开始得到应用</td>
-</tr>
-<tr>
-<td align="left">2001 年</td>
-<td align="left">Douglas Crockford 开始推广使用<code>JSON</code>数据格式，它比 XML 更加简洁清晰</td>
-</tr>
-<tr>
-<td align="left"><code>web2.0 2004~至今</code></td>
-<td align="left">交互网络，用户产生内容，通过网站与他人交互</td>
-</tr>
-<tr>
-<td align="left">2006 年</td>
-<td align="left">John Resig 发布了<code>JQuery</code>的第一个版本，这是迄今为止最成功的 JS 库，同年 W3C 正式发布<code>XMLHttpRequest</code>标准，为以后的 Ajax 爆发提供技术基础。</td>
-</tr>
-<tr>
-<td align="left">2008 年</td>
-<td align="left">Google 开源了高性能的 Javascript 引擎<code>V8</code></td>
-</tr>
-<tr>
-<td align="left">2009 年</td>
-<td align="left">Ryan Dahl 开发了基于 V8 引擎的<code>NodeJS</code>运行时环境，从此 javascript 可以运行在服务端；同年<code>ECMAScript5</code>发布，这是使用时间最长，各个浏览器兼容性最好，如今大部分程序也依然在使用的一代标准；同年 Miško Hevery 创造了<code>AngularJS</code>框架，基于 MVC 模式，并且实现了 SPA（单页面应用）</td>
-</tr>
-<tr>
-<td align="left">2010 年</td>
-<td align="left"><code>NPM</code>（NodeJS 包管理工具）发布了第一个版本，从此前端有了自己的包管理器</td>
-</tr>
-<tr>
-<td align="left">2011 年</td>
-<td align="left">Twitter 开源了其前端框架<code>Bootstrap</code></td>
-</tr>
-<tr>
-<td align="left">2012 年</td>
-<td align="left">微软发布了<code>Typescript</code>的第一个版本，让 Javascript 拥有了自己的类型</td>
-</tr>
-<tr>
-<td align="left">2013 年</td>
-<td align="left">Facebook 开源了其前端框架<code>React</code>，同年尤雨溪受到 Angular 启发开发了轻量级前端框架<code>Seed</code>，后更名为<code>Vue</code></td>
-</tr>
-<tr>
-<td align="left">2014 年</td>
-<td align="left">W3C 发布了<code>HTML5</code>标准</td>
-</tr>
-<tr>
-<td align="left">2015 年</td>
-<td align="left"><code>ECMAScript6</code>正式发布，后更名为<code>ECMAScript2015</code>，之截至目前 2022 年，每年都发布了对应的新版本</td>
-</tr>
-<tr>
-<td align="left">2016 年</td>
-<td align="left"><code>ECMAScript2016</code>正式发布</td>
-</tr>
-<tr>
-<td align="left">2017 年</td>
-<td align="left"><code>ECMAScript2017</code>正式发布</td>
-</tr>
-</tbody></table>
-<!-- YCTODO -->
-<h2 id="一些技术发展过程的梳理"><a href="#一些技术发展过程的梳理" class="headerlink" title="一些技术发展过程的梳理"></a>一些技术发展过程的梳理</h2><p>可以把前端发展的历程分为</p>
-<h2 id="展望未来"><a href="#展望未来" class="headerlink" title="展望未来"></a>展望未来</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li>百度百科</li>
-<li><a class="link"   href="http://www.javashuo.com/article/p-hvrlfhxo-gc.html" >前端的历史发展节点 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://zhuanlan.zhihu.com/p/196637639" >Web 开发的历史发展技术演变 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://blog.csdn.net/qq_44273429/article/details/127462439" >Web 1.0、Web 2.0 和 Web 3.0 之间的比较 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>方法论</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【方法论】代码重构的一点心得</title>
     <url>/2023/02/11/MethodologyRefactoring/</url>
     <content><![CDATA[<h1 id="重构（Refactoring）"><a href="#重构（Refactoring）" class="headerlink" title="重构（Refactoring）"></a>重构（Refactoring）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一直在做前端重构的工作，多少有些感想，特此记录。</p>
@@ -312,7 +170,7 @@
   <entry>
     <title>【转载】JS：详解Event Loop运行机制</title>
     <url>/2022/06/28/ReprintJSEventLoop/</url>
-    <content><![CDATA[<a class="link"   href="https://limeii.github.io/2019/05/js-eventloop" >转载：JS：详解Event Loop运行机制 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>
+    <content><![CDATA[<a class="link"   href="https://limeii.github.io/2019/05/js-eventloop" >【转载】JS：详解Event Loop运行机制 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>
 
 <article class="post-container post-container--single" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
@@ -942,8 +800,7 @@ setTimeout
   <entry>
     <title>【转载】Vue Composition API</title>
     <url>/2022/06/22/ReprintVueCompositionAPI/</url>
-    <content><![CDATA[
-## 转载：Composition API - 前端知识库的文章 - 知乎 https://zhuanlan.zhihu.com/p/408272742
+    <content><![CDATA[<a class="link"   href="https://zhuanlan.zhihu.com/p/408272742" >【转载】Composition API <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>
 
 <div class="RichText ztext Post-RichText css-1g0fqss" options="[object Object]">
   <h2 data-first-child="">前言 </h2>
@@ -1559,8 +1416,299 @@ setTimeout
       </tags>
   </entry>
   <entry>
+    <title>【一些有趣的问题】04，逗号运算符</title>
+    <url>/2021/03/14/someInterestingQuestions04/</url>
+    <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;<span class="number">6</span>,j&lt;<span class="number">5</span>,i++,j++)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i,j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><code>参考资料</code></h2>]]></content>
+      <categories>
+        <category>一些有趣的问题</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【一些有趣的问题】03，浮点数</title>
+    <url>/2021/03/06/someInterestingQuestions03/</url>
+    <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">0.1</span> + <span class="number">0.2</span> == <span class="number">0.3</span>；</span><br><span class="line"><span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> - <span class="number">0.9</span> == <span class="number">0.1</span>;</span><br><span class="line"><span class="comment">// false</span></span><br></pre></td></tr></table></figure></div>
+<p>在 JS 中只有一种数值类型，以 64 位表示的双精度浮点类型</p>
+<p><code>解决方法</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="number">0.1</span> + <span class="number">0.2</span>).<span class="title function_">toFixed</span>(<span class="number">10</span>) == <span class="number">0.3</span>;</span><br><span class="line"><span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">(<span class="number">1</span> - <span class="number">0.9</span>).<span class="title function_">toFixed</span>(<span class="number">10</span>) == <span class="number">0.1</span>;</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
+
+<p><code>可以把运算封装成方法</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//加法函数，用来得到精确的加法结果</span></span><br><span class="line"><span class="comment">//说明：javascript 的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的加法结果。</span></span><br><span class="line"><span class="comment">//调用：accAdd(arg1,arg2)</span></span><br><span class="line"><span class="comment">//返回值：arg1 加上 arg2 的精确结果</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">accAdd</span>(<span class="params">arg1,arg2</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> r1,r2,m;</span><br><span class="line">  <span class="keyword">try</span>&#123;r1=arg1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;r1=<span class="number">0</span>&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;r2=arg2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;r2=<span class="number">0</span>&#125;</span><br><span class="line">  m=<span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>,<span class="title class_">Math</span>.<span class="title function_">max</span>(r1,r2))</span><br><span class="line">  <span class="keyword">return</span> (arg1*m+arg2*m)/m</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//给 Number 类型增加一个 add 方法，调用起来更加方便。</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">add</span> = <span class="keyword">function</span> (<span class="params">arg</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">accAdd</span>(arg,<span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//减法函数，用来得到精确的减法结果</span></span><br><span class="line"><span class="comment">//说明：javascript 的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的减法结果。</span></span><br><span class="line"><span class="comment">//调用：accSub(arg1,arg2)</span></span><br><span class="line"><span class="comment">//返回值：arg1 减去 arg2 的精确结果</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">accSub</span>(<span class="params">arg1,arg2</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> r1,r2,m,n;</span><br><span class="line">  <span class="keyword">try</span>&#123;r1=arg1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;r1=<span class="number">0</span>&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;r2=arg2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;r2=<span class="number">0</span>&#125;</span><br><span class="line">  m=<span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>,<span class="title class_">Math</span>.<span class="title function_">max</span>(r1,r2));</span><br><span class="line">  <span class="comment">//last modify by deeka</span></span><br><span class="line">  <span class="comment">//动态控制精度长度</span></span><br><span class="line">  n=(r1&gt;=r2)?<span class="attr">r1</span>:r2;</span><br><span class="line">  <span class="keyword">return</span> ((arg1*m-arg2*m)/m).<span class="title function_">toFixed</span>(n);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//除法函数，用来得到精确的除法结果</span></span><br><span class="line"><span class="comment">//说明：javascript 的除法结果会有误差，在两个浮点数相除的时候会比较明显。这个函数返回较为精确的除法结果。</span></span><br><span class="line"><span class="comment">//调用：accDiv(arg1,arg2)</span></span><br><span class="line"><span class="comment">//返回值：arg1 除以 arg2 的精确结果</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">accDiv</span>(<span class="params">arg1,arg2</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> t1=<span class="number">0</span>,t2=<span class="number">0</span>,r1,r2;</span><br><span class="line">  <span class="keyword">try</span>&#123;t1=arg1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;t2=arg2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="title function_">with</span>(<span class="params"><span class="built_in">Math</span></span>)&#123;</span><br><span class="line">    r1=<span class="title class_">Number</span>(arg1.<span class="title function_">toString</span>().<span class="title function_">replace</span>(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;&quot;</span>))</span><br><span class="line">    r2=<span class="title class_">Number</span>(arg2.<span class="title function_">toString</span>().<span class="title function_">replace</span>(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;&quot;</span>))</span><br><span class="line">    <span class="keyword">return</span> (r1/r2)*<span class="title function_">pow</span>(<span class="number">10</span>,t2-t1);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//给 Number 类型增加一个 div 方法，调用起来更加方便。</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">div</span> = <span class="keyword">function</span> (<span class="params">arg</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">accDiv</span>(<span class="variable language_">this</span>, arg);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//乘法函数，用来得到精确的乘法结果</span></span><br><span class="line"><span class="comment">//说明：javascript 的乘法结果会有误差，在两个浮点数相乘的时候会比较明显。这个函数返回较为精确的乘法结果。</span></span><br><span class="line"><span class="comment">//调用：accMul(arg1,arg2)</span></span><br><span class="line"><span class="comment">//返回值：arg1 乘以 arg2 的精确结果</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">accMul</span>(<span class="params">arg1,arg2</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> m=<span class="number">0</span>,s1=arg1.<span class="title function_">toString</span>(),s2=arg2.<span class="title function_">toString</span>();</span><br><span class="line">  <span class="keyword">try</span>&#123;m+=s1.<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;m+=s2.<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="keyword">return</span>  <span class="title class_">Number</span>(s1.<span class="title function_">replace</span>(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;&quot;</span>))*<span class="title class_">Number</span>(s2.<span class="title function_">replace</span>(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;&quot;</span>))/<span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>,m)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//给 Number 类型增加一个 mul 方法，调用起来更加方便。</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">mul</span> = <span class="keyword">function</span> (<span class="params">arg</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">accMul</span>(arg, <span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;br&gt;<span class="comment">//验证一下：</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">accAdd</span>(<span class="number">1.79</span>, <span class="number">0.12</span>));  <span class="comment">//1.91</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">accSub</span>(<span class="number">2.01</span>, <span class="number">0.12</span>));  <span class="comment">//1.89</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">accDiv</span>(<span class="number">0.69</span>, <span class="number">10</span>));    <span class="comment">//0.069&lt;br&gt;console.log(accMul(1.01, 1.3));   //1.313　　</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><code>参考资料</code></h2><ul>
+<li><a class="link"   href="https://www.cnblogs.com/ppforever/p/5011660.html" >浅谈 JavaScript 浮点数及其运算 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://www.w3school.com.cn/js/js_numbers.asp" >JavaScript 数字
+ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>一些有趣的问题</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【一些有趣的问题】05，for..in 与 for..of</title>
+    <url>/2021/03/20/someInterestingQuestions05/</url>
+    <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>];</span><br><span class="line">arr.<span class="property">foo</span> = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="comment">// 此时 arr 对象的结构：[3,5,7,foo: &#x27;hello&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// 输出 &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;foo&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> arr) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// 输出 &quot;3&quot;, &quot;5&quot;, &quot;7&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意 for...of 的输出没有出现 &quot;hello&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p><code>for...in </code></p>
+<ul>
+<li>循环一个指定的变量来循环一个对象所有可枚举的属性。JavaScript 会为每一个不同的属性执行指定的语句。</li>
+<li>深入一点</li>
+</ul>
+<p><code>for...of </code></p>
+<ul>
+<li>在可迭代对象（包括 Array、Map、Set、arguments 等等）上创建了一个循环，对值的每一个独特属性调用一次迭代。</li>
+<li>首先会在向访问对象请求一个迭代器对象，然后通过调用迭代器对象的 next() 方法来遍历所有返回值。</li>
+</ul>
+<p><code>Symbol.iterator</code></p>
+<ul>
+<li>为每一个对象定义了默认的迭代器。该迭代器可以被 for…of 循环使用。</li>
+<li>可以通过 Symbol.iterator 来访问可迭代对象的@@iterator 属性<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> it = myArray[<span class="title class_">Symbol</span>.<span class="property">iterator</span>]();</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+]]></content>
+      <categories>
+        <category>一些有趣的问题</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【一些有趣的问题】06，进制转换</title>
+    <url>/2021/03/27/someInterestingQuestions06/</url>
+    <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">022</span> - <span class="number">017</span></span><br><span class="line"><span class="comment">// 3，18 - 15 = 3</span></span><br><span class="line"></span><br><span class="line"><span class="number">018</span> - <span class="number">045</span></span><br><span class="line"><span class="comment">// -19，18 - 37 = -19</span></span><br></pre></td></tr></table></figure></div>
+<p>在 JS 中，在 Number 类型前加 0 会转换为 8 进制，如果原来的值位上有大于 8 的数，则不会进行转换。</p>
+<p>在 JS 中，有几种方法来进行进制转换，但只能通过 10 进制中转，即 10 进制转其他进制或者其他进制转 10 进制。</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 0x 表示十六进制，但是 js 会强制转换为十进制来运算，0xa == 10</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">0xa</span>;</span><br><span class="line"><span class="comment">// 0 开头表示八进制，同样强制转换为十进制来运算 010 = 8</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">010</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Number.parseInt 方法把字符串（只能由字母和数字组成）由低进制转高进制，如二进制转八进制，但是八进制不能转二进制，radix 表示进制，取值 2~36，返回一个字符串。</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">parseInt</span>(string,radix)</span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">parseInt</span>(<span class="string">&#x27;0101&#x27;</span>,<span class="number">2</span>) <span class="comment">// 5</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">parseInt</span>(<span class="string">&#x27;0101&#x27;</span>,<span class="number">8</span>) <span class="comment">// 65</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Number.toString 方法将十进制数字转换为任意进制的字符串形式，同样，radix 表示进制，取值 2~36</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="title function_">toString</span>(radix)</span><br><span class="line">(<span class="number">10</span>).<span class="title function_">toString</span>(<span class="number">2</span>) <span class="comment">//&quot;1010&quot; 转 2 进制</span></span><br><span class="line">(<span class="number">10</span>).<span class="title function_">toString</span>(<span class="number">8</span>) <span class="comment">//&quot;12&quot; 转 8 进制</span></span><br><span class="line">(<span class="number">10</span>).<span class="title function_">toString</span>(<span class="number">16</span>) <span class="comment">//&quot;a&quot; 转 16 进制</span></span><br><span class="line">(<span class="number">1000</span>).<span class="title function_">toString</span>(<span class="number">36</span>) <span class="comment">//&quot;rs&quot; 转 36 进制</span></span><br></pre></td></tr></table></figure></div>]]></content>
+      <categories>
+        <category>一些有趣的问题</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Vue3 源码学习】03，初始 mount() 方法</title>
+    <url>/2022/06/03/vueSourceCodeStudy03/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>书接上回，在 runtime-core 包下的文件<code>/runtime-core/src/apiCreateApp.ts</code>中我们找到了 createAppAPI() 方法，此方法调用时创建一个 app 实例，在这个实例中挂载了一些我们熟悉的实例方法，<code>mount()</code>就在其中。</p>
+<h2 id="首先提几个问题"><a href="#首先提几个问题" class="headerlink" title="首先提几个问题"></a>首先提几个问题</h2><ol>
+<li>初次挂载时 mount() 方法做了些什么？ </li>
+<li>回忆一下 vue 的生命周期，mount() 方法在哪一部分执行了？</li>
+</ol>
+<h2 id="初次挂载时-mount-方法干了些什么？"><a href="#初次挂载时-mount-方法干了些什么？" class="headerlink" title="初次挂载时 mount() 方法干了些什么？"></a>初次挂载时 mount() 方法干了些什么？</h2>
+
+<p>首先进入 mount() 方法，它接收 3 个参数：<code>rootContainer</code>，isHydrate，isSVG，我们这里只关注 rootContainer，因为初次挂载时的一般写法是：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 可以看到我们只传了一个字符串，是一个 CSS 选择器。</span></span><br><span class="line"><span class="title function_">createApp</span>(&#123;&#125;).<span class="title function_">mount</span>(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>再看方法体：</p>
+
+
+<p>可以看到首先创建了一个 vnode，这个 vnode 由 createApp 方法传入的根组件确定；然后执行红框中的 render() 方法，我们传入的 rootContainer 作为第二个参数传入。</p>
+<p>让我们看看这个 render 方法，它是 createAppAPI() 方法的第一个参数，上一章介绍过这是 baseCreateRenderer() 这个工厂函数的返回，它在<code>/runtime-core/src/renderer.ts</code>目录下可以找到。</p>
+
+
+
+
+<p>接下来找到 render() 方法的方法体：</p>
+
+
+<p>可以看到 render() 方法接收三个参数，初次挂载时 vnode 有值，container 是我们 mount() 方法传入的挂载节点。因为 vnode 存在，所以执行 else 部分，可以看到，这里使用了一个<code>patch()</code>方法</p>
+<p>我们来看一下这个 patch() 方法中传了些什么：</p>
+
+
+<p>可以看出传入的 container 参数是一个 DOM 对象，在第一次挂载时指向<code>div#app</code>，我们的宿主对象，此时 container._vnode 值为 undefined（在 render 方法的最后才会给_vnode 属性赋值），所以第一个参数值为 null，第二个参数是之前传入的 vnode 对象，长这样：</p>
+
+
+<p>之后会用到，此时先不做关注。我们再来看看 patch() 方法内部：</p>
+
+
+<!-- 
+  YCNOTE：为什么 switch 语句要传入一个对象
+ -->
+<p>沿着逻辑往下走到红框部分，此时从我们传入的 vnode（第一次挂载时 mount 方法中新建的 vnode) 中取出 3 个值，根据<code>type</code>和<code>shapeFlag</code>的值进行不同的操作：</p>
+
+
+<p>此时 shapeFlag 的值为 4，进行位与运算值为 true。以下<code>位移枚举</code>可以学一下，它的好处是清晰、好计算并且可以进行多值判断。</p>
+
+
+<p>初次挂载时执行<code>processComponent()</code>方法，进入方法体 processComponent()：</p>
+
+
+<p>可以看到走进 else 代码块，触发方法<code>mountComponent()</code>，见名知意，组件由这个方法挂载。进入该方法，该方法首先会执行一个<code>setupRenderEffect()</code>方法，</p>
+
+
+<p>这个方法创建了一个执行器 <code>effect</code>，然后调用了 effect.run() 方法，当 effect.run() 执行完毕时，整个挂载流程结束。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结一下，初次挂载时 mount() 方法执行流程大概这样：</p>
+<p>mount()–&gt;createVNode()–&gt;render()–&gt;patch()–&gt;processComponent()–&gt;mountComponent()–&gt;createComponentInstance–&gt;setupRenderEffect()–&gt;ReactiveEffect()–&gt;update()–&gt;effect.run()</p>
+<p>简洁一点就是：</p>
+<p>mount()–&gt;render()–&gt;patch()</p>
+<p>可以通过调用堆栈查看：</p>
+
+
+<p>回到最初提的两个问题，第一个问题已经基本解答完毕，第二个问题，mount() 函数在 vue 的生命周期的哪一部分执行也已经可以推想出来：</p>
+
+
+<p>本篇文章就到此为止，因为是初识，所以比较简单，基本上就是跟着调用栈走，之后会更具体的分析 render() 和 patch() 函数。</p>
+<p>若有错误请大佬指出，感激不尽。</p>
+]]></content>
+      <categories>
+        <category>源码</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【方法论】前端工程化的一些理解</title>
+    <url>/2022/07/28/MethodologyFrontendEngineering/</url>
+    <content><![CDATA[<h1 id="前端工程化的一些理解"><a href="#前端工程化的一些理解" class="headerlink" title="前端工程化的一些理解"></a>前端工程化的一些理解</h1><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2022/07/28/MethodologyFrontendEngineering/s0.png"
+                      class="" title="s0"
+                >
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在项目开发中常常听到前端工程化，那么什么是前端工程化，其要义在于何处，我想是值得了解的问题。</p>
+<p>它有哪些目的，解决了哪些问题，又以何种方式实现，这些都是值得探究、值得思考的。</p>
+<h2 id="什么是前端工程化？"><a href="#什么是前端工程化？" class="headerlink" title="什么是前端工程化？"></a>什么是前端工程化？</h2><p>关于什么是前端工程化，这里先给出我的理解：</p>
+<ul>
+<li>狭义上的理解：将开发阶段的代码发布到生产环境，包含：构建，分支管理，自动化测试，部署</li>
+<li>广义上理解：前端工程化应该包含从编码开始到发布，运行和维护阶段</li>
+</ul>
+<p>简而言之，在前端规模越来越大，业务逻辑越来越复杂的今天，一切可以<code>提高效率、降低成本、质量保证</code>的手段都可以称得上是前端工程化。如果说软件工程是面向问题的（将软件开发流程中的共性抽离出来），把软件工程的思想带入到前端开发中，就是前端工程化。</p>
+<p>一个前端项目的开发流程可以概括为：</p>
+<blockquote>
+<p>需求分析–&gt;<code>设计阶段</code>–&gt;<code>开发阶段</code>(–&gt;测试阶段–&gt;部署阶段）–&gt;项目维护</p>
+</blockquote>
+<p>也可以说，前端工程化主要发生在设计阶段和开发阶段，解决的是<code>开发阶段到项目维护阶段</code>的生产效率问题。</p>
+<h2 id="前端工程化要解决哪些问题？"><a href="#前端工程化要解决哪些问题？" class="headerlink" title="前端工程化要解决哪些问题？"></a>前端工程化要解决哪些问题？</h2><p>在项目过程中，一些问题是共通的，在设计阶段，需要考虑：</p>
+<ol>
+<li>怎样提高开发效率，降低开发成本？</li>
+<li>怎样提高代码健壮性、降低维护难度？</li>
+</ol>
+<p>在开发阶段，需要考虑的问题有：</p>
+<ol>
+<li>代码审查</li>
+<li>压缩打包</li>
+<li>单元测试</li>
+<li>增量更新</li>
+</ol>
+<h2 id="如何实现前端工程化？"><a href="#如何实现前端工程化？" class="headerlink" title="如何实现前端工程化？"></a>如何实现前端工程化？</h2><h3 id="设计阶段"><a href="#设计阶段" class="headerlink" title="设计阶段"></a>设计阶段</h3><p>根据前文，能够知道在设计阶段面临的一些问题，那么怎么解决呢？</p>
+<p>我们需要知道前端项目在设计阶段要做的一些事情：技术选型、确立规范、排期、分工。</p>
+<p>而技术选型和确立规范就是其中的重中之重。</p>
+<p><code>技术选型</code></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2022/07/28/MethodologyFrontendEngineering/s1.png"
+                      class="" title="s1"
+                >
+<p>无论是技术框架、编程语言、工具库、UI 库，都属于技术选型的范畴。</p>
+<p>一般要遵循的原则有 4 点：</p>
+<ol>
+<li>可控性</li>
+<li>稳定性</li>
+<li>适用性</li>
+<li>易用性</li>
+</ol>
+<p>一般来说，前端项目选择的框架是 Vue、React、Angular 的一种，根据项目规模和团队技术栈选择其他的工具库、UI 库。</p>
+<p>关于技术选型，可以看看这篇文章 <a class="link"   href="https://zhuanlan.zhihu.com/p/346410244" >技术选型 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><code>统一规范</code></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2022/07/28/MethodologyFrontendEngineering/s2.png"
+                      class="" title="s2"
+                >
+
+<p>根据项目规模的不同，统一规范的重要性也不可一概而论，但总的来说，统一规范的重要性是随着项目复杂度的提升而提升的。</p>
+<p>有哪些地方需要统一规范呢？</p>
+<ul>
+<li>代码格式化：eslint、tslint</li>
+<li>代码提交规范：可以使用 git 的钩子函数自定义</li>
+<li>设计规范：由需求设计人员提供</li>
+<li>文档规范：注明公共 API、全局变量等</li>
+<li>一些约定：<ul>
+<li>目录结构约定：在什么地方做什么事</li>
+<li>命名约定：变量、函数、css 类</li>
+<li>版本管理</li>
+<li>开发流程</li>
+</ul>
+</li>
+</ul>
+<h2 id="开发阶段"><a href="#开发阶段" class="headerlink" title="开发阶段"></a>开发阶段</h2><h3 id="开发"><a href="#开发" class="headerlink" title="开发"></a><code>开发</code></h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2022/07/28/MethodologyFrontendEngineering/s3.png"
+                      class="" title="s3"
+                >
+
+<p>在开发过程中，工程化主要在自建库、选择第三方库、搭建脚手架时发挥作用。</p>
+<p>自建库抽离公共函数，避免重复造轮子，应约定尽量使用自建库的方法。</p>
+<p>当自建库不能满足需求时，可以选择第三方库来弥补，第三方库应该关注安全性、稳定性、采取最小限度原则（即只使用必要的部分）。</p>
+<p>自定义工程脚手架也是非常重要的一部分，可以大大降低重复工作量，脚手架实践了<code>能够交给机器的事情就交给机器去做</code>这一思想。</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a><code>测试</code></h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2022/07/28/MethodologyFrontendEngineering/s4.png"
+                      class="" title="s4"
+                >
+
+<p>无论是什么项目，只要它仍在开发迭代，测试就是必要的一环。</p>
+<p>一个完整的项目开发流程图如下：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2022/07/28/MethodologyFrontendEngineering/s4-1.png"
+                      class="" title="s4-1"
+                >
+
+<p>常用的测试分类有<code>单元测试</code>和<code>集成测试</code>，在开发过程中使用的是单元测试，那么什么是单元测试？</p>
+<blockquote>
+<p>单元测试（英语：Unit Testing）又称为模块测试，是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。</p>
+</blockquote>
+<p>常见的单元测试工具有：Jest、Mocha 等。</p>
+<p>一些框架内也集成了单元测试工具，可以根据具体情况选择。</p>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a><code>部署</code></h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2022/07/28/MethodologyFrontendEngineering/s5.png"
+                      class="" title="s5"
+                >
+
+<p>在项目的部署阶段，我们聚焦于构建和部署。</p>
+<p>在构建时需要关注性能优化、自定义配置等，常用构建工具有 webpack、rollup、vite 等，他们各有特点，这里不加赘述。</p>
+<p>在部署时需要关注自动化、易用性等，常用的部署工具有 Jenkins。</p>
+<p>其他还有灰度和 CDN 等概念，灰度可以理解为青春使用版，即新版本发布时控制流量，易于回退。CDN 技术则是优化网络访问速度。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>前端工程化的要义在于：把能够交给机器的事情尽量交给机器去做。</p>
+<p>其重点在于<code>统一</code>，统一的代码规范、统一的命名约定、统一的技术栈、第三方库等等。</p>
+<p>而在实际项目开发过程中，前端工程化的实践既依赖设计师、架构师对于项目的先期构建，更强调开发团队间的意见交流。了解工程化概念，明晰其目的，才能避免重复造轮子，代码结构混杂不清等疏漏，提高代码复用性和健壮性。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a class="link"   href="https://woai3c.gitee.io/introduction-to-front-end-engineering/#%E7%AE%80%E4%BB%8B" >带你入门前端工程 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://www.cnblogs.com/fsyz/p/8274727.html" >浅谈什么是前端工程化	 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://juejin.cn/post/6844903853859536903" >大型项目前端架构浅谈 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>方法论</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【方法论】JS 模块化梳理</title>
-    <url>/2022/03/09/MethodologyFront-endJSModularity%20/</url>
+    <url>/2022/03/09/MethodologyFrontendJSModularity%20/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>模块化是编程中绕不过去的一环，可以说在我们的开发流程中，每时每刻都在使用着模块化，这无疑是一个非常重要的知识点。本文只讨论 JS 模块化，旨在加强对 JS 模块化的认识。主要涉及以下几点：</p>
 <ul>
 <li>JS 模块化的前世今生（为什么要模块化）</li>
@@ -1674,156 +1822,1017 @@ setTimeout
       </tags>
   </entry>
   <entry>
-    <title>【一些有趣的问题】04，逗号运算符</title>
-    <url>/2021/03/14/someInterestingQuestions04/</url>
-    <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;<span class="number">6</span>,j&lt;<span class="number">5</span>,i++,j++)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i,j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>在</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><code>参考资料</code></h2>]]></content>
-      <categories>
-        <category>一些有趣的问题</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【一些有趣的问题】03，浮点数</title>
-    <url>/2021/03/06/someInterestingQuestions03/</url>
-    <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">0.1</span> + <span class="number">0.2</span> == <span class="number">0.3</span>；</span><br><span class="line"><span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> - <span class="number">0.9</span> == <span class="number">0.1</span>;</span><br><span class="line"><span class="comment">// false</span></span><br></pre></td></tr></table></figure></div>
-<p>在 JS 中只有一种数值类型，以 64 位表示的双精度浮点类型</p>
-<p><code>解决方法</code></p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="number">0.1</span> + <span class="number">0.2</span>).<span class="title function_">toFixed</span>(<span class="number">10</span>) == <span class="number">0.3</span>;</span><br><span class="line"><span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">(<span class="number">1</span> - <span class="number">0.9</span>).<span class="title function_">toFixed</span>(<span class="number">10</span>) == <span class="number">0.1</span>;</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
-
-<p><code>可以把运算封装成方法</code></p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//加法函数，用来得到精确的加法结果</span></span><br><span class="line"><span class="comment">//说明：javascript 的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的加法结果。</span></span><br><span class="line"><span class="comment">//调用：accAdd(arg1,arg2)</span></span><br><span class="line"><span class="comment">//返回值：arg1 加上 arg2 的精确结果</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">accAdd</span>(<span class="params">arg1,arg2</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> r1,r2,m;</span><br><span class="line">  <span class="keyword">try</span>&#123;r1=arg1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;r1=<span class="number">0</span>&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;r2=arg2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;r2=<span class="number">0</span>&#125;</span><br><span class="line">  m=<span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>,<span class="title class_">Math</span>.<span class="title function_">max</span>(r1,r2))</span><br><span class="line">  <span class="keyword">return</span> (arg1*m+arg2*m)/m</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//给 Number 类型增加一个 add 方法，调用起来更加方便。</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">add</span> = <span class="keyword">function</span> (<span class="params">arg</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">accAdd</span>(arg,<span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//减法函数，用来得到精确的减法结果</span></span><br><span class="line"><span class="comment">//说明：javascript 的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的减法结果。</span></span><br><span class="line"><span class="comment">//调用：accSub(arg1,arg2)</span></span><br><span class="line"><span class="comment">//返回值：arg1 减去 arg2 的精确结果</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">accSub</span>(<span class="params">arg1,arg2</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> r1,r2,m,n;</span><br><span class="line">  <span class="keyword">try</span>&#123;r1=arg1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;r1=<span class="number">0</span>&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;r2=arg2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;r2=<span class="number">0</span>&#125;</span><br><span class="line">  m=<span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>,<span class="title class_">Math</span>.<span class="title function_">max</span>(r1,r2));</span><br><span class="line">  <span class="comment">//last modify by deeka</span></span><br><span class="line">  <span class="comment">//动态控制精度长度</span></span><br><span class="line">  n=(r1&gt;=r2)?<span class="attr">r1</span>:r2;</span><br><span class="line">  <span class="keyword">return</span> ((arg1*m-arg2*m)/m).<span class="title function_">toFixed</span>(n);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//除法函数，用来得到精确的除法结果</span></span><br><span class="line"><span class="comment">//说明：javascript 的除法结果会有误差，在两个浮点数相除的时候会比较明显。这个函数返回较为精确的除法结果。</span></span><br><span class="line"><span class="comment">//调用：accDiv(arg1,arg2)</span></span><br><span class="line"><span class="comment">//返回值：arg1 除以 arg2 的精确结果</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">accDiv</span>(<span class="params">arg1,arg2</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> t1=<span class="number">0</span>,t2=<span class="number">0</span>,r1,r2;</span><br><span class="line">  <span class="keyword">try</span>&#123;t1=arg1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;t2=arg2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="title function_">with</span>(<span class="params"><span class="built_in">Math</span></span>)&#123;</span><br><span class="line">    r1=<span class="title class_">Number</span>(arg1.<span class="title function_">toString</span>().<span class="title function_">replace</span>(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;&quot;</span>))</span><br><span class="line">    r2=<span class="title class_">Number</span>(arg2.<span class="title function_">toString</span>().<span class="title function_">replace</span>(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;&quot;</span>))</span><br><span class="line">    <span class="keyword">return</span> (r1/r2)*<span class="title function_">pow</span>(<span class="number">10</span>,t2-t1);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//给 Number 类型增加一个 div 方法，调用起来更加方便。</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">div</span> = <span class="keyword">function</span> (<span class="params">arg</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">accDiv</span>(<span class="variable language_">this</span>, arg);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//乘法函数，用来得到精确的乘法结果</span></span><br><span class="line"><span class="comment">//说明：javascript 的乘法结果会有误差，在两个浮点数相乘的时候会比较明显。这个函数返回较为精确的乘法结果。</span></span><br><span class="line"><span class="comment">//调用：accMul(arg1,arg2)</span></span><br><span class="line"><span class="comment">//返回值：arg1 乘以 arg2 的精确结果</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">accMul</span>(<span class="params">arg1,arg2</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> m=<span class="number">0</span>,s1=arg1.<span class="title function_">toString</span>(),s2=arg2.<span class="title function_">toString</span>();</span><br><span class="line">  <span class="keyword">try</span>&#123;m+=s1.<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;m+=s2.<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].<span class="property">length</span>&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="keyword">return</span>  <span class="title class_">Number</span>(s1.<span class="title function_">replace</span>(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;&quot;</span>))*<span class="title class_">Number</span>(s2.<span class="title function_">replace</span>(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;&quot;</span>))/<span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>,m)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//给 Number 类型增加一个 mul 方法，调用起来更加方便。</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">mul</span> = <span class="keyword">function</span> (<span class="params">arg</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">accMul</span>(arg, <span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;br&gt;<span class="comment">//验证一下：</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">accAdd</span>(<span class="number">1.79</span>, <span class="number">0.12</span>));  <span class="comment">//1.91</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">accSub</span>(<span class="number">2.01</span>, <span class="number">0.12</span>));  <span class="comment">//1.89</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">accDiv</span>(<span class="number">0.69</span>, <span class="number">10</span>));    <span class="comment">//0.069&lt;br&gt;console.log(accMul(1.01, 1.3));   //1.313　　</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><code>参考资料</code></h2><ul>
-<li><a class="link"   href="https://www.cnblogs.com/ppforever/p/5011660.html" >浅谈 JavaScript 浮点数及其运算 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://www.w3school.com.cn/js/js_numbers.asp" >JavaScript 数字
- <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>一些有趣的问题</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【一些有趣的问题】05，for..in 与 for..of</title>
-    <url>/2021/03/20/someInterestingQuestions05/</url>
-    <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>];</span><br><span class="line">arr.<span class="property">foo</span> = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="comment">// 此时 arr 对象的结构：[3,5,7,foo: &#x27;hello&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// 输出 &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;foo&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> arr) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// 输出 &quot;3&quot;, &quot;5&quot;, &quot;7&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意 for...of 的输出没有出现 &quot;hello&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-<p><code>for...in </code></p>
+    <title>【方法论】前端发展历程梳理</title>
+    <url>/2022/03/20/MethodologyFrontendHistory/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>了解前端的发展历史有助于从一个全局的视角来重新认知前端技术，脱离单独某一种视角的窠臼。</p>
 <ul>
-<li>循环一个指定的变量来循环一个对象所有可枚举的属性。JavaScript 会为每一个不同的属性执行指定的语句。</li>
-<li>深入一点</li>
+<li><code>Node.js</code>的出现意味着什么？</li>
+<li>为什么要从<code>jquery</code>转入三大框架？</li>
+<li>既然已经有了<code>javascript</code>为什么还要使用<code>babel</code>来转化？</li>
+<li><code>CommonJS</code>、<code>AMD</code>、<code>CMD</code>、<code>ESModule</code>又是什么？</li>
 </ul>
-<p><code>for...of </code></p>
-<ul>
-<li>在可迭代对象（包括 Array、Map、Set、arguments 等等）上创建了一个循环，对值的每一个独特属性调用一次迭代。</li>
-<li>首先会在向访问对象请求一个迭代器对象，然后通过调用迭代器对象的 next() 方法来遍历所有返回值。</li>
-</ul>
-<p><code>Symbol.iterator</code></p>
-<ul>
-<li>为每一个对象定义了默认的迭代器。该迭代器可以被 for…of 循环使用。</li>
-<li>可以通过 Symbol.iterator 来访问可迭代对象的@@iterator 属性<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> it = myArray[<span class="title class_">Symbol</span>.<span class="property">iterator</span>]();</span><br></pre></td></tr></table></figure></div></li>
-</ul>
-]]></content>
-      <categories>
-        <category>一些有趣的问题</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【一些有趣的问题】06，进制转换</title>
-    <url>/2021/03/27/someInterestingQuestions06/</url>
-    <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">022</span> - <span class="number">017</span></span><br><span class="line"><span class="comment">// 3，18 - 15 = 3</span></span><br><span class="line"></span><br><span class="line"><span class="number">018</span> - <span class="number">045</span></span><br><span class="line"><span class="comment">// -19，18 - 37 = -19</span></span><br></pre></td></tr></table></figure></div>
-<p>在 JS 中，在 Number 类型前加 0 会转换为 8 进制，如果原来的值位上有大于 8 的数，则不会进行转换。</p>
-<p>在 JS 中，有几种方法来进行进制转换，但只能通过 10 进制中转，即 10 进制转其他进制或者其他进制转 10 进制。</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 0x 表示十六进制，但是 js 会强制转换为十进制来运算，0xa == 10</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">0xa</span>;</span><br><span class="line"><span class="comment">// 0 开头表示八进制，同样强制转换为十进制来运算 010 = 8</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">010</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Number.parseInt 方法把字符串（只能由字母和数字组成）由低进制转高进制，如二进制转八进制，但是八进制不能转二进制，radix 表示进制，取值 2~36，返回一个字符串。</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">parseInt</span>(string,radix)</span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">parseInt</span>(<span class="string">&#x27;0101&#x27;</span>,<span class="number">2</span>) <span class="comment">// 5</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">parseInt</span>(<span class="string">&#x27;0101&#x27;</span>,<span class="number">8</span>) <span class="comment">// 65</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Number.toString 方法将十进制数字转换为任意进制的字符串形式，同样，radix 表示进制，取值 2~36</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="title function_">toString</span>(radix)</span><br><span class="line">(<span class="number">10</span>).<span class="title function_">toString</span>(<span class="number">2</span>) <span class="comment">//&quot;1010&quot; 转 2 进制</span></span><br><span class="line">(<span class="number">10</span>).<span class="title function_">toString</span>(<span class="number">8</span>) <span class="comment">//&quot;12&quot; 转 8 进制</span></span><br><span class="line">(<span class="number">10</span>).<span class="title function_">toString</span>(<span class="number">16</span>) <span class="comment">//&quot;a&quot; 转 16 进制</span></span><br><span class="line">(<span class="number">1000</span>).<span class="title function_">toString</span>(<span class="number">36</span>) <span class="comment">//&quot;rs&quot; 转 36 进制</span></span><br></pre></td></tr></table></figure></div>]]></content>
-      <categories>
-        <category>一些有趣的问题</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Vue3 源码学习】02，初始 mount() 方法</title>
-    <url>/2022/06/03/vueSourceCodeStudy03/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>书接上回，在 runtime-core 包下的文件<code>/runtime-core/src/apiCreateApp.ts</code>中我们找到了 createAppAPI() 方法，此方法调用时创建一个 app 实例，在这个实例中挂载了一些我们熟悉的实例方法，<code>mount()</code>就在其中。</p>
-<h2 id="首先提几个问题"><a href="#首先提几个问题" class="headerlink" title="首先提几个问题"></a>首先提几个问题</h2><ol>
-<li>初次挂载时 mount() 方法做了些什么？ </li>
-<li>回忆一下 vue 的生命周期，mount() 方法在哪一部分执行了？</li>
+<p>类似的问题不胜枚举，而这篇文章有助于解决此类问题。</p>
+<h2 id="1-需求驱动和问题驱动"><a href="#1-需求驱动和问题驱动" class="headerlink" title="1. 需求驱动和问题驱动"></a>1. 需求驱动和问题驱动</h2><p>一种技术能够出现并且不断的发展，一定具有某种内在的驱动力，我认为这种驱动力存在两种：</p>
+<ol>
+<li>需求驱动</li>
+<li>问题驱动</li>
 </ol>
-<h2 id="初次挂载时-mount-方法干了些什么？"><a href="#初次挂载时-mount-方法干了些什么？" class="headerlink" title="初次挂载时 mount() 方法干了些什么？"></a>初次挂载时 mount() 方法干了些什么？</h2>
-
-<p>首先进入 mount() 方法，它接收 3 个参数：<code>rootContainer</code>，isHydrate，isSVG，我们这里只关注 rootContainer，因为初次挂载时的一般写法是：</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 可以看到我们只传了一个字符串，是一个 CSS 选择器。</span></span><br><span class="line"><span class="title function_">createApp</span>(&#123;&#125;).<span class="title function_">mount</span>(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>再看方法体：</p>
-
-
-<p>可以看到首先创建了一个 vnode，这个 vnode 由 createApp 方法传入的根组件确定；然后执行红框中的 render() 方法，我们传入的 rootContainer 作为第二个参数传入。</p>
-<p>让我们看看这个 render 方法，它是 createAppAPI() 方法的第一个参数，上一章介绍过这是 baseCreateRenderer() 这个工厂函数的返回，它在<code>/runtime-core/src/renderer.ts</code>目录下可以找到。</p>
-
-
-
-
-<p>接下来找到 render() 方法的方法体：</p>
-
-
-<p>可以看到 render() 方法接收三个参数，初次挂载时 vnode 有值，container 是我们 mount() 方法传入的挂载节点。因为 vnode 存在，所以执行 else 部分，可以看到，这里使用了一个<code>patch()</code>方法</p>
-<p>我们来看一下这个 patch() 方法中传了些什么：</p>
-
-
-<p>可以看出传入的 container 参数是一个 DOM 对象，在第一次挂载时指向<code>div#app</code>，我们的宿主对象，此时 container._vnode 值为 undefined（在 render 方法的最后才会给_vnode 属性赋值），所以第一个参数值为 null，第二个参数是之前传入的 vnode 对象，长这样：</p>
-
-
-<p>之后会用到，此时先不做关注。我们再来看看 patch() 方法内部：</p>
-
-
-<!-- 
-  YCNOTE：为什么 switch 语句要传入一个对象
- -->
-<p>沿着逻辑往下走到红框部分，此时从我们传入的 vnode（第一次挂载时 mount 方法中新建的 vnode) 中取出 3 个值，根据<code>type</code>和<code>shapeFlag</code>的值进行不同的操作：</p>
-
-
-<p>此时 shapeFlag 的值为 4，进行位与运算值为 true。以下<code>位移枚举</code>可以学一下，它的好处是清晰、好计算并且可以进行多值判断。</p>
-
-
-<p>初次挂载时执行<code>processComponent()</code>方法，进入方法体 processComponent()：</p>
-
-
-<p>可以看到走进 else 代码块，触发方法<code>mountComponent()</code>，见名知意，组件由这个方法挂载。进入该方法，该方法首先会执行一个<code>setupRenderEffect()</code>方法，</p>
-
-
-<p>这个方法创建了一个执行器 <code>effect</code>，然后调用了 effect.run() 方法，当 effect.run() 执行完毕时，整个挂载流程结束。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结一下，初次挂载时 mount() 方法执行流程大概这样：</p>
-<p>mount()–&gt;createVNode()–&gt;render()–&gt;patch()–&gt;processComponent()–&gt;mountComponent()–&gt;createComponentInstance–&gt;setupRenderEffect()–&gt;ReactiveEffect()–&gt;update()–&gt;effect.run()</p>
-<p>简洁一点就是：</p>
-<p>mount()–&gt;render()–&gt;patch()</p>
-<p>可以通过调用堆栈查看：</p>
-
-
-<p>回到最初提的两个问题，第一个问题已经基本解答完毕，第二个问题，mount() 函数在 vue 的生命周期的哪一部分执行也已经可以推想出来：</p>
-
-
-<p>本篇文章就到此为止，因为是初识，所以比较简单，基本上就是跟着调用栈走，之后会更具体的分析 render() 和 patch() 函数。</p>
-<p>若有错误请大佬指出，感激不尽。</p>
+<p>需求驱动顾名思义就是当前的技术工具支持不了新的需求，所以推动了新技术的产生。而问题驱动则是实现某种需求的过程中产生了困难，老旧的技术工具解决不了或者解决起来很麻烦困难，所以推动了新技术的产生。</p>
+<h2 id="2-前端大事件的时间节点"><a href="#2-前端大事件的时间节点" class="headerlink" title="2. 前端大事件的时间节点"></a>2. 前端大事件的时间节点</h2><table>
+<thead>
+<tr>
+<th align="left">时间</th>
+<th align="left">事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>web1.0 1991~2004</code></td>
+<td align="left">只读网络，网站提供内容，用户阅读内容</td>
+</tr>
+<tr>
+<td align="left">1989 年</td>
+<td align="left"><code>HTML</code>由 Web 的发明者 Tim Berners-Lee 创立，这也是前端的起始</td>
+</tr>
+<tr>
+<td align="left">1994 年</td>
+<td align="left">世界上的第一款浏览器<code>NCSAMosaic</code>由 Netscape（网景）公司开发，同年<code>W3C</code>（世界万维网联盟）成立</td>
+</tr>
+<tr>
+<td align="left">1995 年</td>
+<td align="left"><code>JavaScript</code>由网景公司的 Brendan Eich 设计</td>
+</tr>
+<tr>
+<td align="left">1996 年</td>
+<td align="left">W3C 发布了<code>CSS1</code>标准，从此前端有了样式规范</td>
+</tr>
+<tr>
+<td align="left">1997 年</td>
+<td align="left"><code>ECMAScript1</code>由 ECMA 国际正式发布，从此 Javascript 有了自己的标准，同年 W3C 发布了<code>HTML4.0</code>标准，这是使用时间最长的一个版本</td>
+</tr>
+<tr>
+<td align="left">1998 年</td>
+<td align="left">W3C 发布了<code>XML（可扩展标记语言）</code>标准，同年<code>Ajax</code>（异步 Javascript 和 XML）技术开始得到应用</td>
+</tr>
+<tr>
+<td align="left">2001 年</td>
+<td align="left">Douglas Crockford 开始推广使用<code>JSON</code>数据格式，它比 XML 更加简洁清晰</td>
+</tr>
+<tr>
+<td align="left"><code>web2.0 2004~至今</code></td>
+<td align="left">交互网络，用户产生内容，通过网站与他人交互</td>
+</tr>
+<tr>
+<td align="left">2006 年</td>
+<td align="left">John Resig 发布了<code>JQuery</code>的第一个版本，这是迄今为止最成功的 JS 库，同年 W3C 正式发布<code>XMLHttpRequest</code>标准，为以后的 Ajax 爆发提供技术基础。</td>
+</tr>
+<tr>
+<td align="left">2008 年</td>
+<td align="left">Google 开源了高性能的 Javascript 引擎<code>V8</code></td>
+</tr>
+<tr>
+<td align="left">2009 年</td>
+<td align="left">Ryan Dahl 开发了基于 V8 引擎的<code>NodeJS</code>运行时环境，从此 javascript 可以运行在服务端；同年<code>ECMAScript5</code>发布，这是使用时间最长，各个浏览器兼容性最好，如今大部分程序也依然在使用的一代标准；同年 Miško Hevery 创造了<code>AngularJS</code>框架，基于 MVC 模式，并且实现了 SPA（单页面应用）</td>
+</tr>
+<tr>
+<td align="left">2010 年</td>
+<td align="left"><code>NPM</code>（NodeJS 包管理工具）发布了第一个版本，从此前端有了自己的包管理器</td>
+</tr>
+<tr>
+<td align="left">2011 年</td>
+<td align="left">Twitter 开源了其前端框架<code>Bootstrap</code></td>
+</tr>
+<tr>
+<td align="left">2012 年</td>
+<td align="left">微软发布了<code>Typescript</code>的第一个版本，让 Javascript 拥有了自己的类型</td>
+</tr>
+<tr>
+<td align="left">2013 年</td>
+<td align="left">Facebook 开源了其前端框架<code>React</code>，同年尤雨溪受到 Angular 启发开发了轻量级前端框架<code>Seed</code>，后更名为<code>Vue</code></td>
+</tr>
+<tr>
+<td align="left">2014 年</td>
+<td align="left">W3C 发布了<code>HTML5</code>标准</td>
+</tr>
+<tr>
+<td align="left">2015 年</td>
+<td align="left"><code>ECMAScript6</code>正式发布，后更名为<code>ECMAScript2015</code>，之截至目前 2022 年，每年都发布了对应的新版本</td>
+</tr>
+<tr>
+<td align="left">2016 年</td>
+<td align="left"><code>ECMAScript2016</code>正式发布</td>
+</tr>
+<tr>
+<td align="left">2017 年</td>
+<td align="left"><code>ECMAScript2017</code>正式发布</td>
+</tr>
+</tbody></table>
+<!-- YCTODO -->
+<h2 id="一些技术发展过程的梳理"><a href="#一些技术发展过程的梳理" class="headerlink" title="一些技术发展过程的梳理"></a>一些技术发展过程的梳理</h2><p>可以把前端发展的历程分为</p>
+<h2 id="展望未来"><a href="#展望未来" class="headerlink" title="展望未来"></a>展望未来</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>百度百科</li>
+<li><a class="link"   href="http://www.javashuo.com/article/p-hvrlfhxo-gc.html" >前端的历史发展节点 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://zhuanlan.zhihu.com/p/196637639" >Web 开发的历史发展技术演变 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://blog.csdn.net/qq_44273429/article/details/127462439" >Web 1.0、Web 2.0 和 Web 3.0 之间的比较 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
 ]]></content>
       <categories>
-        <category>源码</category>
+        <category>方法论</category>
       </categories>
       <tags>
-        <tag>vue</tag>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/02/28/Algorithm/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>【API】MutationObserver</title>
+    <url>/2023/01/11/APIMutationObserver/</url>
+    <content><![CDATA[<h2 id="MutationObserver"><a href="#MutationObserver" class="headerlink" title="MutationObserver"></a><a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver" >MutationObserver <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h2><blockquote>
+<p><code>MutationObserver</code> 接口提供了监视对 DOM 树所做更改的能力。它被设计为旧的 Mutation Events 功能的替代品，该功能是 DOM3 Events 规范的一部分。</p>
+</blockquote>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>MutationObserver()</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建并返回一个新的 MutationObserver 它会在指定的 DOM 发生变化时被调用。</span></span><br><span class="line"><span class="keyword">var</span> observer = <span class="keyword">new</span> <span class="title class_">MutationObserver</span>(callback);</span><br></pre></td></tr></table></figure></div>
+<p>this<br>new绑定 用于类的构造函数<br>显式绑定 call apply bind<br>隐式绑定 绑定到调用函数的对象<br>默认绑定</p>
+<p>其他：<br>箭头函数 继承外层this</p>
+]]></content>
+      <categories>
+        <category>API</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【实践】手写 call、apply、bind</title>
+    <url>/2022/08/15/PracticeCallApply/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>实践</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【实践】手写 Promise</title>
+    <url>/2022/09/08/PracticePromise/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>实践</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【转载】Angular：性能优化清单</title>
+    <url>/2022/09/16/ReprintAngularOptimization/</url>
+    <content><![CDATA[<a class="link"   href="https://limeii.github.io/2020/06/angular-performance-checklists/" >【转载】Angular：性能优化清单 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>
+
+<article class="post-container post-container--single" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2020-06-28 00:00:00 +0000" itemprop="datePublished" class="post-meta__date date">2020-06-28</time>
+      • <span class="post-meta__tags tags">Angular</span>
+    </div>
+    <h1 class="post-title">Angular：性能优化清单</h1>
+  </header>
+
+  <section class="post">
+    <p>性能优化主要是从两方面入手，一个是网络性能，另一个是页面渲染。在具体介绍性能优化方式之前，先来解释下为什么网络性能和页面渲染会影响性能。</p>
+
+    <blockquote>
+      <p>
+        在这里讨论的网络带宽的性能问题都是基于 HTTP/1.X，在 HTTP/2 中很多性能问题都解决了。
+      </p>
+    </blockquote>
+
+    <p>在 HTTP/1.X 连接有三种方式：短连接，长连接和 HTTP 流水线。</p>
+
+    <p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="./angular-performance01.png"
+                      alt="angular-performance" height="80%"
+        width="80%"
+                ></p>
+
+    <p>短连接是 HTTP/1.0 的默认模型，它每发一个请求时都会创建见一个新的 TCP 连接，收到 response 的时候就立马关闭连接，每次创建一个 TCP
+      连接都相当耗费资源，可想而知这种方式的性能很差，现在基本不用这种方式。</p>
+
+    <p>在 HTTP/1.1 以后就有了长连接和流水线，长连接是指创建一个 TCP 连接后，可以保持连接完成多次连续的请求，减少了打开 TCP 连接的次数，在 HTTP/1.1
+      以后的版本是默认的长连接的模式，长连接的缺点是，就算在空闲状态，它还是会消耗服务器资源。长连接是通过 <code
+        class="language-plaintext highlighter-rouge">Keep-Alive</code>消息头来控制。</p>
+
+    <p>默认情况下，HTTP 请求是按顺序发出的，下一个请求只有在当前请求收到应答以后才会发出，由于受到网络延迟和带宽的限制，在下一个请求发出可能需要等很长时间。流水线是指在同一个 TCP
+      长连接里连续发出请求，而不用等待前一个请求应答返回，理论上这种方式是最有效的，实现流水线是复杂的：传输中的资源大小，多少有效的 RTT
+      会被用到，还有有效带宽，流水线带来的改善有多大的影响范围。不知道这些的话，重要的消息可能被延迟到不重要的消息后面。这个重要性的概念甚至会演变为影响到页面布局！因此 HTTP 流水线在大多数情况下带来的改善并不明显，在
+      HTTP/2 已经有更好的方式替代流水线模式，流水线模式在浏览器里默认是不开启的。</p>
+
+    <p>基于 HTTP/1.X 的连接限制，我们在开发中过程要尽量减少网络带宽的占用，比如尽可能的减小文件的大小和减少请求次数，可以从以下几方面考虑：</p>
+    <ul>
+      <li>Bundling</li>
+      <li>Code Splitting</li>
+      <li>Minify，Uglify</li>
+      <li>Compression</li>
+      <li>Tree-shaking</li>
+      <li>Cache</li>
+      <li>lazy loading 和 preloading</li>
+      <li>如果是用了前端框架，部署的时候用 AoT 的编译方式</li>
+      <li>Service Worker</li>
+    </ul>
+
+    <p>页面渲染，在正常情况下浏览器是60Hz的刷新率，每16.6ms会刷新一次页面，渲染页面的操作需要在这16.6ms内完成，否则就会导致页面失帧，提高页面渲染的性能，可以从以下几方面考虑：</p>
+    <ul>
+      <li>减少页面重排和重绘，尽量避免以下会导致页面重排和重绘的操作：
+        <ul>
+          <li>在 JS 代码中操作页面 DOM</li>
+          <li>在页面 layout 稳定以后，增加和改变 CSS 样式</li>
+          <li>改变：窗口大小，字体大小</li>
+          <li>使用 table</li>
+          <li>动画实现数度选择，动画速度越快，回流次数越多，也可以选择使用 requestAnimationFrame</li>
+          <li>读取 offsetwidth offsetheight</li>
+          <li>CSS 伪类，比如 :hover 某个元素弹出一个消息框</li>
+        </ul>
+      </li>
+      <li>JS 全阻塞，CSS 半阻塞（会阻塞 JS 执行和渲染树，但不阻塞 DOM 构建）
+        <ul>
+          <li>JS 阻塞构建 DOM CSSOM 树，从而会阻塞构建渲染树，而且同时还会阻塞其他静态资源（图片）的下载，所以要把<code
+              class="language-plaintext highlighter-rouge">&lt;script&gt;</code>标签放到body最后，或者是在标签里添加<code
+              class="language-plaintext highlighter-rouge">defer</code> 或者 <code
+              class="language-plaintext highlighter-rouge">async</code> 属性。</li>
+          <li>CSS 文件下载解析，不会阻塞 HTML 文件解析，不会阻塞 DOM 树的构建，但是会阻塞 CSSOM 树，从而会阻塞渲染树的构建，所以 CSS 文件的连接可以放在 head 里，不影响</li>
+          <li>CSS 文件下载不会阻塞其他文件下载，但是会阻塞JS的文件执行</li>
+        </ul>
+      </li>
+      <li>Web Worker</li>
+      <li>服务器端渲染</li>
+    </ul>
+
+    <h2 id="网络性能">网络性能</h2>
+
+    <p><strong>推荐用 Angular 自带的编译方式打包</strong></p>
+
+    <p>Angular 内置了 webpack 打包方式，很多人在搭建 Angular(&lt; 6.0) 项目的时候，发现 Angular 内置的 webpack 并不能满足实际项目打包的一些需求，所以通过<code
+        class="language-plaintext highlighter-rouge">ng eject</code>把内置的 webpack.config 文件暴露出来，然后根据自己项目需求重写整个
+      webpack.config 配置，可以参考文章: 【<a class="link" 
+         href="https://limeii.github.io/2018/09/angular-webpack/" >Angular：如何用Angular(&lt;6.0)和Webpack搭建项目 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】</p>
+
+    <p>但是 Angular(&gt;= 6.0)，去掉了<code class="language-plaintext highlighter-rouge">ng eject</code>命令，鼓励大家用 Angular
+      内置的打包方式开发 Angular 项目，因为<code class="language-plaintext highlighter-rouge">AoT</code> <code
+        class="language-plaintext highlighter-rouge">Tree-Shaking</code> <code
+        class="language-plaintext highlighter-rouge">ngc</code> <code
+        class="language-plaintext highlighter-rouge">tsc</code> <code
+        class="language-plaintext highlighter-rouge">minification</code> <code
+        class="language-plaintext highlighter-rouge">Uglification</code> <code
+        class="language-plaintext highlighter-rouge">Production mode</code>等等这些在 Angular 内置的打包方式中都是默认配置，不需要我们自己再去找第三方的
+      loader 或者 plugin 来实现类似的功能；而且从性能上说内置的打包方式要比我们自己搭的要好。</p>
+
+    <p>如何结合内置的打包方式和我们自己的 webpack 配置文件编译打包整个项目，可以参考文章：【<a class="link" 
+         href="https://limeii.github.io/2019/08/angular-customize-webpack/" >Angular：如何在Angular(8.0)中配置Webpack <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】</p>
+
+    <p><strong>使用 AoT 编译</strong></p>
+
+    <p>在打包过程中使用 AoT 编译，指的是把所有 HTML component NgModule CSS 都编译成浏览器可以识别的 es5 代码。从而用户访问 Angular 应用的时候，只需要下载相应的 budnle
+      文件后直接渲染。不需要先下载<code
+        class="language-plaintext highlighter-rouge">@angular/compiler</code>编译器编译模板文件，然后再渲染，大大提高了页面渲染性能。</p>
+
+    <p>在模板文件中 Angular 有自己的 directive component pipe，如果不先编译成 es6 代码，就没办法做 Tree Shaking。AoT(ngc) 编译，可以把模板文件先打包成 es6
+      (或者TypeScript)文件，这样就可以做 Tree Shaking，把一些没用的代码去掉，从而减少 bundle 文件的体积，也可以提高性能。</p>
+
+    <p>关于深入理解 Angular 编译，可以参考这篇文章：【<a class="link" 
+         href="https://limeii.github.io/2019/08/angular-compiler/" >Angular：深入理解Angular编译机制 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】</p>
+
+    <p><strong>Tree Shaking</strong></p>
+
+    <p>如果项目中有一些代码(方法、文件)，在项目里完全没有被用到，这种代码称为 Dead Code。大量 Dead Code 如果编译打包进 bundle 文件，会导致 bundle 文件过大，页面渲染下载 bundle
+      文件的时候会浪费带宽，也会影响性能。</p>
+
+    <p>Tree Shaking 就是用来解决这种问题，它是指在编译打包过程中把 Dead Code 去掉，不把这些没用到的代码打包到最后的 bundle 文件里，从而可以减小 bundle
+      文件的体积，提高应用性能。可以把整个应用想象成一棵树，function/component/service/lib 好比是树叶，而那些定义但又没有被调用的 function/component/service/lib
+      好比是枯树叶，Tree Shaking 就是把那些枯树叶从树上摇下去。</p>
+
+    <p>关于更多 Tree Shaking 的理解和应用可以参考这篇文章： <a class="link" 
+         href="https://limeii.github.io/2019/08/angular-tree-shaking/" >Angular性能优化：Tree Shaking <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+
+    <p><strong>lazy loading 和 preloading</strong></p>
+
+    <p>如果把一个大项目所有文件都打包进一个 bundle 文件，用户打开浏览器访问这个网站的时候，首先要从服务器下载这个超大的 bundle 文件，加上还需要时间做一些解析，会导致网站响应过慢。在 Angular
+      项目中可以通过配置 lazy loading 和 preloading 来提高性能。关于 lazy loading 和 preloading 在 Angular 项目中的理解和应用可以参考这篇文章：【<a class="link" 
+         href="https://limeii.github.io/2018/09/angular-lazy-loading/" >Angular：lazy loading和preloading <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】</p>
+
+    <p><strong>webpack Code Splitting</strong></p>
+
+    <p>在项目中经常会有一些公用代码，被多个 module 或者 component 引用，如果在打包的时候直接把公用代码重复打包进不同的 bundle 文件，会造成代码冗余，也会影响应用性能。我们可以通过 webpack
+      Code Splitting 做代码切割，把公用的代码单独提取出来放在 chunk 文件里，用户访问页面的时候只需要下载一次这个 chunk 文件就可以了。具体可以参考这篇文章：<a class="link" 
+         href="https://limeii.github.io/2018/10/webpack-code-splitting/" >webpack(3)：代码切割 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+
+    <p><strong>缓存</strong></p>
+
+    <ul>
+      <li>
+        <p>用 RxJS 实现缓存效果
+          Angular 中通过 HttpClient 执行 Http Request 返回的 Observables 是 Cold Observable，这导致每次调用 API，都会生成一个新的 Observable
+          实例，有订阅之后才开始发送值，这也符合现在前端开发要求。但是实际开发过程中，有时候后端会有提供一些公用的常量 API，不同页面都需要用这些常量，按现在的调用 API 的方式，会导致常量 API
+          在不同的页面重复多次被调用，这种方式显然性能不好。可以通过 ReplaySubject 实现缓存效果，第一次调用常量 API 之后把这些常量缓存起来，之后调用同样的 API 就可以直接在 ReplaySubject
+          拿到值，不用每次都调用后端 API。具体实现可以参考文章：【<a class="link"   href="https://limeii.github.io/2019/08/rxjs-caching/" >RxJS：如何通过RxJS实现缓存 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】
+        </p>
+      </li>
+      <li>
+        <p>选择合适的浏览器缓存策略
+          对于一些不经常改的静态资源，可以缓存在浏览器端，合理的缓存策略可以减少延迟，在重复利用缓存的资源文件同时，可以减少带宽和降低网络负荷，从而大大提高了性能。缓存机制可以参考文章：【<a class="link" 
+             href="https://limeii.github.io/2018/11/web-cache/" >浏览器缓存机制：强缓存和协商缓存 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】</p>
+      </li>
+      <li>
+        <p>合理的利用浏览器数据存储
+          对于一些常用的数据，可以存在浏览器里，这样可以减少延迟和带宽，从而可以提高性能，浏览器数据存储方式有：Cookies、SessionStorage、LocalStorage、IndexedDB。对于这些存储方式的用法和区别可以参考文章：【<a class="link" 
+             href="https://limeii.github.io/2018/11/web-storage/" >浏览器数据存储方式 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】</p>
+      </li>
+    </ul>
+
+    <p><strong>防抖</strong></p>
+
+    <p>超高频触发网路请求，不仅效率低而且没办法保证请求结果的正确性，我们可以结合 RxJS 中的操作符<code
+        class="language-plaintext highlighter-rouge">debounceTime</code> <code
+        class="language-plaintext highlighter-rouge">map</code> <code
+        class="language-plaintext highlighter-rouge">filter</code> <code
+        class="language-plaintext highlighter-rouge">distinctUntilChanged</code> 和<code
+        class="language-plaintext highlighter-rouge">switchMap</code>实现防抖。具体可以参考文章：【<a class="link" 
+         href="https://limeii.github.io/2019/08/rxjs-searchable-input/" >RxJS：如何用RxJS实现高效的HTTP请求 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】</p>
+
+    <p><strong>Service Worker</strong></p>
+
+    <p>Service Worker
+      可以理解为客户端和服务器端中间的一个代理服务器，它是独立于主线程的一个线程，在主线程运行的同时，它在后台运行，两者之间互不干扰。它可以拦截所有客户端的请求，也可以向服务器端发送请求，可以离线缓存资源，也可以后台同步。Service
+      Worker 可以使你的应用先访问本地缓存资源，所以在离线状态时，在没有通过网络接收到更多的数据前，仍可以提供基本的功能，毫无疑问，Service Worker 也可以大大的提高页面性能。关于 Service Worker
+      的理解和应用，可以参考文章：【<a class="link"   href="https://jakearchibald.com/2014/offline-cookbook/" >The offline cookbook <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】</p>
+
+    <h2 id="页面渲染">页面渲染</h2>
+
+    <p><strong>浏览器工作原理</strong></p>
+
+    <p>在正常情况下浏览器是60Hz的刷新率，每16.6ms会刷新一次页面，渲染页面的操作需要在这16.6ms内完成，否则就会导致页面失帧。关于浏览器是如何解析运行 HTML CSS
+      JS，浏览器的工作原理，可以参考参考文章：【<a class="link"   href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" >How Browsers
+        Work: Behind the scenes of modern web browsers <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】</p>
+
+    <p><strong>Web Worker</strong></p>
+
+    <p>JS 是单线程的，并且是全阻塞的，全阻塞的意思是指：在浏览器中，只要 JS 引擎在执行 JS 代码，那么就会阻塞 HTML CSS 的解析执行，从而会阻塞页面渲染和交互，如果 JS
+      代码执行时间比较长，那么会导致页面卡顿，影响用户体验。</p>
+
+    <p>在 H5 中引入了 Web Worker，它的作用就是为 JS 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给 Worker 线程。在主线程运行的同时，Worker
+      线程在后台运行，两者互不干扰，它的意义在于可以将一些耗时的数据处理操作（复杂耗时的计算，大文本分析上传，图像处理，canvas图像绘制等等）从主线程中剥离，让主线程专注于页面的渲染和交互，从而提高页面性能。关于 Web
+      Worker 的具体用法可以参考文章：【<a class="link" 
+         href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers" >使用 Web Workers <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】
+    </p>
+
+    <p><strong>使用 ChangeDetectionStrategy.OnPush 策略</strong></p>
+
+    <p>Angular 默认的变化检测机制是：异步事件 callback 结束后，NgZone 会触发整个组件树至上而下做变化检测，也就是说页面一个小小的 Click 事件就会触发所有组件的变化检测。虽然 Angular
+      变化检测本身性能已经很好了，在毫秒内可以做成百上千次变化检测。但是随着项目越来越大，其实很多不必要的变化检测还是会在一定程度上影响性能。在 Angular 中可以通过 OnPush
+      来跳过一些不必要的变化检测，从而优化整个应用的性能。更多关于 OnPush 策略的理解和应用可以参考这篇文章：【 <a class="link" 
+         href="https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/" >Angular Change
+        Detection：变化检测策略 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】</p>
+
+    <p><strong>服务器端渲染（Server Rendering）</strong></p>
+
+    <p>一般来说，像 Angular 框架搭出来的 SPA 应用，都是客户端渲染（client-side rendering）。当路由到这个页面的时候，从服务器端下载相应的 bundle/chunk
+      文件，在这个文件里一般只是只包含了 DOM 结构代码和 JS 代码，不是 HTML 文件。浏览器拿到这些代码，需要构建 DOM 树 / CSSOM 树 / 渲染树 / 解析执行 JS
+      代码，最后才是页面渲染后跟用户进行交互，如果这其中某一个步骤耗时较长，就会导致用户只能看到空白页面一直在加载，显然性能和用户体验都不好。服务器端渲染就可以用来解决这个问题，当路由到某一个页面的时候，request
+      发到服务器端，在服务器端会构建好这个页面（HTML文件），再把这个 HTML 文件直接发回给客户端，这样用户在一开始就能立马看到带有内容的页面，不用等浏览器构建页面、执行 JS 代码，大大提高了性能，有更好的用户体验。
+    </p>
+
+    <p><strong>域名拆分</strong></p>
+
+    <p>我们知道，在 HTTP1.1 中，浏览器对同一域名的 TCP 连接数量有限制，一般是 6 到 8
+      个，超过这个数量之后，就会阻塞后续的请求。有些网站为了提高性能，并行的去服务端请求更多的资源，会把资源分布到不同的域名商去，让浏览器利用更多的 TCP socket 连接。</p>
+
+    <p>在 Angular 中，可以用 Angular Universal 来实现服务器端渲染，关于服务器端渲染和 Angular Universal 的文章可以参考：【<a class="link" 
+         href="https://developers.google.com/web/updates/2019/02/rendering-on-the-web" >Rendering on the Web <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】【<a class="link" 
+         href="https://blog.angular-university.io/angular-universal/" >Angular Universal: a Complete Practical
+        Guide <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>】</p>
+
+  </section>
+</article>]]></content>
+      <categories>
+        <category>转载</category>
+      </categories>
+      <tags>
+        <tag>angular</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【转载】TypeScript装饰器完全指南</title>
+    <url>/2023/02/16/ReprintTypscriptDecorator/</url>
+    <content><![CDATA[<a class="link"   href="https://mirone.me/zh-hans/a-complete-guide-to-typescript-decorator/" >【转载】TypeScript装饰器完全指南 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>
+
+<section>
+  <p>装饰器让TypeScript的世界更好。
+    我们使用的许多库都基于这一强大特性构建,
+    例如<a class="link"   href="https://angular.io/"  target="_blank" rel="nofollow noopener noreferrer">Angular <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>和<a class="link" 
+       href="https://nestjs.com/"  target="_blank" rel="nofollow noopener noreferrer">Nestjs <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。
+    在这篇博客中我将介绍装饰器和它的许多细节。
+    我希望在读完这篇文章后，你可以理解何时和如何使用这一强的的特性。</p>
+  <h1>概览</h1>
+  <p>装饰器本质上是一种特殊的函数被应用在于：</p>
+  <ol>
+    <li>类</li>
+    <li>类属性</li>
+    <li>类方法</li>
+    <li>类访问器</li>
+    <li>类方法的参数</li>
+  </ol>
+  <p>所以应用装饰器其实很像是组合一系列函数，类似于高阶函数和类。
+    通过装饰器我们可以轻松实现<a class="link"   href="https://zh.wikipedia.org/zh-hans/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F"  target="_blank"
+      rel="nofollow noopener noreferrer">代理模式 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>来使代码更简洁以及实现其它一些更有趣的能力。</p>
+  <p>装饰器的语法十分简单，只需要在想使用的装饰器前加上<code class="language-text">@</code>符号，装饰器就会被应用到目标上：</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre
+      class="language-typescript"><code class="language-typescript"><span class="token keyword">function</span> <span class="token function">simpleDecorator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'---hi I am a decorator---'</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">simpleDecorator</span></span>
+<span class="token keyword">class</span> <span class="token class-name"><span class="token constant">A</span></span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span></code></pre>
+  </div>
+  <p>一共有5种装饰器可被我们使用：</p>
+  <ol>
+    <li>类装饰器</li>
+    <li>属性装饰器</li>
+    <li>方法装饰器</li>
+    <li>访问器装饰器</li>
+    <li>参数装饰器</li>
+  </ol>
+  <p>让我们来快速认识一下这五种装饰器：</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre class="language-typescript"><code class="language-typescript"><span class="token comment">// 类装饰器</span>
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">classDecorator</span></span>
+<span class="token keyword">class</span> <span class="token class-name">Bird</span> <span class="token punctuation">&#123;</span>
+
+  <span class="token comment">// 属性装饰器</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">propertyDecorator</span></span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  
+  <span class="token comment">// 方法装饰器</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">methodDecorator</span></span>
+  <span class="token function">fly</span><span class="token punctuation">(</span>
+    <span class="token comment">// 参数装饰器</span>
+    <span class="token decorator"><span class="token at operator">@</span><span class="token function">parameterDecorator</span></span>
+      meters<span class="token operator">:</span> <span class="token builtin">number</span>
+  <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+  
+  <span class="token comment">// 访问器装饰器</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">accessorDecorator</span></span>
+  <span class="token keyword">get</span> <span class="token function">egg</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+  </div>
+  <h1>执行</h1>
+  <h2>时机</h2>
+  <p>装饰器只在解释执行时应用一次，例如：</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre class="language-typescript"><code class="language-typescript"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token constant">C</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'apply decorator'</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token constant">C</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">f</span></span>
+<span class="token keyword">class</span> <span class="token class-name"><span class="token constant">A</span></span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">// output: apply decorator</span></code></pre>
+  </div>
+  <p>这里的代码会在终端中打印<code class="language-text">apply decorator</code>，即便我们其实并没有使用类A。</p>
+  <h2>执行顺序</h2>
+  <p>不同类型的装饰器的执行顺序是明确定义的：</p>
+  <ol>
+    <li>实例成员：</li>
+  </ol>
+  <p>参数装饰器 -&gt; 方法 / 访问器 / 属性 装饰器
+    2. 静态成员:<br>
+    参数装饰器 -&gt; 方法 / 访问器 / 属性 装饰器
+    3. 构造器: 参数装饰器
+    4. 类装饰器</p>
+  <p>例如，考虑以下代码：</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre class="language-typescript"><code class="language-typescript"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span>key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">any</span> <span class="token punctuation">&#123;</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"evaluate: "</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"call: "</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">f</span></span><span class="token punctuation">(</span><span class="token string">"Class Decorator"</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name"><span class="token constant">C</span></span> <span class="token punctuation">&#123;</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">f</span></span><span class="token punctuation">(</span><span class="token string">"Static Property"</span><span class="token punctuation">)</span>
+  <span class="token keyword">static</span> prop<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">f</span></span><span class="token punctuation">(</span><span class="token string">"Static Method"</span><span class="token punctuation">)</span>
+  <span class="token keyword">static</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token decorator"><span class="token at operator">@</span><span class="token function">f</span></span><span class="token punctuation">(</span><span class="token string">"Static Method Parameter"</span><span class="token punctuation">)</span> foo<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token decorator"><span class="token at operator">@</span><span class="token function">f</span></span><span class="token punctuation">(</span><span class="token string">"Constructor Parameter"</span><span class="token punctuation">)</span> foo<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">f</span></span><span class="token punctuation">(</span><span class="token string">"Instance Method"</span><span class="token punctuation">)</span>
+  <span class="token function">method</span><span class="token punctuation">(</span><span class="token decorator"><span class="token at operator">@</span><span class="token function">f</span></span><span class="token punctuation">(</span><span class="token string">"Instance Method Parameter"</span><span class="token punctuation">)</span> foo<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">f</span></span><span class="token punctuation">(</span><span class="token string">"Instance Property"</span><span class="token punctuation">)</span>
+  prop<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+  </div>
+  <p>它将会打印出以下信息：</p>
+  <div class="gatsby-highlight" data-language="bash">
+    <pre class="language-bash"><code class="language-bash">evaluate:  Instance Method
+evaluate:  Instance Method Parameter
+call:  Instance Method Parameter
+call:  Instance Method
+evaluate:  Instance Property
+call:  Instance Property
+evaluate:  Static Property
+call:  Static Property
+evaluate:  Static Method
+evaluate:  Static Method Parameter
+call:  Static Method Parameter
+call:  Static Method
+evaluate:  Class Decorator
+evaluate:  Constructor Parameter
+call:  Constructor Parameter
+call:  Class Decorator</code></pre>
+  </div>
+  <p>你也许会注意到执行实例属性<code class="language-text">prop</code>晚于实例方法<code class="language-text">method</code>
+    然而执行静态属性<code class="language-text">static prop</code>早于静态方法<code class="language-text">static method</code>。
+    这是因为对于属性/方法/访问器装饰器而言，执行顺序取决于声明它们的顺序。</p>
+  <p>然而，同一方法中不同参数的装饰器的执行顺序是相反的，
+    最后一个参数的装饰器会最先被执行：</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre class="language-typescript"><code class="language-typescript"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span>key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">any</span> <span class="token punctuation">&#123;</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"evaluate: "</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"call: "</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> <span class="token class-name"><span class="token constant">C</span></span> <span class="token punctuation">&#123;</span>
+  <span class="token function">method</span><span class="token punctuation">(</span>
+    <span class="token decorator"><span class="token at operator">@</span><span class="token function">f</span></span><span class="token punctuation">(</span><span class="token string">"Parameter Foo"</span><span class="token punctuation">)</span> foo<span class="token punctuation">,</span>
+    <span class="token decorator"><span class="token at operator">@</span><span class="token function">f</span></span><span class="token punctuation">(</span><span class="token string">"Parameter Bar"</span><span class="token punctuation">)</span> bar
+  <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+  </div>
+  <p>这里的代码打印出的结果为：</p>
+  <div class="gatsby-highlight" data-language="bash">
+    <pre class="language-bash"><code class="language-bash">evaluate:  Parameter Foo
+evaluate:  Parameter Bar
+call:  Parameter Bar
+call:  Parameter Foo</code></pre>
+  </div>
+  <h2>多个装饰器的组合</h2>
+  <p>你可以对同一目标应用多个装饰器。它们的组合顺序为：</p>
+  <ol>
+    <li>求值外层装饰器</li>
+    <li>求值内层装饰器</li>
+    <li>调用内层装饰器</li>
+    <li>调用外层装饰器</li>
+  </ol>
+  <p>例如:</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre class="language-typescript"><code class="language-typescript"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span>key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"evaluate: "</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"call: "</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> <span class="token class-name"><span class="token constant">C</span></span> <span class="token punctuation">&#123;</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">f</span></span><span class="token punctuation">(</span><span class="token string">"Outer Method"</span><span class="token punctuation">)</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">f</span></span><span class="token punctuation">(</span><span class="token string">"Inner Method"</span><span class="token punctuation">)</span>
+  <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+  </div>
+  <p>这里的代码打印出的结果为：</p>
+  <div class="gatsby-highlight" data-language="bash">
+    <pre class="language-bash"><code class="language-bash">evaluate: Outer Method
+evaluate: Inner Method
+call: Inner Method
+call: Outer Method</code></pre>
+  </div>
+  <h1>定义</h1>
+  <h2>类装饰器</h2>
+  <p>类型声明：</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre
+      class="language-typescript"><code class="language-typescript"><span class="token keyword">type</span> <span class="token class-name">ClassDecorator</span> <span class="token operator">=</span> <span class="token operator">&lt;</span>TFunction <span class="token keyword">extends</span> <span class="token class-name"><span class="token builtin">Function</span></span><span class="token operator">&gt;</span>
+  <span class="token punctuation">(</span>target<span class="token operator">:</span> TFunction<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> TFunction <span class="token operator">|</span> <span class="token keyword">void</span><span class="token punctuation">;</span></code></pre>
+  </div>
+  <ul>
+    <li>@参数:
+      <ol>
+        <li><code class="language-text">target</code>: 类的构造器。</li>
+      </ol>
+    </li>
+    <li>@返回:<br>
+      如果类装饰器返回了一个值，她将会被用来代替原有的类构造器的声明。</li>
+  </ul>
+  <p>因此，类装饰器适合用于继承一个现有类并添加一些属性和方法。</p>
+  <p>例如我们可以添加一个<code class="language-text">toString</code>方法给所有的类来覆盖它原有的<code class="language-text">toString</code>方法。
+  </p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre class="language-typescript"><code class="language-typescript"><span class="token keyword">type</span> <span class="token class-name">Consturctor</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token keyword">new</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">any</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token generic-function"><span class="token function">toString</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token constant">T</span> <span class="token keyword">extends</span> Consturctor<span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>BaseClass<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token keyword">class</span> <span class="token class-name"><span class="token keyword">extends</span></span> BaseClass <span class="token punctuation">&#123;</span>
+    <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">return</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">toString</span></span>
+<span class="token keyword">class</span> <span class="token class-name"><span class="token constant">C</span></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">public</span> foo <span class="token operator">=</span> <span class="token string">"foo"</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span> num <span class="token operator">=</span> <span class="token number">24</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name"><span class="token constant">C</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// -&gt; &#123;"foo":"foo","num":24&#125;</span></code></pre>
+  </div>
+  <p>遗憾的是装饰器并没有类型保护，这意味着：</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre
+      class="language-typescript"><code class="language-typescript"><span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token generic-function"><span class="token function">Blah</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>target<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token constant">T</span> <span class="token operator">&amp;</span> <span class="token punctuation">&#123;</span>foo<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">&#125;</span>
+
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">Blah</span></span>
+<span class="token keyword">class</span> <span class="token class-name">Foo</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>foo<span class="token punctuation">;</span> <span class="token comment">// Property 'foo' does not exist on type 'Foo'</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">new</span> <span class="token class-name">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>foo<span class="token punctuation">;</span> <span class="token comment">// Property 'foo' does not exist on type 'Foo'</span></code></pre>
+  </div>
+  <p>这是<a class="link"   href="https://github.com/microsoft/TypeScript/issues/4881"  target="_blank"
+      rel="nofollow noopener noreferrer">一个TypeScript的已知的缺陷 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。
+    目前我们能做的只有额外提供一个类用于提供类型信息：</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre
+      class="language-typescript"><code class="language-typescript"><span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token generic-function"><span class="token function">Blah</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>target<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token constant">T</span> <span class="token operator">&amp;</span> <span class="token punctuation">&#123;</span>foo<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Base</span> <span class="token punctuation">&#123;</span>
+  foo<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">Blah</span></span>
+<span class="token keyword">class</span> <span class="token class-name">Foo</span> <span class="token keyword">extends</span> <span class="token class-name">Base</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>foo<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">new</span> <span class="token class-name">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>foo<span class="token punctuation">;</span></code></pre>
+  </div>
+  <h2>属性装饰器</h2>
+  <p>类型声明：</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre
+      class="language-typescript"><code class="language-typescript"><span class="token keyword">type</span> <span class="token class-name">PropertyDecorator</span> <span class="token operator">=</span>
+  <span class="token punctuation">(</span>target<span class="token operator">:</span> Object<span class="token punctuation">,</span> propertyKey<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">symbol</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">;</span></code></pre>
+  </div>
+  <ul>
+    <li>@参数:
+      <ol>
+        <li><code class="language-text">target</code>: 对于静态成员来说是类的构造器，对于实例成员来说是类的原型链。</li>
+        <li><code class="language-text">propertyKey</code>: 属性的名称。</li>
+      </ol>
+    </li>
+    <li>@返回:<br>
+      返回的结果将被忽略。</li>
+  </ul>
+  <p>除了用于收集信息外，属性装饰器也可以用来给类添加额外的方法和属性。
+    例如我们可以写一个装饰器来给某些属性添加监听器。</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre
+      class="language-typescript"><code class="language-typescript"><span class="token keyword">function</span> <span class="token function">capitalizeFirstLetter</span><span class="token punctuation">(</span>str<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function">observable</span><span class="token punctuation">(</span>target<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">any</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// prop -&gt; onPropChange</span>
+  <span class="token keyword">const</span> targetKey <span class="token operator">=</span> <span class="token string">"on"</span> <span class="token operator">+</span> <span class="token function">capitalizeFirstLetter</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"Change"</span><span class="token punctuation">;</span>
+
+  target<span class="token punctuation">[</span>targetKey<span class="token punctuation">]</span> <span class="token operator">=</span>
+    <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token function-variable function">fn</span><span class="token operator">:</span> <span class="token punctuation">(</span>prev<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> next<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">let</span> prev <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      Reflect<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">set</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token function">fn</span><span class="token punctuation">(</span>prev<span class="token punctuation">,</span> next<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          prev <span class="token operator">=</span> next<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> <span class="token class-name"><span class="token constant">C</span></span> <span class="token punctuation">&#123;</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">observable</span></span>
+  foo <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">observable</span></span>
+  bar <span class="token operator">=</span> <span class="token string">"bar"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token constant">C</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+c<span class="token punctuation">.</span><span class="token function">onFooChange</span><span class="token punctuation">(</span><span class="token punctuation">(</span>prev<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">prev: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>prev<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">, next: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>next<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+c<span class="token punctuation">.</span><span class="token function">onBarChange</span><span class="token punctuation">(</span><span class="token punctuation">(</span>prev<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">prev: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>prev<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">, next: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>next<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+c<span class="token punctuation">.</span>foo <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token comment">// -&gt; prev: -1, next: 100</span>
+c<span class="token punctuation">.</span>foo <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">3.14</span><span class="token punctuation">;</span> <span class="token comment">// -&gt; prev: 100, next: -3.14</span>
+c<span class="token punctuation">.</span>bar <span class="token operator">=</span> <span class="token string">"baz"</span><span class="token punctuation">;</span> <span class="token comment">// -&gt; prev: bar, next: baz</span>
+c<span class="token punctuation">.</span>bar <span class="token operator">=</span> <span class="token string">"sing"</span><span class="token punctuation">;</span> <span class="token comment">// -&gt; prev: baz, next: sing</span></code></pre>
+  </div>
+  <h2>方法装饰器</h2>
+  <p>类型声明：</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre
+      class="language-typescript"><code class="language-typescript"><span class="token keyword">type</span> <span class="token class-name">MethodDecorator</span> <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>
+  target<span class="token operator">:</span> Object<span class="token punctuation">,</span>
+  propertyKey<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">symbol</span><span class="token punctuation">,</span>
+  descriptor<span class="token operator">:</span> TypedPropertyDescriptor<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span>
+<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> TypedPropertyDescriptor<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span> <span class="token operator">|</span> <span class="token keyword">void</span><span class="token punctuation">;</span></code></pre>
+  </div>
+  <ul>
+    <li>@参数：
+      <ol>
+        <li><code class="language-text">target</code>: 对于静态成员来说是类的构造器，对于实例成员来说是类的原型链。</li>
+        <li><code class="language-text">propertyKey</code>: 属性的名称。</li>
+        <li><code class="language-text">descriptor</code>: 属性的<a class="link" 
+             href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" 
+            target="_blank" rel="nofollow noopener noreferrer">描述器 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。</li>
+      </ol>
+    </li>
+    <li>@返回：
+      如果返回了值，它会被用于替代属性的描述器。</li>
+  </ul>
+  <p>方法装饰器不同于属性装饰器的地方在于<code class="language-text">descriptor</code>参数。
+    通过这个参数我们可以修改方法原本的实现，添加一些共用逻辑。
+    例如我们可以给一些方法添加打印输入与输出的能力：</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre class="language-typescript"><code class="language-typescript"><span class="token keyword">function</span> <span class="token function">logger</span><span class="token punctuation">(</span>target<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> propertyKey<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> descriptor<span class="token operator">:</span> PropertyDescriptor<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">const</span> original <span class="token operator">=</span> descriptor<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+
+  descriptor<span class="token punctuation">.</span><span class="token function-variable function">value</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'params: '</span><span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token function">original</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'result: '</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> <span class="token class-name"><span class="token constant">C</span></span> <span class="token punctuation">&#123;</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">logger</span></span>
+  <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> y<span class="token operator">:</span><span class="token builtin">number</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token constant">C</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+c<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// -&gt; params: 1, 2</span>
+<span class="token comment">// -&gt; result: 3</span></code></pre>
+  </div>
+  <h2>访问器装饰器</h2>
+  <p>访问器装饰器总体上讲和方法装饰器很接近，唯一的区别在于描述器中有的key不同：</p>
+  <p>方法装饰器的描述器的key为：</p>
+  <ul>
+    <li><code class="language-text">value</code></li>
+    <li><code class="language-text">writable</code></li>
+    <li><code class="language-text">enumerable</code></li>
+    <li><code class="language-text">configurable</code></li>
+  </ul>
+  <p>访问器装饰器的描述器的key为：</p>
+  <ul>
+    <li><code class="language-text">get</code></li>
+    <li><code class="language-text">set</code></li>
+    <li><code class="language-text">enumerable</code></li>
+    <li><code class="language-text">configurable</code></li>
+  </ul>
+  <p>例如，我们可以将某个属性设为不可变值：</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre class="language-typescript"><code class="language-typescript"><span class="token keyword">function</span> <span class="token function">immutable</span><span class="token punctuation">(</span>target<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> propertyKey<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> descriptor<span class="token operator">:</span> PropertyDescriptor<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">const</span> original <span class="token operator">=</span> descriptor<span class="token punctuation">.</span>set<span class="token punctuation">;</span>
+
+  descriptor<span class="token punctuation">.</span><span class="token function-variable function">set</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>value<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">original</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> <span class="token operator">...</span>value <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> <span class="token class-name"><span class="token constant">C</span></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">private</span> _point <span class="token operator">=</span> <span class="token punctuation">&#123;</span> x<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span>
+
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">immutable</span></span>
+  <span class="token keyword">set</span> <span class="token function">point</span><span class="token punctuation">(</span>value<span class="token operator">:</span> <span class="token punctuation">&#123;</span> x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>_point <span class="token operator">=</span> value<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">get</span> <span class="token function">point</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_point<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token constant">C</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> point <span class="token operator">=</span> <span class="token punctuation">&#123;</span> x<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span>
+c<span class="token punctuation">.</span>point <span class="token operator">=</span> point<span class="token punctuation">;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>point <span class="token operator">===</span> point<span class="token punctuation">)</span>
+<span class="token comment">// -&gt; false</span></code></pre>
+  </div>
+  <h2>参数装饰器</h2>
+  <p>类型声明：</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre
+      class="language-typescript"><code class="language-typescript"><span class="token keyword">type</span> <span class="token class-name">ParameterDecorator</span> <span class="token operator">=</span> <span class="token punctuation">(</span>
+  target<span class="token operator">:</span> Object<span class="token punctuation">,</span>
+  propertyKey<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">symbol</span><span class="token punctuation">,</span>
+  parameterIndex<span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">;</span></code></pre>
+  </div>
+  <ul>
+    <li>@参数：
+      <ol>
+        <li><code class="language-text">target</code>: 对于静态成员来说是类的构造器，对于实例成员来说是类的原型链。</li>
+        <li><code class="language-text">propertyKey</code>: 属性的名称(注意是方法的名称，而不是参数的名称)。</li>
+        <li><code class="language-text">parameterIndex</code>: 参数在方法中所处的位置的下标。</li>
+      </ol>
+    </li>
+    <li>@返回：<br>
+      返回的值将会被忽略。</li>
+  </ul>
+  <p>单独的参数装饰器能做的事情很有限，它一般都被用于记录可被其它装饰器使用的信息。</p>
+  <h1>结合</h1>
+  <p>对于一些复杂场景，
+    我们可能需要结合使用不同的装饰器。
+    例如如果我们不仅想给我们的接口添加静态检查，还想加上运行时检查的能力。</p>
+  <p>我们可以用3个步骤来实现这个功能：</p>
+  <ol>
+    <li>标记需要检查的参数 (因为参数装饰器先于方法装饰器执行)。</li>
+    <li>改变方法的<code class="language-text">descriptor</code>的<code
+        class="language-text">value</code>的值，先运行参数检查器，如果失败就抛出异常。</li>
+    <li>运行原有的接口实现。</li>
+  </ol>
+  <p>以下是代码:</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre
+      class="language-typescript"><code class="language-typescript"><span class="token keyword">type</span> <span class="token class-name">Validator</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+
+<span class="token comment">// save the marks</span>
+<span class="token keyword">const</span> validateMap<span class="token operator">:</span> Record<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> Validator<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 1. 标记需要检查的参数</span>
+<span class="token keyword">function</span> <span class="token function">typedDecoratorFactory</span><span class="token punctuation">(</span>validator<span class="token operator">:</span> Validator<span class="token punctuation">)</span><span class="token operator">:</span> ParameterDecorator <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>_<span class="token punctuation">,</span> key<span class="token punctuation">,</span> index<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> target <span class="token operator">=</span> validateMap<span class="token punctuation">[</span>key <span class="token keyword">as</span> <span class="token builtin">string</span><span class="token punctuation">]</span> <span class="token operator">??</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    target<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> validator<span class="token punctuation">;</span>
+    validateMap<span class="token punctuation">[</span>key <span class="token keyword">as</span> <span class="token builtin">string</span><span class="token punctuation">]</span> <span class="token operator">=</span> target<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function">validate</span><span class="token punctuation">(</span>_<span class="token operator">:</span> Object<span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> descriptor<span class="token operator">:</span> PropertyDescriptor<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">const</span> originalFn <span class="token operator">=</span> descriptor<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+  descriptor<span class="token punctuation">.</span><span class="token function-variable function">value</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token comment">// 2. 运行检查器</span>
+    <span class="token keyword">const</span> validatorList <span class="token operator">=</span> validateMap<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>validatorList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      args<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>arg<span class="token punctuation">,</span> index<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">const</span> validator <span class="token operator">=</span> validatorList<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>validator<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token function">validator</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>result<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>
+            <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Failed for parameter: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>arg<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string"> of the index: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>index<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span>
+          <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">// 3. 运行原有的方法</span>
+    <span class="token keyword">return</span> <span class="token function">originalFn</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">const</span> isInt <span class="token operator">=</span> <span class="token function">typedDecoratorFactory</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> Number<span class="token punctuation">.</span><span class="token function">isInteger</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> isString <span class="token operator">=</span> <span class="token function">typedDecoratorFactory</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">typeof</span> x <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name"><span class="token constant">C</span></span> <span class="token punctuation">&#123;</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">validate</span></span>
+  <span class="token function">sayRepeat</span><span class="token punctuation">(</span><span class="token decorator"><span class="token at operator">@</span><span class="token function">isString</span></span> word<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token decorator"><span class="token at operator">@</span><span class="token function">isInt</span></span> x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">Array</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token constant">C</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+c<span class="token punctuation">.</span><span class="token function">sayRepeat</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// pass</span>
+c<span class="token punctuation">.</span><span class="token function">sayRepeat</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">'lol'</span> <span class="token keyword">as</span> <span class="token builtin">any</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// throw an error</span></code></pre>
+  </div>
+  <p>正如例子中展示的，
+    对我们来说同时理解不同种类装饰器的执行顺序和职责都很重要。</p>
+  <h1>元数据</h1>
+  <p>严格地说，元数据和装饰器是EcmaScript中两个独立的部分。
+    然而，如果你想实现像是<a class="link" 
+       href="https://zh.wikipedia.org/wiki/%E5%8F%8D%E5%B0%84_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)" 
+      target="_blank" rel="nofollow noopener noreferrer">反射 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>这样的能力，你总是同时需要它们。</p>
+  <p>如果我们回顾上一个例子，如果我们不想写各种不同的检查器呢？
+    或者说，能否只写一个检查器能够通过我们编写的TS类型声明来自动运行类型检查？</p>
+  <p>有了<a class="link"   href="https://github.com/rbuckton/reflect-metadata"  target="_blank"
+      rel="nofollow noopener noreferrer">reflect-metadata <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>的帮助，
+    我们可以获取编译期的类型。</p>
+  <div class="gatsby-highlight" data-language="typescript">
+    <pre
+      class="language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token string">'reflect-metadata'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">validate</span><span class="token punctuation">(</span>
+  target<span class="token operator">:</span> Object<span class="token punctuation">,</span>
+  key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+  descriptor<span class="token operator">:</span> PropertyDescriptor
+<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">const</span> originalFn <span class="token operator">=</span> descriptor<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+
+  <span class="token comment">// 获取参数的编译期类型</span>
+  <span class="token keyword">const</span> designParamTypes <span class="token operator">=</span> Reflect
+    <span class="token punctuation">.</span><span class="token function">getMetadata</span><span class="token punctuation">(</span><span class="token string">'design:paramtypes'</span><span class="token punctuation">,</span> target<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  descriptor<span class="token punctuation">.</span><span class="token function-variable function">value</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    args<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>arg<span class="token punctuation">,</span> index<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">&#123;</span>
+
+      <span class="token keyword">const</span> paramType <span class="token operator">=</span> designParamTypes<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">const</span> result <span class="token operator">=</span> arg<span class="token punctuation">.</span>constructor <span class="token operator">===</span> paramType
+        <span class="token operator">||</span> arg <span class="token keyword">instanceof</span> <span class="token class-name">paramType</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>result<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>
+          <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Failed for validating parameter: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>arg<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string"> of the index: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>index<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token function">originalFn</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> <span class="token class-name"><span class="token constant">C</span></span> <span class="token punctuation">&#123;</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">validate</span></span>
+  <span class="token function">sayRepeat</span><span class="token punctuation">(</span>word<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">Array</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token constant">C</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+c<span class="token punctuation">.</span><span class="token function">sayRepeat</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// pass</span>
+c<span class="token punctuation">.</span><span class="token function">sayRepeat</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">'lol'</span> <span class="token keyword">as</span> <span class="token builtin">any</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// throw an error</span></code></pre>
+  </div>
+  <p>目前为止一共有三种编译期类型可以拿到：</p>
+  <ul>
+    <li><code class="language-text">design:type</code>: 属性的类型。</li>
+    <li><code class="language-text">desin:paramtypes</code>: 方法的参数的类型。</li>
+    <li><code class="language-text">design:returntype</code>: 方法的返回值的类型。</li>
+  </ul>
+  <p>这三种方式拿到的结果都是构造函数（例如<code class="language-text">String</code>和<code class="language-text">Number</code>）。规则是：</p>
+  <ul>
+    <li>number -&gt; <code class="language-text">Number</code></li>
+    <li>string -&gt; <code class="language-text">String</code></li>
+    <li>boolean -&gt; <code class="language-text">Boolean</code></li>
+    <li>void/null/never -&gt; <code class="language-text">undefined</code></li>
+    <li>Array/Tuple -&gt; <code class="language-text">Array</code></li>
+    <li>Class -&gt; 类的构造函数</li>
+    <li>Enum -&gt; 如果是纯数字枚举则为<code class="language-text">Number</code>, 否则是 <code class="language-text">Object</code>
+    </li>
+    <li>Function -&gt; <code class="language-text">Function</code></li>
+    <li>其余都是<code class="language-text">Object</code></li>
+  </ul>
+  <h1>何时使用？</h1>
+  <p>现在我们可以对于何时使用装饰器得出结论，
+    在阅读上面的代码中你可能也有所感觉。</p>
+  <p>我将例举一些常用的使用场景：</p>
+  <ul>
+    <li>Before/After钩子。</li>
+    <li>监听属性改变或者方法调用。</li>
+    <li>对方法的参数做转换。</li>
+    <li>添加额外的方法和属性。</li>
+    <li>运行时类型检查。</li>
+    <li>自动编解码。</li>
+    <li>依赖注入。</li>
+  </ul>
+  <p>我希望读完这篇文章后，你可以找到装饰器的更多使用场景，并且用它来简化你的代码。</p>
+</section>]]></content>
+      <categories>
+        <category>转载</category>
+      </categories>
+      <tags>
+        <tag>typescript</tag>
       </tags>
   </entry>
 </search>
