@@ -5,6 +5,8 @@ tags: [JS]
 categories: [一些有趣的问题]
 ---
 
+<!-- YCTODO -->
+
 `以下语句会如何输出？`
 ```javascript
 for(let i=0,j=0;i<6,j<5,i++,j++){

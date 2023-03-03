@@ -11,8 +11,12 @@
             "id": "bbd35c070e09ddd0",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "MethodologyFrontendJSModularity .md",
+                "mode": "source",
+                "source": false
+              }
             }
           },
           {
@@ -31,8 +35,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,6 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "MethodologyFrontendJSModularity .md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,6 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "MethodologyFrontendJSModularity .md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +140,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "MethodologyFrontendJSModularity .md"
+              }
             }
           }
         ]
@@ -147,16 +154,29 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "canvas:新建白板": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
-      "canvas:Create new canvas": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6033114220750ef6",
+  "active": "bbd35c070e09ddd0",
   "lastOpenFiles": [
+    "PracticeCallApply.md",
+    "ReprintBrowserRender.md",
+    "vueSourceCodeStudy03.md",
+    "vueSourceCodeStudy02.md",
+    "vueSourceCodeStudy01.md",
+    "someInterestingQuestions05.md",
+    "MethodologyRefactoring.md",
+    "MethodologyJSExcutionProcess.md",
+    "MethodologyFrontendHistory.md",
+    "MethodologyFrontendEngineering.md",
+    "BasicAlgorithms03.md",
+    "BasicAlgorithms02.md",
+    "APIMutationObserver.md",
     "Methodology Front-end History.md",
     "Methodology Front-end Engineering.md",
     "Methodology JS Excution Process.md",
@@ -164,8 +184,6 @@
     "Methodology State Management.md",
     "Reprint Vue Composition APIReprint.md",
     "someInterestingQuestions01.md",
-    "someInterestingQuestions02.md",
-    "vueSourceCodeStudy01.md",
-    "vueSourceCodeStudy02.md"
+    "someInterestingQuestions02.md"
   ]
 }
