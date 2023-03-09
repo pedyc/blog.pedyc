@@ -980,43 +980,22 @@
   <entry>
     <title>【实践】手写 Promise</title>
     <url>/2022/09/08/PracticePromise/</url>
-    <content><![CDATA[<!-- YCTODO -->]]></content>
+    <content><![CDATA[<h2 id="基本逻辑"><a href="#基本逻辑" class="headerlink" title="基本逻辑"></a>基本逻辑</h2><ul>
+<li>Promise具有3种状态：pending、fulfilled、rejected;</li>
+<li>pending可以转换诚fulfiiled或者rejected;</li>
+<li>fulfilled不可转变状态，且必须有一个不变的值;<ul>
+<li>即<code>new Promise((resolve, reject)=&gt;&#123;resolve(value)&#125;)</code> resolve为成功，接收参数value，状态改变为fulfilled，不可再次改变。</li>
+</ul>
+</li>
+<li>reject不可转变状态，且必须有一个不变的原因;<ul>
+<li>即<code>new Promise((resolve, reject)=&gt;&#123;reject(reason)&#125;) </code>reject为失败，接收参数reason，状态改变为rejected，不可再次改变。</li>
+</ul>
+</li>
+<li>若是executor函数报错 直接执行reject();</li>
+</ul>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Promise</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">executor</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span>=<span class="string">&#x27;pending&#x27;</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">value</span>=<span class="literal">undefined</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">reason</span>=<span class="literal">undefined</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="title function_">resolve</span>=value=&gt;&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">state</span>==<span class="string">&#x27;pending&#x27;</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">state</span>=<span class="string">&#x27;fulfilled&#x27;</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">value</span>=value;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> <span class="title function_">reject</span>=reason=&gt;&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">state</span>==<span class="string">&#x27;pending&#x27;</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">state</span>=<span class="string">&#x27;rejected&#x27;</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">reason</span>=reason;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// executor执行报错，执行reject</span></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      <span class="title function_">executor</span>(resolve,reject)</span><br><span class="line">    &#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">      <span class="title function_">reject</span>(err)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>]]></content>
       <categories>
         <category>实践</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【算法基础】01，排序</title>
-    <url>/2023/03/02/BasicAlgorithms01/</url>
-    <content><![CDATA[<!-- YCTODO -->
-<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><h2 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h2>]]></content>
-      <categories>
-        <category>算法基础</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【算法基础】02，贪心算法</title>
-    <url>/2023/03/02/BasicAlgorithms02/</url>
-    <content><![CDATA[<!-- YCTODO -->]]></content>
-      <categories>
-        <category>算法基础</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【算法基础】03，动态规划</title>
-    <url>/2023/03/02/BasicAlgorithms03/</url>
-    <content><![CDATA[<!-- YCTODO -->]]></content>
-      <categories>
-        <category>算法基础</category>
       </categories>
       <tags>
         <tag>JS</tag>
