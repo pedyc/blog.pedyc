@@ -9,14 +9,14 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2022/09/08/practicepromise/"/>
+    <link rel="canonical" href="http://example.com/2021/09/08/practicepromise/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     <meta property="og:type" content="article">
     <meta property="og:title" content="【实践】手写 Promise">
     <meta property="og:description" content="Hexo Theme Redefine">
-    <meta property="og:url" content="http://example.com2022/09/08/PracticePromise/">
+    <meta property="og:url" content="http://example.com2021/09/08/PracticePromise/">
     <meta property="og:image" content="/images/avatar.jpeg">
     <meta property="og:site_name" content="ped-Yc&#39;s Home">
     <meta name="twitter:card" content="summary_large_image">
@@ -356,15 +356,15 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2022-09-08 15:30:57</span>
-        <span class="mobile">2022-09-08 15:30</span>
+        <span class="pc">2021-09-08 15:30:57</span>
+        <span class="mobile">2021-09-08 15:30</span>
         <span class="hover-info">创建时间</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="pc">2023-03-06 13:43:35</span>
-            <span class="mobile">2023-03-06 13:43</span>
+            <span class="pc">2023-03-15 10:42:49</span>
+            <span class="mobile">2023-03-15 10:42</span>
             <span class="hover-info">更新时间</span>
         </span>
     
@@ -410,20 +410,37 @@
             
 
             <div class="article-content markdown-body">
-                <h2 id="基本逻辑"><a href="#基本逻辑" class="headerlink" title="基本逻辑"></a>基本逻辑</h2><ul>
-<li>Promise具有3种状态：pending、fulfilled、rejected;</li>
-<li>pending可以转换诚fulfiiled或者rejected;</li>
-<li>fulfilled不可转变状态，且必须有一个不变的值;<ul>
-<li>即<code>new Promise((resolve, reject)=&gt;&#123;resolve(value)&#125;)</code> resolve为成功，接收参数value，状态改变为fulfilled，不可再次改变。</li>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/promises-aplus/promises-spec" >Promise&#x2F;A+规范 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/promises-aplus/promises-tests" >Promise&#x2F;A+测试 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><ul>
+<li>promise：是一个拥有 then 方法的对象或函数，其行为符合本规范</li>
+<li>thenable：是一个定义了 then 方法的对象或函数。这个主要是用来兼容一些老的 Promise 实现，只要一个 Promise 实现是 thenable，也就是拥有 then 方法的，就可以跟 Promises&#x2F;A+兼容。</li>
+<li>value：指 reslove 出来的值，可以是任何合法的 JS 值（包括 undefined , thenable 和 promise 等）</li>
+<li>reason：拒绝原因，是 reject 里面传的参数，表示 reject 的原因</li>
+<li>exception：异常，在 Promise 里面用 throw 抛出来的值</li>
+</ul>
+<h2 id="基本逻辑"><a href="#基本逻辑" class="headerlink" title="基本逻辑"></a>基本逻辑</h2><ul>
+<li>Promise 具有 3 种状态：pending、fulfilled、rejected;</li>
+<li>pending 可以转换诚 fulfiiled 或者 rejected;</li>
+<li>fulfilled 不可转变状态，且必须有一个不变的值 (value);<ul>
+<li>即<code>new Promise((resolve, reject)=&gt;&#123;resolve(value)&#125;)</code> resolve 为成功，接收参数 value，状态改变为 fulfilled，不可再次改变。</li>
 </ul>
 </li>
-<li>reject不可转变状态，且必须有一个不变的原因;<ul>
-<li>即<code>new Promise((resolve, reject)=&gt;&#123;reject(reason)&#125;) </code>reject为失败，接收参数reason，状态改变为rejected，不可再次改变。</li>
+<li>reject 不可转变状态，且必须有一个不变的原因 (reason);<ul>
+<li>即<code>new Promise((resolve, reject)=&gt;&#123;reject(reason)&#125;) </code>reject 为失败，接收参数 reason，状态改变为 rejected，不可再次改变。</li>
 </ul>
 </li>
-<li>若是executor函数报错 直接执行reject();</li>
+<li>若是 executor 函数报错 直接执行 reject();</li>
 </ul>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Promise</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">executor</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span>=<span class="string">&#x27;pending&#x27;</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">value</span>=<span class="literal">undefined</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">reason</span>=<span class="literal">undefined</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="title function_">resolve</span>=value=&gt;&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">state</span>==<span class="string">&#x27;pending&#x27;</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">state</span>=<span class="string">&#x27;fulfilled&#x27;</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">value</span>=value;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> <span class="title function_">reject</span>=reason=&gt;&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">state</span>==<span class="string">&#x27;pending&#x27;</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">state</span>=<span class="string">&#x27;rejected&#x27;</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">reason</span>=reason;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// executor执行报错，执行reject</span></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      <span class="title function_">executor</span>(resolve,reject)</span><br><span class="line">    &#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">      <span class="title function_">reject</span>(err)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="thenable"><a href="#thenable" class="headerlink" title="thenable"></a>thenable</h2><p>语法：</p>
+<div class="highlight-container" data-rel="Typescript"><figure class="iseeu highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">promise.<span class="title function_">then</span>(onFulliled, onRejected)</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Typescript"><figure class="iseeu highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Promise</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">executor</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span>=<span class="string">&#x27;pending&#x27;</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">value</span>=<span class="literal">undefined</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">reason</span>=<span class="literal">undefined</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="title function_">resolve</span>=value=&gt;&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">state</span>==<span class="string">&#x27;pending&#x27;</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">state</span>=<span class="string">&#x27;fulfilled&#x27;</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">value</span>=value;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> <span class="title function_">reject</span>=reason=&gt;&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">state</span>==<span class="string">&#x27;pending&#x27;</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">state</span>=<span class="string">&#x27;rejected&#x27;</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">reason</span>=reason;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// executor 执行报错，执行 reject</span></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      <span class="title function_">executor</span>(resolve,reject)</span><br><span class="line">    &#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">      <span class="title function_">reject</span>(err)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a class="link"   target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023157856" >手写一个 Promise&#x2F;A+, 完美通过官方 872 个测试用例 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+
             </div>
 
             
@@ -432,9 +449,9 @@
     <ul>
         <li>本文标题：【实践】手写 Promise</li>
         <li>本文作者：ped-Yc</li>
-        <li>创建时间：2022-09-08 15:30:57</li>
+        <li>创建时间：2021-09-08 15:30:57</li>
         <li>
-            本文链接：https://ped-yc.github.io/2022/09/08/PracticePromise/
+            本文链接：https://ped-yc.github.io/2021/09/08/PracticePromise/
         </li>
         <li>
             版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -463,13 +480,13 @@
                         <div class="article-prev">
                             <a class="prev"
                             rel="prev"
-                            href="/2022/11/02/ReprintTypscriptDecorator/"
+                            href="/2021/09/12/ReprintJSEventLoop/"
                             >
                                 <span class="left arrow-icon flex-center">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </span>
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">【转载】TypeScript 装饰器完全指南 _ Disenchanted</span>
+                                    <span class="post-nav-title-item">【转载】JS：详解 Event Loop 运行机制</span>
                                     <span class="post-nav-item">上一篇</span>
                                 </span>
                             </a>
@@ -479,10 +496,10 @@
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2022/08/15/PracticeCallApply/"
+                            href="/2021/03/27/someInterestingQuestions06/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">【实践】手写 call、apply、bind</span>
+                                    <span class="post-nav-title-item">【一些有趣的问题】06，进制转换</span>
                                     <span class="post-nav-item">下一篇</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -521,7 +538,7 @@
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">【实践】手写 Promise</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E9%80%BB%E8%BE%91"><span class="nav-text">基本逻辑</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="nav-text">标识符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E9%80%BB%E8%BE%91"><span class="nav-text">基本逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#thenable"><span class="nav-text">thenable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">参考资料</span></a></li></ol>
 
     </div>
 </div>
