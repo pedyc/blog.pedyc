@@ -363,8 +363,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="pc">2023-03-02 21:03:25</span>
-            <span class="mobile">2023-03-02 21:03</span>
+            <span class="pc">2023-03-06 13:43:35</span>
+            <span class="mobile">2023-03-06 13:43</span>
             <span class="hover-info">更新时间</span>
         </span>
     
@@ -410,7 +410,20 @@
             
 
             <div class="article-content markdown-body">
-                <!-- YCTODO -->
+                <h2 id="基本逻辑"><a href="#基本逻辑" class="headerlink" title="基本逻辑"></a>基本逻辑</h2><ul>
+<li>Promise具有3种状态：pending、fulfilled、rejected;</li>
+<li>pending可以转换诚fulfiiled或者rejected;</li>
+<li>fulfilled不可转变状态，且必须有一个不变的值;<ul>
+<li>即<code>new Promise((resolve, reject)=&gt;&#123;resolve(value)&#125;)</code> resolve为成功，接收参数value，状态改变为fulfilled，不可再次改变。</li>
+</ul>
+</li>
+<li>reject不可转变状态，且必须有一个不变的原因;<ul>
+<li>即<code>new Promise((resolve, reject)=&gt;&#123;reject(reason)&#125;) </code>reject为失败，接收参数reason，状态改变为rejected，不可再次改变。</li>
+</ul>
+</li>
+<li>若是executor函数报错 直接执行reject();</li>
+</ul>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Promise</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">executor</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span>=<span class="string">&#x27;pending&#x27;</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">value</span>=<span class="literal">undefined</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">reason</span>=<span class="literal">undefined</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="title function_">resolve</span>=value=&gt;&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">state</span>==<span class="string">&#x27;pending&#x27;</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">state</span>=<span class="string">&#x27;fulfilled&#x27;</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">value</span>=value;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> <span class="title function_">reject</span>=reason=&gt;&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">state</span>==<span class="string">&#x27;pending&#x27;</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">state</span>=<span class="string">&#x27;rejected&#x27;</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">reason</span>=reason;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// executor执行报错，执行reject</span></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      <span class="title function_">executor</span>(resolve,reject)</span><br><span class="line">    &#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">      <span class="title function_">reject</span>(err)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
             </div>
 
             
@@ -508,7 +521,7 @@
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">【实践】手写 Promise</div>
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E9%80%BB%E8%BE%91"><span class="nav-text">基本逻辑</span></a></li></ol>
 
     </div>
 </div>
