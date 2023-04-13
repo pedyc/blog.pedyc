@@ -4,7 +4,7 @@ date: 2022-07-28 02:30:57
 tags: [JS]
 categories: [方法论]
 ---
-# 前端工程化的一些理解
+
 ![s0](MethodologyFrontendEngineering/s0.png)
 
 ## 前言
