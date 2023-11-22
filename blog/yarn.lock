@@ -729,10 +729,10 @@ hexo-theme-landscape@^0.0.3:
   resolved "https://registry.npmjs.org/hexo-theme-landscape/-/hexo-theme-landscape-0.0.3.tgz"
   integrity sha512-b0Di+TUVs4ESrNX4ULEh9uQmADpO6kr10rIJ2OGZM8suNQNFKdxn+vJUjnLfKkCPJAfVmS7/S83KCNYe4tpoNw==
 
-hexo-theme-redefine@^2.5.4:
-  version "2.5.4"
-  resolved "https://registry.npmmirror.com/hexo-theme-redefine/-/hexo-theme-redefine-2.5.4.tgz"
-  integrity sha512-s3nKaHbtRvfcEG5n0o+ooM3+5B0cNIfmMvghCMDtShohgJspU3cYcbvzcHSUJB4AzLnAXojjlHtvqVGJ1tDImg==
+hexo-theme-redefine@^2.5.6:
+  version "2.5.6"
+  resolved "https://registry.npmmirror.com/hexo-theme-redefine/-/hexo-theme-redefine-2.5.6.tgz"
+  integrity sha512-RxEqtGnRcvzuxFHVKDYA6OyfQ0+u63VDJTNbuehbP6+dBbP1VSH8/YGYWTN+5aIHMEFql21Xni8J3FBtNo7PHA==
   dependencies:
     postcss "^8.4.28"
 

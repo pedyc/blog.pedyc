@@ -288,7 +288,7 @@
   <entry>
     <title>【方法论】前端工程化的一些理解</title>
     <url>/2022/07/28/MethodologyFrontendEngineering/</url>
-    <content><![CDATA[<h1 id="前端工程化的一些理解"><a href="#前端工程化的一些理解" class="headerlink" title="前端工程化的一些理解"></a>前端工程化的一些理解</h1><img  
+    <content><![CDATA[<img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="/2022/07/28/MethodologyFrontendEngineering/s0.png"
@@ -2139,6 +2139,35 @@
       </categories>
       <tags>
         <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【算法基础】排序</title>
+    <url>/2023/02/13/ALGSort/</url>
+    <content><![CDATA[<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2023/02/13/ALGSort/sort.png"
+                      class="" title="sort"
+                >
+<h2 id="冒泡排序-θ-n-2"><a href="#冒泡排序-θ-n-2" class="headerlink" title="冒泡排序 θ(n^2)"></a>冒泡排序 θ(n^2)</h2><h2 id="选择排序-θ-n-2"><a href="#选择排序-θ-n-2" class="headerlink" title="选择排序 θ(n^2)"></a>选择排序 θ(n^2)</h2><p><code>实现逻辑</code></p>
+<ol>
+<li>比较相邻的元素，如果第一个比第二个大，交换它们两个</li>
+<li>对每一组相邻元素进行比较交换操作，从第一对到最后一对。结束后最大值在最后一位元素</li>
+<li>重复以上步骤，除了最后一个元素</li>
+<li>持续以上步骤，知道没有任何一对元素需要比较</li>
+</ol>
+<p><code>伪代码实现</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 对数组A进行排序</span></span><br><span class="line"><span class="variable constant_">SELECTION</span>-<span class="title function_">SORT</span>(A)</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">0</span> to A.<span class="property">length</span>-<span class="number">1</span></span><br><span class="line">	key = A[i]</span><br><span class="line">	j = i+<span class="number">1</span></span><br><span class="line">	min = A[j]</span><br><span class="line">	<span class="keyword">for</span>(j to A.<span class="property">length</span>)</span><br><span class="line">		<span class="keyword">if</span>(min&gt;=A[j])</span><br><span class="line">			min=A[j]</span><br><span class="line">			idx=j</span><br><span class="line">	<span class="keyword">if</span>(A[i]&gt;min)</span><br><span class="line">		A[i] = min</span><br><span class="line">		A[idx] = key		</span><br></pre></td></tr></table></figure></div>
+<p><code>代码实现</code></p>
+<h2 id="插入排序-θ-n-2"><a href="#插入排序-θ-n-2" class="headerlink" title="插入排序 θ(n^2)"></a>插入排序 θ(n^2)</h2><p><code>实现逻辑</code><br><code>伪代码实现</code><br><code>代码实现</code></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+      <categories>
+        <category>ALG</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
 </search>
