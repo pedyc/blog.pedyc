@@ -1,17 +1,17 @@
 {
   "main": {
-    "id": "c8cc7f423f1d1f04",
+    "id": "9cdf9a7334819c40",
     "type": "split",
     "children": [
       {
-        "id": "8728c6d535893b2a",
+        "id": "d9ad9e24c9b992fb",
         "type": "tabs",
         "children": [
           {
-            "id": "bbd35c070e09ddd0",
+            "id": "799f512f5d2c14c3",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {}
             }
           }
@@ -21,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "878758a6d8046af3",
+    "id": "dbad06b02589900a",
     "type": "split",
     "children": [
       {
-        "id": "b56ab969ca2e04e0",
+        "id": "cc98058b2f1be209",
         "type": "tabs",
         "children": [
           {
-            "id": "6033114220750ef6",
+            "id": "260dfee795eaa1a4",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -39,12 +39,12 @@
             }
           },
           {
-            "id": "08eab59628871df8",
+            "id": "c7e0f4710b18ad30",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#vue",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -54,15 +54,7 @@
             }
           },
           {
-            "id": "976ed7b28ba4a078",
-            "type": "leaf",
-            "state": {
-              "type": "starred",
-              "state": {}
-            }
-          },
-          {
-            "id": "f28f141a667dd0d4",
+            "id": "a7ff8ed7a0d188a8",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -76,15 +68,15 @@
     "width": 300
   },
   "right": {
-    "id": "28ce0f9a2aa5ebad",
+    "id": "4cb53a5fc640d8dc",
     "type": "split",
     "children": [
       {
-        "id": "fe1aa0689a2768a3",
+        "id": "630ab0f14ab844dc",
         "type": "tabs",
         "children": [
           {
-            "id": "b5562370be240ac7",
+            "id": "d69f79e10f18e3bf",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -100,7 +92,7 @@
             }
           },
           {
-            "id": "9bcabcd15d8c77d8",
+            "id": "a67195789303e6fc",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -111,7 +103,7 @@
             }
           },
           {
-            "id": "ae010c56d398982b",
+            "id": "eb63f08b5fa3d631",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -122,7 +114,7 @@
             }
           },
           {
-            "id": "c4cc3f818cc030be",
+            "id": "e1b712e57052795f",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -138,48 +130,14 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "canvas:新建白板": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false
     }
   },
-  "active": "bbd35c070e09ddd0",
-  "lastOpenFiles": [
-    "2023-11-23.md",
-    "MethodologyFrontendEngineering.md",
-    "MethodologyFrontendEngineering/s0.png",
-    "MethodologyFrontendHistory.md",
-    "APIMutationObserver.md",
-    "ALGSort.md",
-    "vueSourceCodeStudy03.md",
-    "vueSourceCodeStudy02.md",
-    "vueSourceCodeStudy01.md",
-    "someInterestingQuestions06.md",
-    "someInterestingQuestions05.md",
-    "someInterestingQuestions04.md",
-    "someInterestingQuestions03.md",
-    "someInterestingQuestions02.md",
-    "someInterestingQuestions01.md",
-    "MethodologyFrontendEngineering/s4-1.png",
-    "MethodologyFrontendEngineering/s4.png",
-    "MethodologyFrontendEngineering/s3.png",
-    "MethodologyFrontendEngineering/s2.png",
-    "MethodologyFrontendEngineering/s1.png",
-    "ALGSort/sort.png",
-    "MethodologyFrontendJSModularity .md",
-    "PracticeCallApply.md",
-    "ReprintBrowserRender.md",
-    "MethodologyRefactoring.md",
-    "MethodologyJSExcutionProcess.md",
-    "BasicAlgorithms03.md",
-    "BasicAlgorithms02.md",
-    "Methodology Front-end History.md",
-    "Methodology Front-end Engineering.md",
-    "Methodology JS Excution Process.md",
-    "Methodology Refactoring.md",
-    "Methodology State Management.md"
-  ]
+  "active": "799f512f5d2c14c3",
+  "lastOpenFiles": []
 }
