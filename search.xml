@@ -1,288 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>【API】MutationObserver</title>
-    <url>/2023/01/11/APIMutationObserver/</url>
-    <content><![CDATA[<p>在使用第三方库时，常用需求之一是在 DOM 元素创建时注册一个时间监听器或 DOM 元素删除时注销事件监听器，但我们难以知道具体 DOM 元素的创建时间、删除时间，所以一般的实现方式是使用轮询的方法，判断 DOM 元素是否存在，如果存在则继续逻辑，这种轮询的方式也可以用 Promise 优化一下改成异步执行。但即使如此也仍有不小的额外开销，而 MutationObserver 提供了一种原生的检测方式。</p>
-<h2 id="MutationObserver"><a href="#MutationObserver" class="headerlink" title="MutationObserver"></a><a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver" >MutationObserver <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h2><blockquote>
-<p><code>MutationObserver</code> 接口提供了监视对 DOM 树所做更改的能力。它被设计为旧的 Mutation Events 功能的替代品，该功能是 DOM3 Events 规范的一部分。</p>
-</blockquote>
-<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>MutationObserver()</p>
-<p>语法：</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建并返回一个新的 MutationObserver 它会在指定的 DOM 发生变化时被调用。</span></span><br><span class="line"><span class="keyword">var</span> observer = <span class="keyword">new</span> <span class="title class_">MutationObserver</span>(callback);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callback</span>(<span class="params">mutationList, observer</span>) &#123;</span><br><span class="line">  mutationList.<span class="title function_">forEach</span>(<span class="function">(<span class="params">mutation</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span>(mutation.<span class="property">type</span>) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;childList&#x27;</span>:</span><br><span class="line">        <span class="comment">/* 从树上添加或移除一个或更多的子节点；参见 mutation.addedNodes 与</span></span><br><span class="line"><span class="comment">           mutation.removedNodes */</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;attributes&#x27;</span>:</span><br><span class="line">        <span class="comment">/* mutation.target 中某节点的一个属性值被更改；该属性名称在 mutation.attributeName 中，</span></span><br><span class="line"><span class="comment">           该属性之前的值为 mutation.oldValue */</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<ul>
-<li>callback<ul>
-<li>一个回调函数，每当被指定的节点或子树以及配置项有 DOM 变动时会被调用。回调函数拥有两个参数：一个是描述所有被触发改动的 <code>MutationRecord</code> 对象数组，另一个是调用该函数的 MutationObserver 对象。参见下方的示例了解更多细节</li>
-<li><a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationRecord" >MutationRecord <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><ul>
-<li>MutationRecord.type</li>
-<li>MutationRecord.target</li>
-<li>MutationRecord.addedNodes</li>
-<li>MutationRecord.removedNodes</li>
-<li>MutationRecord.previousSibling</li>
-<li>MutationRecord.nextSibling</li>
-<li>MutationRecord.attributeName</li>
-<li>MutationRecord.attributeNamespace</li>
-<li>MutationRecord.oldValue</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>return<ul>
-<li>一个新的、包含监听 DOM 变化回调函数的 MutationObserver 对象。</li>
-</ul>
-</li>
-</ul>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul>
-<li>disconnect：阻止 MutationObserver 实例继续接收的通知，直到再次调用其 observe() 方法，该观察者对象包含的回调函数都不会再被调用。</li>
-<li><a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe" >observe <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>：配置 MutationObserver 在 DOM 更改匹配给定选项时，通过其回调函数开始接收通知。<ul>
-<li>target：DOM 树中的一个要观察变化的 DOM Node (可能是一个 Element)，或者是被观察的子节点树的根节点。</li>
-<li>options：此对象的配置项描述了 DOM 的哪些变化应该报告给 MutationObserver 的 callback。当调用 observe() 时，childList、attributes 和 characterData 中，必须有一个参数为 true。否则会抛出 TypeError 异常。</li>
-</ul>
-</li>
-<li>takeRecords：从 MutationObserver 的通知队列中删除所有待处理的通知，并将它们返回到 MutationRecord 对象的新 Array 中。</li>
-</ul>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// 选择需要观察变动的节点</span></span><br><span class="line"><span class="keyword">const</span> targetNode = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;some-id&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 观察器的配置（需要观察什么变动）</span></span><br><span class="line"><span class="keyword">const</span> config = &#123; <span class="attr">attributes</span>: <span class="literal">true</span>, <span class="attr">childList</span>: <span class="literal">true</span>, <span class="attr">subtree</span>: <span class="literal">true</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当观察到变动时执行的回调函数</span></span><br><span class="line"><span class="keyword">const</span> callback = <span class="keyword">function</span>(<span class="params">mutationsList, observer</span>) &#123;</span><br><span class="line">    <span class="comment">// Use traditional &#x27;for loops&#x27; for IE 11</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> mutation <span class="keyword">of</span> mutationsList) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mutation.<span class="property">type</span> === <span class="string">&#x27;childList&#x27;</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;A child node has been added or removed.&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (mutation.<span class="property">type</span> === <span class="string">&#x27;attributes&#x27;</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;The &#x27;</span> + mutation.<span class="property">attributeName</span> + <span class="string">&#x27; attribute was modified.&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个观察器实例并传入回调函数</span></span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> <span class="title class_">MutationObserver</span>(callback);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以上述配置开始观察目标节点</span></span><br><span class="line">observer.<span class="title function_">observe</span>(targetNode, config);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 之后，可停止观察</span></span><br><span class="line">observer.<span class="title function_">disconnect</span>();</span><br></pre></td></tr></table></figure></div>]]></content>
+    <title>【算法基础】排序</title>
+    <url>/2023/02/13/ALGSort/</url>
+    <content><![CDATA[<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2023/02/13/ALGSort/sort.png"
+                      class="" title="sort"
+                >
+<h2 id="冒泡排序-θ-n-2"><a href="#冒泡排序-θ-n-2" class="headerlink" title="冒泡排序 θ(n^2)"></a>冒泡排序 θ(n^2)</h2><h2 id="选择排序-θ-n-2"><a href="#选择排序-θ-n-2" class="headerlink" title="选择排序 θ(n^2)"></a>选择排序 θ(n^2)</h2><p><code>实现逻辑</code></p>
+<ol>
+<li>比较相邻的元素，如果第一个比第二个大，交换它们两个</li>
+<li>对每一组相邻元素进行比较交换操作，从第一对到最后一对。结束后最大值在最后一位元素</li>
+<li>重复以上步骤，除了最后一个元素</li>
+<li>持续以上步骤，知道没有任何一对元素需要比较</li>
+</ol>
+<p><code>伪代码实现</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 对数组A进行排序</span></span><br><span class="line"><span class="variable constant_">SELECTION</span>-<span class="title function_">SORT</span>(A)</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">0</span> to A.<span class="property">length</span>-<span class="number">1</span></span><br><span class="line">	key = A[i]</span><br><span class="line">	j = i+<span class="number">1</span></span><br><span class="line">	min = A[j]</span><br><span class="line">	<span class="keyword">for</span>(j to A.<span class="property">length</span>)</span><br><span class="line">		<span class="keyword">if</span>(min&gt;=A[j])</span><br><span class="line">			min=A[j]</span><br><span class="line">			idx=j</span><br><span class="line">	<span class="keyword">if</span>(A[i]&gt;min)</span><br><span class="line">		A[i] = min</span><br><span class="line">		A[idx] = key		</span><br></pre></td></tr></table></figure></div>
+<p><code>代码实现</code></p>
+<h2 id="插入排序-θ-n-2"><a href="#插入排序-θ-n-2" class="headerlink" title="插入排序 θ(n^2)"></a>插入排序 θ(n^2)</h2><p><code>实现逻辑</code><br><code>伪代码实现</code><br><code>代码实现</code></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
       <categories>
-        <category>API</category>
+        <category>算法</category>
       </categories>
       <tags>
         <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【方法论】前端发展历程梳理</title>
-    <url>/2022/03/20/MethodologyFrontendHistory/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>了解前端的发展历史有助于从一个全局的视角来重新认知前端技术，脱离单独某一种视角的窠臼。</p>
-<ul>
-<li><code>Node.js</code>的出现意味着什么？</li>
-<li>为什么要从<code>jquery</code>转入三大框架？</li>
-<li>既然已经有了<code>javascript</code>为什么还要使用<code>babel</code>来转化？</li>
-<li><code>CommonJS</code>、<code>AMD</code>、<code>CMD</code>、<code>ESModule</code>又是什么？</li>
-</ul>
-<p>类似的问题不胜枚举，而这篇文章有助于解决此类问题。</p>
-<h2 id="1-需求驱动和问题驱动"><a href="#1-需求驱动和问题驱动" class="headerlink" title="1. 需求驱动和问题驱动"></a>1. 需求驱动和问题驱动</h2><p>一种技术能够出现并且不断的发展，一定具有某种内在的驱动力，我认为这种驱动力存在两种：</p>
-<ol>
-<li>需求驱动</li>
-<li>问题驱动</li>
-</ol>
-<p>需求驱动顾名思义就是当前的技术工具支持不了新的需求，所以推动了新技术的产生。而问题驱动则是实现某种需求的过程中产生了困难，老旧的技术工具解决不了或者解决起来很麻烦困难，所以推动了新技术的产生。</p>
-<h2 id="2-前端大事件的时间节点"><a href="#2-前端大事件的时间节点" class="headerlink" title="2. 前端大事件的时间节点"></a>2. 前端大事件的时间节点</h2><table>
-<thead>
-<tr>
-<th align="left">时间</th>
-<th align="left">事件</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>web1.0 1991~2004</code></td>
-<td align="left">只读网络，网站提供内容，用户阅读内容</td>
-</tr>
-<tr>
-<td align="left">1989 年</td>
-<td align="left"><code>HTML</code>由 Web 的发明者 Tim Berners-Lee 创立，这也是前端的起始</td>
-</tr>
-<tr>
-<td align="left">1994 年</td>
-<td align="left">世界上的第一款浏览器<code>NCSAMosaic</code>由 Netscape（网景）公司开发，同年<code>W3C</code>（世界万维网联盟）成立</td>
-</tr>
-<tr>
-<td align="left">1995 年</td>
-<td align="left"><code>JavaScript</code>由网景公司的 Brendan Eich 设计</td>
-</tr>
-<tr>
-<td align="left">1996 年</td>
-<td align="left">W3C 发布了<code>CSS1</code>标准，从此前端有了样式规范</td>
-</tr>
-<tr>
-<td align="left">1997 年</td>
-<td align="left"><code>ECMAScript1</code>由 ECMA 国际正式发布，从此 Javascript 有了自己的标准，同年 W3C 发布了<code>HTML4.0</code>标准，这是使用时间最长的一个版本</td>
-</tr>
-<tr>
-<td align="left">1998 年</td>
-<td align="left">W3C 发布了<code>XML（可扩展标记语言）</code>标准，同年<code>Ajax</code>（异步 Javascript 和 XML）技术开始得到应用</td>
-</tr>
-<tr>
-<td align="left">2001 年</td>
-<td align="left">Douglas Crockford 开始推广使用<code>JSON</code>数据格式，它比 XML 更加简洁清晰</td>
-</tr>
-<tr>
-<td align="left"><code>web2.0 2004~至今</code></td>
-<td align="left">交互网络，用户产生内容，通过网站与他人交互</td>
-</tr>
-<tr>
-<td align="left">2006 年</td>
-<td align="left">John Resig 发布了<code>JQuery</code>的第一个版本，这是迄今为止最成功的 JS 库，同年 W3C 正式发布<code>XMLHttpRequest</code>标准，为以后的 Ajax 爆发提供技术基础。</td>
-</tr>
-<tr>
-<td align="left">2008 年</td>
-<td align="left">Google 开源了高性能的 Javascript 引擎<code>V8</code></td>
-</tr>
-<tr>
-<td align="left">2009 年</td>
-<td align="left">Ryan Dahl 开发了基于 V8 引擎的<code>NodeJS</code>运行时环境，从此 javascript 可以运行在服务端；同年<code>ECMAScript5</code>发布，这是使用时间最长，各个浏览器兼容性最好，如今大部分程序也依然在使用的一代标准；同年 Miško Hevery 创造了<code>AngularJS</code>框架，基于 MVC 模式，并且实现了 SPA（单页面应用）</td>
-</tr>
-<tr>
-<td align="left">2010 年</td>
-<td align="left"><code>NPM</code>（NodeJS 包管理工具）发布了第一个版本，从此前端有了自己的包管理器</td>
-</tr>
-<tr>
-<td align="left">2011 年</td>
-<td align="left">Twitter 开源了其前端框架<code>Bootstrap</code></td>
-</tr>
-<tr>
-<td align="left">2012 年</td>
-<td align="left">微软发布了<code>Typescript</code>的第一个版本，让 Javascript 拥有了自己的类型</td>
-</tr>
-<tr>
-<td align="left">2013 年</td>
-<td align="left">Facebook 开源了其前端框架<code>React</code>，同年尤雨溪受到 Angular 启发开发了轻量级前端框架<code>Seed</code>，后更名为<code>Vue</code></td>
-</tr>
-<tr>
-<td align="left">2014 年</td>
-<td align="left">W3C 发布了<code>HTML5</code>标准</td>
-</tr>
-<tr>
-<td align="left">2015 年</td>
-<td align="left"><code>ECMAScript6</code>正式发布，后更名为<code>ECMAScript2015</code>，之截至目前 2022 年，每年都发布了对应的新版本</td>
-</tr>
-<tr>
-<td align="left">2016 年</td>
-<td align="left"><code>ECMAScript2016</code>正式发布</td>
-</tr>
-<tr>
-<td align="left">2017 年</td>
-<td align="left"><code>ECMAScript2017</code>正式发布</td>
-</tr>
-</tbody></table>
-<!-- YCTODO -->
-<h2 id="一些技术发展过程的梳理"><a href="#一些技术发展过程的梳理" class="headerlink" title="一些技术发展过程的梳理"></a>一些技术发展过程的梳理</h2><p>可以把前端发展的历程分为</p>
-<h2 id="展望未来"><a href="#展望未来" class="headerlink" title="展望未来"></a>展望未来</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li>百度百科</li>
-<li><a class="link"   href="http://www.javashuo.com/article/p-hvrlfhxo-gc.html" >前端的历史发展节点 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://zhuanlan.zhihu.com/p/196637639" >Web 开发的历史发展技术演变 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://blog.csdn.net/qq_44273429/article/details/127462439" >Web 1.0、Web 2.0 和 Web 3.0 之间的比较 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>方法论</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【方法论】JS 模块化梳理</title>
-    <url>/2022/03/09/MethodologyFrontendJSModularity%20/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>模块化是编程中绕不过去的一环，可以说在我们的开发流程中，每时每刻都在使用着模块化，这无疑是一个非常重要的知识点。本文只讨论 JS 模块化，旨在加强对 JS 模块化的认识。主要涉及以下几点：</p>
-<ul>
-<li>JS 模块化的前世今生（为什么要模块化）</li>
-<li>JS 模块化的本质（如何实现模块化）</li>
-</ul>
-<h2 id="一、JS-模块化的前世今生"><a href="#一、JS-模块化的前世今生" class="headerlink" title="一、JS 模块化的前世今生"></a>一、JS 模块化的前世今生</h2><h3 id="无模块化"><a href="#无模块化" class="headerlink" title="无模块化"></a>无模块化</h3><p>大家都知道模块化是复杂项目中必不可少的一环，良好的模块化能让项目结构更加清晰，提高代码复用性，逻辑与功能分离，加强可维护性。但在一开始，Javascript 中是不存在模块化的，它只是一门玩具语言，为网页添加一点特效而已。功能简单，用法单一。</p>
-<p>此时的 js 代码的书写方式是，从上到下，简单明了，直到<code>ajax</code>出现。</p>
-<h3 id="模块化萌芽"><a href="#模块化萌芽" class="headerlink" title="模块化萌芽"></a>模块化萌芽</h3><p>Google 将 ajax 概念发扬光大，在 Gmail 和 Google 地球等网页应用中大量使用了 ajax 技术，此时人们才惊觉利用 javascript 能够在网页中做到什么。于是越来越多的大型 web 项目开始出现，随之而来的是越来越复杂的业务逻辑与项目结构。问题不可避免的出现了。</p>
-<ol>
-<li><code>全局变量污染</code><br>因为大家写的代码都在同一个全局作用域中，一不小心就可能声明一个已经存在的全局变量，往往就会发生难以预测的错误，这里举一个例子：<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这是我写的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;a.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;b.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 这是同事写的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;c.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div></li>
-</ol>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// a.js</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;这里请不要改&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// c.js</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">name</span>(<span class="params"></span>)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>上面有 3 个脚本，a.js、b.js 是我写的，c.js 是同事写的，我定义了一个全局变量 name，同事不知道，他定义了一个全局方法 name()，于是我俩都得懵逼。</p>
-<p><em>解决方案</em></p>
-<p>解决方法之一是使用自执行函数包裹：</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">myModule = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> id = <span class="string">&#x27;user_id&#x27;</span></span><br><span class="line">	...</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></div>
-<p>这种方式解决了全局变量污染的问题，但仍暴露了一个全局函数在全局，仍可能存在命名冲突，并且有时需定义许多个这种类型的函数，不够优雅。</p>
-<ol start="2">
-<li><code>函数命名冲突</code><br>我们经常将一些功能性的函数抽离出来，放在同一个功能文件中，例如 utils.js 文件下放了一个 format 方法，这时同事需要一个不同的 format 方法，他就只能新建一个 format2 或者其他名字的方法，类似的事情很多。</li>
-</ol>
-<p><em>解决方案</em></p>
-<p>解决方法之一是使用命名空间，构造类似 java 的方式，于是代码变成了这样：</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">obj.<span class="property">MyNameSpace</span>.<span class="property">Utils</span>.<span class="title function_">format</span>()</span><br></pre></td></tr></table></figure></div>
-<p>这种类型的代码确实有用，但大大增加了书写的负担，你只想调用一个方法，却不得不写一长串的前缀。</p>
-<ol start="3">
-<li><code>文件依赖混乱</code><br>文件的依赖往往是无法避免的，例如实现一个 dialog 组件，它调用了一些 utils.js 文件里的方法，那么在引入<code>&lt;script src=&quot;dialog&quot;&gt;</code>之前，需要先引入<code>&lt;script src=&quot;utils&quot;&gt;</code>，当类似的情况越来越多时，依赖就难免混杂，从而增加维护难度。</li>
-</ol>
-<p><em>解决方案</em></p>
-<p>这是 Yahoo! 的 YUI3 框架解决方案，通过 requires 一个依赖数组来指定依赖：</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable constant_">YUI</span>.<span class="title function_">add</span>(<span class="string">&#x27;my-module&#x27;</span>, <span class="keyword">function</span> (<span class="params">Y</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;, <span class="string">&#x27;0.0.1&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">requires</span>: [<span class="string">&#x27;node&#x27;</span>, <span class="string">&#x27;event&#x27;</span>]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
-<p>这种类型的代码确实解决了依赖混乱的问题，但当一个文件依赖增多时，这种配置型的代码就会变得复杂而且难看。</p>
-<p>在这个时期，不同的 web 团队为了解决项目中遇到的这类难题提出了自己的解决方案，但没有哪种解决方案可以解决所有的问题。</p>
-<h3 id="几种模块化规范"><a href="#几种模块化规范" class="headerlink" title="几种模块化规范"></a>几种模块化规范</h3><p>从以上的例子中可以观察到一些模块化所面临的难题：</p>
-<ol>
-<li>如何安全的包装一个模块（不污染模块外的代码）</li>
-<li>如何定义模块的唯一标识（解决命名冲突）</li>
-<li>如何优雅的暴露模块（不增加复杂依赖）</li>
-<li>模块间互相引用的循环依赖问题</li>
-</ol>
-<p>在 nodeJS 出现后，Javascript 可以用来编写服务端程序，这时 Javascript 没有模块化的缺点变得更加令人难以忍受，nodeJS 社区开始制定 JS 模块化规范。[Modules&#x2F;1.0 规范](<a class="link"   href="https://wiki.commonjs.org/wiki/Modules/1.0" >Modules&#x2F;1.0 - CommonJS Spec Wiki <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>)，首次定义了一个模块应该如何编写：</p>
-<blockquote>
-<ol>
-<li>模块的标识应遵循的规则（书写规范）</li>
-<li>定义全局函数 require，通过传入模块标识来引入其他模块，执行的结果即为别的模块暴漏出来的 API</li>
-<li>如果被 require 函数引入的模块中也包含依赖，那么依次加载这些依赖</li>
-<li>如果引入模块失败，那么 require 函数应该报一个异常</li>
-<li>模块通过变量 exports 来向往暴漏 API，exports 只能是一个对象，暴漏的 API 须作为此对象的属性。</li>
-</ol>
-</blockquote>
-<p>一开始实现 Modules&#x2F;1.0 规范的是 ServerJS（CommonJS 改名之前的叫法），它的写法如下：</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">add</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> sum = <span class="number">0</span>,i = <span class="number">0</span>, args = <span class="variable language_">arguments</span>;</span><br><span class="line">	<span class="keyword">while</span>(i &lt; <span class="number">1</span>)&#123;</span><br><span class="line">		sum += args[i++];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// increment.js</span></span><br><span class="line"><span class="keyword">var</span> add = <span class="built_in">require</span>(<span class="string">&#x27;math&#x27;</span>).<span class="property">add</span>;</span><br><span class="line"><span class="built_in">exports</span>.<span class="property">increment</span> = <span class="keyword">function</span>(<span class="params">val</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="title function_">add</span>(val,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// program.js</span></span><br><span class="line"><span class="keyword">var</span> inc = <span class="built_in">require</span>(<span class="string">&#x27;increment&#x27;</span>).<span class="property">increment</span>;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="title function_">inc</span>(a); <span class="comment">//2</span></span><br></pre></td></tr></table></figure></div>
-<p>相比于之前的阶段，此时的代码更加简洁明了，但它只能在服务端运行而难以向浏览器端推广，原因如下：</p>
-<ol>
-<li>外层没有 function 包裹，变量直接暴露在全局（如上 increment.js 中的 add 方法）</li>
-<li>资源加载方式不同，在服务端，require 一个模块可以直接从内存中读取，消耗时间很小，但在浏览器端，require 一个模块需要向服务器发起一个 http 请求，下载完成后才能运行模块中的代码，也就是说 require 之后的代码必须等到 require 完成后才能执行。<br>因为这些问题，社区中的主张分裂为 3 种，分别是</li>
-</ol>
-<ul>
-<li>Modules&#x2F;1.x 派</li>
-<li>Modules&#x2F;Async 派</li>
-<li>Modules&#x2F;2.0 派</li>
-</ul>
-<p><code>Modules/1.x,CommonJS,browserify</code><br>这一派人认为既然 ServerJS 能够在服务端运行良好，只需要在现有基础上进行改进就能适应浏览器端的需求，浏览器端需要 function 包裹（为了保护变量）、需要异步加载，那么就使用一种工具将现有模块转化为适合浏览器端的代码，基于这种想法有基于这个主张，制定了 <a class="link"   href="https://wiki.commonjs.org/wiki/Modules/Transport" >Modules&#x2F;Transport 规范 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，<code>browserify</code>是这种规范的一种实现，它是一种浏览器端的打包工具，能够将 nodeJS 模块转化为浏览器端可用的模块。</p>
-<p><code>Modules/Async,AMD,RequireJS</code><br>这一派人认为浏览器端与服务端差别巨大，不能沿用原有模块标准。既然浏览器端需要异步加载代码，就通过回调的形式设计规范。其原理是：在模块定义时就指明并加载依赖，当依赖加载完毕后再执行回调中的本模块。因为这种异步的特性设计的规范名为 <a class="link"   href="https://github.com/amdjs/amdjs-api/wiki/AMD-%EF%BC%88%E4%B8%AD%E6%96%87%E7%89%88%EF%BC%89" >AMD（Asynchronous Module Definition） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，根据 AMD 规范出现了<code>RequireJS</code>的实现，它的写法如下：</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">define</span>(id?, dependencies?, factory);</span><br><span class="line"></span><br><span class="line"><span class="title function_">define</span>(<span class="string">&#x27;increment&#x27;</span>,[<span class="string">&#x27;math&#x27;</span>,<span class="string">&#x27;other&#x27;</span>],<span class="keyword">function</span>(<span class="params">math</span>)&#123;</span><br><span class="line">	<span class="comment">// 此时 math 和 other 模块内的代码已经执行完毕</span></span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">increment</span>(<span class="params">val</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> math.<span class="title function_">add</span>(val,<span class="number">1</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 即使 other 没有被使用到，other 还是被提前执行了</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="literal">false</span>)&#123;</span><br><span class="line">		other.<span class="title function_">doSomething</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-
-<p><code>Modules/2.0 CMD Sea.js</code><br>这一派人有点类似中间派，既不想丢弃旧的规范，也不像 AMD 那样推倒重来，最终他们制定了 <a href="%5Bhttp://wiki.commonjs.org/wiki/Modules/Wrappings%5D(http://wiki.commonjs.org/wiki/Modules/Wrappings)">Modules&#x2F;Wrappings 规范</a>,<code>SeaJS</code>是它的一个实现。写法如下：</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">define</span>(factory);</span><br><span class="line"></span><br><span class="line"><span class="title function_">define</span>(<span class="keyword">function</span>(<span class="params"><span class="built_in">require</span>,<span class="built_in">exports</span>,<span class="variable language_">module</span></span>)&#123;</span><br><span class="line">	<span class="comment">// 就近原则，哪里使用哪里声明</span></span><br><span class="line">	<span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">&#x27;math&#x27;</span>);</span><br><span class="line">	<span class="keyword">return</span>&#123;</span><br><span class="line">		<span class="attr">increment</span>:<span class="keyword">function</span>(<span class="params">val</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> math.<span class="title function_">add</span>(val,<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>可以看到，它的写法和 RequireJS 很像，那么不同之处在哪里呢？RequireJS 会在依赖加载的第一时间加载并执行依赖内的代码，然后再执行回调内的模块代码；而 SeaJS 会在声明依赖之后才会执行依赖内的代码。总的来说就是：<code>AMD 推崇依赖前置、提前执行，CMD 推崇依赖就近、延迟执行。</code></p>
-<p><code>ES6 Module</code><br>从 ES6 开始，Javascript 开始有了标准层面的模块化，旨在成为浏览器端和服务器端的通用模块化方案。它的写法很简单，具体如下：</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params"></span>)&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123;add&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//increment.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;add&#125; <span class="keyword">from</span> <span class="string">&#x27;./math&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">increment</span>(<span class="params">val</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="title function_">add</span>(val,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>那么它和上面提到的几种模块化方案有哪些不同呢？</p>
-<ol>
-<li>动态只读引用<blockquote>
-<p>ES6 模块的运行机制与 CommonJS 不一样。JS 引擎对脚本静态分析的时候，遇到模块加载命令<code>import</code>，就会生成一个只读引用。等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。换句话说，ES6 的<code>import</code>有点像 Unix 系统的“符号连接”，原始值变了，<code>import</code>加载的值也会跟着变。因此</p>
-</blockquote>
-</li>
-<li>编译时输出<blockquote>
-<p>ES6 模块不是对象，而是通过 <code>export</code> 命令显式指定输出的代码，<code>import</code>时采用静态命令的形式。即在<code>import</code>时可以指定加载某个输出值，而不是加载整个模块，这种加载称为“编译时加载”。模块内部引用的变化，会反应在外部。</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
-<li>AMD&#x2F;CMD&#x2F;CommonJs 是 js 模块化开发的规范，对应的实现是 require.js&#x2F;sea.js&#x2F;Node.js，ES Module 是 ES6 在语言规范上的模块化实现。</li>
-<li>CommonJS 主要针对服务端，AMD&#x2F;CMD&#x2F;ES Module 主要针对浏览器端，容易混淆的是 AMD&#x2F;CMD。针对服务器端和针对浏览器端有什么本质的区别呢？服务器端一般采用同步加载文件，也就是说需要某个模块，服务器端便停下来，等待它加载再执行，因为这部分很快。而浏览器端采用异步加载，因为需要发送 http 请求，这就需要一个预处理，提前将所需要的模块文件并行加载好。</li>
-<li>AMD&#x2F;CMD 的区别：虽然都是并行加载 js 文件，但还是有所区别，AMD 是预加载，在并行加载 js 文件同时，还会解析执行该模块（因为还需要执行，所以在加载某个模块前，这个模块的依赖模块需要先加载完成）；而 CMD 是懒加载，虽然会一开始就并行加载 js 文件，但是不会执行，而是在需要的时候才执行。</li>
-<li>AMD&#x2F;CMD 的优缺点：JS 引擎是单线程的，单位时间内只能执行单个任务，所以在加载多个大文件时，会阻塞脚本执行。AMD 会在文件全部加载完毕后才执行代码，CMD 则会遇见依赖再加载代码，在此种情况 CMD 会更快，其他情形则相差不多。</li>
-<li></li>
-</ol>
-<h2 id="二、模块化的本质"><a href="#二、模块化的本质" class="headerlink" title="二、模块化的本质"></a>二、模块化的本质</h2><blockquote>
-<p>模块化的本质在于外部只能访问模块暴露出来的属性和方法，可以通过闭包的特性实现。</p>
-</blockquote>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 原生模块模式</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">moduleA</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> something = <span class="string">&quot;something&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> another = <span class="string">&quot;another&quot;</span>;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">doSomething</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(something);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">doAnother</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(another);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">doSomething</span>: doSomething,</span><br><span class="line">        <span class="attr">doAnother</span>: doAnother</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用模块内方法</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="title function_">moduleA</span>();</span><br><span class="line">foo.<span class="title function_">doSomething</span>(); <span class="comment">// something</span></span><br><span class="line">foo.<span class="property">another</span>; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// jQuery 类型的模块</span></span><br><span class="line"><span class="comment">// var $ = window.jQuery()</span></span><br></pre></td></tr></table></figure></div>
-<p>在这里通过调用 moduleA() 这个函数来创建模块实例 foo，通过这个模块实例可以调用模块内暴露的变量和方法，但仍存在问题，在于 moduleA 是一个全局函数，可能会造成函数名污染。也可以使用 IIFE 的方式创建：</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// IIFE</span></span><br><span class="line"><span class="keyword">var</span> foo = (<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> something = <span class="string">&quot;something&quot;</span>;</span><br><span class="line">	<span class="keyword">var</span> another = <span class="string">&quot;another&quot;</span>;</span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">doSomething</span>(<span class="params"></span>)&#123;...&#125;</span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">doAnother</span>(<span class="params"></span>)&#123;...&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		<span class="attr">doSomething</span>: doSomething,</span><br><span class="line">		<span class="attr">doAnother</span>: doAnother</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></div>
-<p>这种形式避免了函数名冲突，并且实现了单例模式。</p>
-<p>大多数模块加载器本质上就是将这种模块定义封装进一个 API，下面给出进一步实现：</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> moduleCreater = (<span class="keyword">function</span> <span class="title function_">Manager</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> modules = &#123;&#125;;</span><br><span class="line">	<span class="comment">// 通过 define 方法定义模块</span></span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">define</span>(<span class="params">id,deps,impl</span>)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; deps.<span class="property">length</span>;i++)&#123;</span><br><span class="line">			<span class="comment">// 在这里解包依赖数组</span></span><br><span class="line">			deps[i] = modules[deps[i]];</span><br><span class="line">		&#125;</span><br><span class="line">		modules[id] = impl.<span class="title function_">apply</span>(imply,deps);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">get</span>(<span class="params">id</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> modules[id];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		<span class="attr">define</span>: define,</span><br><span class="line">		<span class="attr">get</span>: get</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></div>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li>《你不知道的 Javascript》（上卷）</li>
-<li><a class="link"   href="https://www.cnblogs.com/lvdabao/p/js-modules-develop.html" >js 模块化历程 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://www.cnblogs.com/moxiaowohuwei/p/8692359.html" >js 模块化编程之彻底弄懂 CommonJS 和 AMD&#x2F;CMD！ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://github.com/seajs/seajs/issues/588" >前端模块化开发那点历史 · Issue #588 · seajs&#x2F;seajs (github.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li><a class="link"   href="https://github.com/seajs/seajs/issues/269" >从 CommonJS 到 Sea.js · Issue #269 · seajs&#x2F;seajs (github.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>方法论</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -424,49 +168,161 @@
       </tags>
   </entry>
   <entry>
-    <title>【方法论】代码重构的一点心得</title>
-    <url>/2023/02/11/MethodologyRefactoring/</url>
-    <content><![CDATA[<h1 id="重构（Refactoring）"><a href="#重构（Refactoring）" class="headerlink" title="重构（Refactoring）"></a>重构（Refactoring）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一直在做前端重构的工作，多少有些感想，特此记录。</p>
-<p>首先，项目的历史太悠久了，AngularJS 的项目，</p>
-<h2 id="一、什么是重构？为什么要重构？重构要达成什么目标？"><a href="#一、什么是重构？为什么要重构？重构要达成什么目标？" class="headerlink" title="一、什么是重构？为什么要重构？重构要达成什么目标？"></a>一、什么是重构？为什么要重构？重构要达成什么目标？</h2><p><strong>什么是重构</strong></p>
-<p>在<code>不改变代码外在行为</code>的前提下，对代码进行修改，以<code>改进程序的内部结构</code>。</p>
-<p><strong>为什么要重构</strong></p>
-<p>在软件工程中，开发迭代的过程实际上是一个熵增的过程，软件系统会随着生命周期的进行变得越来越臃肿、混乱、冗余，从而增加维护与进一步迭代的成本。而重构可以<code>偿还技术债务、改进软件结构、减小维护和迭代的成本、增加产品可信</code>。</p>
-<p><strong>重构要达成什么目标？</strong></p>
-<ol>
-<li>系统结构重新梳理：旧系统在设计上可能有许多疏漏，由于经验的欠缺或者考虑不周到，这是难以避免的。新系统应该见贤思齐、查漏补缺，例如重新设计基类、文件结构和继承关系，争取让系统更加完善。</li>
-<li>公共资源重新梳理：</li>
-<li>业务需求重新梳理：</li>
-</ol>
-<h2 id="二、重构有哪些分类？什么时候重构？重构有哪些原则？"><a href="#二、重构有哪些分类？什么时候重构？重构有哪些原则？" class="headerlink" title="二、重构有哪些分类？什么时候重构？重构有哪些原则？"></a>二、重构有哪些分类？什么时候重构？重构有哪些原则？</h2><p><strong>重构有哪些分类？</strong></p>
+    <title>【API】MutationObserver</title>
+    <url>/2023/01/11/APIMutationObserver/</url>
+    <content><![CDATA[<p>在使用第三方库时，常用需求之一是在 DOM 元素创建时注册一个时间监听器或 DOM 元素删除时注销事件监听器，但我们难以知道具体 DOM 元素的创建时间、删除时间，所以一般的实现方式是使用轮询的方法，判断 DOM 元素是否存在，如果存在则继续逻辑，这种轮询的方式也可以用 Promise 优化一下改成异步执行。但即使如此也仍有不小的额外开销，而 MutationObserver 提供了一种原生的检测方式。</p>
+<h2 id="MutationObserver"><a href="#MutationObserver" class="headerlink" title="MutationObserver"></a><a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver" >MutationObserver <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h2><blockquote>
+<p><code>MutationObserver</code> 接口提供了监视对 DOM 树所做更改的能力。它被设计为旧的 Mutation Events 功能的替代品，该功能是 DOM3 Events 规范的一部分。</p>
+</blockquote>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>MutationObserver()</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建并返回一个新的 MutationObserver 它会在指定的 DOM 发生变化时被调用。</span></span><br><span class="line"><span class="keyword">var</span> observer = <span class="keyword">new</span> <span class="title class_">MutationObserver</span>(callback);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callback</span>(<span class="params">mutationList, observer</span>) &#123;</span><br><span class="line">  mutationList.<span class="title function_">forEach</span>(<span class="function">(<span class="params">mutation</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span>(mutation.<span class="property">type</span>) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;childList&#x27;</span>:</span><br><span class="line">        <span class="comment">/* 从树上添加或移除一个或更多的子节点；参见 mutation.addedNodes 与</span></span><br><span class="line"><span class="comment">           mutation.removedNodes */</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;attributes&#x27;</span>:</span><br><span class="line">        <span class="comment">/* mutation.target 中某节点的一个属性值被更改；该属性名称在 mutation.attributeName 中，</span></span><br><span class="line"><span class="comment">           该属性之前的值为 mutation.oldValue */</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <ul>
-<li>小粒度重构（函数级、小模块）</li>
-<li>大粒度重构（架构级、大模块）</li>
-</ul>
-<p><strong>什么时候重构？</strong></p>
-<ul>
-<li>新增需求时（小粒度）</li>
-<li>修改 BUG 时（小粒度）</li>
-<li>复审代码时（大粒度）</li>
-<li>代码逻辑混乱、依赖混杂（大粒度）</li>
-</ul>
-<p><strong>重构有哪些原则？</strong></p>
-<ul>
-<li>先评审，再重构，不要反复推翻重来</li>
-<li>确保模块的功能完整，否则不重构该模块</li>
-<li>新增需求时，不要改动既有代码（小粒度）</li>
-<li>重构既有代码时，不要新增功能（小粒度）</li>
-</ul>
-<h2 id="三、重构工作流程"><a href="#三、重构工作流程" class="headerlink" title="三、重构工作流程"></a>三、重构工作流程</h2><ol>
-<li>前期准备，搭架子<ul>
-<li>构建对应技术栈的文件结构、代码关系</li>
-<li>整理公共资源、公共能力</li>
-<li>整理业务需求，确保没有遗漏的需求</li>
+<li>callback<ul>
+<li>一个回调函数，每当被指定的节点或子树以及配置项有 DOM 变动时会被调用。回调函数拥有两个参数：一个是描述所有被触发改动的 <code>MutationRecord</code> 对象数组，另一个是调用该函数的 MutationObserver 对象。参见下方的示例了解更多细节</li>
+<li><a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationRecord" >MutationRecord <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><ul>
+<li>MutationRecord.type</li>
+<li>MutationRecord.target</li>
+<li>MutationRecord.addedNodes</li>
+<li>MutationRecord.removedNodes</li>
+<li>MutationRecord.previousSibling</li>
+<li>MutationRecord.nextSibling</li>
+<li>MutationRecord.attributeName</li>
+<li>MutationRecord.attributeNamespace</li>
+<li>MutationRecord.oldValue</li>
 </ul>
 </li>
-<li>前期准备，分需求、培训（主要涉及文件结构和公共资源）</li>
-<li>开始重构</li>
+</ul>
+</li>
+<li>return<ul>
+<li>一个新的、包含监听 DOM 变化回调函数的 MutationObserver 对象。</li>
+</ul>
+</li>
+</ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul>
+<li>disconnect：阻止 MutationObserver 实例继续接收的通知，直到再次调用其 observe() 方法，该观察者对象包含的回调函数都不会再被调用。</li>
+<li><a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe" >observe <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>：配置 MutationObserver 在 DOM 更改匹配给定选项时，通过其回调函数开始接收通知。<ul>
+<li>target：DOM 树中的一个要观察变化的 DOM Node (可能是一个 Element)，或者是被观察的子节点树的根节点。</li>
+<li>options：此对象的配置项描述了 DOM 的哪些变化应该报告给 MutationObserver 的 callback。当调用 observe() 时，childList、attributes 和 characterData 中，必须有一个参数为 true。否则会抛出 TypeError 异常。</li>
+</ul>
+</li>
+<li>takeRecords：从 MutationObserver 的通知队列中删除所有待处理的通知，并将它们返回到 MutationRecord 对象的新 Array 中。</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// 选择需要观察变动的节点</span></span><br><span class="line"><span class="keyword">const</span> targetNode = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;some-id&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 观察器的配置（需要观察什么变动）</span></span><br><span class="line"><span class="keyword">const</span> config = &#123; <span class="attr">attributes</span>: <span class="literal">true</span>, <span class="attr">childList</span>: <span class="literal">true</span>, <span class="attr">subtree</span>: <span class="literal">true</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当观察到变动时执行的回调函数</span></span><br><span class="line"><span class="keyword">const</span> callback = <span class="keyword">function</span>(<span class="params">mutationsList, observer</span>) &#123;</span><br><span class="line">    <span class="comment">// Use traditional &#x27;for loops&#x27; for IE 11</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> mutation <span class="keyword">of</span> mutationsList) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mutation.<span class="property">type</span> === <span class="string">&#x27;childList&#x27;</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;A child node has been added or removed.&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (mutation.<span class="property">type</span> === <span class="string">&#x27;attributes&#x27;</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;The &#x27;</span> + mutation.<span class="property">attributeName</span> + <span class="string">&#x27; attribute was modified.&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个观察器实例并传入回调函数</span></span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> <span class="title class_">MutationObserver</span>(callback);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以上述配置开始观察目标节点</span></span><br><span class="line">observer.<span class="title function_">observe</span>(targetNode, config);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 之后，可停止观察</span></span><br><span class="line">observer.<span class="title function_">disconnect</span>();</span><br></pre></td></tr></table></figure></div>]]></content>
+      <categories>
+        <category>API</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【方法论】JS 模块化梳理</title>
+    <url>/2022/03/09/MethodologyFrontendJSModularity%20/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>模块化是编程中绕不过去的一环，可以说在我们的开发流程中，每时每刻都在使用着模块化，这无疑是一个非常重要的知识点。本文只讨论 JS 模块化，旨在加强对 JS 模块化的认识。主要涉及以下几点：</p>
+<ul>
+<li>JS 模块化的前世今生（为什么要模块化）</li>
+<li>JS 模块化的本质（如何实现模块化）</li>
+</ul>
+<h2 id="一、JS-模块化的前世今生"><a href="#一、JS-模块化的前世今生" class="headerlink" title="一、JS 模块化的前世今生"></a>一、JS 模块化的前世今生</h2><h3 id="无模块化"><a href="#无模块化" class="headerlink" title="无模块化"></a>无模块化</h3><p>大家都知道模块化是复杂项目中必不可少的一环，良好的模块化能让项目结构更加清晰，提高代码复用性，逻辑与功能分离，加强可维护性。但在一开始，Javascript 中是不存在模块化的，它只是一门玩具语言，为网页添加一点特效而已。功能简单，用法单一。</p>
+<p>此时的 js 代码的书写方式是，从上到下，简单明了，直到<code>ajax</code>出现。</p>
+<h3 id="模块化萌芽"><a href="#模块化萌芽" class="headerlink" title="模块化萌芽"></a>模块化萌芽</h3><p>Google 将 ajax 概念发扬光大，在 Gmail 和 Google 地球等网页应用中大量使用了 ajax 技术，此时人们才惊觉利用 javascript 能够在网页中做到什么。于是越来越多的大型 web 项目开始出现，随之而来的是越来越复杂的业务逻辑与项目结构。问题不可避免的出现了。</p>
+<ol>
+<li><code>全局变量污染</code><br>因为大家写的代码都在同一个全局作用域中，一不小心就可能声明一个已经存在的全局变量，往往就会发生难以预测的错误，这里举一个例子：<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这是我写的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;a.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;b.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 这是同事写的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;c.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div></li>
 </ol>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// a.js</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;这里请不要改&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// c.js</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">name</span>(<span class="params"></span>)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>上面有 3 个脚本，a.js、b.js 是我写的，c.js 是同事写的，我定义了一个全局变量 name，同事不知道，他定义了一个全局方法 name()，于是我俩都得懵逼。</p>
+<p><em>解决方案</em></p>
+<p>解决方法之一是使用自执行函数包裹：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">myModule = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> id = <span class="string">&#x27;user_id&#x27;</span></span><br><span class="line">	...</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></div>
+<p>这种方式解决了全局变量污染的问题，但仍暴露了一个全局函数在全局，仍可能存在命名冲突，并且有时需定义许多个这种类型的函数，不够优雅。</p>
+<ol start="2">
+<li><code>函数命名冲突</code><br>我们经常将一些功能性的函数抽离出来，放在同一个功能文件中，例如 utils.js 文件下放了一个 format 方法，这时同事需要一个不同的 format 方法，他就只能新建一个 format2 或者其他名字的方法，类似的事情很多。</li>
+</ol>
+<p><em>解决方案</em></p>
+<p>解决方法之一是使用命名空间，构造类似 java 的方式，于是代码变成了这样：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">obj.<span class="property">MyNameSpace</span>.<span class="property">Utils</span>.<span class="title function_">format</span>()</span><br></pre></td></tr></table></figure></div>
+<p>这种类型的代码确实有用，但大大增加了书写的负担，你只想调用一个方法，却不得不写一长串的前缀。</p>
+<ol start="3">
+<li><code>文件依赖混乱</code><br>文件的依赖往往是无法避免的，例如实现一个 dialog 组件，它调用了一些 utils.js 文件里的方法，那么在引入<code>&lt;script src=&quot;dialog&quot;&gt;</code>之前，需要先引入<code>&lt;script src=&quot;utils&quot;&gt;</code>，当类似的情况越来越多时，依赖就难免混杂，从而增加维护难度。</li>
+</ol>
+<p><em>解决方案</em></p>
+<p>这是 Yahoo! 的 YUI3 框架解决方案，通过 requires 一个依赖数组来指定依赖：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable constant_">YUI</span>.<span class="title function_">add</span>(<span class="string">&#x27;my-module&#x27;</span>, <span class="keyword">function</span> (<span class="params">Y</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;, <span class="string">&#x27;0.0.1&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">requires</span>: [<span class="string">&#x27;node&#x27;</span>, <span class="string">&#x27;event&#x27;</span>]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>这种类型的代码确实解决了依赖混乱的问题，但当一个文件依赖增多时，这种配置型的代码就会变得复杂而且难看。</p>
+<p>在这个时期，不同的 web 团队为了解决项目中遇到的这类难题提出了自己的解决方案，但没有哪种解决方案可以解决所有的问题。</p>
+<h3 id="几种模块化规范"><a href="#几种模块化规范" class="headerlink" title="几种模块化规范"></a>几种模块化规范</h3><p>从以上的例子中可以观察到一些模块化所面临的难题：</p>
+<ol>
+<li>如何安全的包装一个模块（不污染模块外的代码）</li>
+<li>如何定义模块的唯一标识（解决命名冲突）</li>
+<li>如何优雅的暴露模块（不增加复杂依赖）</li>
+<li>模块间互相引用的循环依赖问题</li>
+</ol>
+<p>在 nodeJS 出现后，Javascript 可以用来编写服务端程序，这时 Javascript 没有模块化的缺点变得更加令人难以忍受，nodeJS 社区开始制定 JS 模块化规范。[Modules&#x2F;1.0 规范](<a class="link"   href="https://wiki.commonjs.org/wiki/Modules/1.0" >Modules&#x2F;1.0 - CommonJS Spec Wiki <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>)，首次定义了一个模块应该如何编写：</p>
+<blockquote>
+<ol>
+<li>模块的标识应遵循的规则（书写规范）</li>
+<li>定义全局函数 require，通过传入模块标识来引入其他模块，执行的结果即为别的模块暴漏出来的 API</li>
+<li>如果被 require 函数引入的模块中也包含依赖，那么依次加载这些依赖</li>
+<li>如果引入模块失败，那么 require 函数应该报一个异常</li>
+<li>模块通过变量 exports 来向往暴漏 API，exports 只能是一个对象，暴漏的 API 须作为此对象的属性。</li>
+</ol>
+</blockquote>
+<p>一开始实现 Modules&#x2F;1.0 规范的是 ServerJS（CommonJS 改名之前的叫法），它的写法如下：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">add</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> sum = <span class="number">0</span>,i = <span class="number">0</span>, args = <span class="variable language_">arguments</span>;</span><br><span class="line">	<span class="keyword">while</span>(i &lt; <span class="number">1</span>)&#123;</span><br><span class="line">		sum += args[i++];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// increment.js</span></span><br><span class="line"><span class="keyword">var</span> add = <span class="built_in">require</span>(<span class="string">&#x27;math&#x27;</span>).<span class="property">add</span>;</span><br><span class="line"><span class="built_in">exports</span>.<span class="property">increment</span> = <span class="keyword">function</span>(<span class="params">val</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="title function_">add</span>(val,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// program.js</span></span><br><span class="line"><span class="keyword">var</span> inc = <span class="built_in">require</span>(<span class="string">&#x27;increment&#x27;</span>).<span class="property">increment</span>;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="title function_">inc</span>(a); <span class="comment">//2</span></span><br></pre></td></tr></table></figure></div>
+<p>相比于之前的阶段，此时的代码更加简洁明了，但它只能在服务端运行而难以向浏览器端推广，原因如下：</p>
+<ol>
+<li>外层没有 function 包裹，变量直接暴露在全局（如上 increment.js 中的 add 方法）</li>
+<li>资源加载方式不同，在服务端，require 一个模块可以直接从内存中读取，消耗时间很小，但在浏览器端，require 一个模块需要向服务器发起一个 http 请求，下载完成后才能运行模块中的代码，也就是说 require 之后的代码必须等到 require 完成后才能执行。<br>因为这些问题，社区中的主张分裂为 3 种，分别是</li>
+</ol>
+<ul>
+<li>Modules&#x2F;1.x 派</li>
+<li>Modules&#x2F;Async 派</li>
+<li>Modules&#x2F;2.0 派</li>
+</ul>
+<p><code>Modules/1.x,CommonJS,browserify</code><br>这一派人认为既然 ServerJS 能够在服务端运行良好，只需要在现有基础上进行改进就能适应浏览器端的需求，浏览器端需要 function 包裹（为了保护变量）、需要异步加载，那么就使用一种工具将现有模块转化为适合浏览器端的代码，基于这种想法有基于这个主张，制定了 <a class="link"   href="https://wiki.commonjs.org/wiki/Modules/Transport" >Modules&#x2F;Transport 规范 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，<code>browserify</code>是这种规范的一种实现，它是一种浏览器端的打包工具，能够将 nodeJS 模块转化为浏览器端可用的模块。</p>
+<p><code>Modules/Async,AMD,RequireJS</code><br>这一派人认为浏览器端与服务端差别巨大，不能沿用原有模块标准。既然浏览器端需要异步加载代码，就通过回调的形式设计规范。其原理是：在模块定义时就指明并加载依赖，当依赖加载完毕后再执行回调中的本模块。因为这种异步的特性设计的规范名为 <a class="link"   href="https://github.com/amdjs/amdjs-api/wiki/AMD-%EF%BC%88%E4%B8%AD%E6%96%87%E7%89%88%EF%BC%89" >AMD（Asynchronous Module Definition） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，根据 AMD 规范出现了<code>RequireJS</code>的实现，它的写法如下：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">define</span>(id?, dependencies?, factory);</span><br><span class="line"></span><br><span class="line"><span class="title function_">define</span>(<span class="string">&#x27;increment&#x27;</span>,[<span class="string">&#x27;math&#x27;</span>,<span class="string">&#x27;other&#x27;</span>],<span class="keyword">function</span>(<span class="params">math</span>)&#123;</span><br><span class="line">	<span class="comment">// 此时 math 和 other 模块内的代码已经执行完毕</span></span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">increment</span>(<span class="params">val</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> math.<span class="title function_">add</span>(val,<span class="number">1</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 即使 other 没有被使用到，other 还是被提前执行了</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="literal">false</span>)&#123;</span><br><span class="line">		other.<span class="title function_">doSomething</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+<p><code>Modules/2.0 CMD Sea.js</code><br>这一派人有点类似中间派，既不想丢弃旧的规范，也不像 AMD 那样推倒重来，最终他们制定了 <a href="%5Bhttp://wiki.commonjs.org/wiki/Modules/Wrappings%5D(http://wiki.commonjs.org/wiki/Modules/Wrappings)">Modules&#x2F;Wrappings 规范</a>,<code>SeaJS</code>是它的一个实现。写法如下：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">define</span>(factory);</span><br><span class="line"></span><br><span class="line"><span class="title function_">define</span>(<span class="keyword">function</span>(<span class="params"><span class="built_in">require</span>,<span class="built_in">exports</span>,<span class="variable language_">module</span></span>)&#123;</span><br><span class="line">	<span class="comment">// 就近原则，哪里使用哪里声明</span></span><br><span class="line">	<span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">&#x27;math&#x27;</span>);</span><br><span class="line">	<span class="keyword">return</span>&#123;</span><br><span class="line">		<span class="attr">increment</span>:<span class="keyword">function</span>(<span class="params">val</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> math.<span class="title function_">add</span>(val,<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>可以看到，它的写法和 RequireJS 很像，那么不同之处在哪里呢？RequireJS 会在依赖加载的第一时间加载并执行依赖内的代码，然后再执行回调内的模块代码；而 SeaJS 会在声明依赖之后才会执行依赖内的代码。总的来说就是：<code>AMD 推崇依赖前置、提前执行，CMD 推崇依赖就近、延迟执行。</code></p>
+<p><code>ES6 Module</code><br>从 ES6 开始，Javascript 开始有了标准层面的模块化，旨在成为浏览器端和服务器端的通用模块化方案。它的写法很简单，具体如下：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params"></span>)&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123;add&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//increment.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;add&#125; <span class="keyword">from</span> <span class="string">&#x27;./math&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">increment</span>(<span class="params">val</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="title function_">add</span>(val,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>那么它和上面提到的几种模块化方案有哪些不同呢？</p>
+<ol>
+<li>动态只读引用<blockquote>
+<p>ES6 模块的运行机制与 CommonJS 不一样。JS 引擎对脚本静态分析的时候，遇到模块加载命令<code>import</code>，就会生成一个只读引用。等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。换句话说，ES6 的<code>import</code>有点像 Unix 系统的“符号连接”，原始值变了，<code>import</code>加载的值也会跟着变。因此</p>
+</blockquote>
+</li>
+<li>编译时输出<blockquote>
+<p>ES6 模块不是对象，而是通过 <code>export</code> 命令显式指定输出的代码，<code>import</code>时采用静态命令的形式。即在<code>import</code>时可以指定加载某个输出值，而不是加载整个模块，这种加载称为“编译时加载”。模块内部引用的变化，会反应在外部。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>AMD&#x2F;CMD&#x2F;CommonJs 是 js 模块化开发的规范，对应的实现是 require.js&#x2F;sea.js&#x2F;Node.js，ES Module 是 ES6 在语言规范上的模块化实现。</li>
+<li>CommonJS 主要针对服务端，AMD&#x2F;CMD&#x2F;ES Module 主要针对浏览器端，容易混淆的是 AMD&#x2F;CMD。针对服务器端和针对浏览器端有什么本质的区别呢？服务器端一般采用同步加载文件，也就是说需要某个模块，服务器端便停下来，等待它加载再执行，因为这部分很快。而浏览器端采用异步加载，因为需要发送 http 请求，这就需要一个预处理，提前将所需要的模块文件并行加载好。</li>
+<li>AMD&#x2F;CMD 的区别：虽然都是并行加载 js 文件，但还是有所区别，AMD 是预加载，在并行加载 js 文件同时，还会解析执行该模块（因为还需要执行，所以在加载某个模块前，这个模块的依赖模块需要先加载完成）；而 CMD 是懒加载，虽然会一开始就并行加载 js 文件，但是不会执行，而是在需要的时候才执行。</li>
+<li>AMD&#x2F;CMD 的优缺点：JS 引擎是单线程的，单位时间内只能执行单个任务，所以在加载多个大文件时，会阻塞脚本执行。AMD 会在文件全部加载完毕后才执行代码，CMD 则会遇见依赖再加载代码，在此种情况 CMD 会更快，其他情形则相差不多。</li>
+<li></li>
+</ol>
+<h2 id="二、模块化的本质"><a href="#二、模块化的本质" class="headerlink" title="二、模块化的本质"></a>二、模块化的本质</h2><blockquote>
+<p>模块化的本质在于外部只能访问模块暴露出来的属性和方法，可以通过闭包的特性实现。</p>
+</blockquote>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 原生模块模式</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">moduleA</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> something = <span class="string">&quot;something&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> another = <span class="string">&quot;another&quot;</span>;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">doSomething</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(something);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">doAnother</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(another);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">doSomething</span>: doSomething,</span><br><span class="line">        <span class="attr">doAnother</span>: doAnother</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用模块内方法</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="title function_">moduleA</span>();</span><br><span class="line">foo.<span class="title function_">doSomething</span>(); <span class="comment">// something</span></span><br><span class="line">foo.<span class="property">another</span>; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// jQuery 类型的模块</span></span><br><span class="line"><span class="comment">// var $ = window.jQuery()</span></span><br></pre></td></tr></table></figure></div>
+<p>在这里通过调用 moduleA() 这个函数来创建模块实例 foo，通过这个模块实例可以调用模块内暴露的变量和方法，但仍存在问题，在于 moduleA 是一个全局函数，可能会造成函数名污染。也可以使用 IIFE 的方式创建：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// IIFE</span></span><br><span class="line"><span class="keyword">var</span> foo = (<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> something = <span class="string">&quot;something&quot;</span>;</span><br><span class="line">	<span class="keyword">var</span> another = <span class="string">&quot;another&quot;</span>;</span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">doSomething</span>(<span class="params"></span>)&#123;...&#125;</span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">doAnother</span>(<span class="params"></span>)&#123;...&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		<span class="attr">doSomething</span>: doSomething,</span><br><span class="line">		<span class="attr">doAnother</span>: doAnother</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></div>
+<p>这种形式避免了函数名冲突，并且实现了单例模式。</p>
+<p>大多数模块加载器本质上就是将这种模块定义封装进一个 API，下面给出进一步实现：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> moduleCreater = (<span class="keyword">function</span> <span class="title function_">Manager</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> modules = &#123;&#125;;</span><br><span class="line">	<span class="comment">// 通过 define 方法定义模块</span></span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">define</span>(<span class="params">id,deps,impl</span>)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; deps.<span class="property">length</span>;i++)&#123;</span><br><span class="line">			<span class="comment">// 在这里解包依赖数组</span></span><br><span class="line">			deps[i] = modules[deps[i]];</span><br><span class="line">		&#125;</span><br><span class="line">		modules[id] = impl.<span class="title function_">apply</span>(imply,deps);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">get</span>(<span class="params">id</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> modules[id];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		<span class="attr">define</span>: define,</span><br><span class="line">		<span class="attr">get</span>: get</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></div>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>《你不知道的 Javascript》（上卷）</li>
+<li><a class="link"   href="https://www.cnblogs.com/lvdabao/p/js-modules-develop.html" >js 模块化历程 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://www.cnblogs.com/moxiaowohuwei/p/8692359.html" >js 模块化编程之彻底弄懂 CommonJS 和 AMD&#x2F;CMD！ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://github.com/seajs/seajs/issues/588" >前端模块化开发那点历史 · Issue #588 · seajs&#x2F;seajs (github.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://github.com/seajs/seajs/issues/269" >从 CommonJS 到 Sea.js · Issue #269 · seajs&#x2F;seajs (github.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
 ]]></content>
       <categories>
         <category>方法论</category>
@@ -578,11 +434,173 @@
       </tags>
   </entry>
   <entry>
-    <title>【实践】手写 call、apply、bind</title>
-    <url>/2021/10/15/PracticeCallApply/</url>
-    <content><![CDATA[<!-- YCTODO -->]]></content>
+    <title>【方法论】前端发展历程梳理</title>
+    <url>/2022/03/20/MethodologyFrontendHistory/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>了解前端的发展历史有助于从一个全局的视角来重新认知前端技术，脱离单独某一种视角的窠臼。</p>
+<ul>
+<li><code>Node.js</code>的出现意味着什么？</li>
+<li>为什么要从<code>jquery</code>转入三大框架？</li>
+<li>既然已经有了<code>javascript</code>为什么还要使用<code>babel</code>来转化？</li>
+<li><code>CommonJS</code>、<code>AMD</code>、<code>CMD</code>、<code>ESModule</code>又是什么？</li>
+</ul>
+<p>类似的问题不胜枚举，而这篇文章有助于解决此类问题。</p>
+<h2 id="1-需求驱动和问题驱动"><a href="#1-需求驱动和问题驱动" class="headerlink" title="1. 需求驱动和问题驱动"></a>1. 需求驱动和问题驱动</h2><p>一种技术能够出现并且不断的发展，一定具有某种内在的驱动力，我认为这种驱动力存在两种：</p>
+<ol>
+<li>需求驱动</li>
+<li>问题驱动</li>
+</ol>
+<p>需求驱动顾名思义就是当前的技术工具支持不了新的需求，所以推动了新技术的产生。而问题驱动则是实现某种需求的过程中产生了困难，老旧的技术工具解决不了或者解决起来很麻烦困难，所以推动了新技术的产生。</p>
+<h2 id="2-前端大事件的时间节点"><a href="#2-前端大事件的时间节点" class="headerlink" title="2. 前端大事件的时间节点"></a>2. 前端大事件的时间节点</h2><table>
+<thead>
+<tr>
+<th align="left">时间</th>
+<th align="left">事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>web1.0 1991~2004</code></td>
+<td align="left">只读网络，网站提供内容，用户阅读内容</td>
+</tr>
+<tr>
+<td align="left">1989 年</td>
+<td align="left"><code>HTML</code>由 Web 的发明者 Tim Berners-Lee 创立，这也是前端的起始</td>
+</tr>
+<tr>
+<td align="left">1994 年</td>
+<td align="left">世界上的第一款浏览器<code>NCSAMosaic</code>由 Netscape（网景）公司开发，同年<code>W3C</code>（世界万维网联盟）成立</td>
+</tr>
+<tr>
+<td align="left">1995 年</td>
+<td align="left"><code>JavaScript</code>由网景公司的 Brendan Eich 设计</td>
+</tr>
+<tr>
+<td align="left">1996 年</td>
+<td align="left">W3C 发布了<code>CSS1</code>标准，从此前端有了样式规范</td>
+</tr>
+<tr>
+<td align="left">1997 年</td>
+<td align="left"><code>ECMAScript1</code>由 ECMA 国际正式发布，从此 Javascript 有了自己的标准，同年 W3C 发布了<code>HTML4.0</code>标准，这是使用时间最长的一个版本</td>
+</tr>
+<tr>
+<td align="left">1998 年</td>
+<td align="left">W3C 发布了<code>XML（可扩展标记语言）</code>标准，同年<code>Ajax</code>（异步 Javascript 和 XML）技术开始得到应用</td>
+</tr>
+<tr>
+<td align="left">2001 年</td>
+<td align="left">Douglas Crockford 开始推广使用<code>JSON</code>数据格式，它比 XML 更加简洁清晰</td>
+</tr>
+<tr>
+<td align="left"><code>web2.0 2004~至今</code></td>
+<td align="left">交互网络，用户产生内容，通过网站与他人交互</td>
+</tr>
+<tr>
+<td align="left">2006 年</td>
+<td align="left">John Resig 发布了<code>JQuery</code>的第一个版本，这是迄今为止最成功的 JS 库，同年 W3C 正式发布<code>XMLHttpRequest</code>标准，为以后的 Ajax 爆发提供技术基础。</td>
+</tr>
+<tr>
+<td align="left">2008 年</td>
+<td align="left">Google 开源了高性能的 Javascript 引擎<code>V8</code></td>
+</tr>
+<tr>
+<td align="left">2009 年</td>
+<td align="left">Ryan Dahl 开发了基于 V8 引擎的<code>NodeJS</code>运行时环境，从此 javascript 可以运行在服务端；同年<code>ECMAScript5</code>发布，这是使用时间最长，各个浏览器兼容性最好，如今大部分程序也依然在使用的一代标准；同年 Miško Hevery 创造了<code>AngularJS</code>框架，基于 MVC 模式，并且实现了 SPA（单页面应用）</td>
+</tr>
+<tr>
+<td align="left">2010 年</td>
+<td align="left"><code>NPM</code>（NodeJS 包管理工具）发布了第一个版本，从此前端有了自己的包管理器</td>
+</tr>
+<tr>
+<td align="left">2011 年</td>
+<td align="left">Twitter 开源了其前端框架<code>Bootstrap</code></td>
+</tr>
+<tr>
+<td align="left">2012 年</td>
+<td align="left">微软发布了<code>Typescript</code>的第一个版本，让 Javascript 拥有了自己的类型</td>
+</tr>
+<tr>
+<td align="left">2013 年</td>
+<td align="left">Facebook 开源了其前端框架<code>React</code>，同年尤雨溪受到 Angular 启发开发了轻量级前端框架<code>Seed</code>，后更名为<code>Vue</code></td>
+</tr>
+<tr>
+<td align="left">2014 年</td>
+<td align="left">W3C 发布了<code>HTML5</code>标准</td>
+</tr>
+<tr>
+<td align="left">2015 年</td>
+<td align="left"><code>ECMAScript6</code>正式发布，后更名为<code>ECMAScript2015</code>，之截至目前 2022 年，每年都发布了对应的新版本</td>
+</tr>
+<tr>
+<td align="left">2016 年</td>
+<td align="left"><code>ECMAScript2016</code>正式发布</td>
+</tr>
+<tr>
+<td align="left">2017 年</td>
+<td align="left"><code>ECMAScript2017</code>正式发布</td>
+</tr>
+</tbody></table>
+<!-- YCTODO -->
+<h2 id="一些技术发展过程的梳理"><a href="#一些技术发展过程的梳理" class="headerlink" title="一些技术发展过程的梳理"></a>一些技术发展过程的梳理</h2><p>可以把前端发展的历程分为</p>
+<h2 id="展望未来"><a href="#展望未来" class="headerlink" title="展望未来"></a>展望未来</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>百度百科</li>
+<li><a class="link"   href="http://www.javashuo.com/article/p-hvrlfhxo-gc.html" >前端的历史发展节点 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://zhuanlan.zhihu.com/p/196637639" >Web 开发的历史发展技术演变 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://blog.csdn.net/qq_44273429/article/details/127462439" >Web 1.0、Web 2.0 和 Web 3.0 之间的比较 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+]]></content>
       <categories>
-        <category>实践</category>
+        <category>方法论</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【方法论】代码重构的一点心得</title>
+    <url>/2023/02/11/MethodologyRefactoring/</url>
+    <content><![CDATA[<h1 id="重构（Refactoring）"><a href="#重构（Refactoring）" class="headerlink" title="重构（Refactoring）"></a>重构（Refactoring）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一直在做前端重构的工作，多少有些感想，特此记录。</p>
+<p>首先，项目的历史太悠久了，AngularJS 的项目，</p>
+<h2 id="一、什么是重构？为什么要重构？重构要达成什么目标？"><a href="#一、什么是重构？为什么要重构？重构要达成什么目标？" class="headerlink" title="一、什么是重构？为什么要重构？重构要达成什么目标？"></a>一、什么是重构？为什么要重构？重构要达成什么目标？</h2><p><strong>什么是重构</strong></p>
+<p>在<code>不改变代码外在行为</code>的前提下，对代码进行修改，以<code>改进程序的内部结构</code>。</p>
+<p><strong>为什么要重构</strong></p>
+<p>在软件工程中，开发迭代的过程实际上是一个熵增的过程，软件系统会随着生命周期的进行变得越来越臃肿、混乱、冗余，从而增加维护与进一步迭代的成本。而重构可以<code>偿还技术债务、改进软件结构、减小维护和迭代的成本、增加产品可信</code>。</p>
+<p><strong>重构要达成什么目标？</strong></p>
+<ol>
+<li>系统结构重新梳理：旧系统在设计上可能有许多疏漏，由于经验的欠缺或者考虑不周到，这是难以避免的。新系统应该见贤思齐、查漏补缺，例如重新设计基类、文件结构和继承关系，争取让系统更加完善。</li>
+<li>公共资源重新梳理：</li>
+<li>业务需求重新梳理：</li>
+</ol>
+<h2 id="二、重构有哪些分类？什么时候重构？重构有哪些原则？"><a href="#二、重构有哪些分类？什么时候重构？重构有哪些原则？" class="headerlink" title="二、重构有哪些分类？什么时候重构？重构有哪些原则？"></a>二、重构有哪些分类？什么时候重构？重构有哪些原则？</h2><p><strong>重构有哪些分类？</strong></p>
+<ul>
+<li>小粒度重构（函数级、小模块）</li>
+<li>大粒度重构（架构级、大模块）</li>
+</ul>
+<p><strong>什么时候重构？</strong></p>
+<ul>
+<li>新增需求时（小粒度）</li>
+<li>修改 BUG 时（小粒度）</li>
+<li>复审代码时（大粒度）</li>
+<li>代码逻辑混乱、依赖混杂（大粒度）</li>
+</ul>
+<p><strong>重构有哪些原则？</strong></p>
+<ul>
+<li>先评审，再重构，不要反复推翻重来</li>
+<li>确保模块的功能完整，否则不重构该模块</li>
+<li>新增需求时，不要改动既有代码（小粒度）</li>
+<li>重构既有代码时，不要新增功能（小粒度）</li>
+</ul>
+<h2 id="三、重构工作流程"><a href="#三、重构工作流程" class="headerlink" title="三、重构工作流程"></a>三、重构工作流程</h2><ol>
+<li>前期准备，搭架子<ul>
+<li>构建对应技术栈的文件结构、代码关系</li>
+<li>整理公共资源、公共能力</li>
+<li>整理业务需求，确保没有遗漏的需求</li>
+</ul>
+</li>
+<li>前期准备，分需求、培训（主要涉及文件结构和公共资源）</li>
+<li>开始重构</li>
+</ol>
+]]></content>
+      <categories>
+        <category>方法论</category>
       </categories>
       <tags>
         <tag>JS</tag>
@@ -596,6 +614,17 @@
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2>]]></content>
       <categories>
         <category>方法论</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【实践】手写 call、apply、bind</title>
+    <url>/2021/10/15/PracticeCallApply/</url>
+    <content><![CDATA[<!-- YCTODO -->]]></content>
+      <categories>
+        <category>实践</category>
       </categories>
       <tags>
         <tag>JS</tag>
@@ -740,6 +769,281 @@
       </categories>
       <tags>
         <tag>angular</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【转载】浏览器渲染机制</title>
+    <url>/2021/03/02/ReprintBrowserRender/</url>
+    <content><![CDATA[<blockquote>
+<p>原文转自：<a class="link"   href="https://segmentfault.com/a/1190000014018604" >https://segmentfault.com/a/1190000014018604 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+</blockquote>
+<h3 id="线程和进程"><a href="#线程和进程" class="headerlink" title="线程和进程"></a>线程和进程</h3><p>进程和线程的概念可以这样理解：</p>
+<p>进程是一个工厂，工厂有它的独立资源 – 工厂之间相互独立 – 线程是工厂中的工人，多个工人协作完成任务 – 工厂内有一个或多个工人 – 工人之间共享空间</p>
+<p>工厂有多个工人，就相当于一个进程可以有多个线程，而且线程共享进程的空间。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://segmentfault.com/img/bV6ZbY?w=834&h=742"
+                     
+                ></p>
+<p>进程是<code>cpu</code>资源分配的最小单位（是能拥有资源和独立运行的最小单位，系统会给它分配内存）<br>线程是<code>cpu</code>调试的最小单位（线程是建立在进程的基础上的一次程序运行单位，一个进程中可以有多个线程。核心还是属于一个进程。）</p>
+<h3 id="浏览器是多进程的"><a href="#浏览器是多进程的" class="headerlink" title="浏览器是多进程的"></a>浏览器是多进程的</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://segmentfault.com/img/bV6RM7?w=864&h=471"
+                     
+                ></p>
+<p>浏览器是多进程的，每打开一个<code>tab</code>页，就相当于创建了一个独立的浏览器进程。</p>
+<h3 id="浏览器包含的进程："><a href="#浏览器包含的进程：" class="headerlink" title="浏览器包含的进程："></a>浏览器包含的进程：</h3><ol>
+<li><p><code>Browser</code>进程：浏览器的主进程（负责协调，主控），只有一个，作用有：</p>
+<ul>
+<li>负责浏览器的界面显示，与用户交互，如前进，后退等</li>
+<li>负责各个页面的管理，创建和销毁其它进程</li>
+<li>将<code>Rendered</code>进程得到的内存中的<code>Bitmap</code>, 绘制到用户界面上</li>
+<li>网络资源的管理，下载</li>
+</ul>
+</li>
+<li><p>第三方插件进程：每种类型的插件对应一个进程，仅当使用该插件时才创建。</p>
+</li>
+<li><p><code>GPU</code>进程：最多一个，用于<code>3D</code>绘制等。</p>
+</li>
+<li><p>浏览器渲染进程（浏览器内核）（<code>Render</code>进程，内部是多线程的）：默认每个<code>Tab</code>页面一个进程，互不影响。主要作用为：</p>
+<ul>
+<li>页面渲染，脚本执行，事件处理等</li>
+</ul>
+</li>
+</ol>
+<p>在浏览器中打开一个网页相当于新起了一个进程（进程内有自己的多线程）</p>
+<h3 id="浏览器多进程的优势"><a href="#浏览器多进程的优势" class="headerlink" title="浏览器多进程的优势"></a>浏览器多进程的优势</h3><ul>
+<li>避免单个<code>page crash</code>影响整个浏览器</li>
+<li>避免第三方插件<code>crash</code>影响整个浏览器</li>
+<li>多进程充分利用多核优势</li>
+<li>方便使用沙盒模型隔离插件等进程，提高浏览器稳定性</li>
+</ul>
+<p>简单理解就是：如果浏览器是单进程的，某个<code>Tab</code>页崩溃了，就影响了整个浏览器，体验就会很差。同理如果是单进程的，插件崩溃了也会影响整个浏览器；<br>当然，内存等资源消耗也会更大，像空间换时间一样。</p>
+<h2 id="重点是浏览器内核（渲染进程）"><a href="#重点是浏览器内核（渲染进程）" class="headerlink" title="重点是浏览器内核（渲染进程）"></a>重点是浏览器内核（渲染进程）</h2><p>对于普通的前端操作来说，最重要的<strong>渲染进程</strong>：页面的渲染，<code>js</code>的执行，事件的循环等都在这个进程内执行；<br><strong>浏览器是多进程的，浏览器的渲染进程是多线程的；</strong></p>
+<h3 id="GUI渲染线程"><a href="#GUI渲染线程" class="headerlink" title="GUI渲染线程"></a><code>GUI</code>渲染线程</h3><ul>
+<li>负责渲染浏览器界面，解析<code>HTML</code>,<code>CSS</code>, 构建<code>DOM</code>树和<code>RenderObject</code>树，布局和绘制等。</li>
+<li>当界面需要重绘或由于某种操作引发回流时，该线程就会执行。</li>
+<li>注意，**<code>GUI</code>渲染线程与<code>JS</code>引擎线程是互斥的**，当<code>JS</code>引擎执行时<code>GUI</code>线程会被挂起（相当于冻结了）,<code>GUI</code>更新会被保存在一个队列中等到<code>JS</code>引擎空闲时立即被执行。</li>
+</ul>
+<h3 id="JS引擎线程"><a href="#JS引擎线程" class="headerlink" title="JS引擎线程"></a><code>JS</code>引擎线程</h3><ul>
+<li>也称为<code>JS</code>内核，负责处理<code>JavaScript</code>脚本程序。（例如<code>V8</code>引擎）。</li>
+<li><code>JS</code>引擎线程负责解析<code>JavaScript</code>脚本，运行代码。</li>
+<li><code>JS</code>引擎一直等待着任务队列中任务的到来，然后加以处理，一个<code>Tab</code>页（<code>render</code>进程）中无论什么时候都只有一个<code>JS</code>线程在运行<code>JS</code>程序。</li>
+<li>同样注意，<code>GUI</code>渲染线程与<code>JS</code>引擎线程是互斥的，所以如果<code>JS</code>执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞。</li>
+</ul>
+<h3 id="事件触发线程"><a href="#事件触发线程" class="headerlink" title="事件触发线程"></a>事件触发线程</h3><ul>
+<li>归属于浏览器而不是<code>JS</code>引擎，用来控制事件循环（可以理解成<code>JS</code>引擎自己都忙不过来，需要浏览器另开线程协助）。</li>
+<li>当<code>JS</code>引擎执行代码块如<code>setTimeout</code>时（也可来自浏览器内核的其它线程，如鼠标点击，<code>AJAX</code>异步请求等），会将对应任务添加到事件线程中。</li>
+<li>当对应的事件符合触发条件被触发时，该线程会把事件添加到待处理队列的队尾，等待<code>JS</code>引擎的处理。</li>
+<li>注意，由于<code>JS</code>的单线程关系，所以这些待处理队列中的事件都得排队等待<code>JS</code>引擎处理（当<code>JS</code>引擎空闲时才会去执行）。</li>
+</ul>
+<h3 id="定时触发器线程"><a href="#定时触发器线程" class="headerlink" title="定时触发器线程"></a>定时触发器线程</h3><ul>
+<li>传说中的<code>setTimeout</code>和<code>setInterval</code>所在的线程</li>
+<li>浏览器定时计数器并不是由<code>JavaScript</code>引擎计数的，（因为<code>JavaScript</code>引擎是单线程的，如果处于阻塞线程状态就会影响计时的准确）</li>
+<li>因此通过单独线程来计时并触发定时（计时完毕后，添加到事件队列中，等待<code>JS</code>引擎空闲后执行）</li>
+<li>注意，<code>W3C</code>在<code>HTML</code>标准中规定，规定要求<code>setTimeout</code>中低于<code>4ms</code>的时间间隔算为<code>4ms</code>。</li>
+</ul>
+<h3 id="异步http请求线程"><a href="#异步http请求线程" class="headerlink" title="异步http请求线程"></a>异步<code>http</code>请求线程</h3><ul>
+<li>在<code>XMLHttpRequest</code>在连接后是通过浏览器新型一个线程请求</li>
+<li>将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件，将这个回调再放入事件队列中，再由<code>JavaScript</code>引擎执行</li>
+</ul>
+<p>总结下来，渲染进程如下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://segmentfault.com/img/bV6ZLo?w=655&h=608"
+                     
+                ></p>
+<h3 id="Browser-主进程和浏览器内核（渲染进程）的通信过程"><a href="#Browser-主进程和浏览器内核（渲染进程）的通信过程" class="headerlink" title="Browser 主进程和浏览器内核（渲染进程）的通信过程"></a>Browser 主进程和浏览器内核（渲染进程）的通信过程</h3><p>打开一个浏览器，可以看到：任务管理器出现了 2 个进程（一个主进程，一个是打开<code>Tab</code>页的渲染进程）；</p>
+<ul>
+<li><code>Browser</code>主进程收到用户请求，首先需要获取页面内容（如通过网络下载资源）, 随后将该任务通过<code>RendererHost</code>接口传递给<code>Render</code>渲染进程</li>
+<li><code>Render</code>渲染进程的<code>Renderer</code>接口收到消息，简单解释后，交给渲染线程<code>GUI</code>，然后开始渲染</li>
+<li><code>GUI</code>渲染线程接收请求，加载网页并渲染网页，这其中可能需要<code>Browser</code>主进程获取资源和需要<code>GPU</code>进程来帮助渲染</li>
+<li>当然可能会有<code>JS</code>线程操作<code>DOM</code>（这可能会造成回流并重绘）</li>
+<li>最后<code>Render</code>渲染进程将结果传递给<code>Browser</code>主进程</li>
+<li><code>Browser</code>主进程接收到结果并将结果绘制出来</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://segmentfault.com/img/bV66KM?w=1034&h=560"
+                     
+                ></p>
+<h3 id="浏览器内核（渲染进程）中线程之间的关系"><a href="#浏览器内核（渲染进程）中线程之间的关系" class="headerlink" title="浏览器内核（渲染进程）中线程之间的关系"></a>浏览器内核（渲染进程）中线程之间的关系</h3><p><strong>GUI 渲染线程与 JS 引擎线程互斥</strong></p>
+<p>由于<code>JavaScript</code>是可操作<code>DOM</code>的，如果在修改这些元素属性同时渲染界面（即<code>JS</code>线程和<code>GUI</code>线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。</p>
+<p>因此，为了防止渲染出现不可预期的结果，浏览器就设置了互斥的关系，当<code>JS</code>引擎执行时<code>GUI</code>线程会被挂起。<code>GUI</code>更新则会被保存在一个队列中等到<code>JS</code>引擎线程空闲时立即被执行。</p>
+<p><strong>JS 阻塞页面加载</strong></p>
+<p>从上述的互斥关系，可以推导出，<code>JS</code>如果执行时间过长就会阻塞页面。</p>
+<p>譬如，假设<code>JS</code>引擎正在进行巨量的计算，此时就算<code>GUI</code>有更新，也会被保存在队列中，要等到<code>JS</code>引擎空闲后执行。然后由于巨量计算，所以<code>JS</code>引擎可能很久很久才能空闲，肯定就会感觉很卡。</p>
+<p>所以，要尽量避免<code>JS</code>执行时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞的感觉。</p>
+<p><strong><code>css</code>加载是否会阻塞<code>dom</code>树渲染</strong></p>
+<p>这里说的是头部引入<code>css</code>的情况<br>首先，我们都知道：<code>css</code>是由单独的下载线程异步下载的。<br>然后还有几个现象：</p>
+<ol>
+<li><code>css</code>加载不会阻塞<code>DOM</code>树解析（异步加载时<code>dom</code>照常构建）</li>
+<li>但会阻塞<code>render</code>树渲染（渲染时需要等<code>css</code>加载完毕，因为<code>render</code>树需要<code>css</code>信息）</li>
+</ol>
+<p>这可能也是浏览器的一种优化机制<br>因为你加载<code>css</code>的时候，可能会修改下面<code>DOM</code>节点的样式，如果<code>css</code>加载不阻塞<code>render</code>树渲染的话，那么当<code>css</code>加载完之后，<code>render</code>树可能又得重新重绘或者回流了，这就造成了一些没有必要的损耗<br>所以干脆把<code>DOM</code>树的结构先解析完，把可以做的工作做完，然后等<code>css</code>加载完之后，在根据最终的样式来渲染<code>render</code>树，这种做法确实对性能好一点。</p>
+<p><strong><code>WebWorker</code>,<code>JS</code>的多线程？</strong></p>
+<p>前文中有提到<code>JS</code>引擎是单线程的，而且<code>JS</code>执行时间过长会阻塞页面，那么<code>JS</code>就真的对<code>cpu</code>密集型计算无能为力么？</p>
+<p>所以，后来<code>HTML5</code>中支持了<code>WebWorker</code>。</p>
+<p>这样理解下：</p>
+<p>创建<code>Worker</code>时，<code>JS</code>引擎向浏览器申请开一个子线程（子线程是浏览器开的，完全受主线程控制，而且不能操作<code>DOM</code>）<br><code>JS</code>引擎线程与<code>worker</code>线程间通过特定的方式通信（<code>postMessage API</code>，需要通过序列化对象来与线程交互特定的数据）</p>
+<p>所以，如果有非常耗时的工作，请单独开一个<code>Worker</code>线程，这样里面不管如何翻天覆地都不会影响<code>JS</code>引擎主线程，只待计算出结果后，将结果通信给主线程即可，<code>perfect!</code></p>
+<p>而且注意下，<code>JS</code>引擎是单线程的，这一点的本质仍然未改变，<code>Worker</code>可以理解是浏览器给<code>JS</code>引擎开的外挂，专门用来解决那些大量计算问题。</p>
+<p><strong><code>WebWorker</code>与<code>SharedWorker</code></strong></p>
+<p>既然都到了这里，就再提一下<code>SharedWorker</code>（避免后续将这两个概念搞混）</p>
+<p><code>WebWorker</code>只属于某个页面，不会和其他页面的<code>Render</code>进程（浏览器内核进程）共享<br>所以<code>Chrome</code>在<code>Render</code>进程中（每一个<code>Tab</code>页就是一个<code>render</code>进程）创建一个新的线程来运行<code>Worker</code>中的<code>JavaScript</code>程序。</p>
+<p><code>SharedWorker</code>是浏览器所有页面共享的，不能采用与<code>Worker</code>同样的方式实现，因为它不隶属于某个<code>Render</code>进程，可以为多个<code>Render</code>进程共享使用<br>所以<code>Chrome</code>浏览器为<code>SharedWorker</code>单独创建一个进程来运行<code>JavaScript</code>程序，在浏览器中每个相同的<code>JavaScript</code>只存在一个<code>SharedWorker</code>进程，不管它被创建多少次。</p>
+<p>看到这里，应该就很容易明白了，本质上就是进程和线程的区别。<code>SharedWorker</code>由独立的进程管理，<code>WebWorker</code>只是属于<code>render</code>进程下的一个线程</p>
+<h3 id="总结浏览器渲染流程"><a href="#总结浏览器渲染流程" class="headerlink" title="总结浏览器渲染流程"></a>总结浏览器渲染流程</h3><p>浏览器输入<code>url</code>，浏览器主进程接管，开一个下载线程，然后进行<code>http</code>请求（略去<code>DNS</code>查询，<code>IP</code>寻址等等操作），然后等待响应，获取内容，随后将内容通过<code>RendererHost</code>接口转交给<code>Render</code>进程 – 浏览器渲染流程开始</p>
+<p>浏览器内核拿到内容后，渲染大概可以划分为：</p>
+<ol>
+<li>解析<code>html</code>建立<code>dom</code>要</li>
+<li>解析<code>css</code>构建<code>render</code>树（将<code>css</code>代码解析成树形的数据结构，然后结合<code>dom</code>合并成<code>render</code>树）</li>
+<li>布局<code>render</code>树（<code>Layout/reflow</code>）, 负责各元素尺寸，位置的计算</li>
+<li>绘制<code>render</code>树（<code>paint</code>），绘制页面像素信息</li>
+<li>浏览器会将各层的信息发送给<code>GPU</code>，<code>GPU</code>会将各层合成（<code>composite</code>）, 显示在屏幕上</li>
+</ol>
+<p>渲染完毕后就是<code>load</code>事件了，之后就是自己的<code>JS</code>逻辑处理了，略去了详细步骤。</p>
+<p><strong><code>load</code>事件与<code>DOMContentLoaded</code>事件的先后</strong></p>
+<p>上面提到，渲染完毕后会触发<code>load</code>事件，那么你能分清楚<code>load</code>事件与<code>DOMContentLoaded</code>事件的先后么？</p>
+<p>很简单，知道它们的定义就可以了：</p>
+<p>当 <code>DOMContentLoaded</code> 事件触发时，仅当<code>DOM</code>加载完成，不包括样式表，图片。<br>（譬如如果有<code>async</code>加载的脚本就不一定完成）</p>
+<p>当 <code>onload</code> 事件触发时，页面上所有的<code>DOM</code>，样式表，脚本，图片都已经加载完成了。（渲染完毕了）</p>
+<p>所以，顺序是：<code>DOMContentLoaded</code> -&gt; <code>load</code></p>
+<h3 id="普通图层和复合图层"><a href="#普通图层和复合图层" class="headerlink" title="普通图层和复合图层"></a>普通图层和复合图层</h3><p>渲染步骤就提到了<code>composite</code>概念；浏览器渲染的图层一般包含两大类：普通图层以及复合图层。</p>
+<ol>
+<li>普通文档流内可以理解为一个复合图层（这里默认复合层，里面不管添加多少元素，其实都是在同个复合图层中）</li>
+<li><code>absolute</code>布局（<code>fixed</code>也一样），虽然可以脱离文档流，但它仍然属于默认复合层</li>
+<li>可以通过硬件加速的方式，声明一个新的复合图层，它会单独分配资源（当然也会脱离普通文档流，这样一来，不管这个复合图层中怎么变化，也不会影响默认复合层里的回流重绘）</li>
+</ol>
+<p>可以简单理解下：<code>GPU</code>中，各个复合图层是单独绘制的，所以互不影响，这也是为什么某些场景硬件加速效果一级棒</p>
+<p><strong>如何变成复合图层（硬件加速）</strong></p>
+<p>将元素变成一个复合图层，就是传说中的硬件加速技术</p>
+<ul>
+<li>最常用的方式：<code>translate3d</code>,<code>translatez</code></li>
+<li><code>opacity</code>属性 &#x2F; 过渡动画（需要动画执行的过程中才会创建合成层，动画没有开始或结束后元素还会回到之前的状态）</li>
+<li><code>will-chang</code>属性（这个比较偏僻），一般配合<code>opacity</code>与<code>translate</code>使用（而且经测试，除了上述可以引发硬件加速的属性外，其它属性并不会变成复合层），作用是提前告诉浏览器要变化，这样浏览器会开始做一些优化工作（这个最好用完后就释放）</li>
+<li><code>&lt;video&gt;&lt;iframe&gt;&lt;canvas&gt;&lt;webgl&gt;</code>等元素</li>
+<li>其它，譬如以前的<code>flash</code>插件</li>
+</ul>
+<p><strong><code>absolute</code>和硬件加速的区别</strong></p>
+<p>可以看到，<code>absolute</code>虽然可以脱离普通文档流，但是无法脱离默认复合层。</p>
+<p>所以，就算<code>absolute</code>中信息改变时不会改变普通文档流中<code>render</code>树，但是，浏览器最终绘制时，是整个复合层绘制的，所以<code>absolute</code>中信息的改变，仍然会影响整个复合层的绘制。（浏览器会重绘它，如果复合层中内容多，<code>absolute</code>带来的绘制信息变化过大，资源消耗是非常严重的）</p>
+<p>而硬件加速直接就是在另一个复合层了（另起炉灶），所以它的信息改变不会影响默认复合层（当然了，内部肯定会影响属于自己的复合层），仅仅是引发最后的合成（输出视图）</p>
+<p><strong>复合图层的作用</strong></p>
+<p>一般一个元素开启硬件加速后会变成复合图层，可以独立于普通文档流中，改动后可以避免整个页面重绘，提升性能。<br>但是尽量不要大量使用复合图层，否则由于资源消耗过度，页面反而会变的更卡。</p>
+<p><strong>硬件加速时请使用<code>index</code></strong></p>
+<p>使用硬件加速时，尽可能的使用 index, 防止浏览器默认给后续的元素创建复合层渲染<br>具体的原理是：<br><code>webkit CSS3</code>中，如果这个元素添加了硬件加速，并且<code>index</code>层级比较低，那么在这个元素的后面其它元素（层级比这个元素高的，或者相同的，并且<code>relective</code>或<code>absolute</code>属性相同的），会默认变为复合层渲染，如果处理不当会极大的影响性能</p>
+<p>简单点理解，可以认为是一个隐式合成的概念：如果 a 是一个复合层，而且 b 在 a 上面，那么 b 也会被隐式转为一个复合图层，这点需要特别注意</p>
+<h2 id="从Event-Loop谈JS的运行机制"><a href="#从Event-Loop谈JS的运行机制" class="headerlink" title="从Event Loop谈JS的运行机制"></a>从<code>Event Loop</code>谈<code>JS</code>的运行机制</h2><p>到此时，已经是属于浏览器页面初次渲染完毕后的事情，<code>JS</code>引擎的一些运行机制分析。主要是结合<code>Event Loop</code>来谈<code>JS</code>代码是如何执行的。<br>我们已经知道了<code>JS</code>引擎是单线程的，知道了<code>JS</code>引擎线程，事件触发线程，定时触发器线程。<br>然后还需要知道：</p>
+<ul>
+<li><code>JS</code>分为同步任务和异步任务</li>
+<li>同步任务都在主线程上执行，形成一个执行栈</li>
+<li>主线程之外，事件触发线程管理着一个任务队列，只要异步任务有了运行结果，就在任务队列之中放置一个事件</li>
+<li>一旦执行栈中的所有同步任务执行完毕（此时<code>JS</code>引擎空闲），系统就会读取任务队列，将可运行的异步任务添加到可执行栈，开始执行。</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://segmentfault.com/img/bV6WyG?w=716&h=506"
+                     
+                ></p>
+<p>看到这里，应该就可以理解了：为什么有时候<code>setTimeOut</code>推入的事件不能准时执行？因为可能在它推入到事件列表时，主线程还不空闲，正在执行其它代码，所以就必须等待，自然有误差。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://segmentfault.com/img/bV6WOP?w=703&h=509"
+                     
+                ></p>
+<p>主线程在运行时会产生执行栈，栈中的代码调用某些<code>api</code>时，它们会在事件队列中添加各种事件（当满足触发条件后，如<code>ajax</code>请求完毕）。而当栈中的代码执行完毕，就会去读取事件队列中的事件，去执行那些回调，如此循环。</p>
+<h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><p>上面事件循环机制的核心是：<code>JS</code>引擎线程和事件触发线程</p>
+<p>调用<code>setTimeout</code>后，是由定时器线程控制等到特定时间后添加到事件队列的，因为<code>JS</code>引擎是单线程的，如果处于阻塞线程状态就会影响计时准确，因此很有必要另开一个线程用来计时。</p>
+<p>当使用<code>setTimout</code>或<code>setInterval</code>时，需要定时器线程计时，计时完成后就会将特定的事件推入事件队列中。</p>
+<p>如：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">setTimeout(()=&gt;console.log(&#x27;hello!),1000)</span><br><span class="line">//等 1000 毫秒计时完毕后（由定时器线程计时），将回调函数推入事件队列中，等待主线程执行</span><br><span class="line"></span><br><span class="line">setTimeout(()=&gt;&#123;</span><br><span class="line">    console.log(&#x27;hello&#x27;)</span><br><span class="line">&#125;,0)</span><br><span class="line">console.log(&#x27;begin&#x27;)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>这段代码的效果是最快的时间内将回调函数推入事件队列中，等待主线程执行。</p>
+<p>注意：</p>
+<ol>
+<li>执行结果是：先<code>begin</code>，后<code>hello</code></li>
+<li>虽然代码的本意是<code>0</code>毫秒就推入事件队列，但是<code>W3C</code>在<code>HTML</code>标准中规定，规定要求<code>setTimeout</code>中低于<code>4ms</code>的时间间隔算为<code>4ms</code></li>
+<li>就算不等待<code>4ms</code>，就算假设<code>0</code>毫秒就推入事件队列，也会先执行<code>begin</code>（因为只能可执行栈内空了后才会主动读取事件队列）</li>
+</ol>
+<p><strong><code>setInterval</code></strong></p>
+<p>用<code>setTimeout</code>模拟定期计时和直接用<code>setInterval</code>是有区别的：</p>
+<ul>
+<li>每次<code>setTimeout</code>计时到后就会去执行，然后执行一段时间后才会继续<code>setTimeout</code>, 中间就多了误差</li>
+<li>而<code>setInterval</code>则是每次都精确的隔一段时间推入一个事件（但是，事件的实际执行时间不一定就准确，还有可能是这个事件还没执行完毕，下一个事件就来了）</li>
+</ul>
+<p>而且<code>setInterval</code>有一些比较致命的问题：</p>
+<ul>
+<li>累积效应，如果<code>setInterval</code>代码在<code>setInterval</code>再次添加到队列之前还没有完成执行，就会导致定时器代码连续运行好几次，而之间没有间隔，就算正常间隔执行，多个<code>setInterval</code>的代码执行时间可能会比预期小（因为代码执行需要一定时间）</li>
+<li>比如你<code>ios</code>的<code>webview</code>，或者<code>safari</code>等浏览器中都有一人特点，在滚动的时候是不执行<code>JS</code>的，如果使用了<code>setInterval</code>，会发现在滚动结束后会执行多次由于滚动不执行<code>JS</code>积攒回调，如果回调执行时间过长，就会非常容易造成卡顿问题和一些不可知的错误（<code>setInterval</code>自带的优化，如果当前事件队列中有<code>setInterval</code>的回调，不会重复添加回调）</li>
+<li>而且把浏览器最小化显示等操作时，<code>setInterval</code>并不是不执行程序，它会把<code>setInterval</code>的回调函数放在队列中，等浏览器窗口再次打开时，一瞬间全部执行</li>
+</ul>
+<p>所以，至于这么问题，一般认为的最佳方案是：用<code>setTimeout</code>模拟<code>setInterval</code>或者特殊场合直接用<code>requestAnimationFrame</code></p>
+<h3 id="Promise时代的microtask与macrotask"><a href="#Promise时代的microtask与macrotask" class="headerlink" title="Promise时代的microtask与macrotask"></a><code>Promise</code>时代的<code>microtask</code>与<code>macrotask</code></h3><p>在<code>es6</code>盛行的现在，可以看下这题：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(&#x27;script start&#x27;);</span><br><span class="line"></span><br><span class="line">setTimeout(()=&gt;&#123;</span><br><span class="line">    console.log(&#x27;setTimeout&#x27;)</span><br><span class="line">&#125;,0);</span><br><span class="line"></span><br><span class="line">Promise.resolve()</span><br><span class="line">.then(()=&gt;console.log(&#x27;promise1&#x27;))</span><br><span class="line">.then(()=&gt;console.log(&#x27;promise2&#x27;))</span><br><span class="line"></span><br><span class="line">console.log(&#x27;script end&#x27;)</span><br><span class="line"></span><br><span class="line">//执行结果：</span><br><span class="line">script start</span><br><span class="line">script end</span><br><span class="line">promise1</span><br><span class="line">promise2</span><br><span class="line">setTimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>因为<code>promise</code>有一个新的概念<code>microtask</code>. 或者可以说<code>JS</code>中分为两种任务：<code>macrotask</code>和<code>microtask</code>;<br>理解如下：</p>
+<ul>
+<li><code>macrotask</code>（又叫宏任务）, 主代码块，<code>setTimeout</code>,<code>setInterval</code>等（可以看到，事件队列中的每一个事件都是一个<code>macrotask</code>）</li>
+<li>可以理解是每次执行的代码就是一个宏任务（包括每次从事件队列中获取一个事件回调并放到执行栈中执行）</li>
+<li>第一个<code>macrotask</code>会从头到尾将这个任务执行完毕，不会执行其它</li>
+<li>浏览器为了能够使得<code>JS</code>内部<code>macrotask</code>与<code>DOM</code>任务能够有序的执行，会在一个<code>macrotask</code>执行结束后，在下一个<code>macrotask</code>执行开始前，对页面进行重新渲染（<code>task</code>-&gt; 渲染 -&gt;<code>task</code>-&gt;…）</li>
+<li><code>microtask</code>（又叫微任务），<code>Promise</code>,<code>process.nextTick</code>等。</li>
+<li>可以理解是在当前<code>macrotask</code>执行结束后立即执行的任务</li>
+<li>也就是说在当前<code>macrotask</code>任务后，下一个<code>macrotask</code>之前，在渲染之前</li>
+<li>所以它的响应速度相比<code>setTimeout</code>(<code>setTimeout</code>是<code>macrotask</code>) 会更快因为无需等待渲染</li>
+<li>也就是说，在某一个<code>macrotask</code>执行完成后，就会将在它执行期间产生的所有<code>microtask</code>都执行完毕（在渲染前）</li>
+</ul>
+<p>注意：在<code>Node</code>环境下，<code>process.nextTick</code>的优先级高于<code>promise</code>. 也就是：在宏任务结束后会先执行微任务队列中的<code>nextTick</code>部分，然后才会执行微任务中的<code>promise</code>部分。</p>
+<p>另外，<code>setImmediate</code>则是规定：在下一次<code>Event Loop</code>（宏任务）时触发（所以它是属于优先级较高的宏任务），（<code>Node.js</code>文档中称，<code>setImmediate</code>指定的回调函数，总是排在<code>setTimeout</code>前面），所以<code>setImmediate</code>如果嵌套的话，是需要经过多个<code>Loop</code>才能完成的，而不会像<code>process.nextTick</code>一样没完没了。</p>
+<p>可以理解：</p>
+<ul>
+<li><code>macrotask</code>中的事件都是放在一个事件队列中的，而这个队列由事件触发线程维护。</li>
+<li><code>microtask</code>中的所有微任务都是添加到微任务队列中，等待当前<code>macrotask</code>执行完后执行，而这个队列由<code>JS</code>引擎线程维护。</li>
+</ul>
+<p>所以：</p>
+<ul>
+<li>执行一个宏任务（栈中没有就从事件队列中获取）</li>
+<li>执行过程中如果遇到微任务，就将它添加到微任务的任务队列中</li>
+<li>宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）</li>
+<li>当前宏任务执行完毕，开始检查渲染，然后 GUI 线程接管渲染</li>
+<li>渲染完毕后，<code>JS</code>线程继续接管，开始下一个宏任务（从事件队列中获取）</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://segmentfault.com/img/bV6YSS?w=506&h=570"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://segmentfault.com/img/bV7W88?w=479&h=457"
+                     
+                ></p>
+<p><strong><code>new Promise</code>里的函数是直接执行的算做主程序里，而且<code>.then</code>后面的才会放到微任务中。</strong></p>
+<p><strong>另外，请注意下<code>Promise</code>的<code>polyfill</code>与官方版本的区别：</strong></p>
+<p>官方版本中，是标准的<code>microtask</code>形式<br><code>polyfill</code>，一般都是通过<code>setTimeout</code>模拟的，所以是<code>macrotask</code>形式<br>请特别注意这两点区别</p>
+<p>注意，有一些浏览器执行结果不一样（因为它们可能把<code>microtask</code>当成<code>macrotask</code>来执行了），但是为了简单，这里不描述一些不标准的浏览器下的场景（但记住，有些浏览器可能并不标准）</p>
+<p><code>Mutation Observer</code>可以用来实现<code>microtask</code>（它属于<code>microtask</code>，优先级小于<code>Promise</code>，一般是<code>Promise</code>不支持时才会这样做）</p>
+<p>它是<code>HTML5</code>中的新特性，作用是：监听一个<code>DOM</code>变动，当<code>DOM</code>对象树发生任何变动时，<code>Mutation Observer</code>会得到通知</p>
+<p>像以前的<code>Vue</code>源码中就是利用它来模拟<code>nextTick</code>的，具体原理是，创建一个<code>TextNode</code>并监听内容变化，然后要<code>nextTick</code>的时候去改一下这个节点的文本内容，如下：（<code>Vue</code>的源码，未修改）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">var counter=1</span><br><span class="line">var observer=newMutationObserver(nextTickHandler)</span><br><span class="line">var textNode=document.createTextNode(String(counter))</span><br><span class="line">observer.observe(textNode,&#123;characterData:true&#125;)</span><br><span class="line">timerFunc=()=&gt;&#123;</span><br><span class="line">    counter=(counter+1)%2</span><br><span class="line">    textNode.data=String(counter)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>不过，现在的<code>Vue（2.5+）</code>的<code>nextTick</code>实现移除了<code>Mutation Observer</code>的方式（据说是兼容性原因），取而代之的是使用<code>MessageChannel</code>（当然，默认情况仍然是<code>Promise</code>，不支持才兼容的）。</p>
+<p><code>MessageChannel</code>属于宏任务，优先级是：<code>setImmediate-&gt;MessageChannel-&gt;setTimeout</code>，所以<code>Vue（2.5+）</code>内部的<code>nextTick</code>与<code>2.4</code>及之前的实现是不一样的，需要注意下。</p>
+]]></content>
+      <categories>
+        <category>转载</category>
+      </categories>
+      <tags>
+        <tag>browser</tag>
       </tags>
   </entry>
   <entry>
@@ -946,6 +1250,205 @@
       </categories>
       <tags>
         <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【转载】TypeScript 装饰器完全指南 _ Disenchanted</title>
+    <url>/2022/11/02/ReprintTypscriptDecorator/</url>
+    <content><![CDATA[<blockquote>
+<p>原文转自：<a class="link"   href="https://mirone.me/zh-hans/a-complete-guide-to-typescript-decorator/" >https://mirone.me/zh-hans/a-complete-guide-to-typescript-decorator/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+</blockquote>
+<p>装饰器让 TypeScript 的世界更好。 我们使用的许多库都基于这一强大特性构建，例如 <a class="link"   href="https://angular.io/" >Angular <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 和 <a class="link"   href="https://nestjs.com/" >Nestjs <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。 在这篇博客中我将介绍装饰器和它的许多细节。 我希望在读完这篇文章后，你可以理解何时和如何使用这一强的的特性。</p>
+<p>装饰器本质上是一种特殊的函数被应用在于：</p>
+<ol>
+<li>类</li>
+<li>类属性</li>
+<li>类方法</li>
+<li>类访问器</li>
+<li>类方法的参数</li>
+</ol>
+<p>所以应用装饰器其实很像是组合一系列函数，类似于高阶函数和类。 通过装饰器我们可以轻松实现 <a class="link"   href="https://zh.wikipedia.org/zh-hans/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F" >代理模式 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 来使代码更简洁以及实现其它一些更有趣的能力。</p>
+<p>装饰器的语法十分简单，只需要在想使用的装饰器前加上<code>@</code>符号，装饰器就会被应用到目标上：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function simpleDecorator() &#123;</span><br><span class="line">  console.log(&#x27;---hi I am a decorator---&#x27;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@simpleDecorator</span><br><span class="line">class A &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>一共有 5 种装饰器可被我们使用：</p>
+<ol>
+<li>类装饰器</li>
+<li>属性装饰器</li>
+<li>方法装饰器</li>
+<li>访问器装饰器</li>
+<li>参数装饰器</li>
+</ol>
+<p>让我们来快速认识一下这五种装饰器：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">@classDecorator</span><br><span class="line">class Bird &#123;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  @propertyDecorator</span><br><span class="line">  name: string;</span><br><span class="line">  </span><br><span class="line">  @methodDecorator</span><br><span class="line">  fly(</span><br><span class="line">    </span><br><span class="line">    @parameterDecorator</span><br><span class="line">      meters: number</span><br><span class="line">  ) &#123;&#125;</span><br><span class="line">  </span><br><span class="line">  @accessorDecorator</span><br><span class="line">  get egg() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="时机"><a href="#时机" class="headerlink" title="时机"></a>时机</h2><p>装饰器只在解释执行时应用一次，例如：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function f(C) &#123;</span><br><span class="line">  console.log(&#x27;apply decorator&#x27;)</span><br><span class="line">  return C</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@f</span><br><span class="line">class A &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>这里的代码会在终端中打印<code>apply decorator</code>，即便我们其实并没有使用类 A。</p>
+<h2 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h2><p>不同类型的装饰器的执行顺序是明确定义的：</p>
+<ol>
+<li>实例成员：</li>
+</ol>
+<p>参数装饰器 -&gt; 方法 &#x2F; 访问器 &#x2F; 属性 装饰器 2. 静态成员：<br>参数装饰器 -&gt; 方法 &#x2F; 访问器 &#x2F; 属性 装饰器 3. 构造器：参数装饰器 4. 类装饰器</p>
+<p>例如，考虑以下代码：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function f(key: string): any &#123;</span><br><span class="line">  console.log(&quot;evaluate: &quot;, key);</span><br><span class="line">  return function () &#123;</span><br><span class="line">    console.log(&quot;call: &quot;, key);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@f(&quot;Class Decorator&quot;)</span><br><span class="line">class C &#123;</span><br><span class="line">  @f(&quot;Static Property&quot;)</span><br><span class="line">  static prop?: number;</span><br><span class="line"></span><br><span class="line">  @f(&quot;Static Method&quot;)</span><br><span class="line">  static method(@f(&quot;Static Method Parameter&quot;) foo) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  constructor(@f(&quot;Constructor Parameter&quot;) foo) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  @f(&quot;Instance Method&quot;)</span><br><span class="line">  method(@f(&quot;Instance Method Parameter&quot;) foo) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  @f(&quot;Instance Property&quot;)</span><br><span class="line">  prop?: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>它将会打印出以下信息：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">evaluate:  Instance Method</span><br><span class="line">evaluate:  Instance Method Parameter</span><br><span class="line">call:  Instance Method Parameter</span><br><span class="line">call:  Instance Method</span><br><span class="line">evaluate:  Instance Property</span><br><span class="line">call:  Instance Property</span><br><span class="line">evaluate:  Static Property</span><br><span class="line">call:  Static Property</span><br><span class="line">evaluate:  Static Method</span><br><span class="line">evaluate:  Static Method Parameter</span><br><span class="line">call:  Static Method Parameter</span><br><span class="line">call:  Static Method</span><br><span class="line">evaluate:  Class Decorator</span><br><span class="line">evaluate:  Constructor Parameter</span><br><span class="line">call:  Constructor Parameter</span><br><span class="line">call:  Class Decorator</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>你也许会注意到执行实例属性<code>prop</code>晚于实例方法<code>method</code> 然而执行静态属性<code>static prop</code>早于静态方法<code>static method</code>。 这是因为对于属性 &#x2F; 方法 &#x2F; 访问器装饰器而言，执行顺序取决于声明它们的顺序。</p>
+<p>然而，同一方法中不同参数的装饰器的执行顺序是相反的， 最后一个参数的装饰器会最先被执行：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function f(key: string): any &#123;</span><br><span class="line">  console.log(&quot;evaluate: &quot;, key);</span><br><span class="line">  return function () &#123;</span><br><span class="line">    console.log(&quot;call: &quot;, key);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  method(</span><br><span class="line">    @f(&quot;Parameter Foo&quot;) foo,</span><br><span class="line">    @f(&quot;Parameter Bar&quot;) bar</span><br><span class="line">  ) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>这里的代码打印出的结果为：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">evaluate:  Parameter Foo</span><br><span class="line">evaluate:  Parameter Bar</span><br><span class="line">call:  Parameter Bar</span><br><span class="line">call:  Parameter Foo</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="多个装饰器的组合"><a href="#多个装饰器的组合" class="headerlink" title="多个装饰器的组合"></a>多个装饰器的组合</h2><p>你可以对同一目标应用多个装饰器。它们的组合顺序为：</p>
+<ol>
+<li>求值外层装饰器</li>
+<li>求值内层装饰器</li>
+<li>调用内层装饰器</li>
+<li>调用外层装饰器</li>
+</ol>
+<p>例如：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function f(key: string) &#123;</span><br><span class="line">  console.log(&quot;evaluate: &quot;, key);</span><br><span class="line">  return function () &#123;</span><br><span class="line">    console.log(&quot;call: &quot;, key);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  @f(&quot;Outer Method&quot;)</span><br><span class="line">  @f(&quot;Inner Method&quot;)</span><br><span class="line">  method() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>这里的代码打印出的结果为：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">evaluate: Outer Method</span><br><span class="line">evaluate: Inner Method</span><br><span class="line">call: Inner Method</span><br><span class="line">call: Outer Method</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="类装饰器"><a href="#类装饰器" class="headerlink" title="类装饰器"></a>类装饰器</h2><p>类型声明：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">type ClassDecorator = &lt;TFunction extends Function&gt;</span><br><span class="line">  (target: TFunction) =&gt; TFunction | void;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>@参数：<ol>
+<li><code>target</code>: 类的构造器。</li>
+</ol>
+</li>
+<li>@返回：<br>如果类装饰器返回了一个值，她将会被用来代替原有的类构造器的声明。</li>
+</ul>
+<p>因此，类装饰器适合用于继承一个现有类并添加一些属性和方法。</p>
+<p>例如我们可以添加一个<code>toString</code>方法给所有的类来覆盖它原有的<code>toString</code>方法。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">type Consturctor = &#123; new (...args: any[]): any &#125;;</span><br><span class="line"></span><br><span class="line">function toString&lt;T extends Consturctor&gt;(BaseClass: T) &#123;</span><br><span class="line">  return class extends BaseClass &#123;</span><br><span class="line">    toString() &#123;</span><br><span class="line">      return JSON.stringify(this);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@toString</span><br><span class="line">class C &#123;</span><br><span class="line">  public foo = &quot;foo&quot;;</span><br><span class="line">  public num = 24;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(new C().toString())</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>遗憾的是装饰器并没有类型保护，这意味着：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare function Blah&lt;T&gt;(target: T): T &amp; &#123;foo: number&#125;</span><br><span class="line"></span><br><span class="line">@Blah</span><br><span class="line">class Foo &#123;</span><br><span class="line">  bar() &#123;</span><br><span class="line">    return this.foo; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">new Foo().foo; </span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>这是 <a class="link"   href="https://github.com/microsoft/TypeScript/issues/4881" >一个 TypeScript 的已知的缺陷 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。 目前我们能做的只有额外提供一个类用于提供类型信息：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare function Blah&lt;T&gt;(target: T): T &amp; &#123;foo: number&#125;</span><br><span class="line"></span><br><span class="line">class Base &#123;</span><br><span class="line">  foo: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Blah</span><br><span class="line">class Foo extends Base &#123;</span><br><span class="line">  bar() &#123;</span><br><span class="line">    return this.foo;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">new Foo().foo;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="属性装饰器"><a href="#属性装饰器" class="headerlink" title="属性装饰器"></a>属性装饰器</h2><p>类型声明：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">type PropertyDecorator =</span><br><span class="line">  (target: Object, propertyKey: string | symbol) =&gt; void;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>@参数：<ol>
+<li><code>target</code>: 对于静态成员来说是类的构造器，对于实例成员来说是类的原型链。</li>
+<li><code>propertyKey</code>: 属性的名称。</li>
+</ol>
+</li>
+<li>@返回：<br>返回的结果将被忽略。</li>
+</ul>
+<p>除了用于收集信息外，属性装饰器也可以用来给类添加额外的方法和属性。 例如我们可以写一个装饰器来给某些属性添加监听器。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function capitalizeFirstLetter(str: string) &#123;</span><br><span class="line">  return str.charAt(0).toUpperCase() + str.slice(1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function observable(target: any, key: string): any &#123;</span><br><span class="line">  </span><br><span class="line">  const targetKey = &quot;on&quot; + capitalizeFirstLetter(key) + &quot;Change&quot;;</span><br><span class="line"></span><br><span class="line">  target[targetKey] =</span><br><span class="line">    function (fn: (prev: any, next: any) =&gt; void) &#123;</span><br><span class="line">      let prev = this[key];</span><br><span class="line">      Reflect.defineProperty(this, key, &#123;</span><br><span class="line">        set(next) &#123;</span><br><span class="line">          fn(prev, next);</span><br><span class="line">          prev = next;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  @observable</span><br><span class="line">  foo = -1;</span><br><span class="line"></span><br><span class="line">  @observable</span><br><span class="line">  bar = &quot;bar&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const c = new C();</span><br><span class="line"></span><br><span class="line">c.onFooChange((prev, next) =&gt; console.log(`prev: $&#123;prev&#125;, next: $&#123;next&#125;`))</span><br><span class="line">c.onBarChange((prev, next) =&gt; console.log(`prev: $&#123;prev&#125;, next: $&#123;next&#125;`))</span><br><span class="line"></span><br><span class="line">c.foo = 100; </span><br><span class="line">c.foo = -3.14; </span><br><span class="line">c.bar = &quot;baz&quot;; </span><br><span class="line">c.bar = &quot;sing&quot;; </span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="方法装饰器"><a href="#方法装饰器" class="headerlink" title="方法装饰器"></a>方法装饰器</h2><p>类型声明：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">type MethodDecorator = &lt;T&gt;(</span><br><span class="line">  target: Object,</span><br><span class="line">  propertyKey: string | symbol,</span><br><span class="line">  descriptor: TypedPropertyDescriptor&lt;T&gt;</span><br><span class="line">) =&gt; TypedPropertyDescriptor&lt;T&gt; | void;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>@参数：<ol>
+<li><code>target</code>: 对于静态成员来说是类的构造器，对于实例成员来说是类的原型链。</li>
+<li><code>propertyKey</code>: 属性的名称。</li>
+<li><code>descriptor</code>: 属性的 <a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" >描述器 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。</li>
+</ol>
+</li>
+<li>@返回： 如果返回了值，它会被用于替代属性的描述器。</li>
+</ul>
+<p>方法装饰器不同于属性装饰器的地方在于<code>descriptor</code>参数。 通过这个参数我们可以修改方法原本的实现，添加一些共用逻辑。 例如我们可以给一些方法添加打印输入与输出的能力：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function logger(target: any, propertyKey: string, descriptor: PropertyDescriptor) &#123;</span><br><span class="line">  const original = descriptor.value;</span><br><span class="line"></span><br><span class="line">  descriptor.value = function (...args) &#123;</span><br><span class="line">    console.log(&#x27;params: &#x27;, ...args);</span><br><span class="line">    const result = original.call(this, ...args);</span><br><span class="line">    console.log(&#x27;result: &#x27;, result);</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  @logger</span><br><span class="line">  add(x: number, y:number ) &#123;</span><br><span class="line">    return x + y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const c = new C();</span><br><span class="line">c.add(1, 2);</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="访问器装饰器"><a href="#访问器装饰器" class="headerlink" title="访问器装饰器"></a>访问器装饰器</h2><p>访问器装饰器总体上讲和方法装饰器很接近，唯一的区别在于描述器中有的 key 不同：</p>
+<p>方法装饰器的描述器的 key 为：</p>
+<ul>
+<li><code>value</code></li>
+<li><code>writable</code></li>
+<li><code>enumerable</code></li>
+<li><code>configurable</code></li>
+</ul>
+<p>访问器装饰器的描述器的 key 为：</p>
+<ul>
+<li><code>get</code></li>
+<li><code>set</code></li>
+<li><code>enumerable</code></li>
+<li><code>configurable</code></li>
+</ul>
+<p>例如，我们可以将某个属性设为不可变值：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function immutable(target: any, propertyKey: string, descriptor: PropertyDescriptor) &#123;</span><br><span class="line">  const original = descriptor.set;</span><br><span class="line"></span><br><span class="line">  descriptor.set = function (value: any) &#123;</span><br><span class="line">    return original.call(this, &#123; ...value &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  private _point = &#123; x: 0, y: 0 &#125;</span><br><span class="line"></span><br><span class="line">  @immutable</span><br><span class="line">  set point(value: &#123; x: number, y: number &#125;) &#123;</span><br><span class="line">    this._point = value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  get point() &#123;</span><br><span class="line">    return this._point;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const c = new C();</span><br><span class="line">const point = &#123; x: 1, y: 1 &#125;</span><br><span class="line">c.point = point;</span><br><span class="line"></span><br><span class="line">console.log(c.point === point)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="参数装饰器"><a href="#参数装饰器" class="headerlink" title="参数装饰器"></a>参数装饰器</h2><p>类型声明：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">type ParameterDecorator = (</span><br><span class="line">  target: Object,</span><br><span class="line">  propertyKey: string | symbol,</span><br><span class="line">  parameterIndex: number</span><br><span class="line">) =&gt; void;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>@参数：<ol>
+<li><code>target</code>: 对于静态成员来说是类的构造器，对于实例成员来说是类的原型链。</li>
+<li><code>propertyKey</code>: 属性的名称 （注意是方法的名称，而不是参数的名称）。</li>
+<li><code>parameterIndex</code>: 参数在方法中所处的位置的下标。</li>
+</ol>
+</li>
+<li>@返回：<br>返回的值将会被忽略。</li>
+</ul>
+<p>单独的参数装饰器能做的事情很有限，它一般都被用于记录可被其它装饰器使用的信息。</p>
+<p>对于一些复杂场景， 我们可能需要结合使用不同的装饰器。 例如如果我们不仅想给我们的接口添加静态检查，还想加上运行时检查的能力。</p>
+<p>我们可以用 3 个步骤来实现这个功能：</p>
+<ol>
+<li>标记需要检查的参数 （因为参数装饰器先于方法装饰器执行）。</li>
+<li>改变方法的<code>descriptor</code>的<code>value</code>的值，先运行参数检查器，如果失败就抛出异常。</li>
+<li>运行原有的接口实现。</li>
+</ol>
+<p>以下是代码：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">type Validator = (x: any) =&gt; boolean;</span><br><span class="line"></span><br><span class="line">const validateMap: Record&lt;string, Validator[]&gt; = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">function typedDecoratorFactory(validator: Validator): ParameterDecorator &#123;</span><br><span class="line">  return (_, key, index) =&gt; &#123;</span><br><span class="line">    const target = validateMap[key as string] ?? [];</span><br><span class="line">    target[index] = validator;</span><br><span class="line">    validateMap[key as string] = target;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function validate(_: Object, key: string, descriptor: PropertyDescriptor) &#123;</span><br><span class="line">  const originalFn = descriptor.value;</span><br><span class="line">  descriptor.value = function(...args: any[]) &#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    const validatorList = validateMap[key];</span><br><span class="line">    if (validatorList) &#123;</span><br><span class="line">      args.forEach((arg, index) =&gt; &#123;</span><br><span class="line">        const validator = validatorList[index];</span><br><span class="line"></span><br><span class="line">        if (!validator) return;</span><br><span class="line"></span><br><span class="line">        const result = validator(arg);</span><br><span class="line"></span><br><span class="line">        if (!result) &#123;</span><br><span class="line">          throw new Error(</span><br><span class="line">            `Failed for parameter: $&#123;arg&#125; of the index: $&#123;index&#125;`</span><br><span class="line">          );</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    return originalFn.call(this, ...args);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const isInt = typedDecoratorFactory((x) =&gt; Number.isInteger(x));</span><br><span class="line">const isString = typedDecoratorFactory((x) =&gt; typeof x === &#x27;string&#x27;);</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  @validate</span><br><span class="line">  sayRepeat(@isString word: string, @isInt x: number) &#123;</span><br><span class="line">    return Array(x).fill(word).join(&#x27;&#x27;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const c = new C();</span><br><span class="line">c.sayRepeat(&#x27;hello&#x27;, 2); </span><br><span class="line">c.sayRepeat(&#x27;&#x27;, &#x27;lol&#x27; as any); </span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>正如例子中展示的， 对我们来说同时理解不同种类装饰器的执行顺序和职责都很重要。</p>
+<p>严格地说，元数据和装饰器是 EcmaScript 中两个独立的部分。 然而，如果你想实现像是 <a class="link"   href="https://zh.wikipedia.org/wiki/%E5%8F%8D%E5%B0%84_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)" >反射 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 这样的能力，你总是同时需要它们。</p>
+<p>如果我们回顾上一个例子，如果我们不想写各种不同的检查器呢？ 或者说，能否只写一个检查器能够通过我们编写的 TS 类型声明来自动运行类型检查？</p>
+<p>有了 <a class="link"   href="https://github.com/rbuckton/reflect-metadata" >reflect-metadata <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 的帮助， 我们可以获取编译期的类型。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">import &#x27;reflect-metadata&#x27;;</span><br><span class="line"></span><br><span class="line">function validate(</span><br><span class="line">  target: Object,</span><br><span class="line">  key: string,</span><br><span class="line">  descriptor: PropertyDescriptor</span><br><span class="line">) &#123;</span><br><span class="line">  const originalFn = descriptor.value;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  const designParamTypes = Reflect</span><br><span class="line">    .getMetadata(&#x27;design:paramtypes&#x27;, target, key);</span><br><span class="line"></span><br><span class="line">  descriptor.value = function (...args: any[]) &#123;</span><br><span class="line">    args.forEach((arg, index) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">      const paramType = designParamTypes[index];</span><br><span class="line"></span><br><span class="line">      const result = arg.constructor === paramType</span><br><span class="line">        || arg instanceof paramType;</span><br><span class="line"></span><br><span class="line">      if (!result) &#123;</span><br><span class="line">        throw new Error(</span><br><span class="line">          `Failed for validating parameter: $&#123;arg&#125; of the index: $&#123;index&#125;`</span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return originalFn.call(this, ...args);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  @validate</span><br><span class="line">  sayRepeat(word: string, x: number) &#123;</span><br><span class="line">    return Array(x).fill(word).join(&#x27;&#x27;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const c = new C();</span><br><span class="line">c.sayRepeat(&#x27;hello&#x27;, 2); </span><br><span class="line">c.sayRepeat(&#x27;&#x27;, &#x27;lol&#x27; as any); </span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>目前为止一共有三种编译期类型可以拿到：</p>
+<ul>
+<li><code>design:type</code>: 属性的类型。</li>
+<li><code>desin:paramtypes</code>: 方法的参数的类型。</li>
+<li><code>design:returntype</code>: 方法的返回值的类型。</li>
+</ul>
+<p>这三种方式拿到的结果都是构造函数（例如<code>String</code>和<code>Number</code>）。规则是：</p>
+<ul>
+<li>number -&gt; <code>Number</code></li>
+<li>string -&gt; <code>String</code></li>
+<li>boolean -&gt; <code>Boolean</code></li>
+<li>void&#x2F;null&#x2F;never -&gt; <code>undefined</code></li>
+<li>Array&#x2F;Tuple -&gt; <code>Array</code></li>
+<li>Class -&gt; 类的构造函数</li>
+<li>Enum -&gt; 如果是纯数字枚举则为<code>Number</code>, 否则是 <code>Object</code></li>
+<li>Function -&gt; <code>Function</code></li>
+<li>其余都是<code>Object</code></li>
+</ul>
+<p>现在我们可以对于何时使用装饰器得出结论， 在阅读上面的代码中你可能也有所感觉。</p>
+<p>我将例举一些常用的使用场景：</p>
+<ul>
+<li>Before&#x2F;After 钩子。</li>
+<li>监听属性改变或者方法调用。</li>
+<li>对方法的参数做转换。</li>
+<li>添加额外的方法和属性。</li>
+<li>运行时类型检查。</li>
+<li>自动编解码。</li>
+<li>依赖注入。</li>
+</ul>
+<p>我希望读完这篇文章后，你可以找到装饰器的更多使用场景，并且用它来简化你的代码。</p>
+]]></content>
+      <categories>
+        <category>转载</category>
+      </categories>
+      <tags>
+        <tag>typescript</tag>
       </tags>
   </entry>
   <entry>
@@ -1262,480 +1765,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【转载】浏览器渲染机制</title>
-    <url>/2021/03/02/ReprintBrowserRender/</url>
-    <content><![CDATA[<blockquote>
-<p>原文转自：<a class="link"   href="https://segmentfault.com/a/1190000014018604" >https://segmentfault.com/a/1190000014018604 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-</blockquote>
-<h3 id="线程和进程"><a href="#线程和进程" class="headerlink" title="线程和进程"></a>线程和进程</h3><p>进程和线程的概念可以这样理解：</p>
-<p>进程是一个工厂，工厂有它的独立资源 – 工厂之间相互独立 – 线程是工厂中的工人，多个工人协作完成任务 – 工厂内有一个或多个工人 – 工人之间共享空间</p>
-<p>工厂有多个工人，就相当于一个进程可以有多个线程，而且线程共享进程的空间。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://segmentfault.com/img/bV6ZbY?w=834&h=742"
-                     
-                ></p>
-<p>进程是<code>cpu</code>资源分配的最小单位（是能拥有资源和独立运行的最小单位，系统会给它分配内存）<br>线程是<code>cpu</code>调试的最小单位（线程是建立在进程的基础上的一次程序运行单位，一个进程中可以有多个线程。核心还是属于一个进程。）</p>
-<h3 id="浏览器是多进程的"><a href="#浏览器是多进程的" class="headerlink" title="浏览器是多进程的"></a>浏览器是多进程的</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://segmentfault.com/img/bV6RM7?w=864&h=471"
-                     
-                ></p>
-<p>浏览器是多进程的，每打开一个<code>tab</code>页，就相当于创建了一个独立的浏览器进程。</p>
-<h3 id="浏览器包含的进程："><a href="#浏览器包含的进程：" class="headerlink" title="浏览器包含的进程："></a>浏览器包含的进程：</h3><ol>
-<li><p><code>Browser</code>进程：浏览器的主进程（负责协调，主控），只有一个，作用有：</p>
-<ul>
-<li>负责浏览器的界面显示，与用户交互，如前进，后退等</li>
-<li>负责各个页面的管理，创建和销毁其它进程</li>
-<li>将<code>Rendered</code>进程得到的内存中的<code>Bitmap</code>, 绘制到用户界面上</li>
-<li>网络资源的管理，下载</li>
-</ul>
-</li>
-<li><p>第三方插件进程：每种类型的插件对应一个进程，仅当使用该插件时才创建。</p>
-</li>
-<li><p><code>GPU</code>进程：最多一个，用于<code>3D</code>绘制等。</p>
-</li>
-<li><p>浏览器渲染进程（浏览器内核）（<code>Render</code>进程，内部是多线程的）：默认每个<code>Tab</code>页面一个进程，互不影响。主要作用为：</p>
-<ul>
-<li>页面渲染，脚本执行，事件处理等</li>
-</ul>
-</li>
-</ol>
-<p>在浏览器中打开一个网页相当于新起了一个进程（进程内有自己的多线程）</p>
-<h3 id="浏览器多进程的优势"><a href="#浏览器多进程的优势" class="headerlink" title="浏览器多进程的优势"></a>浏览器多进程的优势</h3><ul>
-<li>避免单个<code>page crash</code>影响整个浏览器</li>
-<li>避免第三方插件<code>crash</code>影响整个浏览器</li>
-<li>多进程充分利用多核优势</li>
-<li>方便使用沙盒模型隔离插件等进程，提高浏览器稳定性</li>
-</ul>
-<p>简单理解就是：如果浏览器是单进程的，某个<code>Tab</code>页崩溃了，就影响了整个浏览器，体验就会很差。同理如果是单进程的，插件崩溃了也会影响整个浏览器；<br>当然，内存等资源消耗也会更大，像空间换时间一样。</p>
-<h2 id="重点是浏览器内核（渲染进程）"><a href="#重点是浏览器内核（渲染进程）" class="headerlink" title="重点是浏览器内核（渲染进程）"></a>重点是浏览器内核（渲染进程）</h2><p>对于普通的前端操作来说，最重要的<strong>渲染进程</strong>：页面的渲染，<code>js</code>的执行，事件的循环等都在这个进程内执行；<br><strong>浏览器是多进程的，浏览器的渲染进程是多线程的；</strong></p>
-<h3 id="GUI渲染线程"><a href="#GUI渲染线程" class="headerlink" title="GUI渲染线程"></a><code>GUI</code>渲染线程</h3><ul>
-<li>负责渲染浏览器界面，解析<code>HTML</code>,<code>CSS</code>, 构建<code>DOM</code>树和<code>RenderObject</code>树，布局和绘制等。</li>
-<li>当界面需要重绘或由于某种操作引发回流时，该线程就会执行。</li>
-<li>注意，**<code>GUI</code>渲染线程与<code>JS</code>引擎线程是互斥的**，当<code>JS</code>引擎执行时<code>GUI</code>线程会被挂起（相当于冻结了）,<code>GUI</code>更新会被保存在一个队列中等到<code>JS</code>引擎空闲时立即被执行。</li>
-</ul>
-<h3 id="JS引擎线程"><a href="#JS引擎线程" class="headerlink" title="JS引擎线程"></a><code>JS</code>引擎线程</h3><ul>
-<li>也称为<code>JS</code>内核，负责处理<code>JavaScript</code>脚本程序。（例如<code>V8</code>引擎）。</li>
-<li><code>JS</code>引擎线程负责解析<code>JavaScript</code>脚本，运行代码。</li>
-<li><code>JS</code>引擎一直等待着任务队列中任务的到来，然后加以处理，一个<code>Tab</code>页（<code>render</code>进程）中无论什么时候都只有一个<code>JS</code>线程在运行<code>JS</code>程序。</li>
-<li>同样注意，<code>GUI</code>渲染线程与<code>JS</code>引擎线程是互斥的，所以如果<code>JS</code>执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞。</li>
-</ul>
-<h3 id="事件触发线程"><a href="#事件触发线程" class="headerlink" title="事件触发线程"></a>事件触发线程</h3><ul>
-<li>归属于浏览器而不是<code>JS</code>引擎，用来控制事件循环（可以理解成<code>JS</code>引擎自己都忙不过来，需要浏览器另开线程协助）。</li>
-<li>当<code>JS</code>引擎执行代码块如<code>setTimeout</code>时（也可来自浏览器内核的其它线程，如鼠标点击，<code>AJAX</code>异步请求等），会将对应任务添加到事件线程中。</li>
-<li>当对应的事件符合触发条件被触发时，该线程会把事件添加到待处理队列的队尾，等待<code>JS</code>引擎的处理。</li>
-<li>注意，由于<code>JS</code>的单线程关系，所以这些待处理队列中的事件都得排队等待<code>JS</code>引擎处理（当<code>JS</code>引擎空闲时才会去执行）。</li>
-</ul>
-<h3 id="定时触发器线程"><a href="#定时触发器线程" class="headerlink" title="定时触发器线程"></a>定时触发器线程</h3><ul>
-<li>传说中的<code>setTimeout</code>和<code>setInterval</code>所在的线程</li>
-<li>浏览器定时计数器并不是由<code>JavaScript</code>引擎计数的，（因为<code>JavaScript</code>引擎是单线程的，如果处于阻塞线程状态就会影响计时的准确）</li>
-<li>因此通过单独线程来计时并触发定时（计时完毕后，添加到事件队列中，等待<code>JS</code>引擎空闲后执行）</li>
-<li>注意，<code>W3C</code>在<code>HTML</code>标准中规定，规定要求<code>setTimeout</code>中低于<code>4ms</code>的时间间隔算为<code>4ms</code>。</li>
-</ul>
-<h3 id="异步http请求线程"><a href="#异步http请求线程" class="headerlink" title="异步http请求线程"></a>异步<code>http</code>请求线程</h3><ul>
-<li>在<code>XMLHttpRequest</code>在连接后是通过浏览器新型一个线程请求</li>
-<li>将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件，将这个回调再放入事件队列中，再由<code>JavaScript</code>引擎执行</li>
-</ul>
-<p>总结下来，渲染进程如下：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://segmentfault.com/img/bV6ZLo?w=655&h=608"
-                     
-                ></p>
-<h3 id="Browser-主进程和浏览器内核（渲染进程）的通信过程"><a href="#Browser-主进程和浏览器内核（渲染进程）的通信过程" class="headerlink" title="Browser 主进程和浏览器内核（渲染进程）的通信过程"></a>Browser 主进程和浏览器内核（渲染进程）的通信过程</h3><p>打开一个浏览器，可以看到：任务管理器出现了 2 个进程（一个主进程，一个是打开<code>Tab</code>页的渲染进程）；</p>
-<ul>
-<li><code>Browser</code>主进程收到用户请求，首先需要获取页面内容（如通过网络下载资源）, 随后将该任务通过<code>RendererHost</code>接口传递给<code>Render</code>渲染进程</li>
-<li><code>Render</code>渲染进程的<code>Renderer</code>接口收到消息，简单解释后，交给渲染线程<code>GUI</code>，然后开始渲染</li>
-<li><code>GUI</code>渲染线程接收请求，加载网页并渲染网页，这其中可能需要<code>Browser</code>主进程获取资源和需要<code>GPU</code>进程来帮助渲染</li>
-<li>当然可能会有<code>JS</code>线程操作<code>DOM</code>（这可能会造成回流并重绘）</li>
-<li>最后<code>Render</code>渲染进程将结果传递给<code>Browser</code>主进程</li>
-<li><code>Browser</code>主进程接收到结果并将结果绘制出来</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://segmentfault.com/img/bV66KM?w=1034&h=560"
-                     
-                ></p>
-<h3 id="浏览器内核（渲染进程）中线程之间的关系"><a href="#浏览器内核（渲染进程）中线程之间的关系" class="headerlink" title="浏览器内核（渲染进程）中线程之间的关系"></a>浏览器内核（渲染进程）中线程之间的关系</h3><p><strong>GUI 渲染线程与 JS 引擎线程互斥</strong></p>
-<p>由于<code>JavaScript</code>是可操作<code>DOM</code>的，如果在修改这些元素属性同时渲染界面（即<code>JS</code>线程和<code>GUI</code>线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。</p>
-<p>因此，为了防止渲染出现不可预期的结果，浏览器就设置了互斥的关系，当<code>JS</code>引擎执行时<code>GUI</code>线程会被挂起。<code>GUI</code>更新则会被保存在一个队列中等到<code>JS</code>引擎线程空闲时立即被执行。</p>
-<p><strong>JS 阻塞页面加载</strong></p>
-<p>从上述的互斥关系，可以推导出，<code>JS</code>如果执行时间过长就会阻塞页面。</p>
-<p>譬如，假设<code>JS</code>引擎正在进行巨量的计算，此时就算<code>GUI</code>有更新，也会被保存在队列中，要等到<code>JS</code>引擎空闲后执行。然后由于巨量计算，所以<code>JS</code>引擎可能很久很久才能空闲，肯定就会感觉很卡。</p>
-<p>所以，要尽量避免<code>JS</code>执行时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞的感觉。</p>
-<p><strong><code>css</code>加载是否会阻塞<code>dom</code>树渲染</strong></p>
-<p>这里说的是头部引入<code>css</code>的情况<br>首先，我们都知道：<code>css</code>是由单独的下载线程异步下载的。<br>然后还有几个现象：</p>
-<ol>
-<li><code>css</code>加载不会阻塞<code>DOM</code>树解析（异步加载时<code>dom</code>照常构建）</li>
-<li>但会阻塞<code>render</code>树渲染（渲染时需要等<code>css</code>加载完毕，因为<code>render</code>树需要<code>css</code>信息）</li>
-</ol>
-<p>这可能也是浏览器的一种优化机制<br>因为你加载<code>css</code>的时候，可能会修改下面<code>DOM</code>节点的样式，如果<code>css</code>加载不阻塞<code>render</code>树渲染的话，那么当<code>css</code>加载完之后，<code>render</code>树可能又得重新重绘或者回流了，这就造成了一些没有必要的损耗<br>所以干脆把<code>DOM</code>树的结构先解析完，把可以做的工作做完，然后等<code>css</code>加载完之后，在根据最终的样式来渲染<code>render</code>树，这种做法确实对性能好一点。</p>
-<p><strong><code>WebWorker</code>,<code>JS</code>的多线程？</strong></p>
-<p>前文中有提到<code>JS</code>引擎是单线程的，而且<code>JS</code>执行时间过长会阻塞页面，那么<code>JS</code>就真的对<code>cpu</code>密集型计算无能为力么？</p>
-<p>所以，后来<code>HTML5</code>中支持了<code>WebWorker</code>。</p>
-<p>这样理解下：</p>
-<p>创建<code>Worker</code>时，<code>JS</code>引擎向浏览器申请开一个子线程（子线程是浏览器开的，完全受主线程控制，而且不能操作<code>DOM</code>）<br><code>JS</code>引擎线程与<code>worker</code>线程间通过特定的方式通信（<code>postMessage API</code>，需要通过序列化对象来与线程交互特定的数据）</p>
-<p>所以，如果有非常耗时的工作，请单独开一个<code>Worker</code>线程，这样里面不管如何翻天覆地都不会影响<code>JS</code>引擎主线程，只待计算出结果后，将结果通信给主线程即可，<code>perfect!</code></p>
-<p>而且注意下，<code>JS</code>引擎是单线程的，这一点的本质仍然未改变，<code>Worker</code>可以理解是浏览器给<code>JS</code>引擎开的外挂，专门用来解决那些大量计算问题。</p>
-<p><strong><code>WebWorker</code>与<code>SharedWorker</code></strong></p>
-<p>既然都到了这里，就再提一下<code>SharedWorker</code>（避免后续将这两个概念搞混）</p>
-<p><code>WebWorker</code>只属于某个页面，不会和其他页面的<code>Render</code>进程（浏览器内核进程）共享<br>所以<code>Chrome</code>在<code>Render</code>进程中（每一个<code>Tab</code>页就是一个<code>render</code>进程）创建一个新的线程来运行<code>Worker</code>中的<code>JavaScript</code>程序。</p>
-<p><code>SharedWorker</code>是浏览器所有页面共享的，不能采用与<code>Worker</code>同样的方式实现，因为它不隶属于某个<code>Render</code>进程，可以为多个<code>Render</code>进程共享使用<br>所以<code>Chrome</code>浏览器为<code>SharedWorker</code>单独创建一个进程来运行<code>JavaScript</code>程序，在浏览器中每个相同的<code>JavaScript</code>只存在一个<code>SharedWorker</code>进程，不管它被创建多少次。</p>
-<p>看到这里，应该就很容易明白了，本质上就是进程和线程的区别。<code>SharedWorker</code>由独立的进程管理，<code>WebWorker</code>只是属于<code>render</code>进程下的一个线程</p>
-<h3 id="总结浏览器渲染流程"><a href="#总结浏览器渲染流程" class="headerlink" title="总结浏览器渲染流程"></a>总结浏览器渲染流程</h3><p>浏览器输入<code>url</code>，浏览器主进程接管，开一个下载线程，然后进行<code>http</code>请求（略去<code>DNS</code>查询，<code>IP</code>寻址等等操作），然后等待响应，获取内容，随后将内容通过<code>RendererHost</code>接口转交给<code>Render</code>进程 – 浏览器渲染流程开始</p>
-<p>浏览器内核拿到内容后，渲染大概可以划分为：</p>
-<ol>
-<li>解析<code>html</code>建立<code>dom</code>要</li>
-<li>解析<code>css</code>构建<code>render</code>树（将<code>css</code>代码解析成树形的数据结构，然后结合<code>dom</code>合并成<code>render</code>树）</li>
-<li>布局<code>render</code>树（<code>Layout/reflow</code>）, 负责各元素尺寸，位置的计算</li>
-<li>绘制<code>render</code>树（<code>paint</code>），绘制页面像素信息</li>
-<li>浏览器会将各层的信息发送给<code>GPU</code>，<code>GPU</code>会将各层合成（<code>composite</code>）, 显示在屏幕上</li>
-</ol>
-<p>渲染完毕后就是<code>load</code>事件了，之后就是自己的<code>JS</code>逻辑处理了，略去了详细步骤。</p>
-<p><strong><code>load</code>事件与<code>DOMContentLoaded</code>事件的先后</strong></p>
-<p>上面提到，渲染完毕后会触发<code>load</code>事件，那么你能分清楚<code>load</code>事件与<code>DOMContentLoaded</code>事件的先后么？</p>
-<p>很简单，知道它们的定义就可以了：</p>
-<p>当 <code>DOMContentLoaded</code> 事件触发时，仅当<code>DOM</code>加载完成，不包括样式表，图片。<br>（譬如如果有<code>async</code>加载的脚本就不一定完成）</p>
-<p>当 <code>onload</code> 事件触发时，页面上所有的<code>DOM</code>，样式表，脚本，图片都已经加载完成了。（渲染完毕了）</p>
-<p>所以，顺序是：<code>DOMContentLoaded</code> -&gt; <code>load</code></p>
-<h3 id="普通图层和复合图层"><a href="#普通图层和复合图层" class="headerlink" title="普通图层和复合图层"></a>普通图层和复合图层</h3><p>渲染步骤就提到了<code>composite</code>概念；浏览器渲染的图层一般包含两大类：普通图层以及复合图层。</p>
-<ol>
-<li>普通文档流内可以理解为一个复合图层（这里默认复合层，里面不管添加多少元素，其实都是在同个复合图层中）</li>
-<li><code>absolute</code>布局（<code>fixed</code>也一样），虽然可以脱离文档流，但它仍然属于默认复合层</li>
-<li>可以通过硬件加速的方式，声明一个新的复合图层，它会单独分配资源（当然也会脱离普通文档流，这样一来，不管这个复合图层中怎么变化，也不会影响默认复合层里的回流重绘）</li>
-</ol>
-<p>可以简单理解下：<code>GPU</code>中，各个复合图层是单独绘制的，所以互不影响，这也是为什么某些场景硬件加速效果一级棒</p>
-<p><strong>如何变成复合图层（硬件加速）</strong></p>
-<p>将元素变成一个复合图层，就是传说中的硬件加速技术</p>
-<ul>
-<li>最常用的方式：<code>translate3d</code>,<code>translatez</code></li>
-<li><code>opacity</code>属性 &#x2F; 过渡动画（需要动画执行的过程中才会创建合成层，动画没有开始或结束后元素还会回到之前的状态）</li>
-<li><code>will-chang</code>属性（这个比较偏僻），一般配合<code>opacity</code>与<code>translate</code>使用（而且经测试，除了上述可以引发硬件加速的属性外，其它属性并不会变成复合层），作用是提前告诉浏览器要变化，这样浏览器会开始做一些优化工作（这个最好用完后就释放）</li>
-<li><code>&lt;video&gt;&lt;iframe&gt;&lt;canvas&gt;&lt;webgl&gt;</code>等元素</li>
-<li>其它，譬如以前的<code>flash</code>插件</li>
-</ul>
-<p><strong><code>absolute</code>和硬件加速的区别</strong></p>
-<p>可以看到，<code>absolute</code>虽然可以脱离普通文档流，但是无法脱离默认复合层。</p>
-<p>所以，就算<code>absolute</code>中信息改变时不会改变普通文档流中<code>render</code>树，但是，浏览器最终绘制时，是整个复合层绘制的，所以<code>absolute</code>中信息的改变，仍然会影响整个复合层的绘制。（浏览器会重绘它，如果复合层中内容多，<code>absolute</code>带来的绘制信息变化过大，资源消耗是非常严重的）</p>
-<p>而硬件加速直接就是在另一个复合层了（另起炉灶），所以它的信息改变不会影响默认复合层（当然了，内部肯定会影响属于自己的复合层），仅仅是引发最后的合成（输出视图）</p>
-<p><strong>复合图层的作用</strong></p>
-<p>一般一个元素开启硬件加速后会变成复合图层，可以独立于普通文档流中，改动后可以避免整个页面重绘，提升性能。<br>但是尽量不要大量使用复合图层，否则由于资源消耗过度，页面反而会变的更卡。</p>
-<p><strong>硬件加速时请使用<code>index</code></strong></p>
-<p>使用硬件加速时，尽可能的使用 index, 防止浏览器默认给后续的元素创建复合层渲染<br>具体的原理是：<br><code>webkit CSS3</code>中，如果这个元素添加了硬件加速，并且<code>index</code>层级比较低，那么在这个元素的后面其它元素（层级比这个元素高的，或者相同的，并且<code>relective</code>或<code>absolute</code>属性相同的），会默认变为复合层渲染，如果处理不当会极大的影响性能</p>
-<p>简单点理解，可以认为是一个隐式合成的概念：如果 a 是一个复合层，而且 b 在 a 上面，那么 b 也会被隐式转为一个复合图层，这点需要特别注意</p>
-<h2 id="从Event-Loop谈JS的运行机制"><a href="#从Event-Loop谈JS的运行机制" class="headerlink" title="从Event Loop谈JS的运行机制"></a>从<code>Event Loop</code>谈<code>JS</code>的运行机制</h2><p>到此时，已经是属于浏览器页面初次渲染完毕后的事情，<code>JS</code>引擎的一些运行机制分析。主要是结合<code>Event Loop</code>来谈<code>JS</code>代码是如何执行的。<br>我们已经知道了<code>JS</code>引擎是单线程的，知道了<code>JS</code>引擎线程，事件触发线程，定时触发器线程。<br>然后还需要知道：</p>
-<ul>
-<li><code>JS</code>分为同步任务和异步任务</li>
-<li>同步任务都在主线程上执行，形成一个执行栈</li>
-<li>主线程之外，事件触发线程管理着一个任务队列，只要异步任务有了运行结果，就在任务队列之中放置一个事件</li>
-<li>一旦执行栈中的所有同步任务执行完毕（此时<code>JS</code>引擎空闲），系统就会读取任务队列，将可运行的异步任务添加到可执行栈，开始执行。</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://segmentfault.com/img/bV6WyG?w=716&h=506"
-                     
-                ></p>
-<p>看到这里，应该就可以理解了：为什么有时候<code>setTimeOut</code>推入的事件不能准时执行？因为可能在它推入到事件列表时，主线程还不空闲，正在执行其它代码，所以就必须等待，自然有误差。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://segmentfault.com/img/bV6WOP?w=703&h=509"
-                     
-                ></p>
-<p>主线程在运行时会产生执行栈，栈中的代码调用某些<code>api</code>时，它们会在事件队列中添加各种事件（当满足触发条件后，如<code>ajax</code>请求完毕）。而当栈中的代码执行完毕，就会去读取事件队列中的事件，去执行那些回调，如此循环。</p>
-<h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><p>上面事件循环机制的核心是：<code>JS</code>引擎线程和事件触发线程</p>
-<p>调用<code>setTimeout</code>后，是由定时器线程控制等到特定时间后添加到事件队列的，因为<code>JS</code>引擎是单线程的，如果处于阻塞线程状态就会影响计时准确，因此很有必要另开一个线程用来计时。</p>
-<p>当使用<code>setTimout</code>或<code>setInterval</code>时，需要定时器线程计时，计时完成后就会将特定的事件推入事件队列中。</p>
-<p>如：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">setTimeout(()=&gt;console.log(&#x27;hello!),1000)</span><br><span class="line">//等 1000 毫秒计时完毕后（由定时器线程计时），将回调函数推入事件队列中，等待主线程执行</span><br><span class="line"></span><br><span class="line">setTimeout(()=&gt;&#123;</span><br><span class="line">    console.log(&#x27;hello&#x27;)</span><br><span class="line">&#125;,0)</span><br><span class="line">console.log(&#x27;begin&#x27;)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>这段代码的效果是最快的时间内将回调函数推入事件队列中，等待主线程执行。</p>
-<p>注意：</p>
-<ol>
-<li>执行结果是：先<code>begin</code>，后<code>hello</code></li>
-<li>虽然代码的本意是<code>0</code>毫秒就推入事件队列，但是<code>W3C</code>在<code>HTML</code>标准中规定，规定要求<code>setTimeout</code>中低于<code>4ms</code>的时间间隔算为<code>4ms</code></li>
-<li>就算不等待<code>4ms</code>，就算假设<code>0</code>毫秒就推入事件队列，也会先执行<code>begin</code>（因为只能可执行栈内空了后才会主动读取事件队列）</li>
-</ol>
-<p><strong><code>setInterval</code></strong></p>
-<p>用<code>setTimeout</code>模拟定期计时和直接用<code>setInterval</code>是有区别的：</p>
-<ul>
-<li>每次<code>setTimeout</code>计时到后就会去执行，然后执行一段时间后才会继续<code>setTimeout</code>, 中间就多了误差</li>
-<li>而<code>setInterval</code>则是每次都精确的隔一段时间推入一个事件（但是，事件的实际执行时间不一定就准确，还有可能是这个事件还没执行完毕，下一个事件就来了）</li>
-</ul>
-<p>而且<code>setInterval</code>有一些比较致命的问题：</p>
-<ul>
-<li>累积效应，如果<code>setInterval</code>代码在<code>setInterval</code>再次添加到队列之前还没有完成执行，就会导致定时器代码连续运行好几次，而之间没有间隔，就算正常间隔执行，多个<code>setInterval</code>的代码执行时间可能会比预期小（因为代码执行需要一定时间）</li>
-<li>比如你<code>ios</code>的<code>webview</code>，或者<code>safari</code>等浏览器中都有一人特点，在滚动的时候是不执行<code>JS</code>的，如果使用了<code>setInterval</code>，会发现在滚动结束后会执行多次由于滚动不执行<code>JS</code>积攒回调，如果回调执行时间过长，就会非常容易造成卡顿问题和一些不可知的错误（<code>setInterval</code>自带的优化，如果当前事件队列中有<code>setInterval</code>的回调，不会重复添加回调）</li>
-<li>而且把浏览器最小化显示等操作时，<code>setInterval</code>并不是不执行程序，它会把<code>setInterval</code>的回调函数放在队列中，等浏览器窗口再次打开时，一瞬间全部执行</li>
-</ul>
-<p>所以，至于这么问题，一般认为的最佳方案是：用<code>setTimeout</code>模拟<code>setInterval</code>或者特殊场合直接用<code>requestAnimationFrame</code></p>
-<h3 id="Promise时代的microtask与macrotask"><a href="#Promise时代的microtask与macrotask" class="headerlink" title="Promise时代的microtask与macrotask"></a><code>Promise</code>时代的<code>microtask</code>与<code>macrotask</code></h3><p>在<code>es6</code>盛行的现在，可以看下这题：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(&#x27;script start&#x27;);</span><br><span class="line"></span><br><span class="line">setTimeout(()=&gt;&#123;</span><br><span class="line">    console.log(&#x27;setTimeout&#x27;)</span><br><span class="line">&#125;,0);</span><br><span class="line"></span><br><span class="line">Promise.resolve()</span><br><span class="line">.then(()=&gt;console.log(&#x27;promise1&#x27;))</span><br><span class="line">.then(()=&gt;console.log(&#x27;promise2&#x27;))</span><br><span class="line"></span><br><span class="line">console.log(&#x27;script end&#x27;)</span><br><span class="line"></span><br><span class="line">//执行结果：</span><br><span class="line">script start</span><br><span class="line">script end</span><br><span class="line">promise1</span><br><span class="line">promise2</span><br><span class="line">setTimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>因为<code>promise</code>有一个新的概念<code>microtask</code>. 或者可以说<code>JS</code>中分为两种任务：<code>macrotask</code>和<code>microtask</code>;<br>理解如下：</p>
-<ul>
-<li><code>macrotask</code>（又叫宏任务）, 主代码块，<code>setTimeout</code>,<code>setInterval</code>等（可以看到，事件队列中的每一个事件都是一个<code>macrotask</code>）</li>
-<li>可以理解是每次执行的代码就是一个宏任务（包括每次从事件队列中获取一个事件回调并放到执行栈中执行）</li>
-<li>第一个<code>macrotask</code>会从头到尾将这个任务执行完毕，不会执行其它</li>
-<li>浏览器为了能够使得<code>JS</code>内部<code>macrotask</code>与<code>DOM</code>任务能够有序的执行，会在一个<code>macrotask</code>执行结束后，在下一个<code>macrotask</code>执行开始前，对页面进行重新渲染（<code>task</code>-&gt; 渲染 -&gt;<code>task</code>-&gt;…）</li>
-<li><code>microtask</code>（又叫微任务），<code>Promise</code>,<code>process.nextTick</code>等。</li>
-<li>可以理解是在当前<code>macrotask</code>执行结束后立即执行的任务</li>
-<li>也就是说在当前<code>macrotask</code>任务后，下一个<code>macrotask</code>之前，在渲染之前</li>
-<li>所以它的响应速度相比<code>setTimeout</code>(<code>setTimeout</code>是<code>macrotask</code>) 会更快因为无需等待渲染</li>
-<li>也就是说，在某一个<code>macrotask</code>执行完成后，就会将在它执行期间产生的所有<code>microtask</code>都执行完毕（在渲染前）</li>
-</ul>
-<p>注意：在<code>Node</code>环境下，<code>process.nextTick</code>的优先级高于<code>promise</code>. 也就是：在宏任务结束后会先执行微任务队列中的<code>nextTick</code>部分，然后才会执行微任务中的<code>promise</code>部分。</p>
-<p>另外，<code>setImmediate</code>则是规定：在下一次<code>Event Loop</code>（宏任务）时触发（所以它是属于优先级较高的宏任务），（<code>Node.js</code>文档中称，<code>setImmediate</code>指定的回调函数，总是排在<code>setTimeout</code>前面），所以<code>setImmediate</code>如果嵌套的话，是需要经过多个<code>Loop</code>才能完成的，而不会像<code>process.nextTick</code>一样没完没了。</p>
-<p>可以理解：</p>
-<ul>
-<li><code>macrotask</code>中的事件都是放在一个事件队列中的，而这个队列由事件触发线程维护。</li>
-<li><code>microtask</code>中的所有微任务都是添加到微任务队列中，等待当前<code>macrotask</code>执行完后执行，而这个队列由<code>JS</code>引擎线程维护。</li>
-</ul>
-<p>所以：</p>
-<ul>
-<li>执行一个宏任务（栈中没有就从事件队列中获取）</li>
-<li>执行过程中如果遇到微任务，就将它添加到微任务的任务队列中</li>
-<li>宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）</li>
-<li>当前宏任务执行完毕，开始检查渲染，然后 GUI 线程接管渲染</li>
-<li>渲染完毕后，<code>JS</code>线程继续接管，开始下一个宏任务（从事件队列中获取）</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://segmentfault.com/img/bV6YSS?w=506&h=570"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://segmentfault.com/img/bV7W88?w=479&h=457"
-                     
-                ></p>
-<p><strong><code>new Promise</code>里的函数是直接执行的算做主程序里，而且<code>.then</code>后面的才会放到微任务中。</strong></p>
-<p><strong>另外，请注意下<code>Promise</code>的<code>polyfill</code>与官方版本的区别：</strong></p>
-<p>官方版本中，是标准的<code>microtask</code>形式<br><code>polyfill</code>，一般都是通过<code>setTimeout</code>模拟的，所以是<code>macrotask</code>形式<br>请特别注意这两点区别</p>
-<p>注意，有一些浏览器执行结果不一样（因为它们可能把<code>microtask</code>当成<code>macrotask</code>来执行了），但是为了简单，这里不描述一些不标准的浏览器下的场景（但记住，有些浏览器可能并不标准）</p>
-<p><code>Mutation Observer</code>可以用来实现<code>microtask</code>（它属于<code>microtask</code>，优先级小于<code>Promise</code>，一般是<code>Promise</code>不支持时才会这样做）</p>
-<p>它是<code>HTML5</code>中的新特性，作用是：监听一个<code>DOM</code>变动，当<code>DOM</code>对象树发生任何变动时，<code>Mutation Observer</code>会得到通知</p>
-<p>像以前的<code>Vue</code>源码中就是利用它来模拟<code>nextTick</code>的，具体原理是，创建一个<code>TextNode</code>并监听内容变化，然后要<code>nextTick</code>的时候去改一下这个节点的文本内容，如下：（<code>Vue</code>的源码，未修改）</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">var counter=1</span><br><span class="line">var observer=newMutationObserver(nextTickHandler)</span><br><span class="line">var textNode=document.createTextNode(String(counter))</span><br><span class="line">observer.observe(textNode,&#123;characterData:true&#125;)</span><br><span class="line">timerFunc=()=&gt;&#123;</span><br><span class="line">    counter=(counter+1)%2</span><br><span class="line">    textNode.data=String(counter)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>不过，现在的<code>Vue（2.5+）</code>的<code>nextTick</code>实现移除了<code>Mutation Observer</code>的方式（据说是兼容性原因），取而代之的是使用<code>MessageChannel</code>（当然，默认情况仍然是<code>Promise</code>，不支持才兼容的）。</p>
-<p><code>MessageChannel</code>属于宏任务，优先级是：<code>setImmediate-&gt;MessageChannel-&gt;setTimeout</code>，所以<code>Vue（2.5+）</code>内部的<code>nextTick</code>与<code>2.4</code>及之前的实现是不一样的，需要注意下。</p>
-]]></content>
-      <categories>
-        <category>转载</category>
-      </categories>
-      <tags>
-        <tag>browser</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【转载】TypeScript 装饰器完全指南 _ Disenchanted</title>
-    <url>/2022/11/02/ReprintTypscriptDecorator/</url>
-    <content><![CDATA[<blockquote>
-<p>原文转自：<a class="link"   href="https://mirone.me/zh-hans/a-complete-guide-to-typescript-decorator/" >https://mirone.me/zh-hans/a-complete-guide-to-typescript-decorator/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-</blockquote>
-<p>装饰器让 TypeScript 的世界更好。 我们使用的许多库都基于这一强大特性构建，例如 <a class="link"   href="https://angular.io/" >Angular <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 和 <a class="link"   href="https://nestjs.com/" >Nestjs <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。 在这篇博客中我将介绍装饰器和它的许多细节。 我希望在读完这篇文章后，你可以理解何时和如何使用这一强的的特性。</p>
-<p>装饰器本质上是一种特殊的函数被应用在于：</p>
-<ol>
-<li>类</li>
-<li>类属性</li>
-<li>类方法</li>
-<li>类访问器</li>
-<li>类方法的参数</li>
-</ol>
-<p>所以应用装饰器其实很像是组合一系列函数，类似于高阶函数和类。 通过装饰器我们可以轻松实现 <a class="link"   href="https://zh.wikipedia.org/zh-hans/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F" >代理模式 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 来使代码更简洁以及实现其它一些更有趣的能力。</p>
-<p>装饰器的语法十分简单，只需要在想使用的装饰器前加上<code>@</code>符号，装饰器就会被应用到目标上：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function simpleDecorator() &#123;</span><br><span class="line">  console.log(&#x27;---hi I am a decorator---&#x27;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@simpleDecorator</span><br><span class="line">class A &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>一共有 5 种装饰器可被我们使用：</p>
-<ol>
-<li>类装饰器</li>
-<li>属性装饰器</li>
-<li>方法装饰器</li>
-<li>访问器装饰器</li>
-<li>参数装饰器</li>
-</ol>
-<p>让我们来快速认识一下这五种装饰器：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">@classDecorator</span><br><span class="line">class Bird &#123;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  @propertyDecorator</span><br><span class="line">  name: string;</span><br><span class="line">  </span><br><span class="line">  @methodDecorator</span><br><span class="line">  fly(</span><br><span class="line">    </span><br><span class="line">    @parameterDecorator</span><br><span class="line">      meters: number</span><br><span class="line">  ) &#123;&#125;</span><br><span class="line">  </span><br><span class="line">  @accessorDecorator</span><br><span class="line">  get egg() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="时机"><a href="#时机" class="headerlink" title="时机"></a>时机</h2><p>装饰器只在解释执行时应用一次，例如：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function f(C) &#123;</span><br><span class="line">  console.log(&#x27;apply decorator&#x27;)</span><br><span class="line">  return C</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@f</span><br><span class="line">class A &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>这里的代码会在终端中打印<code>apply decorator</code>，即便我们其实并没有使用类 A。</p>
-<h2 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h2><p>不同类型的装饰器的执行顺序是明确定义的：</p>
-<ol>
-<li>实例成员：</li>
-</ol>
-<p>参数装饰器 -&gt; 方法 &#x2F; 访问器 &#x2F; 属性 装饰器 2. 静态成员：<br>参数装饰器 -&gt; 方法 &#x2F; 访问器 &#x2F; 属性 装饰器 3. 构造器：参数装饰器 4. 类装饰器</p>
-<p>例如，考虑以下代码：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function f(key: string): any &#123;</span><br><span class="line">  console.log(&quot;evaluate: &quot;, key);</span><br><span class="line">  return function () &#123;</span><br><span class="line">    console.log(&quot;call: &quot;, key);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@f(&quot;Class Decorator&quot;)</span><br><span class="line">class C &#123;</span><br><span class="line">  @f(&quot;Static Property&quot;)</span><br><span class="line">  static prop?: number;</span><br><span class="line"></span><br><span class="line">  @f(&quot;Static Method&quot;)</span><br><span class="line">  static method(@f(&quot;Static Method Parameter&quot;) foo) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  constructor(@f(&quot;Constructor Parameter&quot;) foo) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  @f(&quot;Instance Method&quot;)</span><br><span class="line">  method(@f(&quot;Instance Method Parameter&quot;) foo) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  @f(&quot;Instance Property&quot;)</span><br><span class="line">  prop?: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>它将会打印出以下信息：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">evaluate:  Instance Method</span><br><span class="line">evaluate:  Instance Method Parameter</span><br><span class="line">call:  Instance Method Parameter</span><br><span class="line">call:  Instance Method</span><br><span class="line">evaluate:  Instance Property</span><br><span class="line">call:  Instance Property</span><br><span class="line">evaluate:  Static Property</span><br><span class="line">call:  Static Property</span><br><span class="line">evaluate:  Static Method</span><br><span class="line">evaluate:  Static Method Parameter</span><br><span class="line">call:  Static Method Parameter</span><br><span class="line">call:  Static Method</span><br><span class="line">evaluate:  Class Decorator</span><br><span class="line">evaluate:  Constructor Parameter</span><br><span class="line">call:  Constructor Parameter</span><br><span class="line">call:  Class Decorator</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>你也许会注意到执行实例属性<code>prop</code>晚于实例方法<code>method</code> 然而执行静态属性<code>static prop</code>早于静态方法<code>static method</code>。 这是因为对于属性 &#x2F; 方法 &#x2F; 访问器装饰器而言，执行顺序取决于声明它们的顺序。</p>
-<p>然而，同一方法中不同参数的装饰器的执行顺序是相反的， 最后一个参数的装饰器会最先被执行：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function f(key: string): any &#123;</span><br><span class="line">  console.log(&quot;evaluate: &quot;, key);</span><br><span class="line">  return function () &#123;</span><br><span class="line">    console.log(&quot;call: &quot;, key);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  method(</span><br><span class="line">    @f(&quot;Parameter Foo&quot;) foo,</span><br><span class="line">    @f(&quot;Parameter Bar&quot;) bar</span><br><span class="line">  ) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>这里的代码打印出的结果为：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">evaluate:  Parameter Foo</span><br><span class="line">evaluate:  Parameter Bar</span><br><span class="line">call:  Parameter Bar</span><br><span class="line">call:  Parameter Foo</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="多个装饰器的组合"><a href="#多个装饰器的组合" class="headerlink" title="多个装饰器的组合"></a>多个装饰器的组合</h2><p>你可以对同一目标应用多个装饰器。它们的组合顺序为：</p>
-<ol>
-<li>求值外层装饰器</li>
-<li>求值内层装饰器</li>
-<li>调用内层装饰器</li>
-<li>调用外层装饰器</li>
-</ol>
-<p>例如：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function f(key: string) &#123;</span><br><span class="line">  console.log(&quot;evaluate: &quot;, key);</span><br><span class="line">  return function () &#123;</span><br><span class="line">    console.log(&quot;call: &quot;, key);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  @f(&quot;Outer Method&quot;)</span><br><span class="line">  @f(&quot;Inner Method&quot;)</span><br><span class="line">  method() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>这里的代码打印出的结果为：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">evaluate: Outer Method</span><br><span class="line">evaluate: Inner Method</span><br><span class="line">call: Inner Method</span><br><span class="line">call: Outer Method</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="类装饰器"><a href="#类装饰器" class="headerlink" title="类装饰器"></a>类装饰器</h2><p>类型声明：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">type ClassDecorator = &lt;TFunction extends Function&gt;</span><br><span class="line">  (target: TFunction) =&gt; TFunction | void;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li>@参数：<ol>
-<li><code>target</code>: 类的构造器。</li>
-</ol>
-</li>
-<li>@返回：<br>如果类装饰器返回了一个值，她将会被用来代替原有的类构造器的声明。</li>
-</ul>
-<p>因此，类装饰器适合用于继承一个现有类并添加一些属性和方法。</p>
-<p>例如我们可以添加一个<code>toString</code>方法给所有的类来覆盖它原有的<code>toString</code>方法。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">type Consturctor = &#123; new (...args: any[]): any &#125;;</span><br><span class="line"></span><br><span class="line">function toString&lt;T extends Consturctor&gt;(BaseClass: T) &#123;</span><br><span class="line">  return class extends BaseClass &#123;</span><br><span class="line">    toString() &#123;</span><br><span class="line">      return JSON.stringify(this);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@toString</span><br><span class="line">class C &#123;</span><br><span class="line">  public foo = &quot;foo&quot;;</span><br><span class="line">  public num = 24;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(new C().toString())</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>遗憾的是装饰器并没有类型保护，这意味着：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare function Blah&lt;T&gt;(target: T): T &amp; &#123;foo: number&#125;</span><br><span class="line"></span><br><span class="line">@Blah</span><br><span class="line">class Foo &#123;</span><br><span class="line">  bar() &#123;</span><br><span class="line">    return this.foo; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">new Foo().foo; </span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>这是 <a class="link"   href="https://github.com/microsoft/TypeScript/issues/4881" >一个 TypeScript 的已知的缺陷 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。 目前我们能做的只有额外提供一个类用于提供类型信息：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare function Blah&lt;T&gt;(target: T): T &amp; &#123;foo: number&#125;</span><br><span class="line"></span><br><span class="line">class Base &#123;</span><br><span class="line">  foo: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Blah</span><br><span class="line">class Foo extends Base &#123;</span><br><span class="line">  bar() &#123;</span><br><span class="line">    return this.foo;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">new Foo().foo;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="属性装饰器"><a href="#属性装饰器" class="headerlink" title="属性装饰器"></a>属性装饰器</h2><p>类型声明：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">type PropertyDecorator =</span><br><span class="line">  (target: Object, propertyKey: string | symbol) =&gt; void;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li>@参数：<ol>
-<li><code>target</code>: 对于静态成员来说是类的构造器，对于实例成员来说是类的原型链。</li>
-<li><code>propertyKey</code>: 属性的名称。</li>
-</ol>
-</li>
-<li>@返回：<br>返回的结果将被忽略。</li>
-</ul>
-<p>除了用于收集信息外，属性装饰器也可以用来给类添加额外的方法和属性。 例如我们可以写一个装饰器来给某些属性添加监听器。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function capitalizeFirstLetter(str: string) &#123;</span><br><span class="line">  return str.charAt(0).toUpperCase() + str.slice(1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function observable(target: any, key: string): any &#123;</span><br><span class="line">  </span><br><span class="line">  const targetKey = &quot;on&quot; + capitalizeFirstLetter(key) + &quot;Change&quot;;</span><br><span class="line"></span><br><span class="line">  target[targetKey] =</span><br><span class="line">    function (fn: (prev: any, next: any) =&gt; void) &#123;</span><br><span class="line">      let prev = this[key];</span><br><span class="line">      Reflect.defineProperty(this, key, &#123;</span><br><span class="line">        set(next) &#123;</span><br><span class="line">          fn(prev, next);</span><br><span class="line">          prev = next;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  @observable</span><br><span class="line">  foo = -1;</span><br><span class="line"></span><br><span class="line">  @observable</span><br><span class="line">  bar = &quot;bar&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const c = new C();</span><br><span class="line"></span><br><span class="line">c.onFooChange((prev, next) =&gt; console.log(`prev: $&#123;prev&#125;, next: $&#123;next&#125;`))</span><br><span class="line">c.onBarChange((prev, next) =&gt; console.log(`prev: $&#123;prev&#125;, next: $&#123;next&#125;`))</span><br><span class="line"></span><br><span class="line">c.foo = 100; </span><br><span class="line">c.foo = -3.14; </span><br><span class="line">c.bar = &quot;baz&quot;; </span><br><span class="line">c.bar = &quot;sing&quot;; </span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="方法装饰器"><a href="#方法装饰器" class="headerlink" title="方法装饰器"></a>方法装饰器</h2><p>类型声明：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">type MethodDecorator = &lt;T&gt;(</span><br><span class="line">  target: Object,</span><br><span class="line">  propertyKey: string | symbol,</span><br><span class="line">  descriptor: TypedPropertyDescriptor&lt;T&gt;</span><br><span class="line">) =&gt; TypedPropertyDescriptor&lt;T&gt; | void;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li>@参数：<ol>
-<li><code>target</code>: 对于静态成员来说是类的构造器，对于实例成员来说是类的原型链。</li>
-<li><code>propertyKey</code>: 属性的名称。</li>
-<li><code>descriptor</code>: 属性的 <a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" >描述器 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。</li>
-</ol>
-</li>
-<li>@返回： 如果返回了值，它会被用于替代属性的描述器。</li>
-</ul>
-<p>方法装饰器不同于属性装饰器的地方在于<code>descriptor</code>参数。 通过这个参数我们可以修改方法原本的实现，添加一些共用逻辑。 例如我们可以给一些方法添加打印输入与输出的能力：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function logger(target: any, propertyKey: string, descriptor: PropertyDescriptor) &#123;</span><br><span class="line">  const original = descriptor.value;</span><br><span class="line"></span><br><span class="line">  descriptor.value = function (...args) &#123;</span><br><span class="line">    console.log(&#x27;params: &#x27;, ...args);</span><br><span class="line">    const result = original.call(this, ...args);</span><br><span class="line">    console.log(&#x27;result: &#x27;, result);</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  @logger</span><br><span class="line">  add(x: number, y:number ) &#123;</span><br><span class="line">    return x + y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const c = new C();</span><br><span class="line">c.add(1, 2);</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="访问器装饰器"><a href="#访问器装饰器" class="headerlink" title="访问器装饰器"></a>访问器装饰器</h2><p>访问器装饰器总体上讲和方法装饰器很接近，唯一的区别在于描述器中有的 key 不同：</p>
-<p>方法装饰器的描述器的 key 为：</p>
-<ul>
-<li><code>value</code></li>
-<li><code>writable</code></li>
-<li><code>enumerable</code></li>
-<li><code>configurable</code></li>
-</ul>
-<p>访问器装饰器的描述器的 key 为：</p>
-<ul>
-<li><code>get</code></li>
-<li><code>set</code></li>
-<li><code>enumerable</code></li>
-<li><code>configurable</code></li>
-</ul>
-<p>例如，我们可以将某个属性设为不可变值：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">function immutable(target: any, propertyKey: string, descriptor: PropertyDescriptor) &#123;</span><br><span class="line">  const original = descriptor.set;</span><br><span class="line"></span><br><span class="line">  descriptor.set = function (value: any) &#123;</span><br><span class="line">    return original.call(this, &#123; ...value &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  private _point = &#123; x: 0, y: 0 &#125;</span><br><span class="line"></span><br><span class="line">  @immutable</span><br><span class="line">  set point(value: &#123; x: number, y: number &#125;) &#123;</span><br><span class="line">    this._point = value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  get point() &#123;</span><br><span class="line">    return this._point;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const c = new C();</span><br><span class="line">const point = &#123; x: 1, y: 1 &#125;</span><br><span class="line">c.point = point;</span><br><span class="line"></span><br><span class="line">console.log(c.point === point)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="参数装饰器"><a href="#参数装饰器" class="headerlink" title="参数装饰器"></a>参数装饰器</h2><p>类型声明：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">type ParameterDecorator = (</span><br><span class="line">  target: Object,</span><br><span class="line">  propertyKey: string | symbol,</span><br><span class="line">  parameterIndex: number</span><br><span class="line">) =&gt; void;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li>@参数：<ol>
-<li><code>target</code>: 对于静态成员来说是类的构造器，对于实例成员来说是类的原型链。</li>
-<li><code>propertyKey</code>: 属性的名称 （注意是方法的名称，而不是参数的名称）。</li>
-<li><code>parameterIndex</code>: 参数在方法中所处的位置的下标。</li>
-</ol>
-</li>
-<li>@返回：<br>返回的值将会被忽略。</li>
-</ul>
-<p>单独的参数装饰器能做的事情很有限，它一般都被用于记录可被其它装饰器使用的信息。</p>
-<p>对于一些复杂场景， 我们可能需要结合使用不同的装饰器。 例如如果我们不仅想给我们的接口添加静态检查，还想加上运行时检查的能力。</p>
-<p>我们可以用 3 个步骤来实现这个功能：</p>
-<ol>
-<li>标记需要检查的参数 （因为参数装饰器先于方法装饰器执行）。</li>
-<li>改变方法的<code>descriptor</code>的<code>value</code>的值，先运行参数检查器，如果失败就抛出异常。</li>
-<li>运行原有的接口实现。</li>
-</ol>
-<p>以下是代码：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">type Validator = (x: any) =&gt; boolean;</span><br><span class="line"></span><br><span class="line">const validateMap: Record&lt;string, Validator[]&gt; = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">function typedDecoratorFactory(validator: Validator): ParameterDecorator &#123;</span><br><span class="line">  return (_, key, index) =&gt; &#123;</span><br><span class="line">    const target = validateMap[key as string] ?? [];</span><br><span class="line">    target[index] = validator;</span><br><span class="line">    validateMap[key as string] = target;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function validate(_: Object, key: string, descriptor: PropertyDescriptor) &#123;</span><br><span class="line">  const originalFn = descriptor.value;</span><br><span class="line">  descriptor.value = function(...args: any[]) &#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    const validatorList = validateMap[key];</span><br><span class="line">    if (validatorList) &#123;</span><br><span class="line">      args.forEach((arg, index) =&gt; &#123;</span><br><span class="line">        const validator = validatorList[index];</span><br><span class="line"></span><br><span class="line">        if (!validator) return;</span><br><span class="line"></span><br><span class="line">        const result = validator(arg);</span><br><span class="line"></span><br><span class="line">        if (!result) &#123;</span><br><span class="line">          throw new Error(</span><br><span class="line">            `Failed for parameter: $&#123;arg&#125; of the index: $&#123;index&#125;`</span><br><span class="line">          );</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    return originalFn.call(this, ...args);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const isInt = typedDecoratorFactory((x) =&gt; Number.isInteger(x));</span><br><span class="line">const isString = typedDecoratorFactory((x) =&gt; typeof x === &#x27;string&#x27;);</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  @validate</span><br><span class="line">  sayRepeat(@isString word: string, @isInt x: number) &#123;</span><br><span class="line">    return Array(x).fill(word).join(&#x27;&#x27;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const c = new C();</span><br><span class="line">c.sayRepeat(&#x27;hello&#x27;, 2); </span><br><span class="line">c.sayRepeat(&#x27;&#x27;, &#x27;lol&#x27; as any); </span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>正如例子中展示的， 对我们来说同时理解不同种类装饰器的执行顺序和职责都很重要。</p>
-<p>严格地说，元数据和装饰器是 EcmaScript 中两个独立的部分。 然而，如果你想实现像是 <a class="link"   href="https://zh.wikipedia.org/wiki/%E5%8F%8D%E5%B0%84_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)" >反射 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 这样的能力，你总是同时需要它们。</p>
-<p>如果我们回顾上一个例子，如果我们不想写各种不同的检查器呢？ 或者说，能否只写一个检查器能够通过我们编写的 TS 类型声明来自动运行类型检查？</p>
-<p>有了 <a class="link"   href="https://github.com/rbuckton/reflect-metadata" >reflect-metadata <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 的帮助， 我们可以获取编译期的类型。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">import &#x27;reflect-metadata&#x27;;</span><br><span class="line"></span><br><span class="line">function validate(</span><br><span class="line">  target: Object,</span><br><span class="line">  key: string,</span><br><span class="line">  descriptor: PropertyDescriptor</span><br><span class="line">) &#123;</span><br><span class="line">  const originalFn = descriptor.value;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  const designParamTypes = Reflect</span><br><span class="line">    .getMetadata(&#x27;design:paramtypes&#x27;, target, key);</span><br><span class="line"></span><br><span class="line">  descriptor.value = function (...args: any[]) &#123;</span><br><span class="line">    args.forEach((arg, index) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">      const paramType = designParamTypes[index];</span><br><span class="line"></span><br><span class="line">      const result = arg.constructor === paramType</span><br><span class="line">        || arg instanceof paramType;</span><br><span class="line"></span><br><span class="line">      if (!result) &#123;</span><br><span class="line">        throw new Error(</span><br><span class="line">          `Failed for validating parameter: $&#123;arg&#125; of the index: $&#123;index&#125;`</span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return originalFn.call(this, ...args);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C &#123;</span><br><span class="line">  @validate</span><br><span class="line">  sayRepeat(word: string, x: number) &#123;</span><br><span class="line">    return Array(x).fill(word).join(&#x27;&#x27;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const c = new C();</span><br><span class="line">c.sayRepeat(&#x27;hello&#x27;, 2); </span><br><span class="line">c.sayRepeat(&#x27;&#x27;, &#x27;lol&#x27; as any); </span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<p>目前为止一共有三种编译期类型可以拿到：</p>
-<ul>
-<li><code>design:type</code>: 属性的类型。</li>
-<li><code>desin:paramtypes</code>: 方法的参数的类型。</li>
-<li><code>design:returntype</code>: 方法的返回值的类型。</li>
-</ul>
-<p>这三种方式拿到的结果都是构造函数（例如<code>String</code>和<code>Number</code>）。规则是：</p>
-<ul>
-<li>number -&gt; <code>Number</code></li>
-<li>string -&gt; <code>String</code></li>
-<li>boolean -&gt; <code>Boolean</code></li>
-<li>void&#x2F;null&#x2F;never -&gt; <code>undefined</code></li>
-<li>Array&#x2F;Tuple -&gt; <code>Array</code></li>
-<li>Class -&gt; 类的构造函数</li>
-<li>Enum -&gt; 如果是纯数字枚举则为<code>Number</code>, 否则是 <code>Object</code></li>
-<li>Function -&gt; <code>Function</code></li>
-<li>其余都是<code>Object</code></li>
-</ul>
-<p>现在我们可以对于何时使用装饰器得出结论， 在阅读上面的代码中你可能也有所感觉。</p>
-<p>我将例举一些常用的使用场景：</p>
-<ul>
-<li>Before&#x2F;After 钩子。</li>
-<li>监听属性改变或者方法调用。</li>
-<li>对方法的参数做转换。</li>
-<li>添加额外的方法和属性。</li>
-<li>运行时类型检查。</li>
-<li>自动编解码。</li>
-<li>依赖注入。</li>
-</ul>
-<p>我希望读完这篇文章后，你可以找到装饰器的更多使用场景，并且用它来简化你的代码。</p>
-]]></content>
-      <categories>
-        <category>转载</category>
-      </categories>
-      <tags>
-        <tag>typescript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【一些有趣的问题】01，作用域与闭包</title>
     <url>/2021/02/23/someInterestingQuestions01/</url>
     <content><![CDATA[<h2 id="问题-1"><a href="#问题-1" class="headerlink" title="问题 1"></a>问题 1</h2><p><code>以下语句会如何输出？</code></p>
@@ -1824,6 +1853,22 @@
       </tags>
   </entry>
   <entry>
+    <title>【一些有趣的问题】04，逗号运算符</title>
+    <url>/2021/03/14/someInterestingQuestions04/</url>
+    <content><![CDATA[<!-- YCTODO -->
+
+<p><code>以下语句会如何输出？</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;<span class="number">6</span>,j&lt;<span class="number">5</span>,i++,j++)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i,j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><code>参考资料</code></h2>]]></content>
+      <categories>
+        <category>一些有趣的问题</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【一些有趣的问题】03，浮点数</title>
     <url>/2021/03/06/someInterestingQuestions03/</url>
     <content><![CDATA[<p><code>以下语句会如何输出？</code></p>
@@ -1841,22 +1886,6 @@
  <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
 </ul>
 ]]></content>
-      <categories>
-        <category>一些有趣的问题</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【一些有趣的问题】04，逗号运算符</title>
-    <url>/2021/03/14/someInterestingQuestions04/</url>
-    <content><![CDATA[<!-- YCTODO -->
-
-<p><code>以下语句会如何输出？</code></p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;<span class="number">6</span>,j&lt;<span class="number">5</span>,i++,j++)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i,j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>在</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><code>参考资料</code></h2>]]></content>
       <categories>
         <category>一些有趣的问题</category>
       </categories>
@@ -2139,35 +2168,6 @@
       </categories>
       <tags>
         <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【算法基础】排序</title>
-    <url>/2023/02/13/ALGSort/</url>
-    <content><![CDATA[<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/2023/02/13/ALGSort/sort.png"
-                      class="" title="sort"
-                >
-<h2 id="冒泡排序-θ-n-2"><a href="#冒泡排序-θ-n-2" class="headerlink" title="冒泡排序 θ(n^2)"></a>冒泡排序 θ(n^2)</h2><h2 id="选择排序-θ-n-2"><a href="#选择排序-θ-n-2" class="headerlink" title="选择排序 θ(n^2)"></a>选择排序 θ(n^2)</h2><p><code>实现逻辑</code></p>
-<ol>
-<li>比较相邻的元素，如果第一个比第二个大，交换它们两个</li>
-<li>对每一组相邻元素进行比较交换操作，从第一对到最后一对。结束后最大值在最后一位元素</li>
-<li>重复以上步骤，除了最后一个元素</li>
-<li>持续以上步骤，知道没有任何一对元素需要比较</li>
-</ol>
-<p><code>伪代码实现</code></p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 对数组A进行排序</span></span><br><span class="line"><span class="variable constant_">SELECTION</span>-<span class="title function_">SORT</span>(A)</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">0</span> to A.<span class="property">length</span>-<span class="number">1</span></span><br><span class="line">	key = A[i]</span><br><span class="line">	j = i+<span class="number">1</span></span><br><span class="line">	min = A[j]</span><br><span class="line">	<span class="keyword">for</span>(j to A.<span class="property">length</span>)</span><br><span class="line">		<span class="keyword">if</span>(min&gt;=A[j])</span><br><span class="line">			min=A[j]</span><br><span class="line">			idx=j</span><br><span class="line">	<span class="keyword">if</span>(A[i]&gt;min)</span><br><span class="line">		A[i] = min</span><br><span class="line">		A[idx] = key		</span><br></pre></td></tr></table></figure></div>
-<p><code>代码实现</code></p>
-<h2 id="插入排序-θ-n-2"><a href="#插入排序-θ-n-2" class="headerlink" title="插入排序 θ(n^2)"></a>插入排序 θ(n^2)</h2><p><code>实现逻辑</code><br><code>伪代码实现</code><br><code>代码实现</code></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
 </search>
