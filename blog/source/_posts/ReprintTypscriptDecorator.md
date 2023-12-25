@@ -2,8 +2,10 @@
 url: https://mirone.me/zh-hans/a-complete-guide-to-typescript-decorator/
 title: 【转载】TypeScript 装饰器完全指南 _ Disenchanted
 date: 2022-11-02 20:34:17
-tags: [typescript]
-categories: [转载]
+tags:
+  - TS
+categories:
+  - 算法
 ---
 > 原文转自：https://mirone.me/zh-hans/a-complete-guide-to-typescript-decorator/
 

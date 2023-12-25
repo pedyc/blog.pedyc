@@ -1,8 +1,11 @@
 ---
 title: 【Vue3 源码学习】01，从 createApp() 方法开始
 date: 2022-06-03 10:56:48
-tags: [vue]
-categories: [源码]
+tags:
+  - vue
+  - sourceCode
+categories:
+  - 源码
 ---
 
 ![s0](./vueSourceCodeStudy01/s0.jpg)
@@ -16,6 +19,7 @@ PS: 这是一张很有用的图
 3. 学习一步整理一步，然后复盘复习（画图）
 4. 有所掌握后造轮子实践
 5. 写博客或者做视频，在知识分享中巩固知识
+## 前置
 
 ## 首先提几个问题
 - 第一个问题：app 实例如何创建？

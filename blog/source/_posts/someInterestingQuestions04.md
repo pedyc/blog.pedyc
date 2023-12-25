@@ -1,8 +1,11 @@
 ---
 title: 【一些有趣的问题】04，逗号运算符
 date: 2021-03-14 22:15:54
-tags: [JS]
-categories: [一些有趣的问题]
+tags:
+  - JS
+  - 有趣的问题
+categories:
+  - 一些有趣的问题
 ---
 
 <!-- YCTODO -->

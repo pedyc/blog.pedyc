@@ -1,8 +1,10 @@
 ---
 title: 【方法论】前端发展历程梳理
 date: 2022-03-20 15:49:39
-tags: [JS]
-categories: [方法论]
+tags:
+  - 前端工程化
+categories:
+  - 方法论
 ---
 
 ## 前言

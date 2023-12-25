@@ -1,18 +1,22 @@
 {
   "main": {
-    "id": "9cdf9a7334819c40",
+    "id": "8b7d1493e5c14fbf",
     "type": "split",
     "children": [
       {
-        "id": "d9ad9e24c9b992fb",
+        "id": "d60a98988abb17af",
         "type": "tabs",
         "children": [
           {
-            "id": "799f512f5d2c14c3",
+            "id": "299f538c2e8a5d98",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "_posts/vueSourceCodeStudy02.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -21,15 +25,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "dbad06b02589900a",
+    "id": "88e8fa337a4b9737",
     "type": "split",
     "children": [
       {
-        "id": "cc98058b2f1be209",
+        "id": "3171509f56f733f7",
         "type": "tabs",
         "children": [
           {
-            "id": "260dfee795eaa1a4",
+            "id": "ac3c77dcfe634fda",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -39,7 +43,7 @@
             }
           },
           {
-            "id": "c7e0f4710b18ad30",
+            "id": "c47eddbad3825ca3",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -54,7 +58,7 @@
             }
           },
           {
-            "id": "a7ff8ed7a0d188a8",
+            "id": "ec7841f7187de0ed",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -68,19 +72,20 @@
     "width": 300
   },
   "right": {
-    "id": "4cb53a5fc640d8dc",
+    "id": "e6edfbbfe81f0b82",
     "type": "split",
     "children": [
       {
-        "id": "630ab0f14ab844dc",
+        "id": "615b68b82a033b20",
         "type": "tabs",
         "children": [
           {
-            "id": "d69f79e10f18e3bf",
+            "id": "80b22482a8dff563",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+                "file": "_posts/vueSourceCodeStudy02.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -92,18 +97,19 @@
             }
           },
           {
-            "id": "a67195789303e6fc",
+            "id": "fd337738328f5956",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "_posts/vueSourceCodeStudy02.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "eb63f08b5fa3d631",
+            "id": "f03ae34694a34809",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -114,19 +120,21 @@
             }
           },
           {
-            "id": "e1b712e57052795f",
+            "id": "fc167c16844d222d",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "_posts/vueSourceCodeStudy02.md"
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 271.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -135,9 +143,46 @@
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "command-palette:打开命令面板": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "799f512f5d2c14c3",
-  "lastOpenFiles": []
+  "active": "299f538c2e8a5d98",
+  "lastOpenFiles": [
+    "_posts/vueSourceCodeStudy01.md",
+    "_posts/vueSourceCodeStudy02.md",
+    "_posts/vueSourceCodeStudy03.md",
+    "_posts/MethodologyConfigTS.md",
+    "_posts/MethodologyConfigNpm.md",
+    "_posts/APIMutationObserver.md",
+    "_posts/MethodologyJSExcutionProcess.md",
+    "_posts/MethodologyStateManagement.md",
+    "_posts/PracticePromise.md",
+    "_posts/MethodologyFrontendJSModularity .md",
+    "_posts/MethodologyFrontendHistory.md",
+    "_posts/MethodologyFrontendEngineering.md",
+    "_posts/ALGSort.md",
+    "_posts/someInterestingQuestions06.md",
+    "_posts/someInterestingQuestions05.md",
+    "_posts/someInterestingQuestions04.md",
+    "_posts/someInterestingQuestions03.md",
+    "_posts/someInterestingQuestions02.md",
+    "_posts/someInterestingQuestions01.md",
+    "_posts/ReprintVueCompositionAPI.md",
+    "_posts/ReprintTypscriptDecorator.md",
+    "_posts/ReprintJSEventLoop.md",
+    "_posts/ReprintBrowserRender.md",
+    "_posts/ReprintAngularOptimization.md",
+    "_posts/PracticeCallApply.md",
+    "_posts/MethodologyRefactoring.md",
+    "_posts/MethodologyConfigNpm/s1.png",
+    "_posts/MethodologyConfigNpm/Snipaste_2023-12-19_10-52-02.png",
+    "MethodologyConfigNpm",
+    "_posts/MethodologyConfigNpm/s0.png",
+    "_posts/MethodologyConfigNpm",
+    "CNAME",
+    "_posts/CNAME",
+    "_posts/MethodologyFrontendEngineering/s0.png",
+    "_posts/MethodologyFrontendEngineering/mono.png"
+  ]
 }

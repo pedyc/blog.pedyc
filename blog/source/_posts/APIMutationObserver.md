@@ -1,8 +1,11 @@
 ---
 title: 【API】MutationObserver
 date: 2023-01-11 09:30:57
-tags: [JS]
-categories: [API]
+tags:
+  - JS
+  - API
+categories:
+  - API
 ---
 
 在使用第三方库时，常用需求之一是在 DOM 元素创建时注册一个时间监听器或 DOM 元素删除时注销事件监听器，但我们难以知道具体 DOM 元素的创建时间、删除时间，所以一般的实现方式是使用轮询的方法，判断 DOM 元素是否存在，如果存在则继续逻辑，这种轮询的方式也可以用 Promise 优化一下改成异步执行。但即使如此也仍有不小的额外开销，而 MutationObserver 提供了一种原生的检测方式。

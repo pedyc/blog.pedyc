@@ -2,8 +2,11 @@
 url: https://limeii.github.io/2019/05/js-eventloop/
 title: 【转载】JS：详解 Event Loop 运行机制
 date: 2021-09-12 20:33:02
-tags: [JS]
-categories: [转载]
+tags:
+  - JS
+  - JS进阶
+categories:
+  - 转载
 ---
 
 > 原文转自：https://limeii.github.io/2019/05/js-eventloop/

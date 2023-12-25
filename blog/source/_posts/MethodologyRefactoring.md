@@ -1,8 +1,10 @@
 ---
 title: 【方法论】代码重构的一点心得
 date: 2023-02-11 02:30:57
-tags: [JS]
-categories: [方法论]
+tags:
+  - 前端工程化
+categories:
+  - 方法论
 ---
 # 重构（Refactoring）
 

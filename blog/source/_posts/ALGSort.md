@@ -1,8 +1,11 @@
 ---
 title: 【算法基础】排序
 date: 2023-02-13 09:30:57
-tags: [JS,算法]
-categories: [算法]
+tags:
+  - 算法
+categories:
+  - 算法
+  - "[[ReprintTypscriptDecorator]]"
 ---
 
 ![sort](ALGSort/sort.png)

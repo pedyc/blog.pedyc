@@ -1,12 +1,15 @@
 ---
-title: 【Vue3 源码学习】02，初始 mount() 方法
+title: 【Vue3 源码学习】02，初识 mount() 方法
 date: 2022-06-03 10:56:48
-tags: [vue]
-categories: [源码]
+tags:
+  - vue
+  - sourceCode
+categories:
+  - 源码
 ---
 
 ## 前言
-书接上回，在 runtime-core 包下的文件`/runtime-core/src/apiCreateApp.ts`中我们找到了 createAppAPI() 方法，此方法调用时创建一个 app 实例，在这个实例中挂载了一些我们熟悉的实例方法，`mount()`就在其中。
+书接上回([[vueSourceCodeStudy01]])，在 runtime-core 包下的文件`/runtime-core/src/apiCreateApp.ts`中我们找到了 createAppAPI() 方法，此方法调用时创建一个 app 实例，在这个实例中挂载了一些我们熟悉的实例方法，`mount()`就在其中。
 
 ## 首先提几个问题
 1. 初次挂载时 mount() 方法做了些什么？ 

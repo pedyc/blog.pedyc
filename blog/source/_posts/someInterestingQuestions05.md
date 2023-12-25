@@ -1,8 +1,11 @@
 ---
 title: 【一些有趣的问题】05，for..in 与 for..of
 date: 2021-03-20 11:15:54
-tags: [JS]
-categories: [一些有趣的问题]
+tags:
+  - JS
+  - 有趣的问题
+categories:
+  - 一些有趣的问题
 ---
 
 `以下语句会如何输出？`

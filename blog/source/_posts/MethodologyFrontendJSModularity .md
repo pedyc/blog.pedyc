@@ -1,8 +1,12 @@
 ---
 title: 【方法论】JS 模块化梳理
 date: 2022-03-09 11:39:39
-tags: [JS]
-categories: [方法论]
+tags:
+  - JS
+  - 模块化
+  - 前端工程化
+categories:
+  - 方法论
 ---
 
 ## 前言

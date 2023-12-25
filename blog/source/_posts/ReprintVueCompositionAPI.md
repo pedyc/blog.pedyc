@@ -2,8 +2,11 @@
 url: https://zhuanlan.zhihu.com/p/408272742
 title: 【转载】Vue Composition API
 date: 2022-05-02 20:39:42
-tags: [JS]
-categories: [转载]
+tags:
+  - JS
+  - API
+categories:
+  - 转载
 ---
 
 > 原文转自：https://zhuanlan.zhihu.com/p/408272742
