@@ -140,14 +140,14 @@ home_banner:
   # Home banner social links
   social_links:
     # Whether to enable
-    enable: false
+    enable: true
     # Social links
     links:
-      github: # your GitHub URL
+      github: https://github.com/ped-Yc # your GitHub URL
       instagram: # your Instagram URL
-      zhihu: # your ZhiHu URL
+      zhihu: zhihu.com/people/ped-yc # your ZhiHu URL
       twitter: # your twitter URL
-      email: # your email
+      email: zxc66war3@outlook.com # your email
       # ...... # you can add more
     # Social links with QRcode drawers
     qrs:
