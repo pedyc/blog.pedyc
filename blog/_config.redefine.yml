@@ -6,7 +6,8 @@
 # DEMO: https://redefine.ohevan.com
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
-# all_minifier: true
+# 开启压缩
+all_minifier: true
 
 # BASIC INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 info:
@@ -100,8 +101,8 @@ home_banner:
   # Home banner image
   image:
     light: /images/wallhaven-wqery6-light.webp # light mode
-    dark: /images/wallhaven-wqery6-dark.webp # dark mode
-    # dark: /images/bg01.webp # dark mode
+    # dark: /images/wallhaven-wqery6-dark.webp # dark mode
+    dark: /images/bg01.webp # dark mode
   # Home banner title
   title: Welcome to ped-Yc's Blog
   # Home banner subtitle
@@ -173,7 +174,7 @@ navbar:
       icon: fa-regular fa-archive # can be empty
     Categories:
       path: /categories
-      icon: fa-regular fa- Example offolder-open-o
+      icon: fa-regular fa-categories
     Tag:
       path: /tags
       icon: fa-regular fa-tags
