@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const editBtn = document.querySelector(".edit")
 const statement = document.querySelector(".statement .title")
 const detail = document.querySelector(".statement .detail")
@@ -24,3 +25,6 @@ editBtn.onclick = function () {
 
 // import htmlToPdf from './utils/htmlToPdf'
 // console.log(htmlToPdf);
+=======
+let editBtn=document.querySelector(".edit"),statement=document.querySelector(".statement .title"),detail=document.querySelector(".statement .detail"),updateTime=document.querySelector("#updateTime");console.log(updateTime),updateTime.innerHTML="2022-7-13",editBtn.onclick=function(){"off"===document.designMode?(document.designMode="on",this.className="btn2 onEdit",this.innerText="退出编辑"):(document.designMode="off",this.className="btn2 edit",this.innerText="编辑")};
+>>>>>>> main1
