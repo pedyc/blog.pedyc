@@ -1,0 +1,185 @@
+{
+  "main": {
+    "id": "c8cc7f423f1d1f04",
+    "type": "split",
+    "children": [
+      {
+        "id": "8728c6d535893b2a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bbd35c070e09ddd0",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "878758a6d8046af3",
+    "type": "split",
+    "children": [
+      {
+        "id": "b56ab969ca2e04e0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6033114220750ef6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "08eab59628871df8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#vue",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "976ed7b28ba4a078",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "f28f141a667dd0d4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "28ce0f9a2aa5ebad",
+    "type": "split",
+    "children": [
+      {
+        "id": "fe1aa0689a2768a3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b5562370be240ac7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9bcabcd15d8c77d8",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ae010c56d398982b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "c4cc3f818cc030be",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "canvas:新建白板": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "bbd35c070e09ddd0",
+  "lastOpenFiles": [
+    "2023-11-23.md",
+    "MethodologyFrontendEngineering.md",
+    "MethodologyFrontendEngineering/s0.png",
+    "MethodologyFrontendHistory.md",
+    "APIMutationObserver.md",
+    "ALGSort.md",
+    "vueSourceCodeStudy03.md",
+    "vueSourceCodeStudy02.md",
+    "vueSourceCodeStudy01.md",
+    "someInterestingQuestions06.md",
+    "someInterestingQuestions05.md",
+    "someInterestingQuestions04.md",
+    "someInterestingQuestions03.md",
+    "someInterestingQuestions02.md",
+    "someInterestingQuestions01.md",
+    "MethodologyFrontendEngineering/s4-1.png",
+    "MethodologyFrontendEngineering/s4.png",
+    "MethodologyFrontendEngineering/s3.png",
+    "MethodologyFrontendEngineering/s2.png",
+    "MethodologyFrontendEngineering/s1.png",
+    "ALGSort/sort.png",
+    "MethodologyFrontendJSModularity .md",
+    "PracticeCallApply.md",
+    "ReprintBrowserRender.md",
+    "MethodologyRefactoring.md",
+    "MethodologyJSExcutionProcess.md",
+    "BasicAlgorithms03.md",
+    "BasicAlgorithms02.md",
+    "Methodology Front-end History.md",
+    "Methodology Front-end Engineering.md",
+    "Methodology JS Excution Process.md",
+    "Methodology Refactoring.md",
+    "Methodology State Management.md"
+  ]
+}
