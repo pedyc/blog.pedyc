@@ -450,7 +450,7 @@
   </entry>
   <entry>
     <title>【方法论】JS 模块化梳理</title>
-    <url>/2023/03/11/MethodologyFrontendJSModularity%20/</url>
+    <url>/2023/05/11/MethodologyFrontendJSModularity%20/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>模块化是编程中绕不过去的一环，可以说在我们的开发流程中，每时每刻都在使用着模块化，这无疑是一个非常重要的知识点。本文只讨论 JS 模块化，旨在加强对 JS 模块化的认识。主要涉及以下几点：</p>
 <ul>
 <li>JS 模块化的前世今生（为什么要模块化）</li>
